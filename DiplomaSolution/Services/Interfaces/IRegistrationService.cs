@@ -1,14 +1,13 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
+﻿using DiplomaSolution.Models;
 
 namespace DiplomaSolution.Services.Interfaces
 {
     public interface IRegistrationService
     {
-        bool CheckRegistration(string emailAddress);
+        bool CheckRegistration(Customer customer);
 
-        bool LogIn(string emailAddress);
+        bool LogIn(Customer customer);
 
-        bool Register(string emailAddress, string password);
+        bool Register(Customer customer);
     }
 }

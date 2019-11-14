@@ -18,11 +18,13 @@
 /Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/obj/Debug/netcoreapp2.1/Razor/Views/About/GiveInfo.cshtml.g.cs
 /Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/obj/Debug/netcoreapp2.1/Razor/Views/HomePage/Index.cshtml.g.cs
 /Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/obj/Debug/netcoreapp2.1/Razor/Views/InfoPage/SupportPage.cshtml.g.cs
-/Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/obj/Debug/netcoreapp2.1/Razor/Views/Registration/Login.cshtml.g.cs
 /Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/obj/Debug/netcoreapp2.1/DiplomaSolution.RazorTargetAssemblyInfo.cache
 /Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/obj/Debug/netcoreapp2.1/DiplomaSolution.RazorTargetAssemblyInfo.cs
 /Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/obj/Debug/netcoreapp2.1/DiplomaSolution.Views.pdb
 /Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/obj/Debug/netcoreapp2.1/DiplomaSolution.csproj.CopyComplete
 /Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/obj/Debug/netcoreapp2.1/Razor/Views/Shared/_Layout.cshtml.g.cs
 /Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/obj/Debug/netcoreapp2.1/DiplomaSolution.csprojAssemblyReference.cache
-/Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/obj/Debug/netcoreapp2.1/Razor/Views/Registration/RegistrationPage.cshtml.g.cs
+/Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/bin/Debug/netcoreapp2.1/appsettings.json
+/Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/obj/Debug/netcoreapp2.1/Razor/Views/Registration/ConfirmationPage.cshtml.g.cs
+/Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/obj/Debug/netcoreapp2.1/Razor/Views/LogIn/SignIn.cshtml.g.cs
+/Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/obj/Debug/netcoreapp2.1/Razor/Views/Registration/RegistrationForm.cshtml.g.cs

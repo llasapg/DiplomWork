@@ -3,8 +3,6 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using DiplomaSolution.Models;
 using DiplomaSolution.Services.Interfaces;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Internal;
 
 namespace DiplomaSolution.Services
 {
@@ -17,7 +15,7 @@ namespace DiplomaSolution.Services
             CustomerContext = customerContext;
         }
 
-        public bool CheckRegistration(string emailAddress) // Check in DB6 if customer is registered
+        public bool CheckRegistration(Customer customer) // Check in DB6 if customer is registered
         {
             var allCustomersList = CustomerContext.Customers.ToList();
 
@@ -25,7 +23,7 @@ namespace DiplomaSolution.Services
 
             foreach (var item in allCustomersList)
             {
-                if (item.EmailAddress == emailAddress)
+                if (item.EmailAddress == customer.EmailAddress)
                 {
                     registerCheck = true;
                 }
@@ -34,9 +32,9 @@ namespace DiplomaSolution.Services
             return registerCheck;
         }
 
-        public bool LogIn(string emailAddress)
+        public bool LogIn(Customer customer)
         {
-            if(CheckRegistration(emailAddress))
+            if(CheckRegistration(customer))
             {
                 return true;
             }
@@ -46,11 +44,20 @@ namespace DiplomaSolution.Services
             }
         }
 
-        public bool Register(string emailAddress, string password)
+        public bool Register(Customer customer)
         {
-            if(!CheckRegistration(emailAddress))
+            if(!CheckRegistration(customer))
             {
-                CustomerContext.Customers.Add(new Customer { EmailAddress = emailAddress, Password = password });
+                CustomerContext.Customers.Add(
+                    new Customer {
+                    EmailAddress = customer.EmailAddress,
+                    Password = customer.Password,
+                    FirstName = customer.FirstName,
+                    LastName = customer.LastName
+                });
+
+                CustomerContext.SaveChanges();
+
                 return true;
             }
             else

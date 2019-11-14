@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using DiplomaSolution.Models;
 using DiplomaSolution.Services;
+using DiplomaSolution.Services.Classes;
+using DiplomaSolution.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -19,7 +21,9 @@ namespace DiplomaSolution
         {
             var connection = Configuration.GetConnectionString("DefaultConnection");
 
-            services.AddTransient<RegistrationService>();
+            services.AddTransient<IRegistrationService, RegistrationService>();
+
+            services.AddTransient<ILogInService, LogInService>();
 
             services.AddDbContext<CustomerContext>(options => options.UseMySQL(connection));
 

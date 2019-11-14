@@ -8,6 +8,7 @@ namespace DiplomaSolution.Controllers
     {
         public HomePageController()
         {
+
         }
 
         public IActionResult Index()

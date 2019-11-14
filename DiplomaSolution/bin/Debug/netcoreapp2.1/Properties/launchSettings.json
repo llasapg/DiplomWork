@@ -1,7 +1,4 @@
 {
-  "ConnectionStrings": {
-    "DefaultConnection": "server=localhost;database=MedicalDb;uid=root;pwd=gavras123321;"
-  }
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,

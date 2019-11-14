@@ -19,6 +19,7 @@
     <Folder Include="wwwroot\css\" />
     <Folder Include="Services\Interfaces\" />
     <Folder Include="Services\Classes\" />
+    <Folder Include="Views\LogIn\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,5 +36,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Views\Registration\CheckRegistration.cshtml" />
+    <Content Remove="Views\Registration\AccountCreationPage.cshtml" />
   </ItemGroup>
 </Project>

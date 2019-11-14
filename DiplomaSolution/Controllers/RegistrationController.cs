@@ -1,31 +1,41 @@
 ﻿using System;
+using DiplomaSolution.Models;
 using DiplomaSolution.Services;
+using DiplomaSolution.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DiplomaSolution.Controllers
 {
+    [Route("Registration")]
     public class RegistrationController : Controller
     {
-        public RegistrationService RegistrationService { get; set; }
+        public IRegistrationService RegistrationService { get; set; }
 
-        public RegistrationController(RegistrationService registrationService)
+        public RegistrationController(IRegistrationService registrationService)
         {
             RegistrationService = registrationService;
         }
 
-        [HttpPost]
-        public IActionResult Login(string emailAddress, string password)
+        public bool CreateNewAccount(Customer customer)
         {
-            // redirect -->
-            if(RegistrationService.CheckRegistration(emailAddress))
-            {
-                RegistrationService.LogIn(emailAddress);
-            }
-            else
-            {
-                RegistrationService.Register(emailAddress, password);
-            }
+            RegistrationService.Register(customer);
 
+            return RegistrationService.CheckRegistration(customer);
+        }
+
+        [Route("ConfirmationPage")]
+        public IActionResult ConfirmationPage(Customer customer)
+        {
+            CreateNewAccount(customer);
+
+            ViewBag.FirstName = customer.FirstName;
+
+            return View();
+        }
+
+        [Route("RegistrationForm")]
+        public IActionResult RegistrationForm()
+        {
             return View();
         }
     }
