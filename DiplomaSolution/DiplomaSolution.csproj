@@ -37,6 +37,7 @@
   <ItemGroup>
     <Content Remove="Views\Registration\CheckRegistration.cshtml" />
     <Content Remove="Views\Registration\AccountCreationPage.cshtml" />
+    <Content Remove="wwwroot\css\mainStyles" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="wwwroot\img\AccountImage.png">
