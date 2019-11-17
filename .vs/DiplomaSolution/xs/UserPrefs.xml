@@ -1,18 +1,10 @@
 ﻿<Properties StartupConfiguration="{EFFD6586-B9FD-4716-A086-1C5E9DE7A3D6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Views/Registration/AccountCreationPage.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/wwwroot/css/styles.css">
     <Files>
-      <File FileName="DiplomaSolution/Services/Classes/LogInService.cs" Line="14" Column="10" />
-      <File FileName="DiplomaSolution/Controllers/RegistrationController.cs" Line="27" Column="36" />
-      <File FileName="DiplomaSolution/Views/HomePage/Index.cshtml" Line="14" Column="45" />
-      <File FileName="DiplomaSolution/Startup.cs" />
-      <File FileName="DiplomaSolution/Controllers/HomePageController.cs" Line="13" Column="1" />
-      <File FileName="DiplomaSolution/Controllers/AboutController.cs" Line="6" Column="18" />
-      <File FileName="DiplomaSolution/Views/About/GiveInfo.cshtml" Line="7" Column="10" />
-      <File FileName="DiplomaSolution/Services/Classes/RegistrationService.cs" Line="9" Column="37" />
-      <File FileName="DiplomaSolution/Controllers/LogInController.cs" Line="25" Column="14" />
-      <File FileName="DiplomaSolution/Views/Registration/AccountCreationPage.cshtml" Line="6" Column="1" />
       <File FileName="DiplomaSolution/Views/Registration/RegistrationForm.cshtml" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Views/Registration/ConfirmationPage.cshtml" Line="1" Column="1" />
+      <File FileName="DiplomaSolution/Views/Registration/ConfirmationPage.cshtml" Line="3" Column="46" />
+      <File FileName="DiplomaSolution/Views/Shared/_Layout.cshtml" Line="1" Column="1" />
+      <File FileName="DiplomaSolution/wwwroot/css/styles.css" Line="3" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -20,19 +12,16 @@
           <Node name="DiplomaSolution" expanded="True">
             <Node name="DiplomaSolution" expanded="True">
               <Node name="Dependencies" expanded="True" />
-              <Node name="Controllers" expanded="True" />
-              <Node name="Services" expanded="True">
-                <Node name="Classes" expanded="True" />
-                <Node name="Interfaces" expanded="True" />
-              </Node>
               <Node name="Views" expanded="True">
-                <Node name="About" expanded="True" />
-                <Node name="HomePage" expanded="True" />
-                <Node name="Registration" expanded="True">
-                  <Node name="AccountCreationPage.cshtml" selected="True" />
-                </Node>
+                <Node name="Registration" expanded="True" />
+                <Node name="Shared" expanded="True" />
               </Node>
-              <Node name="wwwroot" expanded="True" />
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True">
+                  <Node name="styles.css" selected="True" />
+                </Node>
+                <Node name="img" expanded="True" />
+              </Node>
             </Node>
           </Node>
         </State>
@@ -41,7 +30,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.DiplomaSolution PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.ItemProperties.DiplomaSolution PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/Views/HomePage/9t8b31t7.0mg~" relfile="DiplomaSolution/Views/HomePage/9t8b31t7.0mg~" line="11" column="1" />

@@ -38,4 +38,19 @@
     <Content Remove="Views\Registration\CheckRegistration.cshtml" />
     <Content Remove="Views\Registration\AccountCreationPage.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Update="wwwroot\img\AccountImage.png">
+      <IncludeInPackage>true</IncludeInPackage>
+    </Content>
+    <Content Update="wwwroot\img\lockscreen.png">
+      <IncludeInPackage>true</IncludeInPackage>
+    </Content>
+    <Content Update="wwwroot\css\styles.css">
+      <IncludeInPackage>true</IncludeInPackage>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Views\Registration\styles.css" />
+    <None Remove="Views\Shared\styles.css" />
+  </ItemGroup>
 </Project>

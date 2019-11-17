@@ -1,20 +1,18 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-	<title>Register Page</title>
-    <meta charset="utf-8">
-</head>
-<body>
-    <form method="post" role="form" action="~/Registration/ConfirmationPage">
-        <p1>Input email address</p1>
-        <input type="text" name="EmailAddress"/>
-        <p1>Input password</p1>
-        <input type="text" name="Password"/>
-        <p1>Input your FirstName</p1>
-        <input type="text" name="FirstName"/>
-        <p1>Input your LastName</p1>
-        <input type="text" name="LastName"/>
-        <input type="submit" value="Create new account">
- </form>
-</body>
-</html>
+﻿@{
+    ViewData["Title"] = "Register form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <img src="../img/AccountImage.png">
+		<form action="~/Registration/ConfirmationPage" method="post">
+			 <div class="dws-input">
+        		  <input type="text" name="EmailAddress" placeholder="Введите почтовый адрес"/>
+        		  <input type="password" name="Password" placeholder="Введите пароль"/>
+        		  <input type="text" name="FirstName" placeholder="Введите Ваше имя"/>
+        		  <input type="text" name="LastName" placeholder="Введите Вашу фамилию"/>
+        	 </div>
+             <input class="dws-submit" type="submit" value="Create new account">
+             <br />
+             <a href="~/LogIn/SignIn">Уже есть аккаут?</a>
+		 </form>
+</div>

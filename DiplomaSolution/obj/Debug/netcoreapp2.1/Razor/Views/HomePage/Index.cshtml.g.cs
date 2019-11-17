@@ -54,7 +54,7 @@ namespace AspNetCore
             WriteLiteral("<!DOCTYPE html>\n<html>\n");
             EndContext();
             BeginContext(65, 67, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1688c750e4b84b67a017a12eb31920bf", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "48c36f3d9fbf4682a6bd2b806f7724dd", async() => {
                 BeginContext(71, 54, true);
                 WriteLiteral("\n\t<title>Home Page</title>\n    <meta charset=\"utf-8\">\n");
                 EndContext();
@@ -74,12 +74,12 @@ namespace AspNetCore
             WriteLiteral("\n");
             EndContext();
             BeginContext(133, 242, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d71a6bdb38d14851a196b23ed7b094e9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "98ee474bdea341439c1138e8a3bc7486", async() => {
                 BeginContext(139, 39, true);
                 WriteLiteral("\n    <h1>Hello from main page</h1>\n    ");
                 EndContext();
                 BeginContext(178, 41, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "88ca4b1251d0489eb9c4227f5e4561ce", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1cae7ab433d84b03ba87fa465a0074d7", async() => {
                     BeginContext(205, 10, true);
                     WriteLiteral("About Page");
                     EndContext();
@@ -100,7 +100,7 @@ namespace AspNetCore
                 WriteLiteral("\n    ");
                 EndContext();
                 BeginContext(224, 46, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8bd47f56aef34b6dbb79422bb2272410", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e9a6237f2f734a78b36859435dd7c104", async() => {
                     BeginContext(257, 9, true);
                     WriteLiteral("Info Page");
                     EndContext();
@@ -121,7 +121,7 @@ namespace AspNetCore
                 WriteLiteral("\n    ");
                 EndContext();
                 BeginContext(275, 52, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ce00cb2a867042949c6b5e38732930b9", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "24d2e15c87cc49a2ae108095283eee5d", async() => {
                     BeginContext(317, 6, true);
                     WriteLiteral("SignUp");
                     EndContext();
@@ -142,7 +142,7 @@ namespace AspNetCore
                 WriteLiteral("\n    ");
                 EndContext();
                 BeginContext(332, 35, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d761eaaf2d91489597a681b028bd9921", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "732e13bd2aaf4d0c99a0bb5865deaa6f", async() => {
                     BeginContext(357, 6, true);
                     WriteLiteral("SignIn");
                     EndContext();
