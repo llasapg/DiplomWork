@@ -29,4 +29,9 @@ body{
     font-weight : bold;
     font-size : 20px;
 }
+.mainContent {
+    color:#fff;
+    background-color: rgb(24, 33, 52, 0.8);
+    display : flex;
+}
 

@@ -60,7 +60,7 @@ namespace AspNetCore
             WriteLiteral(", for registration!</h1>\n    ");
             EndContext();
             BeginContext(191, 50, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "07c8b07b3f0942c6b35a6096c2b0bc85", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d4b0753353ca490bb43c63481638b8e8", async() => {
                 BeginContext(218, 19, true);
                 WriteLiteral("Return to main page");
                 EndContext();

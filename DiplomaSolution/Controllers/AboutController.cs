@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DiplomaSolution.Controllers
 {
-    [Route("About")]
     public class AboutController : Controller
     {
         public AboutController()
@@ -11,8 +10,6 @@ namespace DiplomaSolution.Controllers
 
         }
 
-        [HttpGet]
-        [Route("GetInfo")]
         public IActionResult GiveInfo()
         {
             return View();

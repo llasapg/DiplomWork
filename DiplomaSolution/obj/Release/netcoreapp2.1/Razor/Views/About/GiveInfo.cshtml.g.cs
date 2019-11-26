@@ -43,7 +43,7 @@ namespace AspNetCore
             WriteLiteral("<!DOCTYPE html>\n<html>\n");
             EndContext();
             BeginContext(23, 41, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "957b595a60f644be87a14c650805e7d8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e4f5e49220cc415095db02837fca0aa8", async() => {
                 BeginContext(29, 28, true);
                 WriteLiteral("\n\t<title>About Page</title>\n");
                 EndContext();
@@ -63,7 +63,7 @@ namespace AspNetCore
             WriteLiteral("\n");
             EndContext();
             BeginContext(65, 49, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bfe3e1945fd74bf2a188ea63d858d11c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "33c603ef97c043dba97d3ea6e43f4e89", async() => {
                 BeginContext(71, 36, true);
                 WriteLiteral("\n    <h1>Hello from about page</h1>\n");
                 EndContext();
