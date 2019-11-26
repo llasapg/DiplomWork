@@ -9,7 +9,7 @@ body{
 	display: flex;
 	justify-content: space-between;
 	padding:10px;
-	background-color: rgb(24, 33, 52, 0.7);
+	background-color: rgb(24, 33, 52, 0.8);
 	color:#fff;
 }
 .header_section{
@@ -17,12 +17,16 @@ body{
 	align-items: center;
 }
 .header_item_button{
-	padding: 10px 50px 10px 50px;
+	padding: 10px 35px 10px 35px;
 	font-size: 20px;
 }
 .header_item_button:hover{
     background-color: #2c536c;
     border-radius: 7px;
     cursor:pointer;
+}
+.header_item_logo {
+    font-weight : bold;
+    font-size : 20px;
 }
 

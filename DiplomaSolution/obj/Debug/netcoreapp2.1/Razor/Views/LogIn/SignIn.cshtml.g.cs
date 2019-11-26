@@ -53,7 +53,7 @@ namespace AspNetCore
             WriteLiteral("<!DOCTYPE html>\n<html>\n");
             EndContext();
             BeginContext(67, 69, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3586421dee4f4f63be494db38598e0cb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2bb46479a8b74356aa99fdd8d4f73213", async() => {
                 BeginContext(73, 56, true);
                 WriteLiteral("\n\t<title>SignIn Page</title>\n    <meta charset=\"utf-8\">\n");
                 EndContext();
@@ -73,12 +73,12 @@ namespace AspNetCore
             WriteLiteral("\n");
             EndContext();
             BeginContext(137, 355, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f32d057466654d0e8644e85a40914577", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ddab7de2cb4a49c9b10295c2382558ac", async() => {
                 BeginContext(143, 56, true);
                 WriteLiteral("\n    <h1>Please, enter your email and password</h1>\n    ");
                 EndContext();
                 BeginContext(199, 285, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3fd6406ea0eb412f820f919be13d01c3", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8a815e53d6b1413398d0978cdefc2f36", async() => {
                     BeginContext(259, 218, true);
                     WriteLiteral("\n        <p1>Input email address</p1>\n        <input type=\"text\" name=\"EmailAddress\"/>\n        <p1>Input password</p1>\n        <input type=\"text\" name=\"Password\"/>\n        <input type=\"submit\" value=\"Подтвердить\">\n    ");
                     EndContext();
