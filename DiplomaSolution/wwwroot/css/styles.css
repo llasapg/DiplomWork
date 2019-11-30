@@ -1,4 +1,7 @@
-a {
+body {
+    background-image: url("../img/lockscreen.png");
+}
+a{
     text-decoration : none;
 	color: #fff;
 }
@@ -61,7 +64,7 @@ input[type="text"], input[type="password"]{
     margin-top : 100px;
     background-color: rgb(24, 33, 52, 0.7);
     font-size : 18px;
-    text-align : left;
+    text-align : center;
     color: #fff;
 	border-radius: 10px 10px 10px 10px;
 }
@@ -77,23 +80,19 @@ input[type="text"], input[type="password"]{
     background-color: rgb(24, 33, 52, 0.7);
 }
 
-body{
-    background-image: url("../img/lockscreen.png");
-}
-
-.header{
+.header {
 	display: flex;
     border-radius: 10px 10px 10px 10px;
 	justify-content: space-between;
 	padding: 5px;
-	background-color: rgb(24, 33, 52, 0.8);
+	background-color: rgb(24, 33, 52, 0.7);
 	color:#fff;
 }
-.header_section{
+.header_section {
 	display: flex;
 	align-items: center;
 }
-.header_item_button{
+.header_item_button {
 	padding: 10px 35px 10px 35px;
 	font-size: 20px;
 }
@@ -110,15 +109,42 @@ body{
 }
 
 .mainContent {
-    color:#fff;
-    background-color: rgb(24, 33, 52, 0.8);
-    display : flex;
+    display: flex;
+    margin-top: 40px;
+    width: auto;
+    height: 800px;
+    background-color: rgb(24, 33, 52, 0.7);
+    border-radius: 10px 10px 10px 10px;
 }
 
-.mainContent {
-    margin-top : 40px;
-    width : auto;
-    height : 800px;
-    background-color: rgb(24, 33, 52, 0.8);
+#InputImageBlock {
+    margin: 50px;
+    width: 500px;
+    height: 350px;
+    background-color: #2c536c;
     border-radius: 10px 10px 10px 10px;
+}
+
+#OutPutImageBlock{
+    margin: 50px 50px 50px 100px;
+    width: 500px;
+    height: 350px;
+    background-color: #2c536c;
+    border-radius: 10px 10px 10px 10px;
+}
+
+#ConfigureImageBlock {
+    margin-top : 100px;
+}
+
+.OutPutImage {
+    width: 350px;
+    height: 350px;
+    border-radius: 5px 5px 5px 5px;
+}
+
+#Img_block{
+    width: 380px;
+    height: 350px;
+    border-radius: 8px 8px 8px 8px;
 }

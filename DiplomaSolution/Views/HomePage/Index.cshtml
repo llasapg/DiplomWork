@@ -1,35 +1,50 @@
-﻿@{
+﻿@model DiplomaSolution.Models.FormFile
+@{
    ViewData["Title"] = "SmartX.com";
    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 	<div class="header">
 		<div class="header_section">
 			<div class="header_item_logo">
-                <div class="header_item_button">
-			        <a href="~/HomePage/Index">SmartX</a>
-                </div>
-			</div>
-			<div class="header_item_button">
-                <a href="~/HomePage/Index">Home</a>
+                <div class="header_item_button"><a href="~/HomePage/Index">SmartX</a></div>
             </div>
-            <div class="header_item_button">
-				<a href="~/About/GiveInfo">About</a>
-            </div>
-            <div class="header_item_button">
-    			<a href="~/InfoPage/SupportPage">Contact</a>
-            </div>
+			<div class="header_item_button"><a href="~/HomePage/Index">Home</a></div>
+            <div class="header_item_button"><a href="~/About/GiveInfo">About</a></div>
+            <div class="header_item_button"><a href="~/InfoPage/SupportPage">Contact</a></div>
 		</div>
             <div class="header_section">
-                <div class="header_item_button">
-                    <a href="~/Registration/RegistrationForm">Registration</a>
-                </div>
-                <div class="header_item_button">    
-    	            <a href="~/LogIn/SignIn">LogIn</a>
-                </div>
+                <div class="header_item_button"><a href="~/Registration/RegistrationForm">Registration</a></div>
+                <div class="header_item_button"><a href="~/LogIn/SignIn">LogIn</a></div>
 		    </div>
-		</div>
+    </div>
     <div class="mainContent">
-        <div>
-
-        </div>
+            <div Id="InputImageBlock">
+                <div class="OutPutImage">
+                    @{
+                        if(Model != null)
+                        {
+                            <img id="Img_block"src=@Model.FullName />
+                        }
+                    }
+                </div>
+                <form method="post" action="~/HomePage/Index" enctype="multipart/form-data">
+                    <input type="file" name="file"/>
+                    <input type="submit" name="Загрузить" />
+                </form>
+            </div>
+            <div id="ConfigureImageBlock">
+                <dl>
+                    <dt><div class="header_item_button"><a href="~/Registration/RegistrationForm">Transition from negative to positive</a></div></dt>
+                    <dt><div class="header_item_button"><a href="~/Registration/RegistrationForm">Transition from positive to negative</a></div></dt>
+                    <dt><div class="header_item_button"><a href="~/Registration/RegistrationForm">Grayscale processing</a></div></dt>
+                    <dt><div class="header_item_button"><a href="~/Registration/RegistrationForm">Scattering correction processing</a></div></dt>
+                </dl>
+            </div>
+            <div id="OutPutImageBlock">
+                <div class="OutPutImage">
+                </div>
+                <form method="post" action="~/HomePage/Index" enctype="multipart/form-data">
+                    <input type="submit" name="Загрузить" />
+                </form>
+            </div>
     </div>

@@ -12,9 +12,18 @@ namespace DiplomaSolution
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; set; }
+
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
         public void ConfigureServices(IServiceCollection services)
         {
             var connection = Configuration.GetConnectionString("DefaultConnection");
+
+            services.AddTransient<IFileManagerService, FileManagerService>();
 
             services.AddTransient<IRegistrationService, RegistrationService>();
 
@@ -23,13 +32,6 @@ namespace DiplomaSolution
             services.AddDbContext<CustomerContext>(options => options.UseMySQL(connection));
 
             services.AddMvc();
-        }
-
-        public IConfiguration Configuration { get; set; }
-
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

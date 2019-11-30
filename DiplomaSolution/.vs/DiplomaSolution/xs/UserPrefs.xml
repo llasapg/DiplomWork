@@ -1,9 +1,9 @@
 ﻿<Properties StartupConfiguration="{11696BEA-910E-4525-9195-57B956807856}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="wwwroot/css/styles.css">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Shared/_Layout.cshtml">
     <Files>
-      <File FileName="wwwroot/css/styles.css" Line="86" Column="1" />
-      <File FileName="Views/HomePage/Index.cshtml" Line="5" Column="20" />
-      <File FileName="Views/Shared/_Layout.cshtml" Line="17" Column="1" />
+      <File FileName="wwwroot/css/styles.css" Line="117" Column="2" />
+      <File FileName="Views/HomePage/Index.cshtml" Line="1" Column="1" />
+      <File FileName="Views/Shared/_Layout.cshtml" Line="15" Column="12" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -11,22 +11,20 @@
           <Node name="DiplomaSolution" expanded="True">
             <Node name="DiplomaSolution" expanded="True">
               <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True">
                 <Node name="Classes" expanded="True" />
                 <Node name="Interfaces" expanded="True" />
               </Node>
               <Node name="Views" expanded="True">
-                <Node name="About" expanded="True" />
                 <Node name="HomePage" expanded="True" />
-                <Node name="InfoPage" expanded="True" />
-                <Node name="LogIn" expanded="True" />
-                <Node name="Registration" expanded="True" />
-                <Node name="Shared" expanded="True" />
+                <Node name="Shared" expanded="True">
+                  <Node name="_Layout.cshtml" selected="True" />
+                </Node>
               </Node>
               <Node name="wwwroot" expanded="True">
-                <Node name="css" expanded="True">
-                  <Node name="styles.css" selected="True" />
-                </Node>
+                <Node name="css" expanded="True" />
+                <Node name="CustomersImages" expanded="True" />
               </Node>
             </Node>
           </Node>

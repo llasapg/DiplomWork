@@ -1,19 +1,35 @@
 ﻿using System;
+using System.Threading.Tasks;
+using DiplomaSolution.Models;
+using DiplomaSolution.Services.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Razor.Compilation;
 
 namespace DiplomaSolution.Controllers
 {
     public class HomePageController : Controller
     {
-        public HomePageController()
-        {
+        private IFileManagerService FileManagerService { get; set; }
 
+        public HomePageController(IFileManagerService fileManagerService)
+        {
+            FileManagerService = fileManagerService;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Index(IFormFile file)
+        {
+            FileManagerService.LoadFileToTheServer(file);
+
+            var viewModel = new FormFile { File = file, FullName = "/CustomersImages/" + file.FileName };
+
+            return View(viewModel);
         }
     }
 }
