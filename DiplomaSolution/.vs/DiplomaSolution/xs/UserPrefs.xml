@@ -1,9 +1,13 @@
 ﻿<Properties StartupConfiguration="{11696BEA-910E-4525-9195-57B956807856}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Shared/_Layout.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Services/Classes/FileManagerService.cs">
     <Files>
-      <File FileName="wwwroot/css/styles.css" Line="117" Column="2" />
-      <File FileName="Views/HomePage/Index.cshtml" Line="1" Column="1" />
-      <File FileName="Views/Shared/_Layout.cshtml" Line="15" Column="12" />
+      <File FileName="Startup.cs" Line="31" Column="1" />
+      <File FileName="appsettings.json" />
+      <File FileName="Views/About/GiveInfo.cshtml" />
+      <File FileName="Controllers/AboutController.cs" />
+      <File FileName="Controllers/HomePageController.cs" Line="31" Column="1" />
+      <File FileName="Services/Classes/FileManagerService.cs" Line="41" Column="14" />
+      <File FileName="Models/FormFile.cs" Line="9" Column="45" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,20 +16,13 @@
             <Node name="DiplomaSolution" expanded="True">
               <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True" />
+              <Node name="Properties" expanded="True" />
               <Node name="Services" expanded="True">
-                <Node name="Classes" expanded="True" />
-                <Node name="Interfaces" expanded="True" />
-              </Node>
-              <Node name="Views" expanded="True">
-                <Node name="HomePage" expanded="True" />
-                <Node name="Shared" expanded="True">
-                  <Node name="_Layout.cshtml" selected="True" />
+                <Node name="Classes" expanded="True">
+                  <Node name="FileManagerService.cs" selected="True" />
                 </Node>
               </Node>
-              <Node name="wwwroot" expanded="True">
-                <Node name="css" expanded="True" />
-                <Node name="CustomersImages" expanded="True" />
-              </Node>
+              <Node name="Views" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -35,6 +32,7 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.DiplomaSolution PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <Debugger.DebugSourceFolders />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

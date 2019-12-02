@@ -6,25 +6,38 @@ using System.Threading.Tasks;
 using DiplomaSolution.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
+using DiplomaSolution.Models;
 
 namespace DiplomaSolution.Services.Classes
 {
     public class FileManagerService : IFileManagerService
     {
-        private IHostingEnvironment HostingEnvironment { get; set; }
+        private CustomerContext CustomerContext { get; set; }
 
-        public FileManagerService(IHostingEnvironment hostingEnvironment)
+        public FileManagerService(CustomerContext customerContext)
         {
-            HostingEnvironment = hostingEnvironment;
+            CustomerContext = customerContext;
         }
 
+        /// <summary>
+        /// Loads customer images to DB to deal with them in future
+        /// </summary>
+        /// <param name="file"></param>
         public void LoadFileToTheServer(IFormFile file)
         {
-            if (file != null)
+            using (var fileStream = file.OpenReadStream())
             {
-                var filePath = Path.Combine(HostingEnvironment.WebRootPath + "/CustomersImages" + "/" + Path.GetFileName(file.FileName));
+                using(BinaryReader br = new BinaryReader(fileStream))
+                {
+                    var byteFileData = br.ReadBytes((Int32)fileStream.Length);
 
-                file.CopyTo(new FileStream(filePath, FileMode.Create));
+                    CustomerContext.CustomerFiles.Add(new FormFile {
+                    FileData = byteFileData,
+                    FullName = Path.GetFileName(file.FileName)
+                    });  
+                }
+
+                CustomerContext.SaveChanges();
             }
         }
     }

@@ -27,7 +27,8 @@
           "Microsoft.AspNetCore.App": "2.1.1",
           "Microsoft.AspNetCore.Razor.Design": "2.1.2",
           "Microsoft.NETCore.App": "2.1.0",
-          "MySql.Data.EntityFrameworkCore": "8.0.18"
+          "MySql.Data.EntityFrameworkCore": "8.0.18",
+          "NuGet.CommandLine": "5.3.1"
         },
         "runtime": {
           "DiplomaSolution.dll": {}
@@ -151,6 +152,7 @@
           "lib/netstandard2.0/MySql.Data.EntityFrameworkCore.dll": {}
         }
       },
+      "NuGet.CommandLine/5.3.1": {},
       "Remotion.Linq/2.2.0": {
         "dependencies": {
           "System.Collections": "4.3.0",
@@ -3484,6 +3486,13 @@
       "sha512": "sha512-aM45hME7scc0UOkY0PW/wUSaDOjXokgZNt/pt8WxjIf0jA6gZbmeH6XqGi75ngNOubfbDMkIgy1/T8MUp4a9yg==",
       "path": "mysql.data.entityframeworkcore/8.0.18",
       "hashPath": "mysql.data.entityframeworkcore.8.0.18.nupkg.sha512"
+    },
+    "NuGet.CommandLine/5.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bjX/AzZgZI08UuJOfsPfkZD7oI1+oHRXriHSOaj8UK30QM9zB0xxPSeELJJ14LTeyow/bF7jp1Yv0rI56Bm76A==",
+      "path": "nuget.commandline/5.3.1",
+      "hashPath": "nuget.commandline.5.3.1.nupkg.sha512"
     },
     "Remotion.Linq/2.2.0": {
       "type": "package",

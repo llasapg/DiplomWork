@@ -1,9 +1,6 @@
 ﻿using System;
 namespace DiplomaSolution.Models
 {
-    /// <summary>
-    /// Basic model for customer
-    /// </summary>
     public class Customer
     {
         public int Id { get; set; }
@@ -11,5 +8,6 @@ namespace DiplomaSolution.Models
         public string Password { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public int? FileId { get; set; } = null;
     }
 }

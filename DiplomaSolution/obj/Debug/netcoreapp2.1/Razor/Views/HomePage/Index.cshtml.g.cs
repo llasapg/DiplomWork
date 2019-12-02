@@ -57,7 +57,7 @@ namespace AspNetCore
             WriteLiteral("\t<div class=\"header\">\n\t\t<div class=\"header_section\">\n\t\t\t<div class=\"header_item_logo\">\n                <div class=\"header_item_button\">");
             EndContext();
             BeginContext(261, 37, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "76d57950fd8445b1a9fb27fedfc2f86f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8c6c1218c66541729902b301c1b57b8e", async() => {
                 BeginContext(288, 6, true);
                 WriteLiteral("SmartX");
                 EndContext();
@@ -78,7 +78,7 @@ namespace AspNetCore
             WriteLiteral("</div>\n            </div>\n\t\t\t<div class=\"header_item_button\">");
             EndContext();
             BeginContext(359, 35, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a91bae28e8b94006913501344cf96d6c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ba54b52fe4fd4106969ab841e8bc39e4", async() => {
                 BeginContext(386, 4, true);
                 WriteLiteral("Home");
                 EndContext();
@@ -99,7 +99,7 @@ namespace AspNetCore
             WriteLiteral("</div>\n            <div class=\"header_item_button\">");
             EndContext();
             BeginContext(445, 36, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fca1d04e6b4e470eb19f6fa2b50057f4", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2c242a5dca164730926addc4cccf0fc5", async() => {
                 BeginContext(472, 5, true);
                 WriteLiteral("About");
                 EndContext();
@@ -120,7 +120,7 @@ namespace AspNetCore
             WriteLiteral("</div>\n            <div class=\"header_item_button\">");
             EndContext();
             BeginContext(532, 44, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2c7b81113e764e35bfc3bac25f249725", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1b2af50b570d44438f009c1ed8020038", async() => {
                 BeginContext(565, 7, true);
                 WriteLiteral("Contact");
                 EndContext();
@@ -141,7 +141,7 @@ namespace AspNetCore
             WriteLiteral("</div>\n\t\t</div>\n            <div class=\"header_section\">\n                <div class=\"header_item_button\">");
             EndContext();
             BeginContext(681, 58, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d020148a3051483ebda1f51313b07d5f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "37c2ca638cf346efb78a281b55958e1d", async() => {
                 BeginContext(723, 12, true);
                 WriteLiteral("Registration");
                 EndContext();
@@ -162,7 +162,7 @@ namespace AspNetCore
             WriteLiteral("</div>\n                <div class=\"header_item_button\">");
             EndContext();
             BeginContext(794, 34, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f5802182e8e1434f8fae782d5e296f55", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "91fdd0af87be4def8d2046e57817ab21", async() => {
                 BeginContext(819, 5, true);
                 WriteLiteral("LogIn");
                 EndContext();
@@ -212,7 +212,7 @@ WriteAttributeValue("", 1112, Model.FullName, 1112, 15, false);
             WriteLiteral("                </div>\n                ");
             EndContext();
             BeginContext(1218, 214, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5c91767906054551a004d176fc4b60b6", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "46374520e8ec4ea1b6a762202801a57b", async() => {
                 BeginContext(1294, 131, true);
                 WriteLiteral("\n                    <input type=\"file\" name=\"file\"/>\n                    <input type=\"submit\" name=\"Загрузить\" />\n                ");
                 EndContext();
@@ -235,7 +235,7 @@ WriteAttributeValue("", 1112, Model.FullName, 1112, 15, false);
             WriteLiteral("\n            </div>\n            <div id=\"ConfigureImageBlock\">\n                <dl>\n                    <dt><div class=\"header_item_button\">");
             EndContext();
             BeginContext(1572, 82, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "672a66af6fc74dfd95bb3e3d8d103b49", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "850776bb23254520a0326a57a563906e", async() => {
                 BeginContext(1614, 36, true);
                 WriteLiteral("Transition from negative to positive");
                 EndContext();
@@ -256,7 +256,7 @@ WriteAttributeValue("", 1112, Model.FullName, 1112, 15, false);
             WriteLiteral("</div></dt>\n                    <dt><div class=\"header_item_button\">");
             EndContext();
             BeginContext(1722, 82, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7c7dfb9f29544ac0add5cb12b778c666", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7f0219200a0d4827b93c11f04ef9da12", async() => {
                 BeginContext(1764, 36, true);
                 WriteLiteral("Transition from positive to negative");
                 EndContext();
@@ -277,7 +277,7 @@ WriteAttributeValue("", 1112, Model.FullName, 1112, 15, false);
             WriteLiteral("</div></dt>\n                    <dt><div class=\"header_item_button\">");
             EndContext();
             BeginContext(1872, 66, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a74a6e3beb644fcab352d39ca6980ae8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "823f083c2c184b11a380c9a2efe291c4", async() => {
                 BeginContext(1914, 20, true);
                 WriteLiteral("Grayscale processing");
                 EndContext();
@@ -298,7 +298,7 @@ WriteAttributeValue("", 1112, Model.FullName, 1112, 15, false);
             WriteLiteral("</div></dt>\n                    <dt><div class=\"header_item_button\">");
             EndContext();
             BeginContext(2006, 78, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f2ad25c9bccc4a2798bea03ca001fc3c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9318a0fdebd24f8b8d301cab67b93868", async() => {
                 BeginContext(2048, 32, true);
                 WriteLiteral("Scattering correction processing");
                 EndContext();
@@ -319,7 +319,7 @@ WriteAttributeValue("", 1112, Model.FullName, 1112, 15, false);
             WriteLiteral("</div></dt>\n                </dl>\n            </div>\n            <div id=\"OutPutImageBlock\">\n                <div class=\"OutPutImage\">\n                </div>\n                ");
             EndContext();
             BeginContext(2258, 161, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c0ee0929b58b4f61a0b9e615b9800c9f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cb7605fc31b34adf986e988e1c3d5dd0", async() => {
                 BeginContext(2334, 78, true);
                 WriteLiteral("\n                    <input type=\"submit\" name=\"Загрузить\" />\n                ");
                 EndContext();

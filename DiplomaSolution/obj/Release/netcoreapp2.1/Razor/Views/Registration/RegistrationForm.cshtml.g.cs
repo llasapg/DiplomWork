@@ -52,7 +52,7 @@ namespace AspNetCore
             WriteLiteral("<div class=\"container\">\n    <img src=\"../img/AccountImage.png\">\n\t\t");
             EndContext();
             BeginContext(158, 614, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0fb848b0209945d3a0ca53d18159846e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f1c37c2527ae4b34a8bafde4b7ae13bd", async() => {
                 BeginContext(219, 497, true);
                 WriteLiteral(@"
 			 <div class=""dws-input"">
@@ -66,7 +66,7 @@ namespace AspNetCore
              ");
                 EndContext();
                 BeginContext(716, 45, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5b56bfa0b4cb46379a76b82c9e154ef0", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fe7f46bbb8074cf0a83b7729fe5b3181", async() => {
                     BeginContext(741, 16, true);
                     WriteLiteral("Уже есть аккаут?");
                     EndContext();

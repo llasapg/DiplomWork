@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Http;
 
 namespace DiplomaSolution.Models
 {
@@ -6,6 +7,6 @@ namespace DiplomaSolution.Models
     {
         public int Id { get; set; }
         public string FullName { get; set; }
-        public IFormFile File { get; set; }
+        public byte[] FileData { get; set; }
     }
 }

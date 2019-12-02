@@ -11,7 +11,7 @@ namespace DiplomaSolution.Controllers
     {
         private IFileManagerService FileManagerService { get; set; }
 
-        public HomePageController(IFileManagerService fileManagerService)
+        public HomePageController (IFileManagerService fileManagerService)
         {
             FileManagerService = fileManagerService;
         }
@@ -27,7 +27,7 @@ namespace DiplomaSolution.Controllers
         {
             FileManagerService.LoadFileToTheServer(file);
 
-            var viewModel = new FormFile { File = file, FullName = "/CustomersImages/" + file.FileName };
+            var viewModel = new FormFile { FullName = "/CustomersImages/" + file.FileName };
 
             return View(viewModel);
         }

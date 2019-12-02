@@ -2695,6 +2695,9 @@
           "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {}
         }
       },
+      "NuGet.CommandLine/5.3.1": {
+        "type": "package"
+      },
       "Remotion.Linq/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -7446,6 +7449,20 @@
         "lib/netstandard1.3/Newtonsoft.Json.Bson.xml",
         "newtonsoft.json.bson.1.0.1.nupkg.sha512",
         "newtonsoft.json.bson.nuspec"
+      ]
+    },
+    "NuGet.CommandLine/5.3.1": {
+      "sha512": "bjX/AzZgZI08UuJOfsPfkZD7oI1+oHRXriHSOaj8UK30QM9zB0xxPSeELJJ14LTeyow/bF7jp1Yv0rI56Bm76A==",
+      "type": "package",
+      "path": "nuget.commandline/5.3.1",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "nuget.commandline.5.3.1.nupkg.sha512",
+        "nuget.commandline.nuspec",
+        "tools/NuGet.exe",
+        "tools/NuGet.pdb"
       ]
     },
     "Remotion.Linq/2.2.0": {
@@ -12518,7 +12535,8 @@
       "Microsoft.AspNetCore.App >= 2.1.1",
       "Microsoft.AspNetCore.Razor.Design >= 2.1.2",
       "Microsoft.NETCore.App >= 2.1.0",
-      "MySql.Data.EntityFrameworkCore >= 8.0.18"
+      "MySql.Data.EntityFrameworkCore >= 8.0.18",
+      "NuGet.CommandLine >= 5.3.1"
     ]
   },
   "packageFolders": {
@@ -12580,6 +12598,12 @@
           "MySql.Data.EntityFrameworkCore": {
             "target": "Package",
             "version": "[8.0.18, )"
+          },
+          "NuGet.CommandLine": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[5.3.1, )"
           }
         },
         "imports": [

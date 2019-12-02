@@ -1,21 +1,21 @@
 ﻿<Properties StartupConfiguration="{EFFD6586-B9FD-4716-A086-1C5E9DE7A3D6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Properties/launchSettings.json">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Models/Customer.cs">
     <Files>
-      <File FileName="DiplomaSolution/Startup.cs" Line="44" Column="33" />
-      <File FileName="DiplomaSolution/Controllers/InfoPageController.cs" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Properties/launchSettings.json" Line="6" Column="50" />
+      <File FileName="DiplomaSolution/Controllers/AboutController.cs" Line="1" Column="1" />
+      <File FileName="DiplomaSolution/Controllers/LogInController.cs" Line="1" Column="1" />
+      <File FileName="DiplomaSolution/Controllers/RegistrationController.cs" Line="1" Column="1" />
+      <File FileName="DiplomaSolution/Models/Customer.cs" Line="12" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="DiplomaSolution" expanded="True">
             <Node name="DiplomaSolution" expanded="True">
-              <Node name="Dependencies" expanded="True" />
-              <Node name="Models" expanded="True" />
-              <Node name="Properties" expanded="True">
-                <Node name="launchSettings.json" selected="True" />
+              <Node name="Controllers" expanded="True" />
+              <Node name="Migrations" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="Customer.cs" selected="True" />
               </Node>
-              <Node name="Services" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -24,7 +24,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.DiplomaSolution PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.ItemProperties.DiplomaSolution PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/Views/HomePage/9t8b31t7.0mg~" relfile="DiplomaSolution/Views/HomePage/9t8b31t7.0mg~" line="11" column="1" />
