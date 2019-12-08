@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Web;
 using System.IO;
-using System.Net.Http;
-using System.Threading.Tasks;
 using DiplomaSolution.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Hosting;
 using DiplomaSolution.Models;
 
 namespace DiplomaSolution.Services.Classes
@@ -25,19 +21,25 @@ namespace DiplomaSolution.Services.Classes
         /// <param name="file"></param>
         public void LoadFileToTheServer(IFormFile file)
         {
-            using (var fileStream = file.OpenReadStream())
+            if (file != null)
             {
-                using(BinaryReader br = new BinaryReader(fileStream))
+                using (var fileStream = file.OpenReadStream())
                 {
-                    var byteFileData = br.ReadBytes((Int32)fileStream.Length);
+                    using (var br = new BinaryReader(fileStream))
+                    {
+                        var byteFileData = br.ReadBytes((Int32)fileStream.Length);
 
-                    CustomerContext.CustomerFiles.Add(new FormFile {
-                    FileData = byteFileData,
-                    FullName = Path.GetFileName(file.FileName)
-                    });  
+                        CustomerContext.CustomerFiles.Add(new FormFile
+                        {
+                            FileData = byteFileData,
+                            FullName = Path.GetFileName(file.FileName)
+                        });
+                    }
+
+                    CustomerContext.SaveChanges();
                 }
 
-                CustomerContext.SaveChanges();
+                file.CopyTo(new FileStream($"wwwroot/CustomersImages/{file.FileName}", FileMode.Create));
             }
         }
     }

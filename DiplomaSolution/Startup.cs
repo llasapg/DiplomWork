@@ -46,7 +46,7 @@ namespace DiplomaSolution
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    template : "{Controller=HomePage}/{Action=Index}",
+                    template: "SmartX/{Controller=HomePage}/{Action=Index}",
                     name: "default"
                     );
             });

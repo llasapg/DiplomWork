@@ -1,18 +1,17 @@
 ﻿@{
     ViewData["Title"] = "Register form";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container">
-    <img src="../img/AccountImage.png">
-		<form action="~/Registration/ConfirmationPage" method="post">
-			 <div class="dws-input">
-        		  <input type="text" name="EmailAddress" placeholder="Введите почтовый адрес"/>
-        		  <input type="password" name="Password" placeholder="Введите пароль"/>
-        		  <input type="text" name="FirstName" placeholder="Введите Ваше имя"/>
-        		  <input type="text" name="LastName" placeholder="Введите Вашу фамилию"/>
-        	 </div>
-             <input class="dws-submit" type="submit" value="Create new account">
-             <br />
-             <a href="~/LogIn/SignIn">Уже есть аккаут?</a>
-		 </form>
+    <img src="../img/AccountImage.png" asp-append-version="true">
+    <form action="~/Registration/ConfirmationPage" method="post">
+        <div class="dws-input">
+            <input type="text" name="EmailAddress" placeholder="Введите почтовый адрес" />
+            <input type="password" name="Password" placeholder="Введите пароль" />
+            <input type="text" name="FirstName" placeholder="Введите Ваше имя" />
+            <input type="text" name="LastName" placeholder="Введите Вашу фамилию" />
+        </div>
+        <input class="dws-submit" type="submit" value="Create new account">
+        <br />
+        <a asp-controller="LogIn" asp-action="SignIn">Уже есть аккаут?</a>
+    </form>
 </div>

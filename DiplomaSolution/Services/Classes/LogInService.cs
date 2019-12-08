@@ -1,18 +1,30 @@
-﻿using System;
+﻿using DiplomaSolution.Models;
 using DiplomaSolution.Services.Interfaces;
-using Microsoft.AspNetCore.Mvc;
 
 namespace DiplomaSolution.Services.Classes
 {
     public class LogInService : ILogInService
     {
-        public LogInService()
+        private CustomerContext CustomerContext { get; set; }
+
+        public LogInService(CustomerContext customerContext)
         {
+            CustomerContext = customerContext;
         }
 
-        public IActionResult LogIn()
+        public Customer LogIn(string email)
         {
-            throw new NotImplementedException();
+            var resultCustomer = new Customer();
+
+            foreach (var item in CustomerContext.Customers)
+            {
+                if (item.EmailAddress == email)
+                {
+                    resultCustomer = item;
+                }
+            }
+
+            return resultCustomer;
         }
     }
 }

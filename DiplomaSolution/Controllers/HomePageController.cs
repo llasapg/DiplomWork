@@ -1,8 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
-using DiplomaSolution.Models;
+﻿using DiplomaSolution.Models;
 using DiplomaSolution.Services.Interfaces;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DiplomaSolution.Controllers
@@ -10,10 +7,12 @@ namespace DiplomaSolution.Controllers
     public class HomePageController : Controller
     {
         private IFileManagerService FileManagerService { get; set; }
+        private ILogInService LogInService { get; set; }
 
-        public HomePageController (IFileManagerService fileManagerService)
+        public HomePageController(IFileManagerService fileManagerService, ILogInService logInService)
         {
             FileManagerService = fileManagerService;
+            LogInService = logInService;
         }
 
         [HttpGet]
@@ -23,11 +22,21 @@ namespace DiplomaSolution.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(IFormFile file)
+        public IActionResult Index(IndexViewData data)
         {
-            FileManagerService.LoadFileToTheServer(file);
+            var currentUser = new Customer();
 
-            var viewModel = new FormFile { FullName = "/CustomersImages/" + file.FileName };
+            if (data.FormFileData != null)
+            {
+                FileManagerService.LoadFileToTheServer(data.FormFileData);
+            }
+
+            if (data.Customer != null)
+            {
+                currentUser = LogInService.LogIn(data.Customer.EmailAddress);
+            }
+
+            var viewModel = new IndexViewData { Customer = currentUser, FormFileData = data.FormFileData };
 
             return View(viewModel);
         }

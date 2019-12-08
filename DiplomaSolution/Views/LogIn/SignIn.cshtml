@@ -1,20 +1,11 @@
-﻿@{
+﻿@model IndexViewData
+@{
     ViewData["Title"] = "SignIn Page";
 }
-<!DOCTYPE html>
-<html>
-<head>
-	<title>SignIn Page</title>
-    <meta charset="utf-8">
-</head>
-<body>
-    <h1>Please, enter your email and password</h1>
-    <form method="post" role="banner" action="~/HomePage/Index">
-        <p1>Input email address</p1>
-        <input type="text" name="EmailAddress"/>
-        <p1>Input password</p1>
-        <input type="text" name="Password"/>
-        <input type="submit" value="Подтвердить">
-    </form>
-</body>
-</html>
+<form method="post" asp-controller="HomePage" asp-action="Index">
+    <p1>Input email address</p1>
+    <input type="text" asp-for="Customer.EmailAddress"/>
+    <p1>Input password</p1>
+    <input type="text" asp-for="Customer.Password" />
+    <input type="submit" value="Log In!">
+</form>

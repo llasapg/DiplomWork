@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.AspNetCore.Http;
-
-namespace DiplomaSolution.Models
+﻿namespace DiplomaSolution.Models
 {
     public class FormFile
     {

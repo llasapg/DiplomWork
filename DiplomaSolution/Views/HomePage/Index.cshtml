@@ -1,50 +1,71 @@
-﻿@model DiplomaSolution.Models.FormFile
+﻿@model IndexViewData
 @{
-   ViewData["Title"] = "SmartX.com";
-   Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "SmartX.com";
 }
-	<div class="header">
-		<div class="header_section">
-			<div class="header_item_logo">
-                <div class="header_item_button"><a href="~/HomePage/Index">SmartX</a></div>
+<div class="header">
+    <div class="header_section">
+        <div class="header_item_logo">
+            <div class="header_item_button">
+                <a asp-controller="HomePage" asp-action="Index">SmartX</a>
             </div>
-			<div class="header_item_button"><a href="~/HomePage/Index">Home</a></div>
-            <div class="header_item_button"><a href="~/About/GiveInfo">About</a></div>
-            <div class="header_item_button"><a href="~/InfoPage/SupportPage">Contact</a></div>
-		</div>
+        </div>
+        <div class="header_item_button"><a asp-controller="HomePage" asp-action="Index">Home</a></div>
+        <div class="header_item_button"><a asp-controller="About" asp-action="GiveInfo">About</a></div>
+        <div class="header_item_button"><a asp-controller="InfoPage" asp-action="SupportPage">Contact</a></div>
+    </div>
+    @if (Model != null)
+    {
+        if (Model.Customer != null)
+        {
             <div class="header_section">
-                <div class="header_item_button"><a href="~/Registration/RegistrationForm">Registration</a></div>
-                <div class="header_item_button"><a href="~/LogIn/SignIn">LogIn</a></div>
-		    </div>
+                <div class="header_item_button">@Model.Customer.FirstName</div>
+            </div>
+        }
+        else
+        {
+            <div class="header_section">
+                <div class="header_item_button"><a asp-controller="Registration" asp-action="RegistrationForm">Registration</a></div>
+                <div class="header_item_button"><a asp-controller="LogIn" asp-action="SignIn">LogIn</a></div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="header_section">
+            <div class="header_item_button"><a asp-controller="Registration" asp-action="RegistrationForm">Registration</a></div>
+            <div class="header_item_button"><a asp-controller="LogIn" asp-action="SignIn">LogIn</a></div>
+        </div>
+    }
+</div>
+<div class="mainContent">
+    <div Id="InputImageBlock">
+        <div class="OutPutImage">
+            @if (Model != null)
+            {
+                if (Model.FormFileData != null)
+                {
+                    <img id="Img_block" src="CustomersImages/@Model.FormFileData.FileName" asp-append-version="true" />
+                }
+            }
+        </div>
+        <form method="post" asp-controller="HomePage" asp-action="Index" enctype="multipart/form-data">
+            <input type="file" asp-for="FormFileData" />
+            <input type="submit" name="Загрузить" />
+        </form>
     </div>
-    <div class="mainContent">
-            <div Id="InputImageBlock">
-                <div class="OutPutImage">
-                    @{
-                        if(Model != null)
-                        {
-                            <img id="Img_block"src=@Model.FullName />
-                        }
-                    }
-                </div>
-                <form method="post" action="~/HomePage/Index" enctype="multipart/form-data">
-                    <input type="file" name="file"/>
-                    <input type="submit" name="Загрузить" />
-                </form>
-            </div>
-            <div id="ConfigureImageBlock">
-                <dl>
-                    <dt><div class="header_item_button"><a href="~/Registration/RegistrationForm">Transition from negative to positive</a></div></dt>
-                    <dt><div class="header_item_button"><a href="~/Registration/RegistrationForm">Transition from positive to negative</a></div></dt>
-                    <dt><div class="header_item_button"><a href="~/Registration/RegistrationForm">Grayscale processing</a></div></dt>
-                    <dt><div class="header_item_button"><a href="~/Registration/RegistrationForm">Scattering correction processing</a></div></dt>
-                </dl>
-            </div>
-            <div id="OutPutImageBlock">
-                <div class="OutPutImage">
-                </div>
-                <form method="post" action="~/HomePage/Index" enctype="multipart/form-data">
-                    <input type="submit" name="Загрузить" />
-                </form>
-            </div>
+    <div id="ConfigureImageBlock">
+        <dl>
+            <dt><div class="header_item_button"><a asp-controller="Registration" asp-action="RegistrationForm">Transition from negative to positive</a></div></dt>
+            <dt><div class="header_item_button"><a asp-controller="Registration" asp-action="RegistrationForm">Transition from positive to negative</a></div></dt>
+            <dt><div class="header_item_button"><a asp-controller="Registration" asp-action="RegistrationForm">Grayscale processing</a></div></dt>
+            <dt><div class="header_item_button"><a asp-controller="Registration" asp-action="RegistrationForm">Scattering correction processing</a></div></dt>
+        </dl>
     </div>
+    <div id="OutPutImageBlock">
+        <div class="OutPutImage">
+        </div>
+        <form method="post" asp-controller="HomePage" asp-action="Index" enctype="multipart/form-data">
+            <input type="submit" name="Загрузить" />
+        </form>
+    </div>
+</div>

@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DiplomaSolution.Controllers
 {
-    [Route("LogIn")]
     public class LogInController : Controller
     {
         public IRegistrationService RegistrationService { get; set; }
@@ -14,17 +13,10 @@ namespace DiplomaSolution.Controllers
             RegistrationService = logInService;
         }
 
-        [Route("SignIn")]
-        public IActionResult SignIn(Customer customer)
+        [HttpGet]
+        public IActionResult SignIn()
         {
-            if(RegistrationService.CheckRegistration(customer))
-            {
-                return View();
-            }
-            else
-            {
-                return View("~/Registration/CreateNewAccount");
-            }
+            return View();
         }
     }
 }

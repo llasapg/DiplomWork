@@ -20,6 +20,7 @@
     <Folder Include="Services\Interfaces\" />
     <Folder Include="Services\Classes\" />
     <Folder Include="Views\LogIn\" />
+    <Folder Include="wwwroot\CustomersImages\" />
   </ItemGroup>
 
   <ItemGroup>

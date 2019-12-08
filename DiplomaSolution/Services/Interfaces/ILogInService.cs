@@ -1,10 +1,9 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
+﻿using DiplomaSolution.Models;
 
 namespace DiplomaSolution.Services.Interfaces
 {
     public interface ILogInService
     {
-        IActionResult LogIn();
+        Customer LogIn(string email);
     }
 }
