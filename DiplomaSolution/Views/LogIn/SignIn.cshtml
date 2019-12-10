@@ -1,11 +1,15 @@
 ﻿@model IndexViewData
 @{
-    ViewData["Title"] = "SignIn Page";
+    ViewData["Title"] = "SignIn";
 }
-<form method="post" asp-controller="HomePage" asp-action="Index">
-    <p1>Input email address</p1>
-    <input type="text" asp-for="Customer.EmailAddress"/>
-    <p1>Input password</p1>
-    <input type="text" asp-for="Customer.Password" />
-    <input type="submit" value="Log In!">
-</form>
+<div class="container">
+    <form method="post" asp-controller="HomePage" asp-action="Index">
+        <div class="dws-input">
+            <input class="dws-input" type="text" asp-for="Customer.EmailAddress" />
+            <input class="dws-input" type="text" asp-for="Customer.Password" />
+        </div>
+        <div class="dws-submit">
+            <input class="dws-input" type="submit" value="Log In!">
+        </div>
+    </form>
+</div>

@@ -1,12 +1,9 @@
-﻿using System;
-using DiplomaSolution.Models;
-using DiplomaSolution.Services;
+﻿using DiplomaSolution.Models;
 using DiplomaSolution.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DiplomaSolution.Controllers
 {
-    [Route("Registration")]
     public class RegistrationController : Controller
     {
         public IRegistrationService RegistrationService { get; set; }
@@ -23,7 +20,6 @@ namespace DiplomaSolution.Controllers
             return RegistrationService.CheckRegistration(customer);
         }
 
-        [Route("ConfirmationPage")]
         public IActionResult ConfirmationPage(Customer customer)
         {
             CreateNewAccount(customer);
@@ -33,7 +29,6 @@ namespace DiplomaSolution.Controllers
             return View();
         }
 
-        [Route("RegistrationForm")]
         public IActionResult RegistrationForm()
         {
             return View();

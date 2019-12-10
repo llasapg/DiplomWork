@@ -1,25 +1,32 @@
 ﻿<Properties StartupConfiguration="{11696BEA-910E-4525-9195-57B956807856}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/AboutController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Models/Customer.cs">
     <Files>
       <File FileName="Views/Shared/_Layout.cshtml" Line="1" Column="1" />
-      <File FileName="Views/HomePage/Index.cshtml" Line="25" Column="10" />
-      <File FileName="Services/Classes/LogInService.cs" Line="6" Column="40" />
-      <File FileName="Services/Interfaces/ILogInService.cs" Line="1" Column="1" />
+      <File FileName="Views/HomePage/Index.cshtml" />
+      <File FileName="Services/Classes/LogInService.cs" />
+      <File FileName="Services/Interfaces/ILogInService.cs" />
       <File FileName="Startup.cs" Line="30" Column="48" />
-      <File FileName="Controllers/HomePageController.cs" Line="34" Column="39" />
-      <File FileName="Views/LogIn/SignIn.cshtml" Line="1" Column="1" />
-      <File FileName="Views/Registration/RegistrationForm.cshtml" Line="1" Column="1" />
+      <File FileName="Controllers/HomePageController.cs" Line="27" Column="21" />
+      <File FileName="Views/LogIn/SignIn.cshtml" Line="9" Column="25" />
+      <File FileName="Views/Registration/RegistrationForm.cshtml" />
       <File FileName="Controllers/AboutController.cs" Line="1" Column="1" />
+      <File FileName="Controllers/InfoPageController.cs" Line="1" Column="1" />
+      <File FileName="Controllers/LogInController.cs" Line="1" Column="1" />
+      <File FileName="wwwroot/css/styles.css" Line="1" Column="1" />
+      <File FileName="Views/_ViewImports.cshtml" Line="1" Column="1" />
+      <File FileName="Views/_ViewStart.cshtml" Line="1" Column="1" />
+      <File FileName="Controllers/RegistrationController.cs" Line="1" Column="1" />
+      <File FileName="Models/Customer.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="DiplomaSolution" expanded="True">
             <Node name="DiplomaSolution" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="AboutController.cs" selected="True" />
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="Customer.cs" selected="True" />
               </Node>
-              <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True">
                 <Node name="Classes" expanded="True" />
                 <Node name="Interfaces" expanded="True" />

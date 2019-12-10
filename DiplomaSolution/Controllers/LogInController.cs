@@ -1,5 +1,4 @@
-﻿using DiplomaSolution.Models;
-using DiplomaSolution.Services.Interfaces;
+﻿using DiplomaSolution.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DiplomaSolution.Controllers

@@ -24,7 +24,7 @@ namespace DiplomaSolution.Controllers
         [HttpPost]
         public IActionResult Index(IndexViewData data)
         {
-            var currentUser = new Customer();
+            Customer currentUser = null;
 
             if (data.FormFileData != null)
             {
