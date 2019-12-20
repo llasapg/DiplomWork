@@ -1,22 +1,15 @@
 ﻿<Properties StartupConfiguration="{11696BEA-910E-4525-9195-57B956807856}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Models/Customer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Startup.cs">
     <Files>
-      <File FileName="Views/Shared/_Layout.cshtml" Line="1" Column="1" />
-      <File FileName="Views/HomePage/Index.cshtml" />
-      <File FileName="Services/Classes/LogInService.cs" />
-      <File FileName="Services/Interfaces/ILogInService.cs" />
-      <File FileName="Startup.cs" Line="30" Column="48" />
-      <File FileName="Controllers/HomePageController.cs" Line="27" Column="21" />
-      <File FileName="Views/LogIn/SignIn.cshtml" Line="9" Column="25" />
-      <File FileName="Views/Registration/RegistrationForm.cshtml" />
-      <File FileName="Controllers/AboutController.cs" Line="1" Column="1" />
-      <File FileName="Controllers/InfoPageController.cs" Line="1" Column="1" />
-      <File FileName="Controllers/LogInController.cs" Line="1" Column="1" />
-      <File FileName="wwwroot/css/styles.css" Line="1" Column="1" />
-      <File FileName="Views/_ViewImports.cshtml" Line="1" Column="1" />
+      <File FileName="Controllers/RegistrationController.cs" Line="38" Column="10" />
+      <File FileName="Views/HomePage/Index.cshtml" Line="46" Column="18" />
+      <File FileName="Views/Registration/RegistrationForm.cshtml" Line="8" Column="32" />
+      <File FileName="Models/Customer.cs" Line="16" Column="25" />
+      <File FileName="Views/_ViewImports.cshtml" Line="1" Column="30" />
+      <File FileName="Views/Shared/_Layout.cshtml" Line="9" Column="18" />
       <File FileName="Views/_ViewStart.cshtml" Line="1" Column="1" />
-      <File FileName="Controllers/RegistrationController.cs" Line="1" Column="1" />
-      <File FileName="Models/Customer.cs" Line="1" Column="1" />
+      <File FileName="Models/IndexViewData.cs" Line="9" Column="6" />
+      <File FileName="Startup.cs" Line="32" Column="34" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -24,9 +17,7 @@
           <Node name="DiplomaSolution" expanded="True">
             <Node name="DiplomaSolution" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="Customer.cs" selected="True" />
-              </Node>
+              <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True">
                 <Node name="Classes" expanded="True" />
                 <Node name="Interfaces" expanded="True" />
@@ -40,7 +31,10 @@
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="css" expanded="True" />
+                <Node name="CustomersImages" expanded="True" />
+                <Node name="img" expanded="True" />
               </Node>
+              <Node name="Startup.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -49,7 +43,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.DiplomaSolution PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.ItemProperties.DiplomaSolution PreferredExecutionTarget="/Applications/Safari.app" />
   <Debugger.DebugSourceFolders />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

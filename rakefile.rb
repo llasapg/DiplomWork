@@ -2,14 +2,14 @@ require 'albacore'
 
 build :build do |b|
 	b.sln = "DiplomaSolution.sln"
-	b.target = ['Clean', 'Rebuild']
-	b.prop 'Configuration', 'Release'
+	b.target = ['Clean', 'Build']
+	b.prop 'Configuration', 'Debug'
 	b.logging = 'detailed'
 end
 
 desc "Publishes web application"
 build :publish do |m|
-  m.properties={:configuration=>:Release}
+  m.properties={:configuration=>:Debug}
   m.targets [:ResolveReferences, :_CopyWebApplication]
   m.properties={
    :webprojectoutputdir=>"/Users/llasapg/Projects/DiplomaSolution/DiplomaSolution",

@@ -20,15 +20,24 @@ namespace DiplomaSolution.Controllers
             return RegistrationService.CheckRegistration(customer);
         }
 
+        [HttpPost]
         public IActionResult ConfirmationPage(Customer customer)
         {
-            CreateNewAccount(customer);
+            if (ModelState.IsValid)
+            {
+                CreateNewAccount(customer);
 
-            ViewBag.FirstName = customer.FirstName;
+                ViewBag.FirstName = customer.FirstName;
 
-            return View();
+                return View();
+            }
+            else
+            {
+                return View("RegistrationForm");
+            }
         }
 
+        [HttpGet]
         public IActionResult RegistrationForm()
         {
             return View();

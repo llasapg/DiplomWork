@@ -49,7 +49,7 @@ using DiplomaSolution.Models;
             WriteLiteral("<!DOCTYPE html>\r\n<html>\r\n");
             EndContext();
             BeginContext(25, 157, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "250934c40f1746f7a99a86bad312b728", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a9db654301ae4af7af6b4d2fee08e399", async() => {
                 BeginContext(31, 43, true);
                 WriteLiteral("\r\n    <meta charset=\"utf-8\" />\r\n    <title>");
                 EndContext();
@@ -79,7 +79,7 @@ using DiplomaSolution.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(184, 210, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "26c25faa30bf45b2b2744502030249f0", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ddfd0960da92449c8e337bd6d8836748", async() => {
                 BeginContext(190, 6, true);
                 WriteLiteral("\r\n    ");
                 EndContext();
