@@ -14,6 +14,7 @@ namespace DiplomaSolution.Models
         public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }
+        public int SomeFild { get; set; }
         public int? FileId { get; set; } = null;
     }
 }

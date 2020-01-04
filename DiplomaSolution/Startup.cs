@@ -36,17 +36,21 @@ namespace DiplomaSolution
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseStaticFiles();
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+
+            app.UseExceptionHandler("/Error/ExceptionHandler");
+
+            app.UseStatusCodePagesWithReExecute("/Error/{0}");
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    template: "SmartX/{Controller=HomePage}/{Action=Index}",
+                    template: "{Controller=HomePage}/{Action=Index}",
                     name: "default"
                     );
             });

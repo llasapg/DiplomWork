@@ -21,6 +21,8 @@
     <Folder Include="Services\Classes\" />
     <Folder Include="Views\LogIn\" />
     <Folder Include="wwwroot\CustomersImages\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\Error\" />
   </ItemGroup>
 
   <ItemGroup>

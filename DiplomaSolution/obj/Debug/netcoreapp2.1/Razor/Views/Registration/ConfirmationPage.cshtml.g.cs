@@ -66,7 +66,7 @@ using DiplomaSolution.Models;
             WriteLiteral(", for registration!</h1>\r\n    ");
             EndContext();
             BeginContext(150, 71, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bf39ebd18fce4e369586dd5c2766cd26", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "58d77fa5ff1f4ff79aee0ffd234f461a", async() => {
                 BeginContext(198, 19, true);
                 WriteLiteral("Return to main page");
                 EndContext();

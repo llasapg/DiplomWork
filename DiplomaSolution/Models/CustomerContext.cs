@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace DiplomaSolution.Models
 {
@@ -10,7 +11,7 @@ namespace DiplomaSolution.Models
 
         public CustomerContext(DbContextOptions<CustomerContext> options) : base(options)
         {
-            Database.EnsureCreated();
+            Database.Migrate();
         }
     }
 }

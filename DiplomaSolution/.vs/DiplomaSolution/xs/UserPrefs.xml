@@ -1,40 +1,33 @@
 ﻿<Properties StartupConfiguration="{11696BEA-910E-4525-9195-57B956807856}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Startup.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
     <Files>
-      <File FileName="Controllers/RegistrationController.cs" Line="38" Column="10" />
-      <File FileName="Views/HomePage/Index.cshtml" Line="46" Column="18" />
-      <File FileName="Views/Registration/RegistrationForm.cshtml" Line="8" Column="32" />
-      <File FileName="Models/Customer.cs" Line="16" Column="25" />
-      <File FileName="Views/_ViewImports.cshtml" Line="1" Column="30" />
-      <File FileName="Views/Shared/_Layout.cshtml" Line="9" Column="18" />
-      <File FileName="Views/_ViewStart.cshtml" Line="1" Column="1" />
-      <File FileName="Models/IndexViewData.cs" Line="9" Column="6" />
-      <File FileName="Startup.cs" Line="32" Column="34" />
+      <File FileName="Models/CustomerContext.cs" Line="1" Column="1" />
+      <File FileName="Models/Customer.cs" Line="1" Column="1" />
+      <File FileName="Models/FormFile.cs" Line="1" Column="1" />
+      <File FileName="Migrations/20200104211936_RemovedTrash.cs" Line="1" Column="1" />
+      <File FileName="Migrations/20200104211936_RemovedTrash.Designer.cs" Line="1" Column="1" />
+      <File FileName="Startup.cs" Line="47" Column="1" />
+      <File FileName="Controllers/ErrorController.cs" Line="20" Column="42" />
+      <File FileName="Controllers/AboutController.cs" Line="1" Column="1" />
+      <File FileName="Controllers/HomePageController.cs" Line="42" Column="10" />
+      <File FileName="Controllers/InfoPageController.cs" Line="1" Column="1" />
+      <File FileName="Controllers/LogInController.cs" Line="17" Column="10" />
+      <File FileName="Controllers/RegistrationController.cs" Line="26" Column="34" />
+      <File FileName="Properties/launchSettings.json" Line="9" Column="5" />
+      <File FileName="Services/Classes/FileManagerService.cs" Line="1" Column="1" />
+      <File FileName="Services/Classes/LogInService.cs" Line="1" Column="1" />
+      <File FileName="Services/Classes/RegistrationService.cs" Line="1" Column="1" />
+      <File FileName="ViewModels/IndexViewData.cs" Line="1" Column="1" />
+      <File FileName="Program.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="DiplomaSolution" expanded="True">
             <Node name="DiplomaSolution" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True" />
-              <Node name="Services" expanded="True">
-                <Node name="Classes" expanded="True" />
-                <Node name="Interfaces" expanded="True" />
-              </Node>
-              <Node name="Views" expanded="True">
-                <Node name="HomePage" expanded="True" />
-                <Node name="InfoPage" expanded="True" />
-                <Node name="LogIn" expanded="True" />
-                <Node name="Registration" expanded="True" />
-                <Node name="Shared" expanded="True" />
-              </Node>
-              <Node name="wwwroot" expanded="True">
-                <Node name="css" expanded="True" />
-                <Node name="CustomersImages" expanded="True" />
-                <Node name="img" expanded="True" />
-              </Node>
-              <Node name="Startup.cs" selected="True" />
+              <Node name="Dependencies" expanded="True" />
+              <Node name="wwwroot" expanded="True" />
+              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -43,7 +36,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.DiplomaSolution PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.ItemProperties.DiplomaSolution PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <Debugger.DebugSourceFolders />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

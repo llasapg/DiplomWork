@@ -7,13 +7,13 @@
     <form asp-action="ConfirmationPage" method="post">
         <div class="dws-input">
             <span asp-validation-for="Customer.EmailAddress"></span>
-            <input type="text" asp-for="Customer.EmailAddress" placeholder="Введите почтовый адрес" />
+            <input asp-for="Customer.EmailAddress" placeholder="Введите почтовый адрес" />
             <span asp-validation-for="Customer.EmailAddress"></span>
             <input type="password" asp-for="Customer.Password" placeholder="Введите пароль" />
             <span asp-validation-for="Customer.EmailAddress"></span>
-            <input type="text" asp-for="Customer.FirstName" placeholder="Введите Ваше имя" />
+            <input asp-for="Customer.FirstName" placeholder="Введите Ваше имя" />
             <span asp-validation-for="Customer.EmailAddress"></span>
-            <input type="text" asp-for="Customer.LastName" placeholder="Введите Вашу фамилию" />
+            <input asp-for="Customer.LastName" placeholder="Введите Вашу фамилию" />
         </div>
         <input class="dws-submit" type="submit" value="Create new account">
         <br />
