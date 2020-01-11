@@ -60,6 +60,10 @@
               "target": "Package",
               "version": "[8.0.18, )"
             },
+            "NLog": {
+              "target": "Package",
+              "version": "[4.6.8, )"
+            },
             "NuGet.CommandLine": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",

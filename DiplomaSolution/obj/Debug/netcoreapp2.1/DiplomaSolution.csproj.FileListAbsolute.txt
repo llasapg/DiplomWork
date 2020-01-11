@@ -32,3 +32,4 @@
 /Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/obj/Debug/netcoreapp2.1/DiplomaSolution.csproj.CopyComplete
 /Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/obj/Debug/netcoreapp2.1/Razor/Views/Error/ErrorHandler.cshtml.g.cs
 /Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/obj/Debug/netcoreapp2.1/Razor/Views/Error/ExceptionHandler.cshtml.g.cs
+/Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/bin/Debug/netcoreapp2.1/nlog.config

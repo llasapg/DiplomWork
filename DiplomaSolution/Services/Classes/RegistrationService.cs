@@ -1,10 +1,8 @@
-﻿using System;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
+﻿using System.Linq;
 using DiplomaSolution.Models;
 using DiplomaSolution.Services.Interfaces;
 
-namespace DiplomaSolution.Services
+namespace DiplomaSolution.Services // Should be deleted
 {
     public class RegistrationService : IRegistrationService
     {
@@ -34,7 +32,7 @@ namespace DiplomaSolution.Services
 
         public bool LogIn(Customer customer)
         {
-            if(CheckRegistration(customer))
+            if (CheckRegistration(customer))
             {
                 return true;
             }
@@ -46,15 +44,16 @@ namespace DiplomaSolution.Services
 
         public bool Register(Customer customer)
         {
-            if(!CheckRegistration(customer))
+            if (!CheckRegistration(customer))
             {
                 CustomerContext.Customers.Add(
-                    new Customer {
-                    EmailAddress = customer.EmailAddress,
-                    Password = customer.Password,
-                    FirstName = customer.FirstName,
-                    LastName = customer.LastName
-                });
+                    new Customer
+                    {
+                        EmailAddress = customer.EmailAddress,
+                        Password = customer.Password,
+                        FirstName = customer.FirstName,
+                        LastName = customer.LastName
+                    });
 
                 CustomerContext.SaveChanges();
 
@@ -62,7 +61,7 @@ namespace DiplomaSolution.Services
             }
             else
             {
-                return false; 
+                return false;
             }
         }
     }

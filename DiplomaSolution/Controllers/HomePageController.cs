@@ -22,7 +22,7 @@ namespace DiplomaSolution.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(IndexViewData data)
+        public IActionResult Index(IndexViewData data) // Переделано с использованием сессий
         {
             Customer currentUser = null;
 

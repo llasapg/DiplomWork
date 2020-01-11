@@ -72,7 +72,7 @@ using DiplomaSolution.Models;
             WriteLiteral("<div class=\"header\">\r\n    <div class=\"header_section\">\r\n        <div class=\"header_item_logo\">\r\n            <div class=\"header_item_button\">\r\n                ");
             EndContext();
             BeginContext(226, 58, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "291ea706d8244f958733e1e59afdfda5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5bd8aa5bb7034cd9815f7dadabe35b23", async() => {
                 BeginContext(274, 6, true);
                 WriteLiteral("SmartX");
                 EndContext();
@@ -96,7 +96,7 @@ using DiplomaSolution.Models;
             WriteLiteral("\r\n            </div>\r\n        </div>\r\n        <div class=\"header_item_button\">");
             EndContext();
             BeginContext(362, 56, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0a377dff3b8b4592adfe9087285914e9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e1074329e5384820875b5f25736a6eca", async() => {
                 BeginContext(410, 4, true);
                 WriteLiteral("Home");
                 EndContext();
@@ -120,7 +120,7 @@ using DiplomaSolution.Models;
             WriteLiteral("</div>\r\n        <div class=\"header_item_button\">");
             EndContext();
             BeginContext(466, 57, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f7962affbed04e9f952b785bb6b43e46", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5a34cc9cefd9427388215a4ee631e192", async() => {
                 BeginContext(514, 5, true);
                 WriteLiteral("About");
                 EndContext();
@@ -144,7 +144,7 @@ using DiplomaSolution.Models;
             WriteLiteral("</div>\r\n        <div class=\"header_item_button\">");
             EndContext();
             BeginContext(571, 65, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5997b589cd8548b4b146a4034b709e1b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ed91d26d0efd44878a48f549e0a632d6", async() => {
                 BeginContext(625, 7, true);
                 WriteLiteral("Contact");
                 EndContext();
@@ -199,7 +199,7 @@ using DiplomaSolution.Models;
             WriteLiteral("            <div class=\"header_section\">\r\n                <div class=\"header_item_button\">");
             EndContext();
             BeginContext(1005, 79, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f494ad67583a4f9ba1bbcf33c6610aab", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fafce34c91d649858304f08d93cfb5a3", async() => {
                 BeginContext(1068, 12, true);
                 WriteLiteral("Registration");
                 EndContext();
@@ -223,7 +223,7 @@ using DiplomaSolution.Models;
             WriteLiteral("</div>\r\n                <div class=\"header_item_button\">");
             EndContext();
             BeginContext(1140, 55, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8ba9859c3c7d4dd4ab5c293ab79efa51", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cb6dd06da350469ea4f6be91fe0d607a", async() => {
                 BeginContext(1186, 5, true);
                 WriteLiteral("LogIn");
                 EndContext();
@@ -258,7 +258,7 @@ using DiplomaSolution.Models;
             WriteLiteral("        <div class=\"header_section\">\r\n            <div class=\"header_item_button\">");
             EndContext();
             BeginContext(1340, 79, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "900226f11ce04d73b743c463c766d0ad", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "13174fb8b6f04c9ca42e0683647ea0eb", async() => {
                 BeginContext(1403, 12, true);
                 WriteLiteral("Registration");
                 EndContext();
@@ -282,7 +282,7 @@ using DiplomaSolution.Models;
             WriteLiteral("</div>\r\n            <div class=\"header_item_button\">");
             EndContext();
             BeginContext(1471, 55, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5d451acfe179499299bc0dc70c0e0ef3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "93ebbfaad9a84453a6e6d16c2587339a", async() => {
                 BeginContext(1517, 5, true);
                 WriteLiteral("LogIn");
                 EndContext();
@@ -325,7 +325,7 @@ using DiplomaSolution.Models;
             WriteLiteral("                    ");
             EndContext();
             BeginContext(1795, 99, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "e16cb871fa3a46a9a36ad3cb4fe075ce", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "9a642289550545e9804817514a511d4b", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_ImageTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.ImageTagHelper>();
@@ -368,12 +368,12 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ImageTagHelper.AppendVersion = true;
             WriteLiteral("        </div>\r\n        ");
             EndContext();
             BeginContext(1954, 224, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fbbf64c992e64f259024d61539bb1f54", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c5ce66af2400490eb983d1fc69907fb3", async() => {
                 BeginContext(2049, 14, true);
                 WriteLiteral("\r\n            ");
                 EndContext();
                 BeginContext(2063, 44, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "3a201e34787f4f7a8306ef3e834eb9e0", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "0439316cf99f401c9b629d3801f0767e", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -422,7 +422,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
             WriteLiteral("\r\n    </div>\r\n    <div id=\"ConfigureImageBlock\">\r\n        <dl>\r\n            <dt><div class=\"header_item_button\">");
             EndContext();
             BeginContext(2290, 103, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "959cbf1fc67346b7b32218e6f519e0b0", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f3431dc770114657852a64111c1f2944", async() => {
                 BeginContext(2353, 36, true);
                 WriteLiteral("Transition from negative to positive");
                 EndContext();
@@ -446,7 +446,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
             WriteLiteral("</div></dt>\r\n            <dt><div class=\"header_item_button\">");
             EndContext();
             BeginContext(2454, 103, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b94bca3ac94a46058164f572d3a6ffea", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f3562026d3ae453b91d37631d29652fa", async() => {
                 BeginContext(2517, 36, true);
                 WriteLiteral("Transition from positive to negative");
                 EndContext();
@@ -470,7 +470,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
             WriteLiteral("</div></dt>\r\n            <dt><div class=\"header_item_button\">");
             EndContext();
             BeginContext(2618, 87, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7b05f3daca4b4c4ea40eac503bfd4281", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2c34bfa56ae84b118550c82fff19770c", async() => {
                 BeginContext(2681, 20, true);
                 WriteLiteral("Grayscale processing");
                 EndContext();
@@ -494,7 +494,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
             WriteLiteral("</div></dt>\r\n            <dt><div class=\"header_item_button\">");
             EndContext();
             BeginContext(2766, 99, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e0371c7790d8422ca9d32f3ad4c8df65", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ae2a721bb9444907ab5463df05a49213", async() => {
                 BeginContext(2829, 32, true);
                 WriteLiteral("Scattering correction processing");
                 EndContext();
@@ -518,7 +518,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
             WriteLiteral("</div></dt>\r\n        </dl>\r\n    </div>\r\n    <div id=\"OutPutImageBlock\">\r\n        <div class=\"OutPutImage\">\r\n        </div>\r\n        ");
             EndContext();
             BeginContext(2997, 166, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8fe155536bc34fde9f829659a0629622", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4744e27c27df4cf2983d1de1fef530a7", async() => {
                 BeginContext(3092, 64, true);
                 WriteLiteral("\r\n            <input type=\"submit\" name=\"Загрузить\" />\r\n        ");
                 EndContext();

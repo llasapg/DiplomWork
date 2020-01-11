@@ -5,6 +5,7 @@
 <div class="container">
     <img src="../../img/AccountImage.png" asp-append-version="true">
     <form asp-action="ConfirmationPage" method="post">
+        <div asp-validation-summary="All"></div>
         <div class="dws-input">
             <span asp-validation-for="Customer.EmailAddress"></span>
             <input asp-for="Customer.EmailAddress" placeholder="Введите почтовый адрес" />

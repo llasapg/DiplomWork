@@ -1,38 +1,62 @@
-﻿using DiplomaSolution.Models;
+﻿using System;
+using System.Threading.Tasks;
+using DiplomaSolution.Models;
 using DiplomaSolution.Services.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace DiplomaSolution.Controllers
 {
     public class RegistrationController : Controller
     {
         public IRegistrationService RegistrationService { get; set; }
+        public ILogger<RegistrationController> Logger { get; set; }
+        public UserManager<IdentityUser> UserManager { get; set; }
+        public SignInManager<IdentityUser> SignInManager { get; set; }
 
-        public RegistrationController(IRegistrationService registrationService)
+        public RegistrationController(
+            IRegistrationService registrationService,
+            ILogger<RegistrationController> logger,
+            UserManager<IdentityUser> userManager,
+            SignInManager<IdentityUser> signInManager)
         {
+            UserManager = userManager;
+            SignInManager = signInManager;
             RegistrationService = registrationService;
+            Logger = logger;
         }
 
-        public bool CreateNewAccount(Customer customer)
-        {
-            RegistrationService.Register(customer);
+        public bool CheckAccountCreation(Customer customer) => RegistrationService.CheckRegistration(customer) != true;
 
-            return RegistrationService.CheckRegistration(customer);
-        }
+        public void CreateAccount(Customer customer) => RegistrationService.Register(customer);
 
         [HttpPost]
-        public IActionResult ConfirmationPage(Customer customer)
+        public async Task<IActionResult> ConfirmationPage(Customer customer)
         {
-            if (ModelState.IsValid)
+            var user = new IdentityUser
             {
-                CreateNewAccount(customer);
+                Email = customer.EmailAddress,
+                UserName = customer.FirstName
+            };
 
-                ViewBag.FirstName = customer.FirstName;
+            var result = await UserManager.CreateAsync(user, customer.Password);
+
+            if (result.Succeeded) // errors will be displayed on validation-summary
+            {
+                await SignInManager.SignInAsync(user, false);
 
                 return View();
             }
             else
             {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+
+                Logger.LogError("Model is not valid or email is currently registered!");
+
                 return View("RegistrationForm");
             }
         }

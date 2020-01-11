@@ -4,6 +4,7 @@ using DiplomaSolution.Services.Classes;
 using DiplomaSolution.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,6 +32,12 @@ namespace DiplomaSolution
 
             services.AddDbContext<CustomerContext>(options => options.UseMySQL(connection));
 
+            services.AddIdentity<IdentityUser, IdentityRole>(
+                options =>
+                {
+                    options.Password.RequireNonAlphanumeric = false;
+                }).AddEntityFrameworkStores<CustomerContext>(); // Just for work with Db + registers all the identity services ==> we specify a context
+
             services.AddMvc();
         }
 
@@ -46,6 +53,8 @@ namespace DiplomaSolution
             app.UseExceptionHandler("/Error/ExceptionHandler");
 
             app.UseStatusCodePagesWithReExecute("/Error/{0}");
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

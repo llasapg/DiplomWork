@@ -1,5 +1,6 @@
 ﻿using DiplomaSolution.Models;
 using DiplomaSolution.Services.Interfaces;
+using System.Linq;
 
 namespace DiplomaSolution.Services.Classes
 {
@@ -12,6 +13,11 @@ namespace DiplomaSolution.Services.Classes
             CustomerContext = customerContext;
         }
 
+        /// <summary>
+        /// finds our customer by email and gives it back
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
         public Customer LogIn(string email)
         {
             var resultCustomer = new Customer();

@@ -36,11 +36,14 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="NLog" Version="4.6.8" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="Views\InfoPage\SupportPage.cs" />
     <Compile Remove="Controllers\FileController.cs" />
+    <Compile Remove="Migrations\20200109102726_AddingIdentity.Designer.cs" />
+    <Compile Remove="Migrations\20200109102726_AddingIdentity.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Views\Registration\CheckRegistration.cshtml" />
