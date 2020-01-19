@@ -29,7 +29,7 @@ namespace DiplomaSolution.Services.Classes
                     {
                         var byteFileData = br.ReadBytes((Int32)fileStream.Length);
 
-                        CustomerContext.CustomerFiles.Add(new FormFile
+                        CustomerContext.CustomerFiles.Add(new Models.FormFile
                         {
                             FileData = byteFileData,
                             FullName = Path.GetFileName(file.FileName)

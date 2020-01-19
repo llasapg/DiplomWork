@@ -1,20 +1,39 @@
 ﻿<Properties StartupConfiguration="{EFFD6586-B9FD-4716-A086-1C5E9DE7A3D6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Models/Customer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../../../usr/local/share/dotnet/sdk/3.0.102/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Sdk.DefaultItems.targets">
     <Files>
       <File FileName="DiplomaSolution/Controllers/AboutController.cs" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Controllers/LogInController.cs" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Controllers/RegistrationController.cs" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Models/Customer.cs" Line="12" Column="6" />
+      <File FileName="DiplomaSolution/Controllers/LogInController.cs" />
+      <File FileName="DiplomaSolution/Controllers/RegistrationController.cs" />
+      <File FileName="DiplomaSolution/Models/Customer.cs" />
+      <File FileName="DiplomaSolution/Views/HomePage/Index.cshtml" />
+      <File FileName="../../.nuget/packages/microsoft.aspnetcore.razor.design/2.1.2/build/netstandard2.0/Microsoft.AspNetCore.Razor.Design.CodeGeneration.targets" />
+      <File FileName="../../.nuget/packages/microsoft.aspnetcore.razor.design/2.1.1/build/netstandard2.0/Microsoft.AspNetCore.Razor.Design.CodeGeneration.targets" />
+      <File FileName="DiplomaSolution/Models/CustomerContext.cs" />
+      <File FileName="DiplomaSolution/Controllers/ErrorController.cs" />
+      <File FileName="DiplomaSolution/Controllers/HomePageController.cs" />
+      <File FileName="DiplomaSolution/Program.cs" />
+      <File FileName="DiplomaSolution/Startup.cs" Line="41" Column="31" />
+      <File FileName="DiplomaSolution/Services/Classes/FileManagerService.cs" />
+      <File FileName="../../.nuget/packages/microsoft.aspnetcore.razor.design/2.2.0/build/netstandard2.0/Microsoft.AspNetCore.Razor.Design.CodeGeneration.targets" Line="131" Column="5" />
+      <File FileName="../../../../usr/local/share/dotnet/sdk/3.0.102/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Sdk.DefaultItems.targets" Line="150" Column="5" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="DiplomaSolution" expanded="True">
-            <Node name="DiplomaSolution" expanded="True">
+            <Node name="DiplomaSolution" expanded="True" selected="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="FrameworkReferences" expanded="True" />
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
               <Node name="Controllers" expanded="True" />
               <Node name="Migrations" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="Customer.cs" selected="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Services" expanded="True">
+                <Node name="Classes" expanded="True" />
+              </Node>
+              <Node name="Views" expanded="True">
+                <Node name="HomePage" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -24,12 +43,12 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.DiplomaSolution PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.DiplomaSolution PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/Views/HomePage/9t8b31t7.0mg~" relfile="DiplomaSolution/Views/HomePage/9t8b31t7.0mg~" line="11" column="1" />
-      <Breakpoint file="/Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/Controllers/qi72zsh9.4kx~" relfile="DiplomaSolution/Controllers/qi72zsh9.4kx~" line="23" column="1" />
-      <Breakpoint file="/Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/Views/HomePage/e7jmknkk.a9f~" relfile="DiplomaSolution/Views/HomePage/e7jmknkk.a9f~" line="23" column="1" />
+      <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Views/HomePage/9t8b31t7.0mg~" relfile="DiplomaSolution/Views/HomePage/9t8b31t7.0mg~" line="11" column="1" />
+      <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Controllers/qi72zsh9.4kx~" relfile="DiplomaSolution/Controllers/qi72zsh9.4kx~" line="23" column="1" />
+      <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Views/HomePage/e7jmknkk.a9f~" relfile="DiplomaSolution/Views/HomePage/e7jmknkk.a9f~" line="23" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

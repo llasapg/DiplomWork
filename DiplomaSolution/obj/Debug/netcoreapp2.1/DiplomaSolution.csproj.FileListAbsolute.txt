@@ -33,3 +33,12 @@
 /Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/obj/Debug/netcoreapp2.1/Razor/Views/Error/ErrorHandler.cshtml.g.cs
 /Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/obj/Debug/netcoreapp2.1/Razor/Views/Error/ExceptionHandler.cshtml.g.cs
 /Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/bin/Debug/netcoreapp2.1/nlog.config
+/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp2.1/DiplomaSolution.csproj.CoreCompileInputs.cache
+/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp2.1/DiplomaSolution.RazorAssemblyInfo.cache
+/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp2.1/DiplomaSolution.RazorAssemblyInfo.cs
+/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp2.1/DiplomaSolution.AssemblyInfoInputs.cache
+/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp2.1/DiplomaSolution.AssemblyInfo.cs
+/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp2.1/DiplomaSolution.TagHelpers.input.cache
+/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp2.1/DiplomaSolution.TagHelpers.output.cache
+/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp2.1/DiplomaSolution.dll
+/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp2.1/DiplomaSolution.pdb

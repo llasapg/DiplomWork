@@ -30,7 +30,7 @@ namespace DiplomaSolution
 
             services.AddTransient<ILogInService, LogInService>();
 
-            services.AddDbContext<CustomerContext>(options => options.UseMySQL(connection));
+            services.AddDbContext<CustomerContext>(options => options.UseMySql(connection));
 
             services.AddIdentity<IdentityUser, IdentityRole>(
                 options =>
@@ -38,7 +38,7 @@ namespace DiplomaSolution
                     options.Password.RequireNonAlphanumeric = false;
                 }).AddEntityFrameworkStores<CustomerContext>(); // Just for work with Db + registers all the identity services ==> we specify a context
 
-            services.AddMvc();
+            services.AddMvc(options => options.EnableEndpointRouting = false);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

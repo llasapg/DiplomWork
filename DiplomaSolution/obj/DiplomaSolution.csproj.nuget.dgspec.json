@@ -1,32 +1,29 @@
 {
   "format": 1,
   "restore": {
-    "/Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/DiplomaSolution.csproj": {}
+    "/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/DiplomaSolution.csproj": {}
   },
   "projects": {
-    "/Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/DiplomaSolution.csproj": {
+    "/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/DiplomaSolution.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/DiplomaSolution.csproj",
+        "projectUniqueName": "/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/DiplomaSolution.csproj",
         "projectName": "DiplomaSolution",
-        "projectPath": "/Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/DiplomaSolution.csproj",
+        "projectPath": "/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/DiplomaSolution.csproj",
         "packagesPath": "/Users/llasapg/.nuget/packages/",
-        "outputPath": "/Users/llasapg/Projects/DiplomaSolution/DiplomaSolution/obj/",
+        "outputPath": "/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "/Users/llasapg/.config/NuGet/NuGet.Config"
+          "/Users/llasapg/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp2.1"
+          "netcoreapp3.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp2.1": {
+          "netcoreapp3.0": {
             "projectReferences": {}
           }
         },
@@ -37,38 +34,33 @@
         }
       },
       "frameworks": {
-        "netcoreapp2.1": {
+        "netcoreapp3.0": {
           "dependencies": {
-            "Microsoft.AspNetCore.App": {
-              "suppressParent": "All",
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[2.1.1, )",
-              "autoReferenced": true
+              "version": "[3.0.0, )"
             },
-            "Microsoft.AspNetCore.Razor.Design": {
-              "suppressParent": "All",
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[2.1.2, )"
+              "version": "[3.0.0, )"
             },
-            "Microsoft.NETCore.App": {
-              "suppressParent": "All",
+            "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
-              "version": "[2.1.0, )",
-              "autoReferenced": true
+              "version": "[3.0.0, )"
             },
-            "MySql.Data.EntityFrameworkCore": {
+            "MySql.Data": {
               "target": "Package",
-              "version": "[8.0.18, )"
-            },
-            "NLog": {
-              "target": "Package",
-              "version": "[4.6.8, )"
+              "version": "[8.0.19, )"
             },
             "NuGet.CommandLine": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
               "version": "[5.3.1, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[3.1.0, )"
             }
           },
           "imports": [
@@ -81,7 +73,15 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.102/RuntimeIdentifierGraph.json"
         }
       }
     }
