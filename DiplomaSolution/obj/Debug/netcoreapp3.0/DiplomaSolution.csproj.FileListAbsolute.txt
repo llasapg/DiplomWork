@@ -6,7 +6,6 @@
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp3.0/DiplomaSolution.dll
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp3.0/DiplomaSolution.pdb
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp3.0/DiplomaSolution.csprojAssemblyReference.cache
-/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.0/nlog.config
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.0/appsettings.json
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.0/Properties/launchSettings.json
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.0/DiplomaSolution
@@ -45,7 +44,6 @@
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp3.0/Razor/Views/Error/ExceptionHandler.cshtml.g.cs
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp3.0/Razor/Views/HomePage/Index.cshtml.g.cs
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp3.0/Razor/Views/InfoPage/SupportPage.cshtml.g.cs
-/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp3.0/Razor/Views/LogIn/SignIn.cshtml.g.cs
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp3.0/Razor/Views/Registration/ConfirmationPage.cshtml.g.cs
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp3.0/Razor/Views/Registration/RegistrationForm.cshtml.g.cs
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp3.0/Razor/Views/Shared/_Layout.cshtml.g.cs
@@ -83,3 +81,5 @@
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.0/System.ComponentModel.Annotations.dll
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.0/System.Diagnostics.DiagnosticSource.dll
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.0/System.Runtime.CompilerServices.Unsafe.dll
+/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.0/DiplomaSolution.xml
+/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp3.0/Razor/Views/Account/Login.cshtml.g.cs

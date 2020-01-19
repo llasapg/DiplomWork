@@ -1,13 +1,14 @@
 ﻿using DiplomaSolution.Models;
-using DiplomaSolution.Services;
 using DiplomaSolution.Services.Classes;
 using DiplomaSolution.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace DiplomaSolution
 {
@@ -23,45 +24,38 @@ namespace DiplomaSolution
         public void ConfigureServices(IServiceCollection services)
         {
             var connection = Configuration.GetConnectionString("DefaultConnection");
-
             services.AddTransient<IFileManagerService, FileManagerService>();
-
-            services.AddTransient<IRegistrationService, RegistrationService>();
-
-            services.AddTransient<ILogInService, LogInService>();
-
             services.AddDbContext<CustomerContext>(options => options.UseMySql(connection));
-
             services.AddIdentity<IdentityUser, IdentityRole>(
                 options =>
                 {
                     options.Password.RequireNonAlphanumeric = false;
                 }).AddEntityFrameworkStores<CustomerContext>(); // Just for work with Db + registers all the identity services ==> we specify a context
-
-            services.AddMvc(options => options.EnableEndpointRouting = false);
+            services.AddAuthorization(options =>
+            {
+                options.DefaultPolicy = new AuthorizationPolicyBuilder()
+                  .RequireAuthenticatedUser()
+                  .Build();
+            });
+            services.AddControllersWithViews();
+            services.AddRazorPages();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            if(env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseStaticFiles();
-
+            app.UseRouting();
             app.UseExceptionHandler("/Error/ExceptionHandler");
-
             app.UseStatusCodePagesWithReExecute("/Error/{0}");
-
             app.UseAuthentication();
-
-            app.UseMvc(routes =>
+            app.UseAuthorization();
+            app.UseEndpoints(endp =>
             {
-                routes.MapRoute(
-                    template: "{Controller=HomePage}/{Action=Index}",
-                    name: "default"
-                    );
+                endp.MapControllerRoute("default", "{Controller=HomePage}/{Action=Index}").RequireAuthorization();
             });
         }
     }

@@ -1,27 +1,28 @@
 ﻿using DiplomaSolution.Models;
 using DiplomaSolution.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DiplomaSolution.Controllers
 {
     public class HomePageController : Controller
     {
         private IFileManagerService FileManagerService { get; set; }
-        private ILogInService LogInService { get; set; }
 
-        public HomePageController(IFileManagerService fileManagerService, ILogInService logInService)
+        public HomePageController(IFileManagerService fileManagerService)
         {
             FileManagerService = fileManagerService;
-            LogInService = logInService;
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public IActionResult Index(IndexViewData data) // Переделано с использованием сессий
         {
             Customer currentUser = null;
@@ -29,11 +30,6 @@ namespace DiplomaSolution.Controllers
             if (data.FormFileData != null)
             {
                 FileManagerService.LoadFileToTheServer(data.FormFileData);
-            }
-
-            if (data.Customer != null)
-            {
-                currentUser = LogInService.LogIn(data.Customer.EmailAddress);
             }
 
             var viewModel = new IndexViewData { Customer = currentUser, FormFileData = data.FormFileData };

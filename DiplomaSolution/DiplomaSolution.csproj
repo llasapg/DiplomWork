@@ -6,6 +6,7 @@
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DefineConstants>TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_0</DefineConstants>
+    <DocumentationFile>bin\Debug\netcoreapp3.0\DiplomaSolution.xml</DocumentationFile>
     <DefineConstants>TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_0</DefineConstants>
     <NoStdLib>false</NoStdLib>
   </PropertyGroup>
@@ -28,7 +29,7 @@
     <Folder Include="wwwroot\css\" />
     <Folder Include="Services\Interfaces\" />
     <Folder Include="Services\Classes\" />
-    <Folder Include="Views\LogIn\" />
+    <Folder Include="Views\Account\" />
     <Folder Include="wwwroot\CustomersImages\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Views\Error\" />

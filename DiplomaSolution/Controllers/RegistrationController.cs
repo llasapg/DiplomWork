@@ -1,7 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using DiplomaSolution.Models;
-using DiplomaSolution.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -10,28 +9,22 @@ namespace DiplomaSolution.Controllers
 {
     public class RegistrationController : Controller
     {
-        public IRegistrationService RegistrationService { get; set; }
         public ILogger<RegistrationController> Logger { get; set; }
         public UserManager<IdentityUser> UserManager { get; set; }
         public SignInManager<IdentityUser> SignInManager { get; set; }
 
         public RegistrationController(
-            IRegistrationService registrationService,
             ILogger<RegistrationController> logger,
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
-            RegistrationService = registrationService;
             Logger = logger;
         }
 
-        public bool CheckAccountCreation(Customer customer) => RegistrationService.CheckRegistration(customer) != true;
-
-        public void CreateAccount(Customer customer) => RegistrationService.Register(customer);
-
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> ConfirmationPage(Customer customer)
         {
             var user = new IdentityUser
@@ -62,6 +55,7 @@ namespace DiplomaSolution.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult RegistrationForm()
         {
             return View();

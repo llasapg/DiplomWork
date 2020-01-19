@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{11696BEA-910E-4525-9195-57B956807856}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Views/_ViewImports.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Services/Classes/FileManagerService.cs">
     <Files>
       <File FileName="Controllers/RegistrationController.cs" Line="49" Column="31" />
-      <File FileName="Services/Classes/FileManagerService.cs" Line="1" Column="1" />
+      <File FileName="Services/Classes/FileManagerService.cs" Line="25" Column="14" />
       <File FileName="Startup.cs" Line="33" Column="71" />
       <File FileName="Models/CustomerContext.cs" Line="2" Column="57" />
       <File FileName="Views/Registration/RegistrationForm.cshtml" Line="14" Column="26" />
@@ -21,13 +21,14 @@
               <Node name="Migrations" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True">
-                <Node name="Classes" expanded="True" />
+                <Node name="Classes" expanded="True">
+                  <Node name="FileManagerService.cs" selected="True" />
+                </Node>
                 <Node name="Interfaces" expanded="True" />
               </Node>
               <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Registration" expanded="True" />
-                <Node name="_ViewImports.cshtml" selected="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="img" expanded="True" />

@@ -3,8 +3,7 @@
     ViewData["Title"] = "Register form";
 }
 <div class="container">
-    <img src="../../img/AccountImage.png" asp-append-version="true">
-    <form asp-action="ConfirmationPage" method="post">
+    <form asp-action="ConfirmationPage" asp-controller="Registration" method="post">
         <div asp-validation-summary="All"></div>
         <div class="dws-input">
             <span asp-validation-for="Customer.EmailAddress"></span>
@@ -18,6 +17,6 @@
         </div>
         <input class="dws-submit" type="submit" value="Create new account">
         <br />
-        <a asp-controller="LogIn" asp-action="SignIn">Уже есть аккаут?</a>
+        <a asp-controller="Account" asp-action="Login">Уже есть аккаут?</a>
     </form>
 </div>

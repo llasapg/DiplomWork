@@ -1,0 +1,18 @@
+﻿@model IndexViewData
+@{
+    ViewData["Title"] = "SignIn";
+}
+<div class="container">
+    <form method="post" asp-controller="Account" asp-action="Login">
+        <div asp-validation-summary="All"></div>
+        <div class="dws-input">
+            <span asp-validation-for="Customer.EmailAddress"></span>
+            <input class="dws-input" type="text" asp-for="Customer.EmailAddress" />
+            <span asp-validation-for="Customer.Password"></span>
+            <input class="dws-input" type="text" asp-for="Customer.Password" />
+        </div>
+        <div class="dws-submit">
+            <input class="dws-input" type="submit" value="Log In!">
+        </div>
+    </form>
+</div>
