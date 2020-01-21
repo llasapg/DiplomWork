@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DiplomaSolution</name>
+    </assembly>
+    <members>
+        <member name="M:DiplomaSolution.Services.Classes.FileManagerService.LoadFileToTheServer(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Loads customer images to DB to deal with them in future
+            </summary>
+            <param name="file"></param>
+        </member>
+    </members>
+</doc>

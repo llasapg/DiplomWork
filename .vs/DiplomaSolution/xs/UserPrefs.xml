@@ -1,26 +1,25 @@
 ﻿<Properties StartupConfiguration="{EFFD6586-B9FD-4716-A086-1C5E9DE7A3D6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Controllers/AccountController.cs">
     <Files>
-      <File FileName="DiplomaSolution/Startup.cs" Line="37" Column="46" />
-      <File FileName="DiplomaSolution/Controllers/RegistrationController.cs" Line="55" Column="10" />
-      <File FileName="DiplomaSolution/Controllers/AccountController.cs" Line="35" Column="18" />
-      <File FileName="DiplomaSolution/ViewModels/IndexViewData.cs" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Views/Account/Login.cshtml" Line="8" Column="32" />
-      <File FileName="DiplomaSolution/Controllers/HomePageController.cs" Line="21" Column="27" />
-      <File FileName="DiplomaSolution/Views/HomePage/Index.cshtml" Line="17" Column="27" />
-      <File FileName="DiplomaSolution/Views/_ViewImports.cshtml" Line="2" Column="37" />
-      <File FileName="DiplomaSolution/Controllers/AboutController.cs" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Controllers/InfoPageController.cs" Line="12" Column="18" />
-      <File FileName="DiplomaSolution/Models/Customer.cs" Line="5" Column="26" />
-      <File FileName="DiplomaSolution/Views/Registration/RegistrationForm.cshtml" Line="21" Column="54" />
-      <File FileName="DiplomaSolution/Program.cs" Line="11" Column="1" />
-      <File FileName="DiplomaSolution/Program.cs" Line="11" Column="1" />
+      <File FileName="DiplomaSolution/Startup.cs" Line="49" Column="14" />
+      <File FileName="DiplomaSolution/Controllers/RegistrationController.cs" />
+      <File FileName="DiplomaSolution/Controllers/AccountController.cs" Line="24" Column="108" />
+      <File FileName="DiplomaSolution/ViewModels/IndexViewData.cs" />
+      <File FileName="DiplomaSolution/Views/Account/Login.cshtml" />
+      <File FileName="DiplomaSolution/Controllers/HomePageController.cs" />
+      <File FileName="DiplomaSolution/Views/HomePage/Index.cshtml" />
+      <File FileName="DiplomaSolution/Views/_ViewImports.cshtml" />
+      <File FileName="DiplomaSolution/Controllers/AboutController.cs" />
+      <File FileName="DiplomaSolution/Controllers/InfoPageController.cs" />
+      <File FileName="DiplomaSolution/Models/Customer.cs" />
+      <File FileName="DiplomaSolution/Views/Registration/RegistrationForm.cshtml" />
+      <File FileName="DiplomaSolution/Program.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="DiplomaSolution" expanded="True">
-            <Node name="DiplomaSolution" expanded="True">
+            <Node name="DiplomaSolution" expanded="True" selected="True">
               <Node name="Dependencies" expanded="True" />
               <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True" />
@@ -35,7 +34,6 @@
                 <Node name="Registration" expanded="True" />
                 <Node name="Shared" expanded="True" />
               </Node>
-              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -44,7 +42,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.DiplomaSolution PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.ItemProperties.DiplomaSolution PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Views/HomePage/9t8b31t7.0mg~" relfile="DiplomaSolution/Views/HomePage/9t8b31t7.0mg~" line="11" column="1" />

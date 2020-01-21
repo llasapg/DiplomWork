@@ -31,32 +31,56 @@ namespace DiplomaSolution
                 {
                     options.Password.RequireNonAlphanumeric = false;
                 }).AddEntityFrameworkStores<CustomerContext>(); // Just for work with Db + registers all the identity services ==> we specify a context
-            services.AddAuthorization(options =>
+
+            //-- Nothing changed in the top code
+
+            services.AddAuthorization(options => // before we didnt have this functionality, but now we can use it to register authencation service with speacial params
             {
                 options.DefaultPolicy = new AuthorizationPolicyBuilder()
                   .RequireAuthenticatedUser()
                   .Build();
-            });
-            services.AddControllersWithViews();
-            services.AddRazorPages();
+            }); // There is 
+
+
+            services.AddControllersWithViews(); // before was AddMvc --> now we can choose wich option to add ( like we can set-up only with controllers or with controllers and views )
+            services.AddRazorPages(); // New
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if(env.IsDevelopment())
+            //-- Old
+
+            if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
             app.UseStaticFiles();
+
+            //-- Old
+
+
+            //--New
+
             app.UseRouting();
+
             app.UseExceptionHandler("/Error/ExceptionHandler");
+
             app.UseStatusCodePagesWithReExecute("/Error/{0}");
-            app.UseAuthentication();
-            app.UseAuthorization();
-            app.UseEndpoints(endp =>
+
+            app.UseAuthentication(); // Haha its just a new name for obsolete middleware ( identity )
+
+            app.UseAuthorization(); // About attributes like [authorized and allowanonum...]
+
+            // this component is new!!!
+
+            app.UseEndpoints(endp => // before was app.UseMvc with configuring routs inside this method, for now we have this
             {
+                // we can map there lots of usefull stuff
+
                 endp.MapControllerRoute("default", "{Controller=HomePage}/{Action=Index}").RequireAuthorization();
             });
+
+            //--New
         }
     }
 }

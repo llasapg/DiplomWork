@@ -83,3 +83,4 @@
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.0/System.Runtime.CompilerServices.Unsafe.dll
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.0/DiplomaSolution.xml
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp3.0/Razor/Views/Account/Login.cshtml.g.cs
+/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp3.0/DiplomaSolution.csproj.CoreCompileInputs.cache
