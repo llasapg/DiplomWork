@@ -85,3 +85,4 @@
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Logging.Abstractions.dll
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Options.dll
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Primitives.dll
+/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Design.dll

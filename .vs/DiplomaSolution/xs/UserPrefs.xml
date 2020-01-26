@@ -1,21 +1,25 @@
 ﻿<Properties StartupConfiguration="{EFFD6586-B9FD-4716-A086-1C5E9DE7A3D6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Controllers/RegistrationController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Migrations/20200126124834_ChangingModel.cs">
     <Files>
       <File FileName="DiplomaSolution/Startup.cs" Line="35" Column="37" />
-      <File FileName="DiplomaSolution/Views/Registration/RegistrationForm.cshtml" Line="19" Column="14" />
-      <File FileName="DiplomaSolution/Program.cs" Line="23" Column="40" />
-      <File FileName="DiplomaSolution/Middlewares/VersionMiddleware.cs" Line="14" Column="10" />
-      <File FileName="DiplomaSolution/Extensions/VersionExtension.cs" Line="11" Column="42" />
-      <File FileName="DiplomaSolution/Helpers/Attributes/EmailPatternAttribute.cs" Line="23" Column="93" />
-      <File FileName="DiplomaSolution/Models/Customer.cs" Line="9" Column="19" />
-      <File FileName="DiplomaSolution/Models/ServiceUser.cs" Line="9" Column="2" />
-      <File FileName="DiplomaSolution/Models/CustomerContext.cs" Line="32" Column="36" />
-      <File FileName="DiplomaSolution/Controllers/AboutController.cs" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Controllers/AccountController.cs" Line="17" Column="36" />
-      <File FileName="DiplomaSolution/Controllers/ErrorController.cs" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Controllers/HomePageController.cs" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Controllers/InfoPageController.cs" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Controllers/RegistrationController.cs" Line="19" Column="38" />
+      <File FileName="DiplomaSolution/Views/Registration/RegistrationForm.cshtml" />
+      <File FileName="DiplomaSolution/Program.cs" />
+      <File FileName="DiplomaSolution/Middlewares/VersionMiddleware.cs" />
+      <File FileName="DiplomaSolution/Extensions/VersionExtension.cs" />
+      <File FileName="DiplomaSolution/Helpers/Attributes/EmailPatternAttribute.cs" />
+      <File FileName="DiplomaSolution/Models/Customer.cs" />
+      <File FileName="DiplomaSolution/Models/ServiceUser.cs" />
+      <File FileName="DiplomaSolution/Models/CustomerContext.cs" />
+      <File FileName="DiplomaSolution/Controllers/AboutController.cs" />
+      <File FileName="DiplomaSolution/Controllers/AccountController.cs" />
+      <File FileName="DiplomaSolution/Controllers/ErrorController.cs" />
+      <File FileName="DiplomaSolution/Controllers/HomePageController.cs" />
+      <File FileName="DiplomaSolution/Controllers/InfoPageController.cs" />
+      <File FileName="DiplomaSolution/Controllers/RegistrationController.cs" />
+      <File FileName="DiplomaSolution/Views/HomePage/Index.cshtml" />
+      <File FileName="DiplomaSolution/Views/_ViewStart.cshtml" />
+      <File FileName="DiplomaSolution/Views/_ViewImports.cshtml" Line="4" Column="1" />
+      <File FileName="DiplomaSolution/Migrations/20200126124834_ChangingModel.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -23,17 +27,19 @@
           <Node name="DiplomaSolution" expanded="True">
             <Node name="DiplomaSolution" expanded="True">
               <Node name="Dependencies" expanded="True" />
-              <Node name="Controllers" expanded="True">
-                <Node name="RegistrationController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="Extensions" expanded="True" />
               <Node name="Helpers" expanded="True">
                 <Node name="Attributes" expanded="True" />
               </Node>
               <Node name="Middlewares" expanded="True" />
-              <Node name="Migrations" expanded="True" />
+              <Node name="Migrations" expanded="True">
+                <Node name="20200126124834_ChangingModel.cs" selected="True" />
+              </Node>
               <Node name="Models" expanded="True" />
               <Node name="Views" expanded="True">
+                <Node name="Account" expanded="True" />
+                <Node name="HomePage" expanded="True" />
                 <Node name="Registration" expanded="True" />
               </Node>
             </Node>

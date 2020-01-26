@@ -10,11 +10,11 @@ namespace DiplomaSolution.Controllers
 {
     public class AccountController : Controller
     {
-        public SignInManager<IdentityUser> SignInManager { get; set; }
-        public UserManager<IdentityUser> UserManager { get; set; }
+        public SignInManager<ServiceUser> SignInManager { get; set; }
+        public UserManager<ServiceUser> UserManager { get; set; }
 
-        public AccountController(SignInManager<IdentityUser> signInManager,
-            UserManager<IdentityUser> userManager)
+        public AccountController(SignInManager<ServiceUser> signInManager,
+            UserManager<ServiceUser> userManager)
         {
             SignInManager = signInManager;
             UserManager = userManager;
