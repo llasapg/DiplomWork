@@ -10,13 +10,13 @@ namespace DiplomaSolution.Controllers
     public class RegistrationController : Controller
     {
         public ILogger<RegistrationController> Logger { get; set; }
-        public UserManager<IdentityUser> UserManager { get; set; }
-        public SignInManager<IdentityUser> SignInManager { get; set; }
+        public UserManager<ServiceUser> UserManager { get; set; }
+        public SignInManager<ServiceUser> SignInManager { get; set; }
 
         public RegistrationController(
             ILogger<RegistrationController> logger,
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager)
+            UserManager<ServiceUser> userManager,
+            SignInManager<ServiceUser> signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -27,7 +27,7 @@ namespace DiplomaSolution.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> ConfirmationPage(Customer customer)
         {
-            var user = new IdentityUser
+            var user = new ServiceUser
             {
                 Email = customer.EmailAddress,
                 UserName = customer.FirstName

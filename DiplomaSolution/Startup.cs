@@ -1,4 +1,6 @@
-﻿using DiplomaSolution.Models;
+﻿using DiplomaSolution.Extensions;
+using DiplomaSolution.Middlewares;
+using DiplomaSolution.Models;
 using DiplomaSolution.Services.Classes;
 using DiplomaSolution.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -26,7 +28,7 @@ namespace DiplomaSolution
             var connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddTransient<IFileManagerService, FileManagerService>();
             services.AddDbContext<CustomerContext>(options => options.UseMySql(connection));
-            services.AddIdentity<IdentityUser, IdentityRole>(
+            services.AddIdentity<ServiceUser, IdentityRole>(
                 options =>
                 {
                     options.Password.RequireNonAlphanumeric = false;
@@ -36,10 +38,8 @@ namespace DiplomaSolution
 
             services.AddAuthorization(options => // before we didnt have this functionality, but now we can use it to register authencation service with speacial params
             {
-                options.DefaultPolicy = new AuthorizationPolicyBuilder()
-                  .RequireAuthenticatedUser()
-                  .Build();
-            }); // There is 
+                options.DefaultPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+            }); 
 
 
             services.AddControllersWithViews(); // before was AddMvc --> now we can choose wich option to add ( like we can set-up only with controllers or with controllers and views )
@@ -48,20 +48,13 @@ namespace DiplomaSolution
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //-- Old
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseStaticFiles();
+            app.UseStaticFiles(); // To increase performance we should alloocate this is the begining of the pipeline
 
-            //-- Old
-
-
-            //--New
-
-            app.UseRouting();
+            app.UseRouting(); // its a endpoint middleware, which desides where this request will be handled + can add some data ( meta ) and etc...
 
             app.UseExceptionHandler("/Error/ExceptionHandler");
 
@@ -71,16 +64,14 @@ namespace DiplomaSolution
 
             app.UseAuthorization(); // About attributes like [authorized and allowanonum...]
 
-            // this component is new!!!
-
             app.UseEndpoints(endp => // before was app.UseMvc with configuring routs inside this method, for now we have this
             {
-                // we can map there lots of usefull stuff
+                // This method is used to add new routs
+
+                endp.AddVersioning();
 
                 endp.MapControllerRoute("default", "{Controller=HomePage}/{Action=Index}").RequireAuthorization();
             });
-
-            //--New
         }
     }
 }

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DiplomaSolution.Models
 {
-    public class CustomerContext : IdentityDbContext
+    public class CustomerContext : IdentityDbContext<ServiceUser>
     {
         public DbSet<Customer> Customers { get; set; }
 
