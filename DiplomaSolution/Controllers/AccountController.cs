@@ -57,5 +57,11 @@ namespace DiplomaSolution.Controllers
 
             return RedirectToAction("Index", "HomePage");
         }
+
+        [HttpGet]
+        public IActionResult AccessDenied(string returnUrl)
+        {
+            return View();
+        }
     }
 }

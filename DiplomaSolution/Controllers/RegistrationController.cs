@@ -4,25 +4,33 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Security.Claims;
 
 namespace DiplomaSolution.Controllers
 {
+    /// <summary>
+    /// This controller is used to create customer and apply to them roles
+    /// </summary>
     public class RegistrationController : Controller
     {
         public ILogger<RegistrationController> Logger { get; set; }
         public UserManager<ServiceUser> UserManager { get; set; }
         public SignInManager<ServiceUser> SignInManager { get; set; }
+        public RoleManager<IdentityRole> RoleManager { get; set; }
 
-        public RegistrationController(
-            ILogger<RegistrationController> logger,
-            UserManager<ServiceUser> userManager,
-            SignInManager<ServiceUser> signInManager)
+        public RegistrationController(ILogger<RegistrationController> logger,UserManager<ServiceUser> userManager,SignInManager<ServiceUser> signInManager,RoleManager<IdentityRole> roleManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            RoleManager = roleManager;
             Logger = logger;
         }
 
+        /// <summary>
+        /// Add there a return url to proceed with the customers ...
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> ConfirmationPage(Customer customer)
@@ -37,8 +45,22 @@ namespace DiplomaSolution.Controllers
 
             if (result.Succeeded) // errors will be displayed on validation-summary
             {
-                await SignInManager.SignInAsync(user, false);
+                if (CheckIfWeHaveRole("User"))
+                    await UserManager.AddToRoleAsync(user, "User");
+                else
+                {
+                    await RoleManager.CreateAsync(new IdentityRole { Name = "User" });
+                    await UserManager.AddToRoleAsync(user, "User");
+                }
 
+                var currentUser = await UserManager.FindByEmailAsync(user.Email);
+
+                var claimsResult = await UserManager.AddClaimAsync(currentUser, new Claim("UserAction", "UploadPhoto"));
+
+                if (claimsResult.Succeeded)
+                {
+                    await SignInManager.SignInAsync(user, false);
+                }
                 return View();
             }
             else
@@ -59,6 +81,21 @@ namespace DiplomaSolution.Controllers
         public IActionResult RegistrationForm()
         {
             return View();
+        }
+
+        [NonAction]
+        private bool CheckIfWeHaveRole(string roleName)
+        {
+            var defaultUserRole = new IdentityRole { Name = roleName };
+
+            foreach (var role in RoleManager.Roles)
+            {
+                if (role.Name == defaultUserRole.Name) // that means that we have this role in DB
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

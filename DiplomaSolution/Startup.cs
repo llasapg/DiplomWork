@@ -28,19 +28,15 @@ namespace DiplomaSolution
             var connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddTransient<IFileManagerService, FileManagerService>();
             services.AddDbContext<CustomerContext>(options => options.UseMySql(connection));
-            services.AddIdentity<ServiceUser, IdentityRole>(
-                options =>
-                {
-                    options.Password.RequireNonAlphanumeric = false;
-                }).AddEntityFrameworkStores<CustomerContext>(); // Just for work with Db + registers all the identity services ==> we specify a context
+            services.AddIdentity<ServiceUser, IdentityRole>(options => { options.Password.RequireNonAlphanumeric = false;})
+                .AddEntityFrameworkStores<CustomerContext>();
 
-            //-- Nothing changed in the top code
-
-            services.AddAuthorization(options => // before we didnt have this functionality, but now we can use it to register authencation service with speacial params
+            services.AddAuthorization(options => 
             {
                 options.DefaultPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-            }); 
 
+                options.AddPolicy("DefaultUserPolicy", policy => policy.RequireClaim("UserAction").RequireRole("User"));
+            }); 
 
             services.AddControllersWithViews(); // before was AddMvc --> now we can choose wich option to add ( like we can set-up only with controllers or with controllers and views )
             services.AddRazorPages(); // New

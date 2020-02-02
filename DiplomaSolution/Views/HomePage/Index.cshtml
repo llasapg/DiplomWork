@@ -1,5 +1,6 @@
 ﻿@model IndexViewData
 @inject SignInManager<ServiceUser> signInManager
+@inject IAuthorizationService service 
 @{
     ViewData["Title"] = "SmartX.com";
 }
@@ -14,7 +15,7 @@
         <div class="header_item_button"><a asp-controller="About" asp-action="GiveInfo">About</a></div>
         <div class="header_item_button"><a asp-controller="InfoPage" asp-action="SupportPage">Contact</a></div>
     </div>
-    @if (signInManager.IsSignedIn(User))
+    @if (signInManager.IsSignedIn(User) && (await service.AuthorizeAsync(User, "DefaultUserPolicy")).Succeeded)
     {
         <div class="header_section">
                 <div class="header_item_button"><a>@User.Identity.Name</a></div>

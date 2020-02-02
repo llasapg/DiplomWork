@@ -4,6 +4,18 @@
         <name>DiplomaSolution</name>
     </assembly>
     <members>
+        <member name="T:DiplomaSolution.Controllers.RegistrationController">
+            <summary>
+            This controller is used to create customer and apply to them roles
+            </summary>
+        </member>
+        <member name="M:DiplomaSolution.Controllers.RegistrationController.ConfirmationPage(DiplomaSolution.Models.Customer)">
+            <summary>
+            Add there a return url to proceed with the customers ...
+            </summary>
+            <param name="customer"></param>
+            <returns></returns>
+        </member>
         <member name="M:DiplomaSolution.Services.Classes.FileManagerService.LoadFileToTheServer(Microsoft.AspNetCore.Http.IFormFile)">
             <summary>
             Loads customer images to DB to deal with them in future
