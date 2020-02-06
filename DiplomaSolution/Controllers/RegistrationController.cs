@@ -32,7 +32,7 @@ namespace DiplomaSolution.Controllers
         /// <param name="customer"></param>
         /// <returns></returns>
         [HttpPost]
-        [AllowAnonymous]
+        [AllowAnonymous] // re-write
         public async Task<IActionResult> ConfirmationPage(Customer customer)
         {
             var user = new ServiceUser
@@ -55,7 +55,7 @@ namespace DiplomaSolution.Controllers
 
                 var currentUser = await UserManager.FindByEmailAsync(user.Email);
 
-                var claimsResult = await UserManager.AddClaimAsync(currentUser, new Claim("UserAction", "UploadPhoto"));
+                var claimsResult = await UserManager.AddClaimAsync(currentUser, new Claim("UploadPhoto", "true"));
 
                 if (claimsResult.Succeeded)
                 {

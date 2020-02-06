@@ -1,4 +1,3 @@
-/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/appsettings.json
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/Properties/launchSettings.json
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/DiplomaSolution.StaticWebAssets.xml
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/DiplomaSolution
@@ -88,3 +87,4 @@
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.Design.dll
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/mono_crash.42f6ec106.0.json
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp3.1/Razor/Views/Account/AccessDenied.cshtml.g.cs
+/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/appsettings.json

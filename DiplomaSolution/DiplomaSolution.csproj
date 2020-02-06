@@ -37,6 +37,7 @@
     <Folder Include="Extensions\" />
     <Folder Include="Helpers\" />
     <Folder Include="Helpers\Attributes\" />
+    <Folder Include="Security\" />
   </ItemGroup>
 
   <ItemGroup>

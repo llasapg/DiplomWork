@@ -33,8 +33,15 @@ using Microsoft.AspNetCore.Authorization;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Views/_ViewImports.cshtml"
+using DiplomaSolution.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d64d2e14dd0de388dfcfbeb6e66785996756bc42", @"/Views/Error/ErrorHandler.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"194b1df8c39a7b893b82bf2916f75ed4e8521c37", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"96bd12e8964bf649204ef015a09ebc351aead174", @"/Views/_ViewImports.cshtml")]
     public class Views_Error_ErrorHandler : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<int>
     {
         #pragma warning disable 1998

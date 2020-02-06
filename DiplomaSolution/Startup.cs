@@ -1,6 +1,7 @@
-﻿using DiplomaSolution.Extensions;
-using DiplomaSolution.Middlewares;
+﻿using System.Security.Claims;
+using DiplomaSolution.Extensions;
 using DiplomaSolution.Models;
+using DiplomaSolution.Security;
 using DiplomaSolution.Services.Classes;
 using DiplomaSolution.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -31,12 +32,25 @@ namespace DiplomaSolution
             services.AddIdentity<ServiceUser, IdentityRole>(options => { options.Password.RequireNonAlphanumeric = false;})
                 .AddEntityFrameworkStores<CustomerContext>();
 
-            services.AddAuthorization(options => 
+            services.AddAuthorization(options =>
             {
+                options.InvokeHandlersAfterFailure = false;
+
                 options.DefaultPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
 
-                options.AddPolicy("DefaultUserPolicy", policy => policy.RequireClaim("UserAction").RequireRole("User"));
-            }); 
+                options.AddPolicy("DefaultUserPolicy", policy => policy.RequireClaim("UploadPhoto", "true").RequireRole("User"));
+
+                options.AddPolicy("Custom", policy =>
+                {
+                    policy.RequireAssertion(context =>
+                    {
+                        return context.User.HasClaim(claim => claim.Value == "SSS");
+                    });
+                });
+
+                options.AddPolicy("ShitPolicy", policy => policy.AddRequirements(new DefaultRequirement()));
+            });
+            services.AddTransient<IAuthorizationHandler, DefaultHandler>();
 
             services.AddControllersWithViews(); // before was AddMvc --> now we can choose wich option to add ( like we can set-up only with controllers or with controllers and views )
             services.AddRazorPages(); // New
@@ -50,11 +64,11 @@ namespace DiplomaSolution
             }
             app.UseStaticFiles(); // To increase performance we should alloocate this is the begining of the pipeline
 
-            app.UseRouting(); // its a endpoint middleware, which desides where this request will be handled + can add some data ( meta ) and etc...
-
             app.UseExceptionHandler("/Error/ExceptionHandler");
 
             app.UseStatusCodePagesWithReExecute("/Error/{0}");
+
+            app.UseRouting(); // its a endpoint middleware, which desides where this request will be handled + can add some data ( meta ) and etc...
 
             app.UseAuthentication(); // Haha its just a new name for obsolete middleware ( identity )
 

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using DiplomaSolution.Helpers.Attributes;
 
 namespace DiplomaSolution.Models
@@ -7,7 +8,7 @@ namespace DiplomaSolution.Models
     {
         public int Id { get; set; }
         [Required]
-        [EmailPatternAttribute]
+        //[EmailPattern(RigthTemplates = new string[] { "gmail.com","yahoo.com","softheme.com"})]
         public string EmailAddress { get; set; }
         public string Password { get; set; }
         [Required]

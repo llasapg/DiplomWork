@@ -33,8 +33,15 @@ using Microsoft.AspNetCore.Authorization;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Views/_ViewImports.cshtml"
+using DiplomaSolution.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7d0abd86a1ac2b554cd00912fa01d5162e949c40", @"/Views/InfoPage/SupportPage.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"194b1df8c39a7b893b82bf2916f75ed4e8521c37", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"96bd12e8964bf649204ef015a09ebc351aead174", @"/Views/_ViewImports.cshtml")]
     public class Views_InfoPage_SupportPage : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #line hidden
@@ -63,7 +70,7 @@ using Microsoft.AspNetCore.Authorization;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             WriteLiteral("<!DOCTYPE html>\n<html>\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7d0abd86a1ac2b554cd00912fa01d5162e949c403426", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7d0abd86a1ac2b554cd00912fa01d5162e949c403610", async() => {
                 WriteLiteral("\n\t<title></title>\n");
             }
             );
@@ -77,7 +84,7 @@ using Microsoft.AspNetCore.Authorization;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7d0abd86a1ac2b554cd00912fa01d5162e949c404393", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7d0abd86a1ac2b554cd00912fa01d5162e949c404577", async() => {
                 WriteLiteral("\n\n");
             }
             );

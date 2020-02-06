@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using System.Diagnostics;
+using DiplomaSolution.ViewModels;
 
 namespace DiplomaSolution.Controllers
 {
@@ -22,23 +23,27 @@ namespace DiplomaSolution.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> Login(Customer user, string returnUrl)
+        public async Task<IActionResult> Login(LoginViewModel customer, string returnUrl = null)
         {
-            var registerReponse = await UserManager.FindByEmailAsync(user.EmailAddress);
+            var registerReponse = await UserManager.FindByEmailAsync(customer.EmailAddress);
 
             if(registerReponse != null)
             {
-                var result = await SignInManager.PasswordSignInAsync(registerReponse.UserName, registerReponse.PasswordHash, false, false);
+                var result = await SignInManager.PasswordSignInAsync(registerReponse.UserName, customer.Password, false, false);
 
-                if (result.Succeeded)
+                if (result.Succeeded && returnUrl != null)
                 {
-                    Redirect(returnUrl);
+                    return Redirect(returnUrl);
                 }
+
+                return RedirectToAction("Index", "HomePage");
             }
+            else
+            {
+                ModelState.AddModelError("", "Error occured, login is not possible...");
 
-            ModelState.AddModelError("", "Error occured, login is not possible...");
-
-            return View();
+                return View();
+            }
         }
 
         [HttpGet]
