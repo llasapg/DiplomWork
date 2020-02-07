@@ -7,12 +7,25 @@
         <div asp-validation-summary="All"></div>
         <div class="dws-input">
             <span asp-validation-for="EmailAddress"></span>
-            <input class="dws-input" type="text" asp-for="EmailAddress" placeholder="Input your email"/>
+            <input class="dws-input" type="text" asp-for="EmailAddress" placeholder="Input your email" />
             <span asp-validation-for="Password"></span>
-            <input class="dws-input" type="password" asp-for="Password" placeholder="Input your password"/>
+            <input class="dws-input" type="password" asp-for="Password" placeholder="Input your password" />
         </div>
         <div class="dws-submit">
             <input class="dws-input" type="submit" value="Login!">
         </div>
     </form>
+        @{
+            <h1>Login using external provider</h1>
+            <form method="post" asp-controller="Account" asp-action="ExternalLogIn">
+                @if (Model.ListOfProviders.ToList().Count > 0)
+                    {
+                    foreach (var provider in Model.ListOfProviders.ToList())
+                        {
+                            <input class="dws-input" type="submit" value=@provider.DisplayName name="provider">
+                        }
+                    }
+                }
+            </form>
+            }
 </div>

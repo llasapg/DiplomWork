@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using System.Diagnostics;
+using System.Linq;
 using DiplomaSolution.ViewModels;
 
 namespace DiplomaSolution.Controllers
@@ -48,11 +49,25 @@ namespace DiplomaSolution.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult Login()
+        public async Task<IActionResult> Login(string returnUrl)
         {
-            return View();
+            var providers = await SignInManager.GetExternalAuthenticationSchemesAsync();
+
+            var viewModel = new LoginViewModel { ReturnUrl = returnUrl, ListOfProviders = providers };
+
+            return View(viewModel);
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> ExternalLogIn(string provider, string returnUrl) // тут мы уже просто берем переданный провайдер и выполняем редирект
+        {
+            var redirectUrl = Url.Action("ExternalLoginCallBack", "Account", new { ReturnUrl = returnUrl});
+
+            var properties = SignInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
+
+            return new ChallengeResult(provider, properties);
+        }
 
         [HttpGet]
         [AllowAnonymous]

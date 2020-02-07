@@ -12,11 +12,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Authentication;
 
 namespace DiplomaSolution
 {
     public class Startup
     {
+        //105610985766-9mues2sn2uess0lcl7n51ns1aulil515.apps.googleusercontent.com
+        //ZZUIFTkPVqWLSVY7bXUApt4h
         public IConfiguration Configuration { get; set; }
 
         public Startup(IConfiguration configuration)
@@ -51,6 +54,11 @@ namespace DiplomaSolution
                 options.AddPolicy("ShitPolicy", policy => policy.AddRequirements(new DefaultRequirement()));
             });
             services.AddTransient<IAuthorizationHandler, DefaultHandler>();
+
+            services.AddAuthentication().AddGoogle(googleOptions => {
+                googleOptions.ClientId = "105610985766-9mues2sn2uess0lcl7n51ns1aulil515.apps.googleusercontent.com";
+                googleOptions.ClientSecret = "ZZUIFTkPVqWLSVY7bXUApt4h";
+            });
 
             services.AddControllersWithViews(); // before was AddMvc --> now we can choose wich option to add ( like we can set-up only with controllers or with controllers and views )
             services.AddRazorPages(); // New

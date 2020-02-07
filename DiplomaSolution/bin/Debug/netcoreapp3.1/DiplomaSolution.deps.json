@@ -27,6 +27,7 @@
     ".NETCoreApp,Version=v3.1": {
       "DiplomaSolution/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.Google": "3.0.2",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "3.1.1",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.1",
           "Microsoft.AspNetCore.Identity.UI": "3.1.1",
@@ -335,6 +336,17 @@
         },
         "compile": {
           "lib/netstandard1.0/Google.Protobuf.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.Google/3.0.2": {
+        "runtime": {
+          "lib/netcoreapp3.0/Microsoft.AspNetCore.Authentication.Google.dll": {
+            "assemblyVersion": "3.0.2.0",
+            "fileVersion": "3.0.219.61507"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.0/Microsoft.AspNetCore.Authentication.Google.dll": {}
         }
       },
       "Microsoft.AspNetCore.Cryptography.Internal/3.1.1": {
@@ -3319,6 +3331,13 @@
       "sha512": "sha512-741fGeDQjixBJaU2j+0CbrmZXsNJkTn/hWbOh4fLVXndHsCclJmWznCPWrJmPoZKvajBvAz3e8ECJOUvRtwjNQ==",
       "path": "google.protobuf/3.6.1",
       "hashPath": "google.protobuf.3.6.1.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.Google/3.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Hw0rJoisCUMuq90XrH2UOsSgCPwtDIA7Om/UZTZVHbQg9bnvY9+vbH26C9k27e2X8PaOHxmYj+QgP/zuBibaLQ==",
+      "path": "microsoft.aspnetcore.authentication.google/3.0.2",
+      "hashPath": "microsoft.aspnetcore.authentication.google.3.0.2.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Cryptography.Internal/3.1.1": {
       "type": "package",

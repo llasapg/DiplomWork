@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using DiplomaSolution.Helpers.Attributes;
+using Microsoft.AspNetCore.Authentication;
 
 namespace DiplomaSolution.ViewModels
 {
@@ -11,5 +13,8 @@ namespace DiplomaSolution.ViewModels
         public string EmailAddress { get; set; }
         [Required]
         public string Password { get; set; }
+
+        public string ReturnUrl { get; set; }
+        public IEnumerable<AuthenticationScheme> ListOfProviders { get; set; }
     }
 }
