@@ -18,11 +18,9 @@ namespace DiplomaSolution
 {
     public class Startup
     {
-        //105610985766-9mues2sn2uess0lcl7n51ns1aulil515.apps.googleusercontent.com
-        //ZZUIFTkPVqWLSVY7bXUApt4h
         public IConfiguration Configuration { get; set; }
 
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration) // appsettings.json --> secrets.json (Secret manager ) --> EV --> console params
         {
             Configuration = configuration;
         }
@@ -31,11 +29,14 @@ namespace DiplomaSolution
         {
             var connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddTransient<IFileManagerService, FileManagerService>();
+            services.AddTransient<ISendEmailService, SendGridEmailSender>();
             services.AddDbContext<CustomerContext>(options => options.UseMySql(connection));
-            services.AddIdentity<ServiceUser, IdentityRole>(options => { options.Password.RequireNonAlphanumeric = false;})
-                .AddEntityFrameworkStores<CustomerContext>();
+            services.AddIdentity<ServiceUser, IdentityRole>(options =>
+            {
+                options.Password.RequireNonAlphanumeric = false;
+            }).AddEntityFrameworkStores<CustomerContext>().AddDefaultTokenProviders();
 
-            services.AddAuthorization(options =>
+            services.AddAuthorization(options => // FIX IT!!!
             {
                 options.InvokeHandlersAfterFailure = false;
 
@@ -53,11 +54,16 @@ namespace DiplomaSolution
 
                 options.AddPolicy("ShitPolicy", policy => policy.AddRequirements(new DefaultRequirement()));
             });
+
             services.AddTransient<IAuthorizationHandler, DefaultHandler>();
 
-            services.AddAuthentication().AddGoogle(googleOptions => {
+            services.AddAuthentication()
+                .AddGoogle(googleOptions => {
                 googleOptions.ClientId = "105610985766-9mues2sn2uess0lcl7n51ns1aulil515.apps.googleusercontent.com";
                 googleOptions.ClientSecret = "ZZUIFTkPVqWLSVY7bXUApt4h";
+            }).AddFacebook(facebookOpt => {
+                facebookOpt.AppId = "125314042121210";
+                facebookOpt.AppSecret = "160e6d9646ace2f5ab2e979e8a437213";
             });
 
             services.AddControllersWithViews(); // before was AddMvc --> now we can choose wich option to add ( like we can set-up only with controllers or with controllers and views )
@@ -78,7 +84,7 @@ namespace DiplomaSolution
 
             app.UseRouting(); // its a endpoint middleware, which desides where this request will be handled + can add some data ( meta ) and etc...
 
-            app.UseAuthentication(); // Haha its just a new name for obsolete middleware ( identity )
+            app.UseAuthentication();
 
             app.UseAuthorization(); // About attributes like [authorized and allowanonum...]
 

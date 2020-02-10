@@ -89,3 +89,5 @@
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp3.1/Razor/Views/Account/AccessDenied.cshtml.g.cs
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/appsettings.json
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Google.dll
+/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Facebook.dll
+/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/SendGrid.dll

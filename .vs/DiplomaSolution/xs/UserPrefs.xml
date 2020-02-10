@@ -1,47 +1,35 @@
 ﻿<Properties StartupConfiguration="{EFFD6586-B9FD-4716-A086-1C5E9DE7A3D6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Views/Account/Login.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Models/ServiceEmail.cs">
     <Files>
-      <File FileName="DiplomaSolution/Security/DefaultRequirement.cs" Line="9" Column="2" />
-      <File FileName="DiplomaSolution/Security/DefaultHandler.cs" />
-      <File FileName="DiplomaSolution/Startup.cs" Line="57" Column="1" />
-      <File FileName="DiplomaSolution/Controllers/InfoPageController.cs" />
-      <File FileName="DiplomaSolution/Controllers/ErrorController.cs" />
-      <File FileName="DiplomaSolution/Controllers/RegistrationController.cs" />
-      <File FileName="DiplomaSolution/appsettings.json" />
-      <File FileName="DiplomaSolution/Views/HomePage/Index.cshtml" Line="1" Column="1" />
+      <File FileName="DiplomaSolution/Startup.cs" Line="18" Column="1" />
+      <File FileName="DiplomaSolution/Controllers/AccountController.cs" Line="165" Column="148" />
+      <File FileName="DiplomaSolution/ViewModels/LoginViewModel.cs" Line="18" Column="48" />
+      <File FileName="DiplomaSolution/Views/Account/Login.cshtml" Line="21" Column="43" />
+      <File FileName="DiplomaSolution/Controllers/ErrorController.cs" Line="22" Column="1" />
+      <File FileName="DiplomaSolution/Controllers/RegistrationController.cs" Line="83" Column="80" />
+      <File FileName="DiplomaSolution/Views/Registration/ConfirmationPage.cshtml" Line="5" Column="4" />
       <File FileName="DiplomaSolution/Controllers/AboutController.cs" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Controllers/AccountController.cs" Line="52" Column="10" />
-      <File FileName="DiplomaSolution/ViewModels/LoginViewModel.cs" Line="18" Column="71" />
-      <File FileName="DiplomaSolution/Views/Account/Login.cshtml" Line="1" Column="1" />
+      <File FileName="DiplomaSolution/Services/Interfaces/ISendEmailService.cs" Line="8" Column="25" />
+      <File FileName="DiplomaSolution/Services/Classes/SendGridEmailSender.cs" Line="21" Column="29" />
+      <File FileName="DiplomaSolution/Models/ServiceEmail.cs" Line="6" Column="11" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="DiplomaSolution" expanded="True">
             <Node name="DiplomaSolution" expanded="True">
-              <Node name="Dependencies" expanded="True">
-                <Node name="FrameworkReferences" expanded="True" />
-                <Node name="PackageDependencies" expanded="True" />
-              </Node>
               <Node name="Controllers" expanded="True" />
-              <Node name="Extensions" expanded="True" />
-              <Node name="Helpers" expanded="True" />
-              <Node name="Middlewares" expanded="True" />
-              <Node name="Migrations" expanded="True" />
-              <Node name="Models" expanded="True" />
-              <Node name="Properties" expanded="True" />
-              <Node name="Security" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="ServiceEmail.cs" selected="True" />
+              </Node>
               <Node name="Services" expanded="True">
                 <Node name="Classes" expanded="True" />
+                <Node name="Interfaces" expanded="True" />
               </Node>
               <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="About" expanded="True" />
-                <Node name="Account" expanded="True">
-                  <Node name="Login.cshtml" selected="True" />
-                </Node>
-                <Node name="HomePage" expanded="True" />
-                <Node name="InfoPage" expanded="True" />
+                <Node name="Account" expanded="True" />
+                <Node name="Registration" expanded="True" />
               </Node>
             </Node>
           </Node>

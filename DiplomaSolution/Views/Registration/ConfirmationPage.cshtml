@@ -1,7 +1,9 @@
-﻿@{
+﻿@model string
+@{
     ViewData["Title"] = "Confirmation page";
 }
-<div class="smallcontainer">
-    <h1>Thank you, @ViewBag.FirstName, for registration!</h1>
-    <a asp-controller="HomePage" asp-action="Index">Return to main page</a>
-</div>
+    <div class="smallcontainer">
+        <h1>Thank you for registration!</h1>
+        <h1>Please confirm your email@Model</h1>
+        <a asp-controller="HomePage" asp-action="Index">Return to main page</a>
+    </div>

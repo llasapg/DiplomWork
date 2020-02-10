@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Security.Claims;
+using DiplomaSolution.Services.Interfaces;
 
 namespace DiplomaSolution.Controllers
 {
@@ -17,13 +18,15 @@ namespace DiplomaSolution.Controllers
         public UserManager<ServiceUser> UserManager { get; set; }
         public SignInManager<ServiceUser> SignInManager { get; set; }
         public RoleManager<IdentityRole> RoleManager { get; set; }
+        public ISendEmailService SendEmailService { get; set; }
 
-        public RegistrationController(ILogger<RegistrationController> logger,UserManager<ServiceUser> userManager,SignInManager<ServiceUser> signInManager,RoleManager<IdentityRole> roleManager)
+        public RegistrationController(ILogger<RegistrationController> logger,UserManager<ServiceUser> userManager,SignInManager<ServiceUser> signInManager,RoleManager<IdentityRole> roleManager, ISendEmailService sendEmailService)
         {
             UserManager = userManager;
             SignInManager = signInManager;
             RoleManager = roleManager;
             Logger = logger;
+            SendEmailService = sendEmailService;
         }
 
         /// <summary>
@@ -32,6 +35,7 @@ namespace DiplomaSolution.Controllers
         /// <param name="customer"></param>
         /// <returns></returns>
         [HttpPost]
+        [HttpGet]
         [AllowAnonymous] // re-write
         public async Task<IActionResult> ConfirmationPage(Customer customer)
         {
@@ -55,13 +59,23 @@ namespace DiplomaSolution.Controllers
 
                 var currentUser = await UserManager.FindByEmailAsync(user.Email);
 
-                var claimsResult = await UserManager.AddClaimAsync(currentUser, new Claim("UploadPhoto", "true"));
+                await UserManager.AddClaimAsync(currentUser, new Claim("UploadPhoto", "true"));
 
-                if (claimsResult.Succeeded)
-                {
-                    await SignInManager.SignInAsync(user, false);
-                }
-                return View();
+                var token = await UserManager.GenerateEmailConfirmationTokenAsync(currentUser);
+
+                var emailUrlConfirmation = Url.Action("ConfirmEmail", "Account", new { UserId = currentUser.Id, Token = token }, Request.Scheme);
+
+                var response = await SendEmailService.SendEmail(new ServiceEmail {
+                    FromEmail = "testEmailAddress@gmail.com",
+                    FromName = "Yevhen",
+                    ToEmail = currentUser.Email,
+                    ToName = currentUser.UserName,
+                    EmailSubject = "Thank you for register!!!",
+                    EmailHtmlText = $"<strong>Hello there! Thank you for registering, please confirm your email using this link : {emailUrlConfirmation}</strong>",
+                    EmailText = $"Hello there! Thank you for registering, please confirm your email using this link : {emailUrlConfirmation}",
+                });
+
+                return View("ConfirmationPage");
             }
             else
             {
@@ -74,6 +88,14 @@ namespace DiplomaSolution.Controllers
 
                 return View("RegistrationForm");
             }
+        }
+
+        [HttpGet]
+        [HttpPost]
+        [AllowAnonymous]
+        public IActionResult ConfirmPartnerRegister(string emailUrlConfirmation)
+        {
+            return View("ConfirmationPage", emailUrlConfirmation);
         }
 
         [HttpGet]

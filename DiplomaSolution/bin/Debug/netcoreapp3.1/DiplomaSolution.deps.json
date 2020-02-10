@@ -27,14 +27,16 @@
     ".NETCoreApp,Version=v3.1": {
       "DiplomaSolution/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Authentication.Google": "3.0.2",
+          "Microsoft.AspNetCore.Authentication.Facebook": "3.1.1",
+          "Microsoft.AspNetCore.Authentication.Google": "3.1.1",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "3.1.1",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.1",
           "Microsoft.AspNetCore.Identity.UI": "3.1.1",
           "Microsoft.EntityFrameworkCore.Tools": "3.1.1",
           "MySql.Data": "8.0.19",
           "NuGet.CommandLine": "5.4.0",
-          "Pomelo.EntityFrameworkCore.MySql": "3.1.0",
+          "Pomelo.EntityFrameworkCore.MySql": "3.1.1",
+          "SendGrid": "9.12.6",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -338,15 +340,26 @@
           "lib/netstandard1.0/Google.Protobuf.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Authentication.Google/3.0.2": {
+      "Microsoft.AspNetCore.Authentication.Facebook/3.1.1": {
         "runtime": {
-          "lib/netcoreapp3.0/Microsoft.AspNetCore.Authentication.Google.dll": {
-            "assemblyVersion": "3.0.2.0",
-            "fileVersion": "3.0.219.61507"
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Facebook.dll": {
+            "assemblyVersion": "3.1.1.0",
+            "fileVersion": "3.100.119.61510"
           }
         },
         "compile": {
-          "lib/netcoreapp3.0/Microsoft.AspNetCore.Authentication.Google.dll": {}
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Facebook.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Authentication.Google/3.1.1": {
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Google.dll": {
+            "assemblyVersion": "3.1.1.0",
+            "fileVersion": "3.100.119.61510"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Google.dll": {}
         }
       },
       "Microsoft.AspNetCore.Cryptography.Internal/3.1.1": {
@@ -853,7 +866,7 @@
         }
       },
       "NuGet.CommandLine/5.4.0": {},
-      "Pomelo.EntityFrameworkCore.MySql/3.1.0": {
+      "Pomelo.EntityFrameworkCore.MySql/3.1.1": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Relational": "3.1.1",
           "MySqlConnector": "0.61.0",
@@ -861,8 +874,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/Pomelo.EntityFrameworkCore.MySql.dll": {
-            "assemblyVersion": "3.1.0.0",
-            "fileVersion": "3.1.0.0"
+            "assemblyVersion": "3.1.1.0",
+            "fileVersion": "3.1.1.0"
           }
         },
         "compile": {
@@ -932,6 +945,20 @@
       "runtime.ubuntu.14.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
       "runtime.ubuntu.16.04-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
       "runtime.ubuntu.16.10-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
+      "SendGrid/9.12.6": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SendGrid.dll": {
+            "assemblyVersion": "9.12.6.0",
+            "fileVersion": "9.12.6.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/SendGrid.dll": {}
+        }
+      },
       "SSH.NET/2016.1.0": {
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
@@ -3332,12 +3359,19 @@
       "path": "google.protobuf/3.6.1",
       "hashPath": "google.protobuf.3.6.1.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Authentication.Google/3.0.2": {
+    "Microsoft.AspNetCore.Authentication.Facebook/3.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Hw0rJoisCUMuq90XrH2UOsSgCPwtDIA7Om/UZTZVHbQg9bnvY9+vbH26C9k27e2X8PaOHxmYj+QgP/zuBibaLQ==",
-      "path": "microsoft.aspnetcore.authentication.google/3.0.2",
-      "hashPath": "microsoft.aspnetcore.authentication.google.3.0.2.nupkg.sha512"
+      "sha512": "sha512-RHu9NdVM5FzDFh/0UUxV6MFB8fN5abhLfN456Z8MX+rmmFh3jtxEBkkaBAkmFZIu8+0B83QcD0seAYqpaggRtA==",
+      "path": "microsoft.aspnetcore.authentication.facebook/3.1.1",
+      "hashPath": "microsoft.aspnetcore.authentication.facebook.3.1.1.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Authentication.Google/3.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-cpAYyp9r3x7QJqNF7GccojBsHhX+Q6D09Z0TxgwsKGscQnGhGCnKQe/Cn0aI0pIoCAHvhxYtAZkriLIB9933VQ==",
+      "path": "microsoft.aspnetcore.authentication.google/3.1.1",
+      "hashPath": "microsoft.aspnetcore.authentication.google.3.1.1.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Cryptography.Internal/3.1.1": {
       "type": "package",
@@ -3605,12 +3639,12 @@
       "path": "nuget.commandline/5.4.0",
       "hashPath": "nuget.commandline.5.4.0.nupkg.sha512"
     },
-    "Pomelo.EntityFrameworkCore.MySql/3.1.0": {
+    "Pomelo.EntityFrameworkCore.MySql/3.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-cm43LBLO2/RWn4fniC/JFpqLy6deHbFK7oBOryzAkjl67UJotmQYXf4I+cjCFBLEApdxtLboBovZ+ckbGYZzjQ==",
-      "path": "pomelo.entityframeworkcore.mysql/3.1.0",
-      "hashPath": "pomelo.entityframeworkcore.mysql.3.1.0.nupkg.sha512"
+      "sha512": "sha512-DYMsaJe/lKoaPGjB0ACnP+h5FeaJC+07f83FewBulkqfkUvc7m97PECX0OUHSTT+qEF0EOmJ7HQR0dltSCDyPQ==",
+      "path": "pomelo.entityframeworkcore.mysql/3.1.1",
+      "hashPath": "pomelo.entityframeworkcore.mysql.3.1.1.nupkg.sha512"
     },
     "Pomelo.JsonObject/2.2.1": {
       "type": "package",
@@ -3730,6 +3764,13 @@
       "sha512": "sha512-VB5cn/7OzUfzdnC8tqAIMQciVLiq2epm2NrAm1E9OjNRyG4lVhfR61SMcLizejzQP8R8Uf/0l5qOIbUEi+RdEg==",
       "path": "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "hashPath": "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512"
+    },
+    "SendGrid/9.12.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fWg/1HbkiC2OgleRLDWhoNEpasbMsZRFo++Zw+ZzX6yRsJI0dpjQbUp5G1er9+PCNrPkg5AOUBBibrP04cwynQ==",
+      "path": "sendgrid/9.12.6",
+      "hashPath": "sendgrid.9.12.6.nupkg.sha512"
     },
     "SSH.NET/2016.1.0": {
       "type": "package",
