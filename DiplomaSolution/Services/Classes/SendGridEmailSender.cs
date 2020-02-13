@@ -7,7 +7,7 @@ using SendGrid.Helpers.Mail;
 
 namespace DiplomaSolution.Services.Classes
 {
-    public class SendGridEmailSender : ISendEmailService
+    public class SendGridEmailSender : ISendEmailService //todo
     {
         public async Task<Response> SendEmail(ServiceEmail serviceEmail)
         {

@@ -19,7 +19,7 @@ namespace DiplomaSolution.Services.Classes
         /// Loads customer images to DB to deal with them in future
         /// </summary>
         /// <param name="file"></param>
-        public void LoadFileToTheServer(IFormFile file)
+        public void LoadFileToTheServer(IFormFile file) //todo
         {
             if (file != null)
             {

@@ -4,6 +4,88 @@
         <name>DiplomaSolution</name>
     </assembly>
     <members>
+        <member name="T:DiplomaSolution.Controllers.AccountController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DiplomaSolution.Controllers.AccountController.#ctor(Microsoft.AspNetCore.Identity.SignInManager{DiplomaSolution.Models.ServiceUser},Microsoft.AspNetCore.Identity.UserManager{DiplomaSolution.Models.ServiceUser},DiplomaSolution.Services.Interfaces.ISendEmailService)">
+            <summary>
+            
+            </summary>
+            <param name="signInManager"></param>
+            <param name="userManager"></param>
+        </member>
+        <member name="M:DiplomaSolution.Controllers.AccountController.Login(DiplomaSolution.ViewModels.LoginViewModel,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="customer"></param>
+            <param name="returnUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DiplomaSolution.Controllers.AccountController.Login(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="returnUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DiplomaSolution.Controllers.AccountController.ConfirmEmail(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="userId"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DiplomaSolution.Controllers.AccountController.ExternalLogIn(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="provider"></param>
+            <param name="returnUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DiplomaSolution.Controllers.AccountController.ExternalLoginCallBack(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="returnUrl"></param>
+            <param name="remoteError"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DiplomaSolution.Controllers.AccountController.Logout">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DiplomaSolution.Controllers.AccountController.AccessDenied(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="returnUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DiplomaSolution.Controllers.AccountController.ResetPasswordWithEmail">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DiplomaSolution.Controllers.AccountController.ResetPassword(DiplomaSolution.ViewModels.ResetPasswordConfirmationModel)">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DiplomaSolution.Controllers.AccountController.ResetPassword(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:DiplomaSolution.Controllers.RegistrationController">
             <summary>
             This controller is used to create customer and apply to them roles

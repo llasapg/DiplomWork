@@ -1,27 +1,25 @@
 ﻿<Properties StartupConfiguration="{EFFD6586-B9FD-4716-A086-1C5E9DE7A3D6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Models/ServiceEmail.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Controllers/RegistrationController.cs">
     <Files>
-      <File FileName="DiplomaSolution/Startup.cs" Line="18" Column="1" />
-      <File FileName="DiplomaSolution/Controllers/AccountController.cs" Line="165" Column="148" />
-      <File FileName="DiplomaSolution/ViewModels/LoginViewModel.cs" Line="18" Column="48" />
-      <File FileName="DiplomaSolution/Views/Account/Login.cshtml" Line="21" Column="43" />
-      <File FileName="DiplomaSolution/Controllers/ErrorController.cs" Line="22" Column="1" />
-      <File FileName="DiplomaSolution/Controllers/RegistrationController.cs" Line="83" Column="80" />
-      <File FileName="DiplomaSolution/Views/Registration/ConfirmationPage.cshtml" Line="5" Column="4" />
-      <File FileName="DiplomaSolution/Controllers/AboutController.cs" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Services/Interfaces/ISendEmailService.cs" Line="8" Column="25" />
-      <File FileName="DiplomaSolution/Services/Classes/SendGridEmailSender.cs" Line="21" Column="29" />
-      <File FileName="DiplomaSolution/Models/ServiceEmail.cs" Line="6" Column="11" />
+      <File FileName="DiplomaSolution/Views/Account/ResetPasswordConfirmationPage.cshtml" Line="8" Column="20" />
+      <File FileName="DiplomaSolution/Views/Account/ResetPassword.cshtml" Line="1" Column="38" />
+      <File FileName="DiplomaSolution/Views/Account/Login.cshtml" Line="1" Column="1" />
+      <File FileName="DiplomaSolution/Views/Account/AccessDenied.cshtml" Line="1" Column="1" />
+      <File FileName="DiplomaSolution/Views/Account/ResetPasswordWithEmail.cshtml" Line="1" Column="26" />
+      <File FileName="DiplomaSolution/ViewModels/ResetPasswordModel.cs" Line="14" Column="23" />
+      <File FileName="DiplomaSolution/ViewModels/EmptyClass.cs" Line="6" Column="48" />
+      <File FileName="DiplomaSolution/Controllers/AccountController.cs" Line="374" Column="22" />
+      <File FileName="DiplomaSolution/Controllers/RegistrationController.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="DiplomaSolution" expanded="True">
             <Node name="DiplomaSolution" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True">
-                <Node name="ServiceEmail.cs" selected="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="RegistrationController.cs" selected="True" />
               </Node>
+              <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True">
                 <Node name="Classes" expanded="True" />
                 <Node name="Interfaces" expanded="True" />
@@ -30,6 +28,10 @@
               <Node name="Views" expanded="True">
                 <Node name="Account" expanded="True" />
                 <Node name="Registration" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="CustomersImages" expanded="True" />
+                <Node name="img" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -45,6 +47,7 @@
       <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Views/HomePage/9t8b31t7.0mg~" relfile="DiplomaSolution/Views/HomePage/9t8b31t7.0mg~" line="11" column="1" />
       <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Controllers/qi72zsh9.4kx~" relfile="DiplomaSolution/Controllers/qi72zsh9.4kx~" line="23" column="1" />
       <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Views/HomePage/e7jmknkk.a9f~" relfile="DiplomaSolution/Views/HomePage/e7jmknkk.a9f~" line="23" column="1" />
+      <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Controllers/AccountController.cs" relfile="DiplomaSolution/Controllers/AccountController.cs" line="374" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

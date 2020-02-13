@@ -36,7 +36,7 @@ namespace DiplomaSolution.Controllers
         /// <returns></returns>
         [HttpPost]
         [HttpGet]
-        [AllowAnonymous] // re-write
+        [AllowAnonymous] //todo
         public async Task<IActionResult> ConfirmationPage(Customer customer)
         {
             var user = new ServiceUser

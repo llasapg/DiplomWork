@@ -91,3 +91,6 @@
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Google.dll
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Authentication.Facebook.dll
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/SendGrid.dll
+/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp3.1/Razor/Views/Account/ResetPassword.cshtml.g.cs
+/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp3.1/Razor/Views/Account/ResetPasswordConfirmationPage.cshtml.g.cs
+/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp3.1/Razor/Views/Account/ResetPasswordWithEmail.cshtml.g.cs
