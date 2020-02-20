@@ -9,7 +9,7 @@
             
             </summary>
         </member>
-        <member name="M:DiplomaSolution.Controllers.AccountController.#ctor(Microsoft.AspNetCore.Identity.SignInManager{DiplomaSolution.Models.ServiceUser},Microsoft.AspNetCore.Identity.UserManager{DiplomaSolution.Models.ServiceUser},DiplomaSolution.Services.Interfaces.ISendEmailService)">
+        <member name="M:DiplomaSolution.Controllers.AccountController.#ctor(Microsoft.AspNetCore.Identity.SignInManager{DiplomaSolution.Models.ServiceUser},Microsoft.AspNetCore.Identity.UserManager{DiplomaSolution.Models.ServiceUser},DiplomaSolution.Services.Interfaces.ISendEmailService,Microsoft.AspNetCore.DataProtection.IDataProtectionProvider)">
             <summary>
             
             </summary>
@@ -97,6 +97,11 @@
             </summary>
             <param name="customer"></param>
             <returns></returns>
+        </member>
+        <member name="T:DiplomaSolution.Security.EmailTokenOptions">
+            <summary>
+            Custom token provider options to specify token life-span
+            </summary>
         </member>
         <member name="M:DiplomaSolution.Services.Classes.FileManagerService.LoadFileToTheServer(Microsoft.AspNetCore.Http.IFormFile)">
             <summary>

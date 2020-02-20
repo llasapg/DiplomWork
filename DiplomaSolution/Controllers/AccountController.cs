@@ -9,6 +9,7 @@ using System.Linq;
 using DiplomaSolution.ViewModels;
 using System.Security.Claims;
 using DiplomaSolution.Services.Interfaces;
+using Microsoft.AspNetCore.DataProtection;
 
 namespace DiplomaSolution.Controllers
 {
@@ -20,6 +21,8 @@ namespace DiplomaSolution.Controllers
         public SignInManager<ServiceUser> SignInManager { get; set; }
         public UserManager<ServiceUser> UserManager { get; set; }
         public ISendEmailService SendEmailService { get; set; }
+        private IDataProtectionProvider DataProtectionProvider { get; set; }
+        private IDataProtector Protector { get; set; }
 
         /// <summary>
         /// 
@@ -28,11 +31,14 @@ namespace DiplomaSolution.Controllers
         /// <param name="userManager"></param>
         public AccountController(SignInManager<ServiceUser> signInManager,
             UserManager<ServiceUser> userManager,
-            ISendEmailService sendEmailService)
+            ISendEmailService sendEmailService,
+            IDataProtectionProvider dataProtecttionProvider)
         {
             SignInManager = signInManager;
             UserManager = userManager;
             SendEmailService = sendEmailService;
+            DataProtectionProvider = dataProtecttionProvider;
+            Protector = DataProtectionProvider.CreateProtector("DataProtection");
         }
 
         /// <summary>
@@ -279,6 +285,10 @@ namespace DiplomaSolution.Controllers
         [HttpGet]
         public IActionResult AccessDenied(string returnUrl)
         {
+            var result = Protector.Protect("Hello");
+
+            var decrypted = Protector.Unprotect(result);
+
             return View();
         }
 

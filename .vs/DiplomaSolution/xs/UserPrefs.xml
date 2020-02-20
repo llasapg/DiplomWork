@@ -1,25 +1,13 @@
 ﻿<Properties StartupConfiguration="{EFFD6586-B9FD-4716-A086-1C5E9DE7A3D6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Controllers/RegistrationController.cs">
-    <Files>
-      <File FileName="DiplomaSolution/Views/Account/ResetPasswordConfirmationPage.cshtml" Line="8" Column="20" />
-      <File FileName="DiplomaSolution/Views/Account/ResetPassword.cshtml" Line="1" Column="38" />
-      <File FileName="DiplomaSolution/Views/Account/Login.cshtml" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Views/Account/AccessDenied.cshtml" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Views/Account/ResetPasswordWithEmail.cshtml" Line="1" Column="26" />
-      <File FileName="DiplomaSolution/ViewModels/ResetPasswordModel.cs" Line="14" Column="23" />
-      <File FileName="DiplomaSolution/ViewModels/EmptyClass.cs" Line="6" Column="48" />
-      <File FileName="DiplomaSolution/Controllers/AccountController.cs" Line="374" Column="22" />
-      <File FileName="DiplomaSolution/Controllers/RegistrationController.cs" Line="1" Column="1" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="DiplomaSolution" expanded="True">
             <Node name="DiplomaSolution" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="RegistrationController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True" />
+              <Node name="Security" expanded="True" />
               <Node name="Services" expanded="True">
                 <Node name="Classes" expanded="True" />
                 <Node name="Interfaces" expanded="True" />
@@ -27,9 +15,13 @@
               <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Account" expanded="True" />
+                <Node name="HomePage" expanded="True">
+                  <Node name="Index.cshtml" selected="True" />
+                </Node>
                 <Node name="Registration" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True" />
                 <Node name="CustomersImages" expanded="True" />
                 <Node name="img" expanded="True" />
               </Node>
@@ -47,7 +39,7 @@
       <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Views/HomePage/9t8b31t7.0mg~" relfile="DiplomaSolution/Views/HomePage/9t8b31t7.0mg~" line="11" column="1" />
       <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Controllers/qi72zsh9.4kx~" relfile="DiplomaSolution/Controllers/qi72zsh9.4kx~" line="23" column="1" />
       <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Views/HomePage/e7jmknkk.a9f~" relfile="DiplomaSolution/Views/HomePage/e7jmknkk.a9f~" line="23" column="1" />
-      <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Controllers/AccountController.cs" relfile="DiplomaSolution/Controllers/AccountController.cs" line="374" column="1" />
+      <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Controllers/AccountController.cs" relfile="DiplomaSolution/Controllers/AccountController.cs" line="125" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

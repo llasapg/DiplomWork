@@ -157,3 +157,12 @@ input[type="text"], input[type="password"] {
     height: 350px;
     border-radius: 8px 8px 8px 8px;
 }
+
+.login-view {
+    align-items: center;
+    height: 450px;
+    width: 300px;
+    display: block;
+    background-color: rgb(24, 33, 52, 0.7);
+    border-radius: 10px 10px 10px 10px;
+}

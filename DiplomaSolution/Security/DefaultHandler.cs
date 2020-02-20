@@ -13,6 +13,8 @@ namespace DiplomaSolution.Security
         {
             var userClaims = context.User.Claims;
 
+            //var query = context.Resource as AuthorizationOptions;
+
             foreach (var item in userClaims)
             { 
                 if (item.Type == "UploadPhoto" && item.Value == "true")

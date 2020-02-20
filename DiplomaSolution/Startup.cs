@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Authentication;
+using System;
 
 namespace DiplomaSolution
 {
@@ -28,14 +29,20 @@ namespace DiplomaSolution
         public void ConfigureServices(IServiceCollection services)
         {
             var connection = Configuration.GetConnectionString("DefaultConnection");
+
             services.AddTransient<IFileManagerService, FileManagerService>();
             services.AddTransient<ISendEmailService, SendGridEmailSender>();
             services.AddDbContext<CustomerContext>(options => options.UseMySql(connection));
+            /////// Identity
             services.AddIdentity<ServiceUser, IdentityRole>(options =>
             {
                 options.Password.RequireNonAlphanumeric = false;
-            }).AddEntityFrameworkStores<CustomerContext>().AddDefaultTokenProviders();
-
+                options.Tokens.EmailConfirmationTokenProvider = "CustomEmailConfirmationProvider";
+            })
+            .AddEntityFrameworkStores<CustomerContext>()
+            .AddDefaultTokenProviders()
+            .AddTokenProvider<Security.EmailTokenProvider<ServiceUser>>("CustomEmailConfirmationProvider");
+            /////// Identity
             services.AddAuthorization(options => // FIX IT!!!
             {
                 options.InvokeHandlersAfterFailure = false;
@@ -58,12 +65,26 @@ namespace DiplomaSolution
             services.AddTransient<IAuthorizationHandler, DefaultHandler>();
 
             services.AddAuthentication()
-                .AddGoogle(googleOptions => {
+            .AddGoogle(googleOptions =>
+            {
                 googleOptions.ClientId = "105610985766-9mues2sn2uess0lcl7n51ns1aulil515.apps.googleusercontent.com";
                 googleOptions.ClientSecret = "ZZUIFTkPVqWLSVY7bXUApt4h";
-            }).AddFacebook(facebookOpt => {
+            })
+            .AddFacebook(facebookOpt =>
+            {
                 facebookOpt.AppId = "125314042121210";
                 facebookOpt.AppSecret = "160e6d9646ace2f5ab2e979e8a437213";
+            });
+
+            services.Configure<DataProtectionTokenProviderOptions>(opt =>
+            {
+                opt.TokenLifespan = TimeSpan.FromHours(24); // timespan for 5 hours ( token valid time )
+
+            });
+
+            services.Configure<EmailTokenOptions>(opt =>
+            {
+                opt.TokenLifespan = TimeSpan.FromSeconds(15);
             });
 
             services.AddControllersWithViews(); // before was AddMvc --> now we can choose wich option to add ( like we can set-up only with controllers or with controllers and views )

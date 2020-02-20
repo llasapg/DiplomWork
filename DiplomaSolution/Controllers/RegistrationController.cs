@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Security.Claims;
 using DiplomaSolution.Services.Interfaces;
+using System.Diagnostics;
 
 namespace DiplomaSolution.Controllers
 {
@@ -39,54 +40,72 @@ namespace DiplomaSolution.Controllers
         [AllowAnonymous] //todo
         public async Task<IActionResult> ConfirmationPage(Customer customer)
         {
-            var user = new ServiceUser
-            {
-                Email = customer.EmailAddress,
-                UserName = customer.FirstName
-            };
+            var userSearchResult = await UserManager.FindByEmailAsync(customer.EmailAddress);
 
-            var result = await UserManager.CreateAsync(user, customer.Password);
+            Trace.WriteLine($"User search response - {userSearchResult}");
 
-            if (result.Succeeded) // errors will be displayed on validation-summary
+            if (userSearchResult == null)
             {
-                if (CheckIfWeHaveRole("User"))
-                    await UserManager.AddToRoleAsync(user, "User");
+                var user = new ServiceUser
+                {
+                    Email = customer.EmailAddress,
+                    UserName = customer.FirstName
+                };
+
+                var result = await UserManager.CreateAsync(user, customer.Password);
+
+                Trace.WriteLine($"User creation response - {result}");
+
+                if (result.Succeeded) // errors will be displayed on validation-summary
+                {
+                    if (CheckIfWeHaveRole("User"))
+                        await UserManager.AddToRoleAsync(user, "User");
+                    else
+                    {
+                        await RoleManager.CreateAsync(new IdentityRole { Name = "User" });
+                        await UserManager.AddToRoleAsync(user, "User");
+                    }
+
+                    var currentUser = await UserManager.FindByEmailAsync(user.Email);
+
+                    await UserManager.AddClaimAsync(currentUser, new Claim("UploadPhoto", "true"));
+
+                    var token = await UserManager.GenerateEmailConfirmationTokenAsync(currentUser);
+
+                    var emailUrlConfirmation = Url.Action("ConfirmEmail", "Account", new { UserId = currentUser.Id, Token = token }, Request.Scheme);
+
+                    var response = await SendEmailService.SendEmail(new ServiceEmail
+                    {
+                        FromEmail = "testEmailAddress@gmail.com",
+                        FromName = "Yevhen",
+                        ToEmail = currentUser.Email,
+                        ToName = currentUser.UserName,
+                        EmailSubject = "Thank you for register!!!",
+                        EmailHtmlText = $"<strong>Hello there! Thank you for registering, please confirm your email using this link : {emailUrlConfirmation}</strong>",
+                        EmailText = $"Hello there! Thank you for registering, please confirm your email using this link : {emailUrlConfirmation}",
+                    });
+
+                    Trace.WriteLine($"SendGrid email send response - {response.Body}");
+
+                    return View("ConfirmationPage", currentUser.UserName);
+                }
                 else
                 {
-                    await RoleManager.CreateAsync(new IdentityRole { Name = "User" });
-                    await UserManager.AddToRoleAsync(user, "User");
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+
+                    Logger.LogError("Model is not valid or email is currently registered!");
+
+                    return View();
                 }
-
-                var currentUser = await UserManager.FindByEmailAsync(user.Email);
-
-                await UserManager.AddClaimAsync(currentUser, new Claim("UploadPhoto", "true"));
-
-                var token = await UserManager.GenerateEmailConfirmationTokenAsync(currentUser);
-
-                var emailUrlConfirmation = Url.Action("ConfirmEmail", "Account", new { UserId = currentUser.Id, Token = token }, Request.Scheme);
-
-                var response = await SendEmailService.SendEmail(new ServiceEmail {
-                    FromEmail = "testEmailAddress@gmail.com",
-                    FromName = "Yevhen",
-                    ToEmail = currentUser.Email,
-                    ToName = currentUser.UserName,
-                    EmailSubject = "Thank you for register!!!",
-                    EmailHtmlText = $"<strong>Hello there! Thank you for registering, please confirm your email using this link : {emailUrlConfirmation}</strong>",
-                    EmailText = $"Hello there! Thank you for registering, please confirm your email using this link : {emailUrlConfirmation}",
-                });
-
-                return View("ConfirmationPage");
             }
             else
             {
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError("", error.Description);
-                }
+                ModelState.AddModelError("", "Hey, you already have account, try to login please");
 
-                Logger.LogError("Model is not valid or email is currently registered!");
-
-                return View("RegistrationForm");
+                return View();
             }
         }
 

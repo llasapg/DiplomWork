@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using DiplomaSolution.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using DiplomaSolution.Models;
@@ -23,22 +22,6 @@ namespace DiplomaSolution.Services.Classes
         {
             if (file != null)
             {
-                using (var fileStream = file.OpenReadStream())
-                {
-                    using (var br = new BinaryReader(fileStream))
-                    {
-                        var byteFileData = br.ReadBytes((Int32)fileStream.Length);
-
-                        CustomerContext.CustomerFiles.Add(new Models.FormFile
-                        {
-                            FileData = byteFileData,
-                            FullName = Path.GetFileName(file.FileName)
-                        });
-                    }
-
-                    CustomerContext.SaveChanges();
-                }
-
                 file.CopyTo(new FileStream($"wwwroot/CustomersImages/{file.FileName}", FileMode.Create));
             }
         }
