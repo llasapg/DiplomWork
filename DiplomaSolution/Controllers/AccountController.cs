@@ -1,38 +1,28 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using DiplomaSolution.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using System.Diagnostics;
-using System.Linq;
 using DiplomaSolution.ViewModels;
 using System.Security.Claims;
 using DiplomaSolution.Services.Interfaces;
 using Microsoft.AspNetCore.DataProtection;
+using DiplomaSolution.Helpers.ErrorResponseMessages;
+using System.Diagnostics;
 
 namespace DiplomaSolution.Controllers
 {
     /// <summary>
-    /// 
+    /// Controller to perform actions with accounts ( Create / ChangePassword and etc... )
     /// </summary>
     public class AccountController : Controller
     {
-        public SignInManager<ServiceUser> SignInManager { get; set; }
-        public UserManager<ServiceUser> UserManager { get; set; }
-        public ISendEmailService SendEmailService { get; set; }
-        private IDataProtectionProvider DataProtectionProvider { get; set; }
-        private IDataProtector Protector { get; set; }
-
         /// <summary>
-        /// 
+        /// Basic construstor to perform DI
         /// </summary>
         /// <param name="signInManager"></param>
         /// <param name="userManager"></param>
-        public AccountController(SignInManager<ServiceUser> signInManager,
-            UserManager<ServiceUser> userManager,
-            ISendEmailService sendEmailService,
-            IDataProtectionProvider dataProtecttionProvider)
+        public AccountController(SignInManager<ServiceUser> signInManager, UserManager<ServiceUser> userManager, ISendEmailService sendEmailService, IDataProtectionProvider dataProtecttionProvider)
         {
             SignInManager = signInManager;
             UserManager = userManager;
@@ -41,17 +31,29 @@ namespace DiplomaSolution.Controllers
             Protector = DataProtectionProvider.CreateProtector("DataProtection");
         }
 
+        #region DI services
+
+        private SignInManager<ServiceUser> SignInManager { get; set; }
+        private UserManager<ServiceUser> UserManager { get; set; }
+        private ISendEmailService SendEmailService { get; set; }
+        private IDataProtectionProvider DataProtectionProvider { get; set; }
+        private IDataProtector Protector { get; set; }
+
+        #endregion
+
+        #region Login actions ( Login / Logout / External Login )
+
         /// <summary>
-        /// 
+        /// Basic action to perform login for both external and our own customers
         /// </summary>
-        /// <param name="customer"></param>
-        /// <param name="returnUrl"></param>
+        /// <param name="customer">Customer model</param>
+        /// <param name="returnUrl">Optional - can perofrm redirect later to this url</param>
         /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel customer, string returnUrl = null)
         {
-            var providers = await SignInManager.GetExternalAuthenticationSchemesAsync(); // checks what providers we have configured in class startup.cs
+            var providers = await SignInManager.GetExternalAuthenticationSchemesAsync();
 
             var viewModel = new LoginViewModel { ReturnUrl = returnUrl, ListOfProviders = providers };
 
@@ -59,11 +61,11 @@ namespace DiplomaSolution.Controllers
 
             if (userData != null)
             {
-                var providedData = await SignInManager.CheckPasswordSignInAsync(userData, customer.Password, false);
+                var providedData = await SignInManager.CheckPasswordSignInAsync(userData, customer.Password, true);
 
-                if (providedData.ToString() == "Failed") // Provided wrong email or password --> we dont want to identify user that he guissed password
+                if (providedData.ToString() == "Failed") // If Failed --> wrong password and login combination
                 {
-                    ModelState.AddModelError("", "Error occured, login is not possible...");
+                    ModelState.AddModelError("", DefaultResponseMessages.WrongPasswordAndEmailCombination);
 
                     return View(viewModel);
                 }
@@ -71,19 +73,19 @@ namespace DiplomaSolution.Controllers
                 {
                     if (userData.EmailConfirmed == false)
                     {
-                        ModelState.AddModelError("", "Email is not confirmed");
+                        ModelState.AddModelError("", DefaultResponseMessages.EmailIsNotVerified);
 
                         return View(viewModel);
                     }
                     else
                     {
-                        var loginResponse = await SignInManager.PasswordSignInAsync(userData, customer.Password, false, false);
+                        var loginResponse = await SignInManager.PasswordSignInAsync(userData, customer.Password, false, true);
 
                         if (loginResponse.Succeeded && returnUrl != null)
                         {
                             return Redirect(returnUrl);
                         }
-                        if(loginResponse.Succeeded)
+                        else if(loginResponse.Succeeded)
                         {
                             return RedirectToAction("Index", "HomePage");
                         }
@@ -91,21 +93,21 @@ namespace DiplomaSolution.Controllers
                 }
             }
 
-            ModelState.AddModelError("", "Error occured, login is not possible...");
+            ModelState.AddModelError("", DefaultResponseMessages.CustomerIsNotFoundInDb);
 
             return View(viewModel);
         }
 
         /// <summary>
-        /// 
+        /// Get action to return login page ( currently is not fully inmplemented )
         /// </summary>
-        /// <param name="returnUrl"></param>
-        /// <returns></returns>
-        [HttpGet]// this is used only for displaing available provides
+        /// <param name="returnUrl">Optional - can perofrm redirect later to this url</param>
+        /// <returns>Login page</returns>
+        [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> Login(string returnUrl)
         {
-            var providers = await SignInManager.GetExternalAuthenticationSchemesAsync(); // checks what providers we have configured in class startup.cs
+            var providers = await SignInManager.GetExternalAuthenticationSchemesAsync();
 
             var viewModel = new LoginViewModel { ReturnUrl = returnUrl, ListOfProviders = providers };
 
@@ -113,90 +115,48 @@ namespace DiplomaSolution.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Action to perform extermal provider login ( Google, Facebook and etc... )
         /// </summary>
-        /// <param name="userId"></param>
-        /// <param name="token"></param>
-        /// <returns></returns>
-        [HttpGet]
-        [HttpPost]
-        [AllowAnonymous] //todo
-        public async Task<IActionResult> ConfirmEmail(string userId, string token)
-        {
-            if (userId == null || token == null)
-            {
-                return RedirectToAction("Index", "HomePage");
-            }
-
-            var customer = await UserManager.FindByIdAsync(userId);
-
-            if (customer != null)
-            {
-                var confirmationEmailResult = await UserManager.ConfirmEmailAsync(customer, token);
-
-                if (confirmationEmailResult.Succeeded)
-                {
-                    await SignInManager.SignInAsync(customer, false);
-
-                    return RedirectToAction("Index", "HomePage");
-                }
-                else
-                {
-                    return RedirectToAction("Index", "HomePage");
-                }
-            }
-            else
-            {
-                return RedirectToAction("Index", "HomePage");
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="provider"></param>
-        /// <param name="returnUrl"></param>
+        /// <param name="provider">Provider name</param>
+        /// <param name="returnUrl">Optional - can perofrm redirect later to this url</param>
         /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
-        public IActionResult ExternalLogIn(string provider, string returnUrl) // тут мы уже просто берем переданный провайдер и выполняем редирект
+        public IActionResult ExternalLogIn(string provider, string returnUrl = null) 
         {
             var redirectUrl = Url.Action("ExternalLoginCallBack", "Account", new { ReturnUrl = returnUrl });
 
-            var properties = SignInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
+            var properties = SignInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl); // Check it
 
-            return new ChallengeResult(provider, properties);
+            return new ChallengeResult(provider, properties); // OAuth using selected provider
         }
 
         /// <summary>
-        /// 
+        /// External login callback to perform login operations on our side if login was successful
         /// </summary>
-        /// <param name="returnUrl"></param>
-        /// <param name="remoteError"></param>
+        /// <param name="returnUrl">Optional - can perofrm redirect later to this url</param>
+        /// <param name="remoteError">Optional - can be null, if everything is okey while login on provider side</param>
         /// <returns></returns>
         [HttpPost]
-        [HttpGet]
-        [AllowAnonymous]//todo
+        [AllowAnonymous]
         public async Task<IActionResult> ExternalLoginCallBack(string returnUrl = null, string remoteError = null)
         {
-            returnUrl ??= Url.Content("~/"); // root directory of our application
-
             if (remoteError == null)
             {
-                var info = await SignInManager.GetExternalLoginInfoAsync();
+                var accountDetailsFromProvider = await SignInManager.GetExternalLoginInfoAsync();
 
-                if (info != null)
+                if (accountDetailsFromProvider != null)
                 {
                     // Search for the customer in our db
 
-                    var result = await UserManager.FindByEmailAsync(info.Principal.FindFirstValue(ClaimTypes.Email));
+                    var result = await UserManager.FindByEmailAsync(accountDetailsFromProvider.Principal.FindFirstValue(ClaimTypes.Email));
 
                     if (result == null) // new account
                     {
                         var serviceUser = new ServiceUser
                         {
-                            Email = info.Principal.FindFirstValue(ClaimTypes.Email),
-                            UserName = info.Principal.FindFirstValue(ClaimTypes.GivenName)
+                            Email = accountDetailsFromProvider.Principal.FindFirstValue(ClaimTypes.Email),
+                            UserName = accountDetailsFromProvider.Principal.FindFirstValue(ClaimTypes.GivenName)
                         };
 
                         var userResponse = await UserManager.CreateAsync(serviceUser);
@@ -207,7 +167,7 @@ namespace DiplomaSolution.Controllers
 
                         if (userResponse.Succeeded)
                         {
-                            await UserManager.AddLoginAsync(serviceUser, info); // Creates point in AspNetUserLogins
+                            await UserManager.AddLoginAsync(serviceUser, accountDetailsFromProvider); // Creates point in AspNetUserLogins
 
                             var token = await UserManager.GenerateEmailConfirmationTokenAsync(serviceUser);
 
@@ -224,7 +184,7 @@ namespace DiplomaSolution.Controllers
 
                             if (loginsData == null)
                             {
-                                await UserManager.AddLoginAsync(result, info);
+                                await UserManager.AddLoginAsync(result, accountDetailsFromProvider);
                             }
                             var token = await UserManager.GenerateEmailConfirmationTokenAsync(result);
 
@@ -234,38 +194,40 @@ namespace DiplomaSolution.Controllers
                         }
                         else
                         {
-                            var loginReponse = await SignInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, false);
+                            var loginReponse = await SignInManager.ExternalLoginSignInAsync(accountDetailsFromProvider.LoginProvider, accountDetailsFromProvider.ProviderKey, false);
 
                             if (loginReponse.Succeeded)
                             {
-                                return RedirectToAction("Index", "HomePage");
+                                return returnUrl == null ? Redirect(Url.Action("Index", "HomePage")) : Redirect(returnUrl);
                             }
                             else
                             {
-                                await UserManager.AddLoginAsync(result, info);
+                                await UserManager.AddLoginAsync(result, accountDetailsFromProvider); //no data in table aspnetuserlogins --> we should add it 
 
                                 await SignInManager.SignInAsync(result, false);
 
-                                return RedirectToAction("Index", "HomePage");
+                                return Redirect(Url.Action("Index", "HomePage"));
                             }
                         }
                     }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Login failed, please contact our support team");
+                    ModelState.AddModelError("", DefaultResponseMessages.ExternalLoginFailed);
                 }
             }
             else
             {
-                ModelState.AddModelError("", "Login failed, partner issue");
+                ModelState.AddModelError("", DefaultResponseMessages.ExternalLoginFailed);
+
+                return Redirect(Url.Action("Login", "Account"));
             }
 
-            return RedirectToAction("Login", "Account");
+            return Redirect(Url.Action("Login", "Account"));
         }
 
         /// <summary>
-        /// 
+        /// Action to perdorm user logout ( delete cookies and clear User prop of basic controller class )
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -277,23 +239,69 @@ namespace DiplomaSolution.Controllers
             return RedirectToAction("Index", "HomePage");
         }
 
+        #endregion
+
+        #region Email confirmation actions
+
         /// <summary>
-        /// 
+        /// Action to perform email confirmation --> filed EmailConfirmed is changing to true
+        /// </summary>
+        /// <param name="userId">User id, to find it</param>
+        /// <param name="token">Generated token</param>
+        /// <returns></returns>
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> ConfirmEmail(string userId, string token)
+        {
+            if (userId == null || token == null)
+            {
+                return Redirect(Url.Action("Index", "HomePage")); // no actions
+            }
+
+            var customer = await UserManager.FindByIdAsync(userId);
+
+            if (customer != null)
+            {
+                var confirmationEmailResult = await UserManager.ConfirmEmailAsync(customer, token);
+
+                if (confirmationEmailResult.Succeeded)
+                {
+                    await SignInManager.SignInAsync(customer, false);
+
+                    return Redirect(Url.Action("Index", "HomePage")); // Login and redirect to index page
+                }
+                else
+                {
+                    return Redirect(Url.Action("Index", "HomePage")); // no actions
+                }
+            }
+            else
+            {
+                return Redirect(Url.Action("Index", "HomePage")); // no actions
+            }
+        }
+
+        #endregion
+
+        #region Access denied actions
+
+        /// <summary>
+        /// Access denied page
         /// </summary>
         /// <param name="returnUrl"></param>
         /// <returns></returns>
         [HttpGet]
         public IActionResult AccessDenied(string returnUrl)
         {
-            var result = Protector.Protect("Hello");
-
-            var decrypted = Protector.Unprotect(result);
-
             return View();
         }
 
+        #endregion
+
+        #region Password reset actions
+
         /// <summary>
-        /// 
+        /// Action to return reset password view ( First step )
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -338,7 +346,7 @@ namespace DiplomaSolution.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Step 3
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -353,13 +361,16 @@ namespace DiplomaSolution.Controllers
             return View(new ResetPasswordConfirmationModel { UserId = userId, Token = token });
         }
 
+        /// <summary>
+        /// (Step 2)
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> ResetPasswordConfirmationPage(ResetPasswordModel model)
         {
-            // Add logic to send confirmation email with token
-
-            if (model != null) // check that email is confirmed
+            if (model != null)
             {
                 var user = await UserManager.FindByEmailAsync(model.EmailAddress);
 
@@ -371,7 +382,7 @@ namespace DiplomaSolution.Controllers
 
                         var url = Url.Action("ResetPassword", "Account", new { UserId = user.Id, Token = token }, Request.Scheme);
 
-                        var result = await SendEmailService.SendEmail(new ServiceEmail
+                        await SendEmailService.SendEmail(new ServiceEmail
                         {
                             EmailHtmlText = $"<strong>Hello, {user.UserName}, here is your password reset link - {url}</strong>",
                             EmailSubject = "Password reset",
@@ -381,23 +392,33 @@ namespace DiplomaSolution.Controllers
                             ToEmail = user.Email,
                             ToName = user.UserName
                         });
+
+                        Trace.WriteLine($"Email was send to customer {user.Id} - id");
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Plese confirm your email before this operation");
+                        ModelState.AddModelError("", DefaultResponseMessages.EmailIsNotVerified);
+
+                        Trace.WriteLine($"Email was not verified for customer {user.Id} - id");
                     }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Some error occured, please contact local admin");
+                    ModelState.AddModelError("", DefaultResponseMessages.CustomerIsNotFoundInDb);
+
+                    Trace.WriteLine($"Wrong login attempt for email {model.EmailAddress}");
                 }
+
+                return View("ResetPasswordConfirmationPage", model.EmailAddress);
             }
             else
             {
-                ModelState.AddModelError("", "Some error occured, please contact local admin");
+                ModelState.AddModelError("", DefaultResponseMessages.EmailIsNotProvided);
             }
 
-            return View("ResetPasswordConfirmationPage", model.EmailAddress);
+            return View();
         }
+
+        #endregion
     }
 }

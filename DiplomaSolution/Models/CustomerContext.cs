@@ -4,17 +4,28 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DiplomaSolution.Models
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class CustomerContext : IdentityDbContext<ServiceUser>
     {
         public DbSet<Customer> Customers { get; set; }
 
         public DbSet<FormFile> CustomerFiles { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="options"></param>
         public CustomerContext(DbContextOptions<CustomerContext> options) : base(options)
         {
             Database.Migrate();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

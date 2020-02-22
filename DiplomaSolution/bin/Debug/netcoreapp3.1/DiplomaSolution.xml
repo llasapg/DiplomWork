@@ -6,71 +6,71 @@
     <members>
         <member name="T:DiplomaSolution.Controllers.AccountController">
             <summary>
-            
+            Controller to perform actions with accounts ( Create / ChangePassword and etc... )
             </summary>
         </member>
         <member name="M:DiplomaSolution.Controllers.AccountController.#ctor(Microsoft.AspNetCore.Identity.SignInManager{DiplomaSolution.Models.ServiceUser},Microsoft.AspNetCore.Identity.UserManager{DiplomaSolution.Models.ServiceUser},DiplomaSolution.Services.Interfaces.ISendEmailService,Microsoft.AspNetCore.DataProtection.IDataProtectionProvider)">
             <summary>
-            
+            Basic construstor to perform DI
             </summary>
             <param name="signInManager"></param>
             <param name="userManager"></param>
         </member>
         <member name="M:DiplomaSolution.Controllers.AccountController.Login(DiplomaSolution.ViewModels.LoginViewModel,System.String)">
             <summary>
-            
+            Basic action to perform login for both external and our own customers
             </summary>
-            <param name="customer"></param>
-            <param name="returnUrl"></param>
+            <param name="customer">Customer model</param>
+            <param name="returnUrl">Optional - can perofrm redirect later to this url</param>
             <returns></returns>
         </member>
         <member name="M:DiplomaSolution.Controllers.AccountController.Login(System.String)">
             <summary>
-            
+            Get action to return login page ( currently is not fully inmplemented )
             </summary>
-            <param name="returnUrl"></param>
-            <returns></returns>
-        </member>
-        <member name="M:DiplomaSolution.Controllers.AccountController.ConfirmEmail(System.String,System.String)">
-            <summary>
-            
-            </summary>
-            <param name="userId"></param>
-            <param name="token"></param>
-            <returns></returns>
+            <param name="returnUrl">Optional - can perofrm redirect later to this url</param>
+            <returns>Login page</returns>
         </member>
         <member name="M:DiplomaSolution.Controllers.AccountController.ExternalLogIn(System.String,System.String)">
             <summary>
-            
+            Action to perform extermal provider login ( Google, Facebook and etc... )
             </summary>
-            <param name="provider"></param>
-            <param name="returnUrl"></param>
+            <param name="provider">Provider name</param>
+            <param name="returnUrl">Optional - can perofrm redirect later to this url</param>
             <returns></returns>
         </member>
         <member name="M:DiplomaSolution.Controllers.AccountController.ExternalLoginCallBack(System.String,System.String)">
             <summary>
-            
+            External login callback to perform login operations on our side if login was successful
             </summary>
-            <param name="returnUrl"></param>
-            <param name="remoteError"></param>
+            <param name="returnUrl">Optional - can perofrm redirect later to this url</param>
+            <param name="remoteError">Optional - can be null, if everything is okey while login on provider side</param>
             <returns></returns>
         </member>
         <member name="M:DiplomaSolution.Controllers.AccountController.Logout">
             <summary>
-            
+            Action to perdorm user logout ( delete cookies and clear User prop of basic controller class )
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DiplomaSolution.Controllers.AccountController.ConfirmEmail(System.String,System.String)">
+            <summary>
+            Action to perform email confirmation --> filed EmailConfirmed is changing to true
+            </summary>
+            <param name="userId">User id, to find it</param>
+            <param name="token">Generated token</param>
             <returns></returns>
         </member>
         <member name="M:DiplomaSolution.Controllers.AccountController.AccessDenied(System.String)">
             <summary>
-            
+            Access denied page
             </summary>
             <param name="returnUrl"></param>
             <returns></returns>
         </member>
         <member name="M:DiplomaSolution.Controllers.AccountController.ResetPasswordWithEmail">
             <summary>
-            
+            Action to return reset password view ( First step )
             </summary>
             <returns></returns>
         </member>
@@ -82,8 +82,15 @@
         </member>
         <member name="M:DiplomaSolution.Controllers.AccountController.ResetPassword(System.String,System.String)">
             <summary>
-            
+            Step 3
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DiplomaSolution.Controllers.AccountController.ResetPasswordConfirmationPage(DiplomaSolution.ViewModels.ResetPasswordModel)">
+            <summary>
+            (Step 2)
+            </summary>
+            <param name="model"></param>
             <returns></returns>
         </member>
         <member name="T:DiplomaSolution.Controllers.RegistrationController">
@@ -97,6 +104,23 @@
             </summary>
             <param name="customer"></param>
             <returns></returns>
+        </member>
+        <member name="T:DiplomaSolution.Models.CustomerContext">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DiplomaSolution.Models.CustomerContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{DiplomaSolution.Models.CustomerContext})">
+            <summary>
+            
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="M:DiplomaSolution.Models.CustomerContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="modelBuilder"></param>
         </member>
         <member name="T:DiplomaSolution.Security.EmailTokenOptions">
             <summary>

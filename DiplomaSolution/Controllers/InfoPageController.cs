@@ -10,7 +10,7 @@ namespace DiplomaSolution.Controllers
         }
 
         [HttpGet]
-        [Authorize(Policy = "ShitPolicy")]
+        [Authorize(Policy = "DefaultMainPolicy")]
         public IActionResult SupportPage()
         {
             return View();

@@ -20,6 +20,6 @@ namespace DiplomaSolution
                 logging.AddDebug();
                 logging.AddEventSourceLogger();
             })
-                .UseStartup<Startup>();
+            .UseStartup<Startup>();
     }
 }
