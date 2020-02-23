@@ -39,6 +39,7 @@
     <Folder Include="Helpers\Attributes\" />
     <Folder Include="Security\" />
     <Folder Include="Helpers\ErrorResponseMessages\" />
+    <Folder Include="Security\Policy\" />
   </ItemGroup>
 
   <ItemGroup>

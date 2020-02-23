@@ -69,6 +69,12 @@ namespace DiplomaSolution.Controllers
 
                     return View(viewModel);
                 }
+                else if (providedData.IsLockedOut)
+                {
+                    ModelState.AddModelError("", DefaultResponseMessages.AccountIsLockOut);
+
+                    return View(viewModel);
+                }
                 else if (providedData.Succeeded) // Check that customer has a verified email
                 {
                     if (userData.EmailConfirmed == false)
@@ -138,6 +144,7 @@ namespace DiplomaSolution.Controllers
         /// <param name="remoteError">Optional - can be null, if everything is okey while login on provider side</param>
         /// <returns></returns>
         [HttpPost]
+        [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> ExternalLoginCallBack(string returnUrl = null, string remoteError = null)
         {
@@ -178,7 +185,7 @@ namespace DiplomaSolution.Controllers
                     }
                     else
                     {
-                        if (!result.EmailConfirmed)
+                        if (!result.EmailConfirmed) // Check to verify that email is confirmed
                         {
                             var loginsData = await UserManager.GetLoginsAsync(result);
 
@@ -198,7 +205,7 @@ namespace DiplomaSolution.Controllers
 
                             if (loginReponse.Succeeded)
                             {
-                                return returnUrl == null ? Redirect(Url.Action("Index", "HomePage")) : Redirect(returnUrl);
+                                return returnUrl == null ? Redirect(Url.Action("AddPassword", "Account")) : Redirect(returnUrl);
                             }
                             else
                             {
@@ -206,7 +213,7 @@ namespace DiplomaSolution.Controllers
 
                                 await SignInManager.SignInAsync(result, false);
 
-                                return Redirect(Url.Action("Index", "HomePage"));
+                                return Redirect(Url.Action("AddPassword", "Account")); // redirect to add password action 
                             }
                         }
                     }
@@ -312,7 +319,7 @@ namespace DiplomaSolution.Controllers
         }
 
         /// <summary>
-        /// 
+        /// // todo ( add check, that model is correct ) 
         /// </summary>
         /// <returns></returns>
         [HttpPost]
@@ -418,6 +425,12 @@ namespace DiplomaSolution.Controllers
 
             return View();
         }
+
+        #endregion
+
+        #region Add password actions
+
+        
 
         #endregion
     }

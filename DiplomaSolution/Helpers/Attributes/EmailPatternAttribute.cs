@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace DiplomaSolution.Helpers.Attributes
 {
@@ -7,9 +6,14 @@ namespace DiplomaSolution.Helpers.Attributes
     {
         public string[] RigthTemplates { get; set; }
 
-        public override bool IsValid(object value)
+        /// <summary>
+        /// Overrided method to validate provided email ( if true --> email template is good )
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public override bool IsValid(object value) // Value - is our provided data
         {
-            var email = value.ToString().Split("@");
+            var email = value.ToString().Split("@"); // There we get 2 strings ( 1 - ... ,  2 - @gmail.com )
 
             foreach (var item in RigthTemplates)
             {
@@ -17,7 +21,7 @@ namespace DiplomaSolution.Helpers.Attributes
                     return true;
             }
 
-            ErrorMessage = $"Please try to use valid domain templates";
+            ErrorMessage = $"Please try to use valid domain templates"; // Property of ValidationAttribute
                 
             return false;
         }

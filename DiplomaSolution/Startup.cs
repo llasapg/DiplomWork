@@ -1,5 +1,4 @@
-﻿using System.Security.Claims;
-using DiplomaSolution.Extensions;
+﻿using DiplomaSolution.Extensions;
 using DiplomaSolution.Models;
 using DiplomaSolution.Security;
 using DiplomaSolution.Services.Classes;
@@ -16,15 +15,29 @@ using System;
 
 namespace DiplomaSolution
 {
+    /// <summary>
+    /// Basic class, what creates request handling pipeline and DI provider
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// Basic configuration prop what stores all provided configurations
+        /// </summary>
         public IConfiguration Configuration { get; set; }
 
+        /// <summary>
+        /// Ctop to get configurations
+        /// </summary>
+        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        /// <summary>
+        /// Basic Asp.net core DI method ( Reqister services there )
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
             #region DataBase stuff
@@ -38,8 +51,18 @@ namespace DiplomaSolution
 
             services.AddIdentity<ServiceUser, IdentityRole>(options =>
             {
+                #region Password options
                 options.Password.RequireNonAlphanumeric = false;
+                #endregion
+
+                #region Custom token providers
                 options.Tokens.EmailConfirmationTokenProvider = "CustomEmailConfirmationProvider";
+                #endregion
+
+                #region Lockout options
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(20);
+                options.Lockout.MaxFailedAccessAttempts = 3;
+                #endregion
             })
             .AddEntityFrameworkStores<CustomerContext>()
             .AddDefaultTokenProviders()
@@ -55,7 +78,10 @@ namespace DiplomaSolution
 
                 options.DefaultPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
 
-                options.AddPolicy("DefaultMainPolicy", policy => policy.AddRequirements(new DefaultRequirement()));
+                options.AddPolicy("DefaultMainPolicy", policy =>
+                {
+                    policy.AddRequirements(new DefaultRequirement());
+                });
             });
 
             #endregion
@@ -66,11 +92,13 @@ namespace DiplomaSolution
             {
                 googleOptions.ClientId = "105610985766-9mues2sn2uess0lcl7n51ns1aulil515.apps.googleusercontent.com";
                 googleOptions.ClientSecret = "ZZUIFTkPVqWLSVY7bXUApt4h";
+                googleOptions.RemoteAuthenticationTimeout = TimeSpan.FromHours(1);
             })
             .AddFacebook(facebookOpt =>
             {
                 facebookOpt.AppId = "125314042121210";
                 facebookOpt.AppSecret = "160e6d9646ace2f5ab2e979e8a437213";
+                facebookOpt.RemoteAuthenticationTimeout = TimeSpan.FromHours(1);
             });
 
             #endregion
@@ -90,7 +118,7 @@ namespace DiplomaSolution
 
             services.ConfigureApplicationCookie(options =>
             {
-                options.AccessDeniedPath = "Account/AccessDenied";
+                options.AccessDeniedPath = "/Account/AccessDenied";
             });
 
             services.Configure<DataProtectionTokenProviderOptions>(opt => // All token lifeSpan
@@ -106,6 +134,11 @@ namespace DiplomaSolution
             #endregion
         }
 
+        /// <summary>
+        /// Request handling pipeline
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

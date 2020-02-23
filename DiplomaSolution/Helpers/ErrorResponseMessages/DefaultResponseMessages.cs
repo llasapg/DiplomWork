@@ -7,5 +7,6 @@
         public static string CustomerIsNotFoundInDb { get; } = "Some error occured, please contact local admin";
         public static string ExternalLoginFailed { get; } = "Login failed, partner issue";
         public static string EmailIsNotProvided { get; } = "";
+        public static string AccountIsLockOut { get; set; } = "Ooops, your login tries ended, please wait 20 min and try again";
     }
 }

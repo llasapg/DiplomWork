@@ -76,7 +76,7 @@
         </member>
         <member name="M:DiplomaSolution.Controllers.AccountController.ResetPassword(DiplomaSolution.ViewModels.ResetPasswordConfirmationModel)">
             <summary>
-            
+            // todo ( add check, that model is correct ) 
             </summary>
             <returns></returns>
         </member>
@@ -95,14 +95,38 @@
         </member>
         <member name="T:DiplomaSolution.Controllers.RegistrationController">
             <summary>
-            This controller is used to create customer and apply to them roles
+            This controller is used to create customer and etc stuff...
             </summary>
+        </member>
+        <member name="M:DiplomaSolution.Controllers.RegistrationController.#ctor(Microsoft.Extensions.Logging.ILogger{DiplomaSolution.Controllers.RegistrationController},Microsoft.AspNetCore.Identity.UserManager{DiplomaSolution.Models.ServiceUser},Microsoft.AspNetCore.Identity.SignInManager{DiplomaSolution.Models.ServiceUser},Microsoft.AspNetCore.Identity.RoleManager{Microsoft.AspNetCore.Identity.IdentityRole},DiplomaSolution.Services.Interfaces.ISendEmailService)">
+            <summary>
+            Ctor to get all needed DI services
+            </summary>
+            <param name="logger"></param>
+            <param name="userManager"></param>
+            <param name="signInManager"></param>
+            <param name="roleManager"></param>
+            <param name="sendEmailService"></param>
         </member>
         <member name="M:DiplomaSolution.Controllers.RegistrationController.ConfirmationPage(DiplomaSolution.Models.Customer)">
             <summary>
             Add there a return url to proceed with the customers ...
             </summary>
             <param name="customer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DiplomaSolution.Controllers.RegistrationController.CheckIfWeHaveRole(System.String)">
+            <summary>
+            Method to verify, that we have needed role, before appling it to customer
+            </summary>
+            <param name="roleName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DiplomaSolution.Helpers.Attributes.EmailPatternAttribute.IsValid(System.Object)">
+            <summary>
+            Overrided method to validate provided email ( if true --> email template is good )
+            </summary>
+            <param name="value"></param>
             <returns></returns>
         </member>
         <member name="T:DiplomaSolution.Models.CustomerContext">
@@ -122,9 +146,32 @@
             </summary>
             <param name="modelBuilder"></param>
         </member>
+        <member name="T:DiplomaSolution.Program">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DiplomaSolution.Program.Main(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:DiplomaSolution.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
         <member name="T:DiplomaSolution.Security.EmailTokenOptions">
             <summary>
             Custom token provider options to specify token life-span
+            </summary>
+        </member>
+        <member name="T:DiplomaSolution.Security.DefaultHandler">
+            <summary>
+            Default handler to check if whe have needed claims
             </summary>
         </member>
         <member name="M:DiplomaSolution.Services.Classes.FileManagerService.LoadFileToTheServer(Microsoft.AspNetCore.Http.IFormFile)">
@@ -132,6 +179,35 @@
             Loads customer images to DB to deal with them in future
             </summary>
             <param name="file"></param>
+        </member>
+        <member name="T:DiplomaSolution.Startup">
+            <summary>
+            Basic class, what creates request handling pipeline and DI provider
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Startup.Configuration">
+            <summary>
+            Basic configuration prop what stores all provided configurations
+            </summary>
+        </member>
+        <member name="M:DiplomaSolution.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Ctop to get configurations
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:DiplomaSolution.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Basic Asp.net core DI method ( Reqister services there )
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:DiplomaSolution.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            Request handling pipeline
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
         </member>
     </members>
 </doc>

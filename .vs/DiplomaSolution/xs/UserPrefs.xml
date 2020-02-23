@@ -1,23 +1,16 @@
 ﻿<Properties StartupConfiguration="{EFFD6586-B9FD-4716-A086-1C5E9DE7A3D6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Startup.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Models/CustomerContext.cs">
     <Files>
-      <File FileName="DiplomaSolution/Helpers/Attributes/EmailPatternAttribute.cs" Line="24" Column="6" />
-      <File FileName="DiplomaSolution/Models/CustomerContext.cs" />
-      <File FileName="DiplomaSolution/Startup.cs" Line="58" Column="1" />
-      <File FileName="DiplomaSolution/Program.cs" />
-      <File FileName="DiplomaSolution/Controllers/AccountController.cs" Line="317" Column="32" />
-      <File FileName="DiplomaSolution/Security/EmailTokenOptions.cs" Line="10" Column="6" />
-      <File FileName="DiplomaSolution/Security/EmailTokenProvider.cs" Line="10" Column="100" />
-      <File FileName="DiplomaSolution/Views/Account/Login.cshtml" Line="14" Column="67" />
-      <File FileName="DiplomaSolution/Views/_ViewStart.cshtml" Line="2" Column="1" />
-      <File FileName="DiplomaSolution/Helpers/ErrorResponseMessages/DefaultResponseMessages.cs" Line="7" Column="52" />
-      <File FileName="DiplomaSolution/Controllers/RegistrationController.cs" Line="75" Column="60" />
-      <File FileName="DiplomaSolution/Security/DefaultHandler.cs" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Security/DefaultRequirement.cs" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Views/Account/ResetPasswordWithEmail.cshtml" Line="6" Column="91" />
-      <File FileName="DiplomaSolution/ViewModels/ResetPasswordModel.cs" Line="11" Column="18" />
-      <File FileName="DiplomaSolution/Views/Account/ResetPasswordConfirmationPage.cshtml" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Controllers/InfoPageController.cs" Line="9" Column="10" />
+      <File FileName="DiplomaSolution/Controllers/RegistrationController.cs" Line="129" Column="42" />
+      <File FileName="DiplomaSolution/Startup.cs" />
+      <File FileName="DiplomaSolution/Views/Registration/ConfirmationPage.cshtml" />
+      <File FileName="DiplomaSolution/Controllers/AccountController.cs" />
+      <File FileName="DiplomaSolution/Views/Account/Login.cshtml" />
+      <File FileName="DiplomaSolution/Controllers/ErrorController.cs" />
+      <File FileName="DiplomaSolution/Helpers/ErrorResponseMessages/DefaultResponseMessages.cs" />
+      <File FileName="DiplomaSolution/Models/CustomerContext.cs" Line="22" Column="32" />
+      <File FileName="DiplomaSolution/Models/ServiceUser.cs" />
+      <File FileName="DiplomaSolution/Migrations/CustomerContextModelSnapshot.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -29,24 +22,14 @@
                 <Node name="Attributes" expanded="True" />
                 <Node name="ErrorResponseMessages" expanded="True" />
               </Node>
-              <Node name="Models" expanded="True" />
-              <Node name="Security" expanded="True" />
-              <Node name="Services" expanded="True">
-                <Node name="Classes" expanded="True" />
-                <Node name="Interfaces" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="CustomerContext.cs" selected="True" />
               </Node>
               <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Account" expanded="True" />
-                <Node name="HomePage" expanded="True" />
                 <Node name="Registration" expanded="True" />
               </Node>
-              <Node name="wwwroot" expanded="True">
-                <Node name="css" expanded="True" />
-                <Node name="CustomersImages" expanded="True" />
-                <Node name="img" expanded="True" />
-              </Node>
-              <Node name="Startup.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -62,6 +45,7 @@
       <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Controllers/qi72zsh9.4kx~" relfile="DiplomaSolution/Controllers/qi72zsh9.4kx~" line="23" column="1" />
       <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Views/HomePage/e7jmknkk.a9f~" relfile="DiplomaSolution/Views/HomePage/e7jmknkk.a9f~" line="23" column="1" />
       <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Views/Account/w8g6obov.xs3~" relfile="DiplomaSolution/Views/Account/w8g6obov.xs3~" line="143" column="1" />
+      <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Controllers/RegistrationController.cs" relfile="DiplomaSolution/Controllers/RegistrationController.cs" line="128" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

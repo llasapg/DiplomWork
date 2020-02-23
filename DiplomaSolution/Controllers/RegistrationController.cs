@@ -11,17 +11,19 @@ using System.Diagnostics;
 namespace DiplomaSolution.Controllers
 {
     /// <summary>
-    /// This controller is used to create customer and apply to them roles
+    /// This controller is used to create customer and etc stuff...
     /// </summary>
     public class RegistrationController : Controller
     {
-        public ILogger<RegistrationController> Logger { get; set; }
-        public UserManager<ServiceUser> UserManager { get; set; }
-        public SignInManager<ServiceUser> SignInManager { get; set; }
-        public RoleManager<IdentityRole> RoleManager { get; set; }
-        public ISendEmailService SendEmailService { get; set; }
-
-        public RegistrationController(ILogger<RegistrationController> logger,UserManager<ServiceUser> userManager,SignInManager<ServiceUser> signInManager,RoleManager<IdentityRole> roleManager, ISendEmailService sendEmailService)
+        /// <summary>
+        /// Ctor to get all needed DI services
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="userManager"></param>
+        /// <param name="signInManager"></param>
+        /// <param name="roleManager"></param>
+        /// <param name="sendEmailService"></param>
+        public RegistrationController(ILogger<RegistrationController> logger, UserManager<ServiceUser> userManager, SignInManager<ServiceUser> signInManager, RoleManager<IdentityRole> roleManager, ISendEmailService sendEmailService)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -29,6 +31,16 @@ namespace DiplomaSolution.Controllers
             Logger = logger;
             SendEmailService = sendEmailService;
         }
+
+        #region DI services
+
+        private ILogger<RegistrationController> Logger { get; set; }
+        private UserManager<ServiceUser> UserManager { get; set; }
+        private SignInManager<ServiceUser> SignInManager { get; set; }
+        private RoleManager<IdentityRole> RoleManager { get; set; }
+        private ISendEmailService SendEmailService { get; set; }
+
+        #endregion
 
         /// <summary>
         /// Add there a return url to proceed with the customers ...
@@ -124,6 +136,13 @@ namespace DiplomaSolution.Controllers
             return View();
         }
 
+        #region Helpers
+
+        /// <summary>
+        /// Method to verify, that we have needed role, before appling it to customer
+        /// </summary>
+        /// <param name="roleName"></param>
+        /// <returns></returns>
         [NonAction]
         private bool CheckIfWeHaveRole(string roleName)
         {
@@ -138,5 +157,7 @@ namespace DiplomaSolution.Controllers
             }
             return false;
         }
+
+        #endregion
     }
 }
