@@ -1,16 +1,9 @@
 ﻿<Properties StartupConfiguration="{EFFD6586-B9FD-4716-A086-1C5E9DE7A3D6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Models/CustomerContext.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Views/HomePage/Index.cshtml">
     <Files>
-      <File FileName="DiplomaSolution/Controllers/RegistrationController.cs" Line="129" Column="42" />
-      <File FileName="DiplomaSolution/Startup.cs" />
-      <File FileName="DiplomaSolution/Views/Registration/ConfirmationPage.cshtml" />
-      <File FileName="DiplomaSolution/Controllers/AccountController.cs" />
-      <File FileName="DiplomaSolution/Views/Account/Login.cshtml" />
-      <File FileName="DiplomaSolution/Controllers/ErrorController.cs" />
-      <File FileName="DiplomaSolution/Helpers/ErrorResponseMessages/DefaultResponseMessages.cs" />
-      <File FileName="DiplomaSolution/Models/CustomerContext.cs" Line="22" Column="32" />
-      <File FileName="DiplomaSolution/Models/ServiceUser.cs" />
-      <File FileName="DiplomaSolution/Migrations/CustomerContextModelSnapshot.cs" />
+      <File FileName="DiplomaSolution/Startup.cs" Line="84" Column="53" />
+      <File FileName="DiplomaSolution/Controllers/AccountController.cs" Line="1" Column="1" />
+      <File FileName="DiplomaSolution/Views/HomePage/Index.cshtml" Line="19" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,16 +11,15 @@
           <Node name="DiplomaSolution" expanded="True">
             <Node name="DiplomaSolution" expanded="True">
               <Node name="Controllers" expanded="True" />
+              <Node name="Extensions" expanded="True" />
               <Node name="Helpers" expanded="True">
-                <Node name="Attributes" expanded="True" />
-                <Node name="ErrorResponseMessages" expanded="True" />
-              </Node>
-              <Node name="Models" expanded="True">
-                <Node name="CustomerContext.cs" selected="True" />
+                <Node name="Logging" expanded="True" />
               </Node>
               <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Account" expanded="True" />
+                <Node name="HomePage" expanded="True">
+                  <Node name="Index.cshtml" selected="True" />
+                </Node>
                 <Node name="Registration" expanded="True" />
               </Node>
             </Node>
@@ -40,13 +32,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.DiplomaSolution PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Views/HomePage/9t8b31t7.0mg~" relfile="DiplomaSolution/Views/HomePage/9t8b31t7.0mg~" line="11" column="1" />
-      <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Controllers/qi72zsh9.4kx~" relfile="DiplomaSolution/Controllers/qi72zsh9.4kx~" line="23" column="1" />
-      <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Views/HomePage/e7jmknkk.a9f~" relfile="DiplomaSolution/Views/HomePage/e7jmknkk.a9f~" line="23" column="1" />
-      <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Views/Account/w8g6obov.xs3~" relfile="DiplomaSolution/Views/Account/w8g6obov.xs3~" line="143" column="1" />
-      <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Controllers/RegistrationController.cs" relfile="DiplomaSolution/Controllers/RegistrationController.cs" line="128" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

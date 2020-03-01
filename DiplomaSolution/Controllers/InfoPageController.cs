@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System;
+using System.ComponentModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DiplomaSolution.Controllers
@@ -13,7 +15,9 @@ namespace DiplomaSolution.Controllers
         [Authorize(Policy = "DefaultMainPolicy")]
         public IActionResult SupportPage()
         {
-            return View();
+            var currentUser = HttpContext.User.Identity.Name;
+
+            return View(currentUser);
         }
     }
 }

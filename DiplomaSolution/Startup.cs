@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using System;
 
 namespace DiplomaSolution
@@ -24,14 +25,16 @@ namespace DiplomaSolution
         /// Basic configuration prop what stores all provided configurations
         /// </summary>
         public IConfiguration Configuration { get; set; }
+        public ILoggerFactory LoggerFactory { get; set; }
 
         /// <summary>
         /// Ctop to get configurations
         /// </summary>
         /// <param name="configuration"></param>
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, ILoggerFactory loggerFactory)
         {
             Configuration = configuration;
+            LoggerFactory = loggerFactory;
         }
 
         /// <summary>
@@ -51,7 +54,7 @@ namespace DiplomaSolution
 
             services.AddIdentity<ServiceUser, IdentityRole>(options =>
             {
-                #region Password options
+                #region Password options ( Service name is - PasswordValidator )
                 options.Password.RequireNonAlphanumeric = false;
                 #endregion
 
@@ -64,8 +67,8 @@ namespace DiplomaSolution
                 options.Lockout.MaxFailedAccessAttempts = 3;
                 #endregion
             })
-            .AddEntityFrameworkStores<CustomerContext>()
-            .AddDefaultTokenProviders()
+            .AddEntityFrameworkStores<CustomerContext>() // Adds UserStore and RoleStore to make awailable to UserManager and other services work with tables representation
+            .AddDefaultTokenProviders() // Adds default token providers
             .AddTokenProvider<Security.EmailTokenProvider<ServiceUser>>("CustomEmailConfirmationProvider");
 
             #endregion
@@ -88,6 +91,7 @@ namespace DiplomaSolution
 
             #region Authentication
 
+            // Currently we have this call in AddIdentity method, but we need to specify what provider exactly we want to add
             services.AddAuthentication().AddGoogle(googleOptions =>
             {
                 googleOptions.ClientId = "105610985766-9mues2sn2uess0lcl7n51ns1aulil515.apps.googleusercontent.com";
@@ -132,6 +136,12 @@ namespace DiplomaSolution
             });
 
             #endregion
+
+            #region Logging
+
+            LoggerFactory.AddFileLogger();
+
+            #endregion
         }
 
         /// <summary>
@@ -164,7 +174,7 @@ namespace DiplomaSolution
 
                 endp.AddVersioning();
 
-                endp.MapControllerRoute("default", "{Controller=HomePage}/{Action=Index}").RequireAuthorization();
+                endp.MapControllerRoute("default", "{Controller=HomePage}/{Action=Index}");
             });
         }
     }

@@ -4,6 +4,17 @@
         <name>DiplomaSolution</name>
     </assembly>
     <members>
+        <member name="T:DiplomaSolution.Controllers.AboutController">
+            <summary>
+            Controller to get info about web-site
+            </summary>
+        </member>
+        <member name="M:DiplomaSolution.Controllers.AboutController.GiveInfo">
+            <summary>
+            Method, that returns basic info pages
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:DiplomaSolution.Controllers.AccountController">
             <summary>
             Controller to perform actions with accounts ( Create / ChangePassword and etc... )
@@ -93,6 +104,53 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="T:DiplomaSolution.Controllers.ErrorController">
+            <summary>
+            Error handling controller ( handles exceptions and 400-599 error codes )
+            </summary>
+        </member>
+        <member name="M:DiplomaSolution.Controllers.ErrorController.StatusCodeErrorHandler(System.Int32)">
+            <summary>
+            Action to handle status codes between 400 and 599 ( currently no error handling stuff )
+            </summary>
+            <param name="statuscode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DiplomaSolution.Controllers.ErrorController.ExceptionHandler">
+            <summary>
+            In case of exception this route will be executed, so we can see error list 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DiplomaSolution.Controllers.HomePageController">
+            <summary>
+            Main page controller
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Controllers.HomePageController.FileManagerService">
+            <summary>
+            File manager service ( upload, etc.. )
+            </summary>
+        </member>
+        <member name="M:DiplomaSolution.Controllers.HomePageController.#ctor(DiplomaSolution.Services.Interfaces.IFileManagerService,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Service resolving
+            </summary>
+            <param name="service"></param>
+        </member>
+        <member name="M:DiplomaSolution.Controllers.HomePageController.Index">
+            <summary>
+            Action to return main page of the application
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DiplomaSolution.Controllers.HomePageController.Index(DiplomaSolution.Models.IndexViewData)">
+            <summary>
+            Action to upload the photo to web-site ( change flow, so photo will be pinned with selected user )
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
         <member name="T:DiplomaSolution.Controllers.RegistrationController">
             <summary>
             This controller is used to create customer and etc stuff...
@@ -115,11 +173,36 @@
             <param name="customer"></param>
             <returns></returns>
         </member>
+        <member name="M:DiplomaSolution.Controllers.RegistrationController.ConfirmPartnerRegister(System.String)">
+            <summary>
+            Action to confirm partner registration
+            </summary>
+            <param name="emailUrlConfirmation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DiplomaSolution.Controllers.RegistrationController.RegistrationForm">
+            <summary>
+            Action to return registration form
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:DiplomaSolution.Controllers.RegistrationController.CheckIfWeHaveRole(System.String)">
             <summary>
             Method to verify, that we have needed role, before appling it to customer
             </summary>
             <param name="roleName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DiplomaSolution.Extensions.FileLoggerExtension">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DiplomaSolution.Extensions.FileLoggerExtension.AddFileLogger(Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            
+            </summary>
+            <param name="factory"></param>
             <returns></returns>
         </member>
         <member name="M:DiplomaSolution.Helpers.Attributes.EmailPatternAttribute.IsValid(System.Object)">
@@ -148,18 +231,18 @@
         </member>
         <member name="T:DiplomaSolution.Program">
             <summary>
-            
+            Class to perform configuration and build of the web-host
             </summary>
         </member>
         <member name="M:DiplomaSolution.Program.Main(System.String[])">
             <summary>
-            
+            entery point in the application ( app starts as console app ) --> we have class program and method main
             </summary>
             <param name="args"></param>
         </member>
         <member name="M:DiplomaSolution.Program.CreateWebHostBuilder(System.String[])">
             <summary>
-            
+            Custom method to return configured web-host ( IWebHost ) instanse
             </summary>
             <param name="args"></param>
             <returns></returns>
@@ -190,7 +273,7 @@
             Basic configuration prop what stores all provided configurations
             </summary>
         </member>
-        <member name="M:DiplomaSolution.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+        <member name="M:DiplomaSolution.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILoggerFactory)">
             <summary>
             Ctop to get configurations
             </summary>

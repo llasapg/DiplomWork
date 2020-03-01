@@ -40,6 +40,7 @@
     <Folder Include="Security\" />
     <Folder Include="Helpers\ErrorResponseMessages\" />
     <Folder Include="Security\Policy\" />
+    <Folder Include="Helpers\Logging\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -74,6 +75,7 @@
     <Content Remove="wwwroot\css\mainStyles" />
     <Content Remove="wwwroot\css\mainStyles.css" />
     <Content Remove="wwwroot\CustomersImagescover3.jpg" />
+    <Content Remove="wwwroot\CustomersImages\iOS-11-Wallpaper-576x1024.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="wwwroot\img\AccountImage.png">

@@ -14,8 +14,8 @@
         <div class="header_item_button"><a asp-controller="HomePage" asp-action="Index">Home</a></div>
         <div class="header_item_button"><a asp-controller="About" asp-action="GiveInfo">About</a></div>
         <div class="header_item_button"><a asp-controller="InfoPage" asp-action="SupportPage">Contact</a></div>
-    </div>
-    @if (signInManager.IsSignedIn(User) && (await service.AuthorizeAsync(User, "DefaultUserPolicy")).Succeeded)
+    </div> <!-- NavBar menu -->
+    @if (signInManager.IsSignedIn(User) && (await service.AuthorizeAsync(User, "DefaultMainPolicy")).Succeeded)
     {
         <div class="header_section">
                 <div class="header_item_button"><a>@User.Identity.Name</a></div>
@@ -30,7 +30,7 @@
         </div>
     }
 </div>
-<div class="mainContent">
+<div class="mainContent"> <!-- Upload photo boxes -->
     <div Id="InputImageBlock">
         <div class="OutPutImage">
             @if (Model != null)
@@ -43,8 +43,8 @@
         </div>
         <form method="post" asp-controller="HomePage" asp-action="Index" enctype="multipart/form-data">
             <input type="file" asp-for="FormFileData" />
-            <input type="submit" name="Загрузить" />
-        </form>
+            <button name="UploadPhoto" type="submit">Upload photo</button>
+        </form> <!-- Send file data to the HomePage controller ( Action - Index ) -->
     </div>
     <div id="ConfigureImageBlock">
         <dl>

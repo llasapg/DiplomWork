@@ -16,6 +16,8 @@ namespace DiplomaSolution.Middlewares
         public async Task InvokeAsync(HttpContext context)
         {
             await context.Response.WriteAsync($"Current version is - {VERSION}");
+
+            await RequestDelegate(context);
         }
     }
 }
