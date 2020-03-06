@@ -28,7 +28,7 @@ namespace DiplomaSolution.Controllers
 
             ViewBag.OP = errorData.OriginalPath;
 
-            return View("ErrorHandler", statuscode);
+            return View("ErrorHandler", statuscode); // we can change this view to dynamic one ( so the page will be generated according to the response statusCode )
         }
 
         //todo rewrite this shit

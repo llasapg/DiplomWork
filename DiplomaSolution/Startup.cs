@@ -1,4 +1,5 @@
 ﻿using DiplomaSolution.Extensions;
+using DiplomaSolution.Middlewares;
 using DiplomaSolution.Models;
 using DiplomaSolution.Security;
 using DiplomaSolution.Services.Classes;
@@ -156,11 +157,11 @@ namespace DiplomaSolution
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseStaticFiles(); // To increase performance we should alloocate this is the begining of the pipeline
-
             app.UseExceptionHandler("/Error/ExceptionHandler");
 
             app.UseStatusCodePagesWithReExecute("/Error/{0}");
+
+            app.UseStaticFiles(); // To increase performance we should alloocate this is the begining of the pipeline
 
             app.UseRouting(); // its a endpoint middleware, which desides where this request will be handled + can add some data ( meta ) and etc...
 

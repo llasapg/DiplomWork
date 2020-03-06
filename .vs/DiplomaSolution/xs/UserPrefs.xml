@@ -1,27 +1,23 @@
 ﻿<Properties StartupConfiguration="{EFFD6586-B9FD-4716-A086-1C5E9DE7A3D6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Views/HomePage/Index.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Controllers/RegistrationController.cs">
     <Files>
-      <File FileName="DiplomaSolution/Startup.cs" Line="84" Column="53" />
-      <File FileName="DiplomaSolution/Controllers/AccountController.cs" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Views/HomePage/Index.cshtml" Line="19" Column="6" />
+      <File FileName="DiplomaSolution/Startup.cs" Line="174" Column="56" />
+      <File FileName="DiplomaSolution/Controllers/ErrorController.cs" Line="31" Column="33" />
+      <File FileName="DiplomaSolution/Middlewares/VersionMiddleware.cs" Line="14" Column="10" />
+      <File FileName="DiplomaSolution/Controllers/AboutController.cs" Line="16" Column="25" />
+      <File FileName="DiplomaSolution/Controllers/InfoPageController.cs" Line="20" Column="12" />
+      <File FileName="DiplomaSolution/Controllers/RegistrationController.cs" Line="57" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="DiplomaSolution" expanded="True">
             <Node name="DiplomaSolution" expanded="True">
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="RegistrationController.cs" selected="True" />
+              </Node>
               <Node name="Extensions" expanded="True" />
-              <Node name="Helpers" expanded="True">
-                <Node name="Logging" expanded="True" />
-              </Node>
-              <Node name="ViewModels" expanded="True" />
-              <Node name="Views" expanded="True">
-                <Node name="HomePage" expanded="True">
-                  <Node name="Index.cshtml" selected="True" />
-                </Node>
-                <Node name="Registration" expanded="True" />
-              </Node>
+              <Node name="Middlewares" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -32,7 +28,10 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.DiplomaSolution PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Middlewares/mr0i02j8.kj1~" relfile="DiplomaSolution/Middlewares/mr0i02j8.kj1~" line="18" column="1" />
+      <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Controllers/InfoPageController.cs" relfile="DiplomaSolution/Controllers/InfoPageController.cs" line="22" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>
