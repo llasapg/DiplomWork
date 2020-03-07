@@ -212,6 +212,13 @@
             <param name="value"></param>
             <returns></returns>
         </member>
+        <member name="M:DiplomaSolution.Middlewares.VersionMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            todo - add some request features to show time or etc...
+            </summary>
+            <param name="context"></param>
+            <returns></returns>
+        </member>
         <member name="T:DiplomaSolution.Models.CustomerContext">
             <summary>
             
@@ -257,11 +264,38 @@
             Default handler to check if whe have needed claims
             </summary>
         </member>
+        <member name="M:DiplomaSolution.Services.Classes.AccountService.#ctor">
+            <summary>
+            DI container resolving constractor
+            </summary>
+        </member>
+        <member name="M:DiplomaSolution.Services.Classes.AccountService.LoginCustomer(DiplomaSolution.ViewModels.LoginViewModel,System.String)">
+            <summary>
+            Main method to perform login of the customer
+            </summary>
+            <param name="customer"></param>
+            <param name="returnUrl"></param>
+        </member>
         <member name="M:DiplomaSolution.Services.Classes.FileManagerService.LoadFileToTheServer(Microsoft.AspNetCore.Http.IFormFile)">
             <summary>
             Loads customer images to DB to deal with them in future
             </summary>
             <param name="file"></param>
+        </member>
+        <member name="T:DiplomaSolution.Services.Classes.RegistrationService">
+            <summary>
+            Service for registration customer
+            </summary>
+        </member>
+        <member name="M:DiplomaSolution.Services.Interfaces.IAccountService.LoginCustomer(DiplomaSolution.ViewModels.LoginViewModel,System.String)">
+            <summary>
+            Main method to perform customer login in our system
+            </summary>
+        </member>
+        <member name="T:DiplomaSolution.Services.Interfaces.IRegistrationService">
+            <summary>
+            Service with logic with registration customers
+            </summary>
         </member>
         <member name="T:DiplomaSolution.Startup">
             <summary>

@@ -1,5 +1,4 @@
 ﻿using DiplomaSolution.Extensions;
-using DiplomaSolution.Middlewares;
 using DiplomaSolution.Models;
 using DiplomaSolution.Security;
 using DiplomaSolution.Services.Classes;
@@ -116,7 +115,7 @@ namespace DiplomaSolution
             #endregion
 
             #region Custom servises injection and configuring
-
+            //todo - add needed services to perform account registration
             services.AddTransient<IFileManagerService, FileManagerService>();
             services.AddTransient<ISendEmailService, SendGridEmailSender>();
             services.AddTransient<IAuthorizationHandler, DefaultHandler>();

@@ -1,10 +1,14 @@
-﻿using System;
+﻿using System.Threading.Tasks;
+using DiplomaSolution.ViewModels;
+using Microsoft.AspNetCore.Mvc;
+
 namespace DiplomaSolution.Services.Interfaces
 {
-    public class IAccountService
+    public interface IAccountService
     {
-        public IAccountService()
-        {
-        }
+        /// <summary>
+        /// Main method to perform customer login in our system
+        /// </summary>
+        Task<IActionResult> LoginCustomer(LoginViewModel customer, string returnUrl = null);
     }
 }

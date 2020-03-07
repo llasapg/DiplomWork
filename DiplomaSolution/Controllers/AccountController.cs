@@ -9,7 +9,7 @@ using DiplomaSolution.Services.Interfaces;
 using Microsoft.AspNetCore.DataProtection;
 using DiplomaSolution.Helpers.ErrorResponseMessages;
 using System.Diagnostics;
-
+//todo - Remove logic to the needed services
 namespace DiplomaSolution.Controllers
 {
     /// <summary>
@@ -37,7 +37,7 @@ namespace DiplomaSolution.Controllers
         private UserManager<ServiceUser> UserManager { get; set; }
         private ISendEmailService SendEmailService { get; set; }
         private IDataProtectionProvider DataProtectionProvider { get; set; }
-        private IDataProtector Protector { get; set; }
+        private IDataProtector Protector { get; set; } //todo - use this stuff
 
         #endregion
 

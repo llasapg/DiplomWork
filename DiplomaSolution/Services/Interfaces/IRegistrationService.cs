@@ -1,7 +1,10 @@
-﻿using System;
-namespace DiplomaSolution.Services.Interfaces
+﻿namespace DiplomaSolution.Services.Interfaces
 {
+    /// <summary>
+    /// Service with logic with registration customers
+    /// </summary>
     public interface IRegistrationService
     {
+
     }
 }
