@@ -20,7 +20,7 @@
             Controller to perform actions with accounts ( Create / ChangePassword and etc... )
             </summary>
         </member>
-        <member name="M:DiplomaSolution.Controllers.AccountController.#ctor(Microsoft.AspNetCore.Identity.SignInManager{DiplomaSolution.Models.ServiceUser},Microsoft.AspNetCore.Identity.UserManager{DiplomaSolution.Models.ServiceUser},DiplomaSolution.Services.Interfaces.ISendEmailService,Microsoft.AspNetCore.DataProtection.IDataProtectionProvider)">
+        <member name="M:DiplomaSolution.Controllers.AccountController.#ctor(Microsoft.AspNetCore.Identity.SignInManager{DiplomaSolution.Models.ServiceUser},Microsoft.AspNetCore.Identity.UserManager{DiplomaSolution.Models.ServiceUser},DiplomaSolution.Services.Interfaces.ISendEmailService,Microsoft.AspNetCore.DataProtection.IDataProtectionProvider,DiplomaSolution.Services.Interfaces.IAccountService)">
             <summary>
             Basic construstor to perform DI
             </summary>
@@ -236,6 +236,31 @@
             </summary>
             <param name="modelBuilder"></param>
         </member>
+        <member name="T:DiplomaSolution.Models.AccountResponseCheckData">
+            <summary>
+            General response model for services that provide some operations with account
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Models.AccountResponseCheckData.ValidationErrors">
+            <summary>
+            List with returned validation errors in case of unvalid validation
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Models.AccountResponseCheckData.StatusCode">
+            <summary>
+            Provided status code by service ( 200 - OK, 30. - redirect, etc... )
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Models.AccountResponseCheckData.ResponseData">
+            <summary>
+            Response data to next redirect, or to provide viewModel
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Models.AccountResponseCheckData.RedirectUrl">
+            <summary>
+            Can be null in case of no redirect need ( if 300 status code )
+            </summary>
+        </member>
         <member name="T:DiplomaSolution.Program">
             <summary>
             Class to perform configuration and build of the web-host
@@ -264,9 +289,34 @@
             Default handler to check if whe have needed claims
             </summary>
         </member>
-        <member name="M:DiplomaSolution.Services.Classes.AccountService.#ctor">
+        <member name="P:DiplomaSolution.Services.Classes.AccountService.SignInManager">
             <summary>
-            DI container resolving constractor
+            Main service from Identity to perform signIn of the user
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Services.Classes.AccountService.UserManager">
+            <summary>
+            Main service from Identity to perform user register / remove / verification and etc...
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Services.Classes.AccountService.SendEmailService">
+            <summary>
+            Custom service to perform email sending using SendGrind functional
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Services.Classes.AccountService.DataProtectionProvider">
+            <summary>
+            System interface for security purpose
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Services.Classes.AccountService.Protector">
+            <summary>
+            Data protector to hide request data provided in query string
+            </summary>
+        </member>
+        <member name="M:DiplomaSolution.Services.Classes.AccountService.#ctor(Microsoft.AspNetCore.Identity.SignInManager{DiplomaSolution.Models.ServiceUser},Microsoft.AspNetCore.Identity.UserManager{DiplomaSolution.Models.ServiceUser},DiplomaSolution.Services.Interfaces.ISendEmailService,Microsoft.AspNetCore.DataProtection.IDataProtectionProvider)">
+            <summary>
+            Basic construstor to perform DI
             </summary>
         </member>
         <member name="M:DiplomaSolution.Services.Classes.AccountService.LoginCustomer(DiplomaSolution.ViewModels.LoginViewModel,System.String)">
@@ -275,6 +325,14 @@
             </summary>
             <param name="customer"></param>
             <param name="returnUrl"></param>
+        </member>
+        <member name="M:DiplomaSolution.Services.Classes.AccountService.ExternalLoginCallBack(System.String,System.String)">
+            <summary>
+            Method to perform login of the external customer
+            </summary>
+            <param name="returnUrl"></param>
+            <param name="remoteError"></param>
+            <returns></returns>
         </member>
         <member name="M:DiplomaSolution.Services.Classes.FileManagerService.LoadFileToTheServer(Microsoft.AspNetCore.Http.IFormFile)">
             <summary>
@@ -291,6 +349,14 @@
             <summary>
             Main method to perform customer login in our system
             </summary>
+        </member>
+        <member name="M:DiplomaSolution.Services.Interfaces.IAccountService.ExternalLoginCallBack(System.String,System.String)">
+            <summary>
+            Callback method to login customer in case if he decided to login usin external provider
+            </summary>
+            <param name="returnUrl"></param>
+            <param name="remoteError"></param>
+            <returns></returns>
         </member>
         <member name="T:DiplomaSolution.Services.Interfaces.IRegistrationService">
             <summary>

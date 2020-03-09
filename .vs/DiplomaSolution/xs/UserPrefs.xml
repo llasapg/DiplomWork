@@ -1,11 +1,9 @@
 ﻿<Properties StartupConfiguration="{EFFD6586-B9FD-4716-A086-1C5E9DE7A3D6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Services/Classes/AccountService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Startup.cs">
     <Files>
-      <File FileName="DiplomaSolution/Services/Classes/AccountService.cs" Line="19" Column="43" />
-      <File FileName="DiplomaSolution/Services/Interfaces/IAccountService.cs" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Controllers/InfoPageController.cs" Line="31" Column="2" />
-      <File FileName="DiplomaSolution/Services/Classes/FileManagerService.cs" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Controllers/AccountController.cs" Line="32" Column="10" />
+      <File FileName="DiplomaSolution/Services/Classes/AccountService.cs" Line="123" Column="1" />
+      <File FileName="DiplomaSolution/Controllers/AccountController.cs" Line="149" Column="1" />
+      <File FileName="DiplomaSolution/Startup.cs" Line="49" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,14 +12,21 @@
             <Node name="DiplomaSolution" expanded="True">
               <Node name="Controllers" expanded="True" />
               <Node name="Extensions" expanded="True" />
+              <Node name="Helpers" expanded="True">
+                <Node name="ErrorResponseMessages" expanded="True" />
+              </Node>
               <Node name="Middlewares" expanded="True" />
+              <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True">
-                <Node name="Classes" expanded="True">
-                  <Node name="AccountService.cs" selected="True" />
-                </Node>
+                <Node name="Classes" expanded="True" />
                 <Node name="Interfaces" expanded="True" />
               </Node>
+              <Node name="Views" expanded="True">
+                <Node name="Account" expanded="True" />
+                <Node name="Registration" expanded="True" />
+              </Node>
               <Node name="wwwroot" expanded="True" />
+              <Node name="Startup.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -34,6 +39,7 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Middlewares/mr0i02j8.kj1~" relfile="DiplomaSolution/Middlewares/mr0i02j8.kj1~" line="18" column="1" />
+      <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Controllers/AccountController.cs" relfile="DiplomaSolution/Controllers/AccountController.cs" line="136" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

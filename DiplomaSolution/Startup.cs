@@ -63,8 +63,8 @@ namespace DiplomaSolution
                 #endregion
 
                 #region Lockout options
-                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(20);
-                options.Lockout.MaxFailedAccessAttempts = 3;
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);
+                options.Lockout.MaxFailedAccessAttempts = 13;
                 #endregion
             })
             .AddEntityFrameworkStores<CustomerContext>() // Adds UserStore and RoleStore to make awailable to UserManager and other services work with tables representation
@@ -115,10 +115,11 @@ namespace DiplomaSolution
             #endregion
 
             #region Custom servises injection and configuring
-            //todo - add needed services to perform account registration
             services.AddTransient<IFileManagerService, FileManagerService>();
             services.AddTransient<ISendEmailService, SendGridEmailSender>();
             services.AddTransient<IAuthorizationHandler, DefaultHandler>();
+            services.AddTransient<IAccountService, AccountService>();
+            services.AddTransient<IRegistrationService, RegistrationService>();
 
             services.ConfigureApplicationCookie(options =>
             {

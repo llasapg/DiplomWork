@@ -99,8 +99,6 @@ namespace DiplomaSolution.Controllers
                             EmailText = $"Hello there! Thank you for registering, please confirm your email using this link : {emailUrlConfirmation}",
                         });
 
-                        Trace.WriteLine($"SendGrid email send response - {response.Body}");
-
                         return View("ConfirmationPage", currentUser.UserName);
                     }
                     else

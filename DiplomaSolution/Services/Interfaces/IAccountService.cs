@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
+using DiplomaSolution.Models;
 using DiplomaSolution.ViewModels;
-using Microsoft.AspNetCore.Mvc;
 
 namespace DiplomaSolution.Services.Interfaces
 {
@@ -9,6 +9,14 @@ namespace DiplomaSolution.Services.Interfaces
         /// <summary>
         /// Main method to perform customer login in our system
         /// </summary>
-        Task<IActionResult> LoginCustomer(LoginViewModel customer, string returnUrl = null);
+        Task<AccountResponseCheckData> LoginCustomer(LoginViewModel customer, string returnUrl = null);
+
+        /// <summary>
+        /// Callback method to login customer in case if he decided to login usin external provider
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <param name="remoteError"></param>
+        /// <returns></returns>
+        Task<AccountResponseCheckData> ExternalLoginCallBack(string returnUrl = null, string remoteError = null);
     }
 }

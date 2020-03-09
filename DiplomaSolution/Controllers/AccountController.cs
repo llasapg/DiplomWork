@@ -4,12 +4,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using DiplomaSolution.ViewModels;
-using System.Security.Claims;
 using DiplomaSolution.Services.Interfaces;
 using Microsoft.AspNetCore.DataProtection;
 using DiplomaSolution.Helpers.ErrorResponseMessages;
 using System.Diagnostics;
-//todo - Remove logic to the needed services
+using System.Linq;
+
 namespace DiplomaSolution.Controllers
 {
     /// <summary>
@@ -22,13 +22,14 @@ namespace DiplomaSolution.Controllers
         /// </summary>
         /// <param name="signInManager"></param>
         /// <param name="userManager"></param>
-        public AccountController(SignInManager<ServiceUser> signInManager, UserManager<ServiceUser> userManager, ISendEmailService sendEmailService, IDataProtectionProvider dataProtecttionProvider)
+        public AccountController(SignInManager<ServiceUser> signInManager, UserManager<ServiceUser> userManager, ISendEmailService sendEmailService, IDataProtectionProvider dataProtecttionProvider, IAccountService accountService)
         {
             SignInManager = signInManager;
             UserManager = userManager;
             SendEmailService = sendEmailService;
             DataProtectionProvider = dataProtecttionProvider;
             Protector = DataProtectionProvider.CreateProtector("DataProtection");
+            AccountService = accountService;
         }
 
         #region DI services
@@ -37,7 +38,8 @@ namespace DiplomaSolution.Controllers
         private UserManager<ServiceUser> UserManager { get; set; }
         private ISendEmailService SendEmailService { get; set; }
         private IDataProtectionProvider DataProtectionProvider { get; set; }
-        private IDataProtector Protector { get; set; } //todo - use this stuff
+        private IDataProtector Protector { get; set; }
+        private IAccountService AccountService { get; set; }
 
         #endregion
 
@@ -57,49 +59,23 @@ namespace DiplomaSolution.Controllers
 
             var viewModel = new LoginViewModel { ReturnUrl = returnUrl, ListOfProviders = providers };
 
-            var userData = await UserManager.FindByEmailAsync(customer.EmailAddress);
+            var loginResponse = await AccountService.LoginCustomer(customer, returnUrl);
 
-            if (userData != null)
+            if(loginResponse.StatusCode == 404) // Add email and password removing in case if its wrong
             {
-                var providedData = await SignInManager.CheckPasswordSignInAsync(userData, customer.Password, true);
-
-                if (providedData.ToString() == "Failed") // If Failed --> wrong password and login combination
+                foreach (var item in loginResponse.ValidationErrors)
                 {
-                    ModelState.AddModelError("", DefaultResponseMessages.WrongPasswordAndEmailCombination);
-
-                    return View(viewModel);
-                }
-                else if (providedData.IsLockedOut)
-                {
-                    ModelState.AddModelError("", DefaultResponseMessages.AccountIsLockOut);
-
-                    return View(viewModel);
-                }
-                else if (providedData.Succeeded) // Check that customer has a verified email
-                {
-                    if (userData.EmailConfirmed == false)
-                    {
-                        ModelState.AddModelError("", DefaultResponseMessages.EmailIsNotVerified);
-
-                        return View(viewModel);
-                    }
-                    else
-                    {
-                        var loginResponse = await SignInManager.PasswordSignInAsync(userData, customer.Password, false, true);
-
-                        if (loginResponse.Succeeded && returnUrl != null)
-                        {
-                            return Redirect(returnUrl);
-                        }
-                        else if(loginResponse.Succeeded)
-                        {
-                            return RedirectToAction("Index", "HomePage");
-                        }
-                    }
+                    ModelState.AddModelError("", item);
                 }
             }
-
-            ModelState.AddModelError("", DefaultResponseMessages.CustomerIsNotFoundInDb);
+            else if(loginResponse.StatusCode == 300)
+            {
+                return Redirect(returnUrl);
+            }
+            else // 200 status code --> redirect to Home page with cookies created and stored in browser
+            {
+                return Redirect(Url.Action("Index", "HomePage"));
+            }
 
             return View(viewModel);
         }
@@ -150,87 +126,30 @@ namespace DiplomaSolution.Controllers
         {
             if (remoteError == null)
             {
-                var accountDetailsFromProvider = await SignInManager.GetExternalLoginInfoAsync();
+                var loginResponse = await AccountService.ExternalLoginCallBack(returnUrl, remoteError);
 
-                if (accountDetailsFromProvider != null)
+                if(loginResponse.StatusCode == 300 && loginResponse.ValidationErrors.Count == 0)
                 {
-                    // Search for the customer in our db
-
-                    var result = await UserManager.FindByEmailAsync(accountDetailsFromProvider.Principal.FindFirstValue(ClaimTypes.Email));
-
-                    if (result == null) // new account
+                    return Redirect(loginResponse.RedirectUrl);
+                }
+                else if(loginResponse.StatusCode == 200 && loginResponse.ValidationErrors.Count == 0)
+                {
+                    return Redirect(loginResponse.RedirectUrl);
+                }
+                else if(loginResponse.StatusCode == 404 && loginResponse.ValidationErrors.Count > 0)
+                {
+                    foreach (var item in loginResponse.ValidationErrors) // load all provided errors
                     {
-                        var serviceUser = new ServiceUser
-                        {
-                            Email = accountDetailsFromProvider.Principal.FindFirstValue(ClaimTypes.Email),
-                            UserName = accountDetailsFromProvider.Principal.FindFirstValue(ClaimTypes.GivenName)
-                        };
-
-                        var userResponse = await UserManager.CreateAsync(serviceUser);
-
-                        await UserManager.AddClaimAsync(serviceUser, new Claim("UploadPhoto", "true"));
-
-                        await UserManager.AddToRoleAsync(serviceUser, "User");
-
-                        if (userResponse.Succeeded)
-                        {
-                            await UserManager.AddLoginAsync(serviceUser, accountDetailsFromProvider); // Creates point in AspNetUserLogins
-
-                            var token = await UserManager.GenerateEmailConfirmationTokenAsync(serviceUser);
-
-                            var emailUrlConfirmation = Url.Action("ConfirmEmail", "Account", new { UserId = serviceUser.Id, Token = token }, Request.Scheme);
-
-                            return RedirectToAction("ConfirmPartnerRegister", "Registration", new { EmailUrlConfirmation = emailUrlConfirmation });
-                        }
-                    }
-                    else
-                    {
-                        if (!result.EmailConfirmed) // Check to verify that email is confirmed
-                        {
-                            var loginsData = await UserManager.GetLoginsAsync(result);
-
-                            if (loginsData == null)
-                            {
-                                await UserManager.AddLoginAsync(result, accountDetailsFromProvider);
-                            }
-                            var token = await UserManager.GenerateEmailConfirmationTokenAsync(result);
-
-                            var emailUrlConfirmation = Url.Action("ConfirmEmail", "Account", new { UserId = result.Id, Token = token }, Request.Scheme);
-
-                            return RedirectToAction("ConfirmPartnerRegister", "Registration", new { EmailUrlConfirmation = emailUrlConfirmation });
-                        }
-                        else
-                        {
-                            var loginReponse = await SignInManager.ExternalLoginSignInAsync(accountDetailsFromProvider.LoginProvider, accountDetailsFromProvider.ProviderKey, false);
-
-                            if (loginReponse.Succeeded)
-                            {
-                                return returnUrl == null ? Redirect(Url.Action("AddPassword", "Account")) : Redirect(returnUrl);
-                            }
-                            else
-                            {
-                                await UserManager.AddLoginAsync(result, accountDetailsFromProvider); //no data in table aspnetuserlogins --> we should add it 
-
-                                await SignInManager.SignInAsync(result, false);
-
-                                return Redirect(Url.Action("AddPassword", "Account")); // redirect to add password action 
-                            }
-                        }
+                        ModelState.AddModelError("", item);
                     }
                 }
-                else
-                {
-                    ModelState.AddModelError("", DefaultResponseMessages.ExternalLoginFailed);
-                }
-            }
-            else
-            {
-                ModelState.AddModelError("", DefaultResponseMessages.ExternalLoginFailed);
-
-                return Redirect(Url.Action("Login", "Account"));
             }
 
-            return Redirect(Url.Action("Login", "Account"));
+            var providers = await SignInManager.GetExternalAuthenticationSchemesAsync();
+
+            var viewModel = new LoginViewModel { ReturnUrl = returnUrl, ListOfProviders = providers };
+
+            return View("Login", viewModel);
         }
 
         /// <summary>
