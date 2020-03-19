@@ -87,7 +87,7 @@
         </member>
         <member name="M:DiplomaSolution.Controllers.AccountController.ResetPassword(DiplomaSolution.ViewModels.ResetPasswordConfirmationModel)">
             <summary>
-            // todo ( add check, that model is correct ) 
+            Reset password action
             </summary>
             <returns></returns>
         </member>
@@ -156,15 +156,10 @@
             This controller is used to create customer and etc stuff...
             </summary>
         </member>
-        <member name="M:DiplomaSolution.Controllers.RegistrationController.#ctor(Microsoft.Extensions.Logging.ILogger{DiplomaSolution.Controllers.RegistrationController},Microsoft.AspNetCore.Identity.UserManager{DiplomaSolution.Models.ServiceUser},Microsoft.AspNetCore.Identity.SignInManager{DiplomaSolution.Models.ServiceUser},Microsoft.AspNetCore.Identity.RoleManager{Microsoft.AspNetCore.Identity.IdentityRole},DiplomaSolution.Services.Interfaces.ISendEmailService)">
+        <member name="M:DiplomaSolution.Controllers.RegistrationController.#ctor(Microsoft.Extensions.Logging.ILogger{DiplomaSolution.Controllers.RegistrationController},DiplomaSolution.Services.Interfaces.IRegistrationService)">
             <summary>
             Ctor to get all needed DI services
             </summary>
-            <param name="logger"></param>
-            <param name="userManager"></param>
-            <param name="signInManager"></param>
-            <param name="roleManager"></param>
-            <param name="sendEmailService"></param>
         </member>
         <member name="M:DiplomaSolution.Controllers.RegistrationController.ConfirmationPage(DiplomaSolution.Models.Customer)">
             <summary>
@@ -184,13 +179,6 @@
             <summary>
             Action to return registration form
             </summary>
-            <returns></returns>
-        </member>
-        <member name="M:DiplomaSolution.Controllers.RegistrationController.CheckIfWeHaveRole(System.String)">
-            <summary>
-            Method to verify, that we have needed role, before appling it to customer
-            </summary>
-            <param name="roleName"></param>
             <returns></returns>
         </member>
         <member name="T:DiplomaSolution.Extensions.FileLoggerExtension">
@@ -214,27 +202,62 @@
         </member>
         <member name="M:DiplomaSolution.Middlewares.VersionMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
             <summary>
-            todo - add some request features to show time or etc...
+            
             </summary>
             <param name="context"></param>
             <returns></returns>
         </member>
+        <member name="T:DiplomaSolution.Models.Customer">
+            <summary>
+            //todo - add DataAnnotation to specify the label name using param Display
+            </summary>
+        </member>
         <member name="T:DiplomaSolution.Models.CustomerContext">
             <summary>
-            
+            Class to represent DB tables
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Models.CustomerContext.Customers">
+            <summary>
+            Todo - for now is not used ( remove )
             </summary>
         </member>
         <member name="M:DiplomaSolution.Models.CustomerContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{DiplomaSolution.Models.CustomerContext})">
             <summary>
-            
+            Constractor to set-up DB
             </summary>
             <param name="options"></param>
         </member>
         <member name="M:DiplomaSolution.Models.CustomerContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
-            
+            Method to change data model of different tables
             </summary>
             <param name="modelBuilder"></param>
+        </member>
+        <member name="T:DiplomaSolution.Models.StatusCodesEnum">
+            <summary>
+            Enum to describe response from authorization or other services provided to login customer or etc...
+            </summary>
+        </member>
+        <member name="F:DiplomaSolution.Models.StatusCodesEnum.Ok">
+            <summary>
+            Data was handled no more actions needed ( it should be used in case of endpoint )
+            </summary>
+        </member>
+        <member name="F:DiplomaSolution.Models.StatusCodesEnum.RedirectNeeded">
+            <summary>
+            Data was handled but redirect needed to next action 
+            </summary>
+        </member>
+        <member name="F:DiplomaSolution.Models.StatusCodesEnum.BadDataProvided">
+            <summary>
+            Customer provided bad data --> return again view with validation errors
+            </summary>
+        </member>
+        <member name="T:DiplomaSolution.Models.TrainModels.TrainModel">
+            <summary>
+            General model to perform all needed validation and other TAG helpers actions
+            </summary>
         </member>
         <member name="T:DiplomaSolution.Models.AccountResponseCheckData">
             <summary>
@@ -248,7 +271,7 @@
         </member>
         <member name="P:DiplomaSolution.Models.AccountResponseCheckData.StatusCode">
             <summary>
-            Provided status code by service ( 200 - OK, 30. - redirect, etc... )
+            Returned from the service status code to specify what should be done next
             </summary>
         </member>
         <member name="P:DiplomaSolution.Models.AccountResponseCheckData.ResponseData">
@@ -259,6 +282,21 @@
         <member name="P:DiplomaSolution.Models.AccountResponseCheckData.RedirectUrl">
             <summary>
             Can be null in case of no redirect need ( if 300 status code )
+            </summary>
+        </member>
+        <member name="T:DiplomaSolution.Models.IndexViewData">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Models.IndexViewData.FormFileData">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Models.IndexViewData.Customer">
+            <summary>
+            
             </summary>
         </member>
         <member name="T:DiplomaSolution.Program">
@@ -342,8 +380,31 @@
         </member>
         <member name="T:DiplomaSolution.Services.Classes.RegistrationService">
             <summary>
-            Service for registration customer
+            Service for completing registering  customers that are registered by our web-site
             </summary>
+        </member>
+        <member name="M:DiplomaSolution.Services.Classes.RegistrationService.#ctor(Microsoft.Extensions.Logging.ILogger{DiplomaSolution.Services.Classes.RegistrationService},Microsoft.AspNetCore.Identity.UserManager{DiplomaSolution.Models.ServiceUser},Microsoft.AspNetCore.Identity.SignInManager{DiplomaSolution.Models.ServiceUser},Microsoft.AspNetCore.Identity.RoleManager{Microsoft.AspNetCore.Identity.IdentityRole},DiplomaSolution.Services.Interfaces.ISendEmailService)">
+            <summary>
+            Ctor to get all needed DI services
+            </summary>
+            <param name="logger"></param>
+            <param name="userManager"></param>
+            <param name="signInManager"></param>
+            <param name="roleManager"></param>
+            <param name="sendEmailService"></param>
+        </member>
+        <member name="M:DiplomaSolution.Services.Classes.RegistrationService.CompleteRegistration(DiplomaSolution.Models.Customer)">
+            <summary>
+            Method to perform customer registration in case, that he provided correct data to us
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DiplomaSolution.Services.Classes.RegistrationService.CheckIfWeHaveRole(System.String)">
+            <summary>
+            Method to verify, that we have needed role, before appling it to customer
+            </summary>
+            <param name="roleName"></param>
+            <returns></returns>
         </member>
         <member name="M:DiplomaSolution.Services.Interfaces.IAccountService.LoginCustomer(DiplomaSolution.ViewModels.LoginViewModel,System.String)">
             <summary>
@@ -362,6 +423,12 @@
             <summary>
             Service with logic with registration customers
             </summary>
+        </member>
+        <member name="M:DiplomaSolution.Services.Interfaces.IRegistrationService.CompleteRegistration(DiplomaSolution.Models.Customer)">
+            <summary>
+            Method to perform customer registration in case when he provided to us valid data
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:DiplomaSolution.Startup">
             <summary>

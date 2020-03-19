@@ -1,0 +1,10 @@
+﻿@model TrainModel
+@{
+    ViewData["Title"] = "Train view";
+}
+    <form asp-controller="Train" asp-action="TrainView">
+        <label asp-for="ListValues"></label>
+        <select asp-for="SelectedResult" asp-items="Model.ListValues"></select>
+        <select asp-for="SelectedItems" asp-items="Model.ListValues"></select>
+        <input type="submit" />
+    </form>

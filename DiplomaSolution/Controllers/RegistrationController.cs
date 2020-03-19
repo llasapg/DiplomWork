@@ -1,15 +1,10 @@
 ﻿using System.Threading.Tasks;
 using DiplomaSolution.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System.Security.Claims;
 using DiplomaSolution.Services.Interfaces;
-using System.Diagnostics;
-using DiplomaSolution.Helpers.ErrorResponseMessages;
 
-//todo - Remove logic to the needed services
 namespace DiplomaSolution.Controllers
 {
     /// <summary>
@@ -20,26 +15,15 @@ namespace DiplomaSolution.Controllers
         /// <summary>
         /// Ctor to get all needed DI services
         /// </summary>
-        /// <param name="logger"></param>
-        /// <param name="userManager"></param>
-        /// <param name="signInManager"></param>
-        /// <param name="roleManager"></param>
-        /// <param name="sendEmailService"></param>
-        public RegistrationController(ILogger<RegistrationController> logger, UserManager<ServiceUser> userManager, SignInManager<ServiceUser> signInManager, RoleManager<IdentityRole> roleManager, ISendEmailService sendEmailService)
+        public RegistrationController(ILogger<RegistrationController> logger, IRegistrationService registrationService)
         {
-            UserManager = userManager;
-            SignInManager = signInManager;
-            RoleManager = roleManager;
             Logger = logger;
-            SendEmailService = sendEmailService;
+            RegistrationService = registrationService;
         }
 
         #region DI services
         private ILogger<RegistrationController> Logger { get; set; }
-        private UserManager<ServiceUser> UserManager { get; set; }
-        private SignInManager<ServiceUser> SignInManager { get; set; }
-        private RoleManager<IdentityRole> RoleManager { get; set; }
-        private ISendEmailService SendEmailService { get; set; }
+        private IRegistrationService RegistrationService { get; set; }
         #endregion
 
         /// <summary>
@@ -48,82 +32,29 @@ namespace DiplomaSolution.Controllers
         /// <param name="customer"></param>
         /// <returns></returns>
         [HttpPost]
-        [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> ConfirmationPage(Customer customer)
         {
             if (ModelState.IsValid)
             {
-                var userSearchResult = await UserManager.FindByEmailAsync(customer.EmailAddress);
+                // Insert there logic from registration service
 
-                Trace.WriteLine($"User search response - {userSearchResult}");
+                var registrationResult = await RegistrationService.CompleteRegistration(customer);
 
-                if (userSearchResult == null)
+                if(registrationResult.StatusCode == StatusCodesEnum.RedirectNeeded && registrationResult.ValidationErrors.Count == 0)
                 {
-                    var user = new ServiceUser
+                    return Redirect(registrationResult.RedirectUrl);
+                }
+                else if(registrationResult.StatusCode == StatusCodesEnum.BadDataProvided && registrationResult.ValidationErrors.Count > 0)
+                {
+                    foreach (var item in registrationResult.ValidationErrors)
                     {
-                        Email = customer.EmailAddress,
-                        UserName = customer.FirstName
-                    };
-
-                    var result = await UserManager.CreateAsync(user, customer.Password);
-
-                    Trace.WriteLine($"User creation response - {result}");
-
-                    if (result.Succeeded) // errors will be displayed on validation-summary
-                    {
-                        if (CheckIfWeHaveRole("User"))
-                            await UserManager.AddToRoleAsync(user, "User");
-                        else
-                        {
-                            await RoleManager.CreateAsync(new IdentityRole { Name = "User" });
-                            await UserManager.AddToRoleAsync(user, "User");
-                        }
-
-                        var currentUser = await UserManager.FindByEmailAsync(user.Email);
-
-                        await UserManager.AddClaimAsync(currentUser, new Claim("UploadPhoto", "true"));
-
-                        var token = await UserManager.GenerateEmailConfirmationTokenAsync(currentUser);
-
-                        var emailUrlConfirmation = Url.Action("ConfirmEmail", "Account", new { UserId = currentUser.Id, Token = token }, Request.Scheme);
-
-                        var response = await SendEmailService.SendEmail(new ServiceEmail
-                        {
-                            FromEmail = "testEmailAddress@gmail.com",
-                            FromName = "Yevhen",
-                            ToEmail = currentUser.Email,
-                            ToName = currentUser.UserName,
-                            EmailSubject = "Thank you for register!!!",
-                            EmailHtmlText = $"<strong>Hello there! Thank you for registering, please confirm your email using this link : {emailUrlConfirmation}</strong>",
-                            EmailText = $"Hello there! Thank you for registering, please confirm your email using this link : {emailUrlConfirmation}",
-                        });
-
-                        return View("ConfirmationPage", currentUser.UserName);
-                    }
-                    else
-                    {
-                        foreach (var error in result.Errors)
-                        {
-                            ModelState.AddModelError("", error.Description);
-                        }
-
-                        Logger.LogError("Model is not valid or email is currently registered!");
-
-                        return View();
+                        ModelState.AddModelError("", item);
                     }
                 }
-                else
-                {
-                    ModelState.AddModelError("", DefaultResponseMessages.AllreadyHasAccount);
+            }
 
-                    return View();
-                }
-            }
-            else
-            {
-                return View();
-            }
+            return View("RegistrationForm");
         }
 
         /// <summary>
@@ -149,29 +80,5 @@ namespace DiplomaSolution.Controllers
         {
             return View();
         }
-
-        #region Helpers
-
-        /// <summary>
-        /// Method to verify, that we have needed role, before appling it to customer
-        /// </summary>
-        /// <param name="roleName"></param>
-        /// <returns></returns>
-        [NonAction]
-        private bool CheckIfWeHaveRole(string roleName)
-        {
-            var defaultUserRole = new IdentityRole { Name = roleName };
-
-            foreach (var role in RoleManager.Roles)
-            {
-                if (role.Name == defaultUserRole.Name) // that means that we have this role in DB
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        #endregion
     }
 }

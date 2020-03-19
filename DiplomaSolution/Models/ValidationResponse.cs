@@ -13,9 +13,9 @@ namespace DiplomaSolution.Models
         public  List<string> ValidationErrors { get; set; }
 
         /// <summary>
-        /// Provided status code by service ( 200 - OK, 30. - redirect, etc... )
+        /// Returned from the service status code to specify what should be done next
         /// </summary>
-        public int StatusCode { get; set; } // todo - add enum with status codes, that can be returned ( 404 - error with provided data, 300 - redirect to fulfill some info, 200 - OK )
+        public StatusCodesEnum StatusCode { get; set; }
 
         /// <summary>
         /// Response data to next redirect, or to provide viewModel

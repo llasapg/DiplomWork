@@ -41,6 +41,8 @@
     <Folder Include="Helpers\ErrorResponseMessages\" />
     <Folder Include="Security\Policy\" />
     <Folder Include="Helpers\Logging\" />
+    <Folder Include="Models\TrainModels\" />
+    <Folder Include="Views\Train\" />
   </ItemGroup>
 
   <ItemGroup>

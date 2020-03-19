@@ -40,8 +40,15 @@ using DiplomaSolution.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Views/_ViewImports.cshtml"
+using DiplomaSolution.Models.TrainModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"bd98a1758559db5acad5d60cb1d26aa560cb2438", @"/Views/Account/ResetPasswordConfirmationPage.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"96bd12e8964bf649204ef015a09ebc351aead174", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1ba0fe1397df28578c1c69c92f83451b640cd91e", @"/Views/_ViewImports.cshtml")]
     public class Views_Account_ResetPasswordConfirmationPage : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<string>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-controller", "HomePage", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -87,7 +94,7 @@ using DiplomaSolution.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("! We succesfully started reset password operation</h1>\r\n    <h1>Please check your mailbox</h1>\r\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd98a1758559db5acad5d60cb1d26aa560cb24384749", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd98a1758559db5acad5d60cb1d26aa560cb24384941", async() => {
                 WriteLiteral("Return to main page");
             }
             );

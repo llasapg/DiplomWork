@@ -63,8 +63,8 @@ namespace DiplomaSolution
                 #endregion
 
                 #region Lockout options
-                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);
-                options.Lockout.MaxFailedAccessAttempts = 13;
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
+                options.Lockout.MaxFailedAccessAttempts = 5;
                 #endregion
             })
             .AddEntityFrameworkStores<CustomerContext>() // Adds UserStore and RoleStore to make awailable to UserManager and other services work with tables representation
@@ -175,7 +175,10 @@ namespace DiplomaSolution
 
                 endp.AddVersioning();
 
-                endp.MapControllerRoute("default", "{Controller=HomePage}/{Action=Index}");
+                endp.MapControllerRoute(
+                    name : "default",
+                    pattern : "{Controller}/{Action}",
+                    defaults : new { Controller = "HomePage", Action = "Index" });
             });
         }
     }

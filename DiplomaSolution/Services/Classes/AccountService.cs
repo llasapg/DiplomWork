@@ -52,7 +52,7 @@ namespace DiplomaSolution.Services.Classes
         /// <param name="returnUrl"></param>
         public async Task<AccountResponseCheckData> LoginCustomer(LoginViewModel customer, string returnUrl = null)
         {
-            var validationResponse = new AccountResponseCheckData { StatusCode = 200, ValidationErrors = new List<string>(), ResponseData = null};
+            var validationResponse = new AccountResponseCheckData { StatusCode = StatusCodesEnum.Ok, ValidationErrors = new List<string>(), ResponseData = null};
  
             var userData = await UserManager.FindByEmailAsync(customer.EmailAddress);
 
@@ -62,7 +62,7 @@ namespace DiplomaSolution.Services.Classes
 
                 if (providedData.ToString() == "Failed")
                 {
-                    validationResponse.StatusCode = 404; // in case of this response --> reload view with validation errors
+                    validationResponse.StatusCode = StatusCodesEnum.BadDataProvided; // in case of this response --> reload view with validation errors
 
                     validationResponse.ValidationErrors.Add(DefaultResponseMessages.WrongPasswordAndEmailCombination);
 
@@ -70,7 +70,7 @@ namespace DiplomaSolution.Services.Classes
                 }
                 else if (providedData.IsLockedOut)
                 {
-                    validationResponse.StatusCode = 404;
+                    validationResponse.StatusCode = StatusCodesEnum.BadDataProvided;
 
                     validationResponse.ValidationErrors.Add(DefaultResponseMessages.AccountIsLockOut);
 
@@ -80,7 +80,7 @@ namespace DiplomaSolution.Services.Classes
                 {
                     if (userData.EmailConfirmed == false)
                     {
-                        validationResponse.StatusCode = 404;
+                        validationResponse.StatusCode = StatusCodesEnum.BadDataProvided;
 
                         validationResponse.ValidationErrors.Add(DefaultResponseMessages.EmailIsNotVerified);
 
@@ -92,13 +92,13 @@ namespace DiplomaSolution.Services.Classes
 
                         if (loginResponse.Succeeded && returnUrl != null)
                         {
-                            validationResponse.StatusCode = 300; // Can be changed in future to valid one ( for now --> simple redirect to home page )
+                            validationResponse.StatusCode = StatusCodesEnum.RedirectNeeded; // Can be changed in future to valid one ( for now --> simple redirect to home page )
 
                             return validationResponse;
                         }
                         else if (loginResponse.Succeeded)
                         {
-                            validationResponse.StatusCode = 200; // no redirect needed --> return URL was not provided
+                            validationResponse.StatusCode = StatusCodesEnum.Ok; // no redirect needed --> return URL was not provided
 
                             return validationResponse;
                         }
@@ -106,7 +106,7 @@ namespace DiplomaSolution.Services.Classes
                 }
             }
 
-            validationResponse.StatusCode = 404;
+            validationResponse.StatusCode = StatusCodesEnum.BadDataProvided;
 
             validationResponse.ValidationErrors.Add(DefaultResponseMessages.CustomerIsNotFoundInDb);
 
@@ -121,19 +121,23 @@ namespace DiplomaSolution.Services.Classes
         /// <returns></returns>
         public async Task<AccountResponseCheckData> ExternalLoginCallBack(string returnUrl = null, string remoteError = null)
         {
-            var loginCallBackResult = new AccountResponseCheckData { RedirectUrl = null, ResponseData = null, StatusCode = 200, ValidationErrors = new List<string>() };
+            var loginCallBackResult = new AccountResponseCheckData { RedirectUrl = null, ResponseData = null, StatusCode = StatusCodesEnum.Ok, ValidationErrors = new List<string>() };
 
             if (remoteError == null)
             {
                 var accountDetailsFromProvider = await SignInManager.GetExternalLoginInfoAsync();
 
+                #region Check, that data is provided
+
                 if (accountDetailsFromProvider != null)
                 {
                     // Search for the customer in our db
 
-                    var result = await UserManager.FindByEmailAsync(accountDetailsFromProvider.Principal.FindFirstValue(ClaimTypes.Email));
+                    var accountData = await UserManager.FindByEmailAsync(accountDetailsFromProvider.Principal.FindFirstValue(ClaimTypes.Email));
 
-                    if (result == null) // new account
+                    #region New account for our DB
+
+                    if (accountData == null) // new account
                     {
                         var serviceUser = new ServiceUser
                         {
@@ -142,6 +146,8 @@ namespace DiplomaSolution.Services.Classes
                         };
 
                         var userResponse = await UserManager.CreateAsync(serviceUser);
+
+                        #region Customer created without any error --> send him email to verify email and add password ( or not )
 
                         if (userResponse.Succeeded)
                         {
@@ -172,34 +178,42 @@ namespace DiplomaSolution.Services.Classes
 
                             loginCallBackResult.ResponseData = emailUrlConfirmation;
 
-                            loginCallBackResult.StatusCode = 300;
+                            loginCallBackResult.StatusCode = StatusCodesEnum.RedirectNeeded;
 
                             return loginCallBackResult;
                         }
-                        else // todo - add there validation errors description ( like trouble with name or other )
+
+                        #endregion
+
+                        else
                         {
                             loginCallBackResult.ValidationErrors.Add(DefaultResponseMessages.ExternalLoginFailed);
 
-                            loginCallBackResult.StatusCode = 404;
+                            loginCallBackResult.StatusCode = StatusCodesEnum.BadDataProvided;
 
                             return loginCallBackResult;
                         }
                     }
+
+                    #endregion
+
                     else
                     {
-                        if (!result.EmailConfirmed) // Check to verify that email is confirmed
+                        #region Customer already has account on our db, but email is not confirmed
+
+                        if (!accountData.EmailConfirmed)
                         {
-                            var loginsData = await UserManager.GetLoginsAsync(result);
+                            var loginsData = await UserManager.GetLoginsAsync(accountData);
 
                             if (loginsData == null)
                             {
-                                await UserManager.AddLoginAsync(result, accountDetailsFromProvider);
+                                await UserManager.AddLoginAsync(accountData, accountDetailsFromProvider);
                             }
-                            var token = await UserManager.GenerateEmailConfirmationTokenAsync(result);
+                            var token = await UserManager.GenerateEmailConfirmationTokenAsync(accountData);
 
-                            var emailUrlConfirmation = $"https://localhost:5001/Account/ConfirmEmail/{new { UserId = result.Id, Token = token }}";
+                            var emailUrlConfirmation = $"https://localhost:5001/Account/ConfirmEmail/{new { UserId = accountData.Id, Token = token }}";
 
-                            loginCallBackResult.StatusCode = 300;
+                            loginCallBackResult.StatusCode = StatusCodesEnum.RedirectNeeded;
 
                             loginCallBackResult.ResponseData = emailUrlConfirmation;
 
@@ -207,56 +221,65 @@ namespace DiplomaSolution.Services.Classes
 
                             return loginCallBackResult;
                         }
+
+                        #endregion
+
+                        #region Email is confirmed but we need to check, that customer has row in ASPNETUSERLOGINS
+
                         else
                         {
                             var loginReponse = await SignInManager.ExternalLoginSignInAsync(accountDetailsFromProvider.LoginProvider, accountDetailsFromProvider.ProviderKey, false);
 
                             if (loginReponse.Succeeded)
                             {
-                                loginCallBackResult.StatusCode = 200;
-
-                                loginCallBackResult.RedirectUrl = $"https://localhost:5001/HomePage/Index";
-
-                                return loginCallBackResult;
+                                loginCallBackResult.StatusCode = StatusCodesEnum.Ok;
                             }
                             else
                             {
-                                await UserManager.AddLoginAsync(result, accountDetailsFromProvider); //no data in table aspnetuserlogins --> we should add it 
+                                await UserManager.AddLoginAsync(accountData, accountDetailsFromProvider);
 
-                                await SignInManager.SignInAsync(result, false);
-
-                                loginCallBackResult.StatusCode = 300;
-
-                                loginCallBackResult.RedirectUrl = $"https://localhost:5001/Account/AddPassword";
+                                await SignInManager.SignInAsync(accountData, false);
                             }
+
+                            loginCallBackResult.RedirectUrl = $"https://localhost:5001/HomePage/Index";
+
+                            return loginCallBackResult;
                         }
+
+                        #endregion
                     }
                 }
+
+                #endregion
+
+                #region No data provided from external provider
+
                 else
                 {
                     loginCallBackResult.ValidationErrors.Add(DefaultResponseMessages.ExternalLoginFailed);
 
-                    loginCallBackResult.StatusCode = 404;
+                    loginCallBackResult.StatusCode = StatusCodesEnum.BadDataProvided;
 
                     return loginCallBackResult;
                 }
+
+                #endregion
             }
+
+            #region Error from external provider
+
             else
             {
                 loginCallBackResult.ValidationErrors.Add(DefaultResponseMessages.ExternalLoginFailed);
 
-                loginCallBackResult.StatusCode = 300;
+                loginCallBackResult.StatusCode = StatusCodesEnum.RedirectNeeded;
 
                 loginCallBackResult.RedirectUrl = $"https://localhost:5001/Account/Login";
 
                 return loginCallBackResult;
             }
 
-            loginCallBackResult.StatusCode = 300;
-
-            loginCallBackResult.RedirectUrl = $"https://localhost:5001/Account/Login";
-
-            return loginCallBackResult;
+            #endregion            
         }
     }
 }

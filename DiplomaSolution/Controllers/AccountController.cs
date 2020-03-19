@@ -8,7 +8,6 @@ using DiplomaSolution.Services.Interfaces;
 using Microsoft.AspNetCore.DataProtection;
 using DiplomaSolution.Helpers.ErrorResponseMessages;
 using System.Diagnostics;
-using System.Linq;
 
 namespace DiplomaSolution.Controllers
 {
@@ -59,22 +58,25 @@ namespace DiplomaSolution.Controllers
 
             var viewModel = new LoginViewModel { ReturnUrl = returnUrl, ListOfProviders = providers };
 
-            var loginResponse = await AccountService.LoginCustomer(customer, returnUrl);
+            if (ModelState.IsValid)
+            {
+                var loginResponse = await AccountService.LoginCustomer(customer, returnUrl);
 
-            if(loginResponse.StatusCode == 404) // Add email and password removing in case if its wrong
-            {
-                foreach (var item in loginResponse.ValidationErrors)
+                if (loginResponse.StatusCode == StatusCodesEnum.BadDataProvided)
                 {
-                    ModelState.AddModelError("", item);
+                    foreach (var item in loginResponse.ValidationErrors)
+                    {
+                        ModelState.AddModelError("", item);
+                    }
                 }
-            }
-            else if(loginResponse.StatusCode == 300)
-            {
-                return Redirect(returnUrl);
-            }
-            else // 200 status code --> redirect to Home page with cookies created and stored in browser
-            {
-                return Redirect(Url.Action("Index", "HomePage"));
+                else if (loginResponse.StatusCode == StatusCodesEnum.RedirectNeeded)
+                {
+                    return Redirect(returnUrl);
+                }
+                else // 200 status code --> redirect to Home page with cookies created and stored in browser
+                {
+                    return Redirect(Url.Action("Index", "HomePage"));
+                }
             }
 
             return View(viewModel);
@@ -124,19 +126,19 @@ namespace DiplomaSolution.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> ExternalLoginCallBack(string returnUrl = null, string remoteError = null)
         {
-            if (remoteError == null)
+            if (remoteError == null) // some kind of model check
             {
                 var loginResponse = await AccountService.ExternalLoginCallBack(returnUrl, remoteError);
 
-                if(loginResponse.StatusCode == 300 && loginResponse.ValidationErrors.Count == 0)
+                if(loginResponse.StatusCode == StatusCodesEnum.RedirectNeeded && loginResponse.ValidationErrors.Count == 0)
                 {
                     return Redirect(loginResponse.RedirectUrl);
                 }
-                else if(loginResponse.StatusCode == 200 && loginResponse.ValidationErrors.Count == 0)
+                else if(loginResponse.StatusCode == StatusCodesEnum.Ok && loginResponse.ValidationErrors.Count == 0)
                 {
                     return Redirect(loginResponse.RedirectUrl);
                 }
-                else if(loginResponse.StatusCode == 404 && loginResponse.ValidationErrors.Count > 0)
+                else if(loginResponse.StatusCode == StatusCodesEnum.BadDataProvided && loginResponse.ValidationErrors.Count > 0)
                 {
                     foreach (var item in loginResponse.ValidationErrors) // load all provided errors
                     {
@@ -144,7 +146,7 @@ namespace DiplomaSolution.Controllers
                     }
                 }
             }
-
+            // redirect customer back to the login view with all validation errors 
             var providers = await SignInManager.GetExternalAuthenticationSchemesAsync();
 
             var viewModel = new LoginViewModel { ReturnUrl = returnUrl, ListOfProviders = providers };
@@ -238,7 +240,7 @@ namespace DiplomaSolution.Controllers
         }
 
         /// <summary>
-        /// // todo ( add check, that model is correct ) 
+        /// Reset password action
         /// </summary>
         /// <returns></returns>
         [HttpPost]
@@ -344,12 +346,6 @@ namespace DiplomaSolution.Controllers
 
             return View();
         }
-
-        #endregion
-
-        #region Add password actions
-
-        
 
         #endregion
     }

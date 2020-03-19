@@ -5,16 +5,19 @@ using Microsoft.EntityFrameworkCore;
 namespace DiplomaSolution.Models
 {
     /// <summary>
-    /// 
+    /// Class to represent DB tables
     /// </summary>
     public class CustomerContext : IdentityDbContext<ServiceUser>
     {
+        /// <summary>
+        /// Todo - for now is not used ( remove )
+        /// </summary>
         public DbSet<Customer> Customers { get; set; }
 
         public DbSet<FormFile> CustomerFiles { get; set; }
 
         /// <summary>
-        /// 
+        /// Constractor to set-up DB
         /// </summary>
         /// <param name="options"></param>
         public CustomerContext(DbContextOptions<CustomerContext> options) : base(options)
@@ -23,7 +26,7 @@ namespace DiplomaSolution.Models
         }
 
         /// <summary>
-        /// 
+        /// Method to change data model of different tables
         /// </summary>
         /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)

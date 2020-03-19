@@ -40,8 +40,15 @@ using DiplomaSolution.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Views/_ViewImports.cshtml"
+using DiplomaSolution.Models.TrainModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a2a43f41bd1ed1739b37e1ed85917be36c9419fe", @"/Views/HomePage/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"96bd12e8964bf649204ef015a09ebc351aead174", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1ba0fe1397df28578c1c69c92f83451b640cd91e", @"/Views/_ViewImports.cshtml")]
     public class Views_HomePage_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IndexViewData>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-controller", "HomePage", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -96,7 +103,7 @@ using DiplomaSolution.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("<div class=\"header\">\r\n    <div class=\"header_section\">\r\n        <div class=\"header_item_logo\">\r\n            <div class=\"header_item_button\">\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe8962", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe9154", async() => {
                 WriteLiteral("SmartX");
             }
             );
@@ -114,7 +121,7 @@ using DiplomaSolution.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n            </div>\r\n        </div>\r\n        <div class=\"header_item_button\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe10387", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe10579", async() => {
                 WriteLiteral("Home");
             }
             );
@@ -132,7 +139,7 @@ using DiplomaSolution.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</div>\r\n        <div class=\"header_item_button\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe11777", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe11969", async() => {
                 WriteLiteral("About");
             }
             );
@@ -150,7 +157,7 @@ using DiplomaSolution.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</div>\r\n        <div class=\"header_item_button\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe13168", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe13360", async() => {
                 WriteLiteral("Contact");
             }
             );
@@ -185,7 +192,7 @@ using DiplomaSolution.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("</a></div>\r\n                <div class=\"header_item_button\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe15272", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe15464", async() => {
                 WriteLiteral("Log-Out");
             }
             );
@@ -213,7 +220,7 @@ using DiplomaSolution.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("        <div class=\"header_section\">\r\n            <div class=\"header_item_button\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe16935", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe17127", async() => {
                 WriteLiteral("Registration");
             }
             );
@@ -231,7 +238,7 @@ using DiplomaSolution.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</div>\r\n            <div class=\"header_item_button\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe18337", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe18529", async() => {
                 WriteLiteral("Log-In");
             }
             );
@@ -268,7 +275,7 @@ using DiplomaSolution.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe20360", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe20552", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_ImageTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.ImageTagHelper>();
@@ -311,9 +318,9 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_ImageTagHelper.AppendVersion = true;
 #line hidden
 #nullable disable
             WriteLiteral("        </div>\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe22765", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe22957", async() => {
                 WriteLiteral("\r\n            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe23034", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe23226", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -357,7 +364,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral(" <!-- Send file data to the HomePage controller ( Action - Index ) -->\r\n    </div>\r\n    <div id=\"ConfigureImageBlock\">\r\n        <dl>\r\n            <dt><div class=\"header_item_button\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe26641", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe26833", async() => {
                 WriteLiteral("Transition from negative to positive");
             }
             );
@@ -375,7 +382,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</div></dt>\r\n            <dt><div class=\"header_item_button\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe28076", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe28268", async() => {
                 WriteLiteral("Transition from positive to negative");
             }
             );
@@ -393,7 +400,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</div></dt>\r\n            <dt><div class=\"header_item_button\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe29511", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe29703", async() => {
                 WriteLiteral("Grayscale processing");
             }
             );
@@ -411,7 +418,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</div></dt>\r\n            <dt><div class=\"header_item_button\">");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe30930", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe31122", async() => {
                 WriteLiteral("Scattering correction processing");
             }
             );
@@ -429,7 +436,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("</div></dt>\r\n        </dl>\r\n    </div>\r\n    <div id=\"OutPutImageBlock\">\r\n        <div class=\"OutPutImage\">\r\n        </div>\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe32444", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a2a43f41bd1ed1739b37e1ed85917be36c9419fe32636", async() => {
                 WriteLiteral("\r\n            <input type=\"submit\" name=\"Загрузить\" />\r\n        ");
             }
             );

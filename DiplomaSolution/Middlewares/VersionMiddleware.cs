@@ -14,13 +14,22 @@ namespace DiplomaSolution.Middlewares
         }
 
         /// <summary>
-        /// todo - add some request features to show time or etc...
+        /// 
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
         public async Task InvokeAsync(HttpContext context)
-        {            
-            await context.Response.WriteAsync($"Current version is - {VERSION}");
+        {
+            context.Response.Headers.Add("Generalheader", "Value");
+
+            await context.Response.WriteAsync($"Current version is - {context.Response.Headers.Count}");
+
+            context.Response.OnStarting(()=>
+            {
+                context.Response.Headers.Add("ssss", "iuuu");
+
+                return Task.FromResult(0);
+            });
         }
     }
 }
