@@ -53,7 +53,7 @@ namespace DiplomaSolution.Controllers
         /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
-        public IActionResult Index(IndexViewData data)
+        public IActionResult Index(IndexViewData data) // todo - redone 
         {
             if (data.FormFileData != null)
             {

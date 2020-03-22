@@ -168,6 +168,13 @@
             <param name="customer"></param>
             <returns></returns>
         </member>
+        <member name="M:DiplomaSolution.Controllers.RegistrationController.ConfirmationPage(System.String)">
+            <summary>
+            Action to notify customer that he registered and need only to confirm email
+            </summary>
+            <param name="customerData"></param>
+            <returns></returns>
+        </member>
         <member name="M:DiplomaSolution.Controllers.RegistrationController.ConfirmPartnerRegister(System.String)">
             <summary>
             Action to confirm partner registration
@@ -198,13 +205,6 @@
             Overrided method to validate provided email ( if true --> email template is good )
             </summary>
             <param name="value"></param>
-            <returns></returns>
-        </member>
-        <member name="M:DiplomaSolution.Middlewares.VersionMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
-            <summary>
-            
-            </summary>
-            <param name="context"></param>
             <returns></returns>
         </member>
         <member name="T:DiplomaSolution.Models.Customer">
@@ -279,9 +279,14 @@
             Response data to next redirect, or to provide viewModel
             </summary>
         </member>
-        <member name="P:DiplomaSolution.Models.AccountResponseCheckData.RedirectUrl">
+        <member name="P:DiplomaSolution.Models.AccountResponseCheckData.ControllerName">
             <summary>
-            Can be null in case of no redirect need ( if 300 status code )
+            Redirect controller name
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Models.AccountResponseCheckData.ActionName">
+            <summary>
+            Redirect action name
             </summary>
         </member>
         <member name="T:DiplomaSolution.Models.IndexViewData">
@@ -352,7 +357,17 @@
             Data protector to hide request data provided in query string
             </summary>
         </member>
-        <member name="M:DiplomaSolution.Services.Classes.AccountService.#ctor(Microsoft.AspNetCore.Identity.SignInManager{DiplomaSolution.Models.ServiceUser},Microsoft.AspNetCore.Identity.UserManager{DiplomaSolution.Models.ServiceUser},DiplomaSolution.Services.Interfaces.ISendEmailService,Microsoft.AspNetCore.DataProtection.IDataProtectionProvider)">
+        <member name="P:DiplomaSolution.Services.Classes.AccountService.UrlHelper">
+            <summary>
+            Url helper to create dynamic ULRS
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Services.Classes.AccountService.Context">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DiplomaSolution.Services.Classes.AccountService.#ctor(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Identity.SignInManager{DiplomaSolution.Models.ServiceUser},Microsoft.AspNetCore.Identity.UserManager{DiplomaSolution.Models.ServiceUser},DiplomaSolution.Services.Interfaces.ISendEmailService,Microsoft.AspNetCore.DataProtection.IDataProtectionProvider,Microsoft.AspNetCore.Mvc.IUrlHelper)">
             <summary>
             Basic construstor to perform DI
             </summary>

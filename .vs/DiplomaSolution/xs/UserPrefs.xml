@@ -1,18 +1,8 @@
 ﻿<Properties StartupConfiguration="{EFFD6586-B9FD-4716-A086-1C5E9DE7A3D6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Security/Policy/DefaultHandler.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Services/Classes/AccountService.cs">
     <Files>
-      <File FileName="DiplomaSolution/Controllers/TrainController.cs" Line="9" Column="10" />
-      <File FileName="DiplomaSolution/Models/TrainModels/TrainModel.cs" Line="15" Column="1" />
-      <File FileName="DiplomaSolution/Views/InfoPage/SupportPage.cshtml" Line="3" Column="13" />
-      <File FileName="DiplomaSolution/Views/_ViewImports.cshtml" Line="5" Column="42" />
-      <File FileName="DiplomaSolution/Views/Train/TrainView.cshtml" Line="6" Column="45" />
-      <File FileName="DiplomaSolution/Views/Account/Login.cshtml" Line="1" Column="22" />
-      <File FileName="DiplomaSolution/Controllers/AccountController.cs" Line="182" Column="54" />
-      <File FileName="DiplomaSolution/Controllers/AboutController.cs" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Startup.cs" Line="124" Column="38" />
-      <File FileName="DiplomaSolution/Program.cs" Line="36" Column="6" />
-      <File FileName="DiplomaSolution/Services/Classes/AccountService.cs" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Security/Policy/DefaultHandler.cs" Line="8" Column="19" />
+      <File FileName="DiplomaSolution/Services/Classes/RegistrationService.cs" Line="1" Column="1" />
+      <File FileName="DiplomaSolution/Services/Classes/AccountService.cs" Line="168" Column="164" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -20,13 +10,18 @@
           <Node name="DiplomaSolution" expanded="True">
             <Node name="DiplomaSolution" expanded="True">
               <Node name="Controllers" expanded="True" />
-              <Node name="Security" expanded="True">
-                <Node name="Policy" expanded="True">
-                  <Node name="DefaultHandler.cs" selected="True" />
-                </Node>
-              </Node>
+              <Node name="Extensions" expanded="True" />
+              <Node name="Middlewares" expanded="True" />
               <Node name="Services" expanded="True">
-                <Node name="Classes" expanded="True" />
+                <Node name="Classes" expanded="True">
+                  <Node name="AccountService.cs" selected="True" />
+                </Node>
+                <Node name="Interfaces" expanded="True" />
+              </Node>
+              <Node name="Views" expanded="True">
+                <Node name="Registration" expanded="True" />
+                <Node name="Shared" expanded="True" />
+                <Node name="Train" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -40,6 +35,8 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Middlewares/mr0i02j8.kj1~" relfile="DiplomaSolution/Middlewares/mr0i02j8.kj1~" line="18" column="1" />
+      <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Services/Classes/cms2s38u.t6m~" relfile="DiplomaSolution/Services/Classes/cms2s38u.t6m~" line="54" column="1" />
+      <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Controllers/RegistrationController.cs" relfile="DiplomaSolution/Controllers/RegistrationController.cs" line="79" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

@@ -20,11 +20,16 @@ namespace DiplomaSolution.Models
         /// <summary>
         /// Response data to next redirect, or to provide viewModel
         /// </summary>
-        public object ResponseData { get; set; } // More like redirect data
+        public object ResponseData { get; set; }
 
         /// <summary>
-        /// Can be null in case of no redirect need ( if 300 status code )
+        /// Redirect controller name
         /// </summary>
-        public string RedirectUrl { get; set; }
+        public string ControllerName { get; set; }
+
+        /// <summary>
+        /// Redirect action name
+        /// </summary>
+        public string ActionName { get; set; }
     }
 }

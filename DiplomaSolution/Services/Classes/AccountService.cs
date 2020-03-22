@@ -6,7 +6,9 @@ using DiplomaSolution.Models;
 using DiplomaSolution.Services.Interfaces;
 using DiplomaSolution.ViewModels;
 using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DiplomaSolution.Services.Classes
 {
@@ -31,18 +33,28 @@ namespace DiplomaSolution.Services.Classes
         /// <summary>
         /// Data protector to hide request data provided in query string
         /// </summary>
-        private IDataProtector Protector { get; set; } 
-
+        private IDataProtector Protector { get; set; }
+        /// <summary>
+        /// Url helper to create dynamic ULRS
+        /// </summary>
+        private IUrlHelper UrlHelper { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        private HttpContext Context { get; set; }
+        
         /// <summary>
         /// Basic construstor to perform DI
         /// </summary>
-        public AccountService(SignInManager<ServiceUser> signInManager, UserManager<ServiceUser> userManager, ISendEmailService sendEmailService, IDataProtectionProvider dataProtecttionProvider)
+        public AccountService(HttpContext context,SignInManager<ServiceUser> signInManager, UserManager<ServiceUser> userManager, ISendEmailService sendEmailService, IDataProtectionProvider dataProtecttionProvider, IUrlHelper urlHelper)
         {
             SignInManager = signInManager;
             UserManager = userManager;
             SendEmailService = sendEmailService;
             DataProtectionProvider = dataProtecttionProvider;
             Protector = DataProtectionProvider.CreateProtector("DataProtection");
+            UrlHelper = urlHelper;
+            Context = context;
         }
 
         /// <summary>
@@ -121,7 +133,7 @@ namespace DiplomaSolution.Services.Classes
         /// <returns></returns>
         public async Task<AccountResponseCheckData> ExternalLoginCallBack(string returnUrl = null, string remoteError = null)
         {
-            var loginCallBackResult = new AccountResponseCheckData { RedirectUrl = null, ResponseData = null, StatusCode = StatusCodesEnum.Ok, ValidationErrors = new List<string>() };
+            var loginCallBackResult = new AccountResponseCheckData {  ActionName = "Index", ControllerName = "HomePage", ResponseData = null, StatusCode = StatusCodesEnum.Ok, ValidationErrors = new List<string>() };
 
             if (remoteError == null)
             {
@@ -159,9 +171,7 @@ namespace DiplomaSolution.Services.Classes
 
                             var token = await UserManager.GenerateEmailConfirmationTokenAsync(serviceUser);
 
-                            var emailUrlConfirmation = $"https://localhost:5001/Account/ConfirmEmail/{new { UserId = serviceUser.Id, Token = token }}";
-
-                            var redirectUrl = $"https://localhost:5001/RegistrationController/ConfirmationPage";
+                            var emailUrlConfirmation = UrlHelper.Action("ConfirmEmail", "Account", new { Token = token, UserId = serviceUser.Id }, Context.Request.Scheme);
 
                             await SendEmailService.SendEmail(new ServiceEmail
                             {
@@ -170,13 +180,15 @@ namespace DiplomaSolution.Services.Classes
                                 ToEmail = serviceUser.Email,
                                 ToName = serviceUser.UserName,
                                 EmailSubject = "Thank you for register!!!",
-                                EmailHtmlText = $"<strong>Hello there! Thank you for registering, please confirm your email using this link : {emailUrlConfirmation}</strong>",
+                                EmailHtmlText = $"<strong>Hello, {serviceUser.UserName}! Thank you for registering, please confirm your email using this link : {emailUrlConfirmation}</strong>",
                                 EmailText = $"Hello there! Thank you for registering, please confirm your email using this link : {emailUrlConfirmation}",
                             });
 
-                            loginCallBackResult.RedirectUrl = redirectUrl;
+                            loginCallBackResult.ActionName = "ConfirmPartnerRegister";
 
-                            loginCallBackResult.ResponseData = emailUrlConfirmation;
+                            loginCallBackResult.ControllerName = "Registration";
+
+                            loginCallBackResult.ResponseData = serviceUser.UserName;
 
                             loginCallBackResult.StatusCode = StatusCodesEnum.RedirectNeeded;
 
@@ -211,13 +223,26 @@ namespace DiplomaSolution.Services.Classes
                             }
                             var token = await UserManager.GenerateEmailConfirmationTokenAsync(accountData);
 
-                            var emailUrlConfirmation = $"https://localhost:5001/Account/ConfirmEmail/{new { UserId = accountData.Id, Token = token }}";
+                            var emailUrlConfirmation = UrlHelper.Action("ConfirmEmail", "Account", new { Token = token, UserId = accountData.Id }, Context.Request.Scheme);
+
+                            await SendEmailService.SendEmail(new ServiceEmail
+                            {
+                                FromEmail = "testEmailAddress@gmail.com",
+                                FromName = "Yevhen",
+                                ToEmail = accountData.Email,
+                                ToName = accountData.UserName,
+                                EmailSubject = "Thank you for register!!!",
+                                EmailHtmlText = $"<strong>Hello, {accountData.UserName}! Thank you for registering, please confirm your email using this link : {emailUrlConfirmation}</strong>",
+                                EmailText = $"Hello there! Thank you for registering, please confirm your email using this link : {emailUrlConfirmation}",
+                            });
 
                             loginCallBackResult.StatusCode = StatusCodesEnum.RedirectNeeded;
 
-                            loginCallBackResult.ResponseData = emailUrlConfirmation;
+                            loginCallBackResult.ResponseData = accountData.UserName;
 
-                            loginCallBackResult.RedirectUrl = $"https://localhost:5001/Registration/ConfirmPartnerRegister";
+                            loginCallBackResult.ActionName = "ConfirmPartnerRegister";
+
+                            loginCallBackResult.ControllerName = "Registration";
 
                             return loginCallBackResult;
                         }
@@ -241,7 +266,9 @@ namespace DiplomaSolution.Services.Classes
                                 await SignInManager.SignInAsync(accountData, false);
                             }
 
-                            loginCallBackResult.RedirectUrl = $"https://localhost:5001/HomePage/Index";
+                            loginCallBackResult.ActionName = "Index";
+
+                            loginCallBackResult.ControllerName = "HomePage";
 
                             return loginCallBackResult;
                         }
@@ -274,7 +301,9 @@ namespace DiplomaSolution.Services.Classes
 
                 loginCallBackResult.StatusCode = StatusCodesEnum.RedirectNeeded;
 
-                loginCallBackResult.RedirectUrl = $"https://localhost:5001/Account/Login";
+                loginCallBackResult.ActionName = "Login";
+
+                loginCallBackResult.ControllerName = "Account";
 
                 return loginCallBackResult;
             }

@@ -9,6 +9,9 @@ namespace DiplomaSolution.Models.TrainModels
     /// </summary>
     public class TrainModel
     {
+        [DataType(DataType.Password)] // like this
+        public string JustTest { get; set; }
+
         public string SelectedResult { get; set; }
 
         public IEnumerable<string> SelectedItems { get; set; }

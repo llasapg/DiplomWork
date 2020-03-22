@@ -45,7 +45,7 @@ namespace DiplomaSolution.Services.Classes
         /// <returns></returns>
         public async Task<AccountResponseCheckData> CompleteRegistration(Customer customer)
         {
-            var responseCheckData = new AccountResponseCheckData { RedirectUrl = null, ResponseData = null, StatusCode = StatusCodesEnum.BadDataProvided, ValidationErrors = new List<string>() };
+            var responseCheckData = new AccountResponseCheckData { ActionName = "Index", ControllerName= "HomePage",  ResponseData = null, StatusCode = StatusCodesEnum.BadDataProvided, ValidationErrors = new List<string>() };
 
             var userSearchResult = await UserManager.FindByEmailAsync(customer.EmailAddress);
 
@@ -75,7 +75,7 @@ namespace DiplomaSolution.Services.Classes
 
                     var token = await UserManager.GenerateEmailConfirmationTokenAsync(currentUser);
 
-                    var emailUrlConfirmation = $"https://localhost:5001/Account/ConfirmEmail/{new { UserId = currentUser.Id, Token = token }}";
+                    var emailUrlConfirmation = $"https://localhost:5001/Account/ConfirmEmail/?UserId={currentUser.Id}&Token={token}";
 
                     var response = await SendEmailService.SendEmail(new ServiceEmail
                     {
@@ -88,9 +88,11 @@ namespace DiplomaSolution.Services.Classes
                         EmailText = $"Hello there! Thank you for registering, please confirm your email using this link : {emailUrlConfirmation}",
                     });
 
-                    responseCheckData.ResponseData = emailUrlConfirmation;
+                    responseCheckData.ResponseData = customer.FirstName;
 
-                    responseCheckData.RedirectUrl = $"https://localhost:5001/Registration/ConfirmationPage?{customer.FirstName}";
+                    responseCheckData.ActionName = "ConfirmationPage";
+
+                    responseCheckData.ControllerName = "Registration";
 
                     responseCheckData.StatusCode = StatusCodesEnum.RedirectNeeded;
 

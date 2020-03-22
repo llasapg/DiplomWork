@@ -37,13 +37,11 @@ namespace DiplomaSolution.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Insert there logic from registration service
-
                 var registrationResult = await RegistrationService.CompleteRegistration(customer);
 
-                if(registrationResult.StatusCode == StatusCodesEnum.RedirectNeeded && registrationResult.ValidationErrors.Count == 0)
+                if(registrationResult.StatusCode == StatusCodesEnum.RedirectNeeded && registrationResult.ValidationErrors.Count == 0) // check if we can pass data like this 
                 {
-                    return Redirect(registrationResult.RedirectUrl);
+                    return Redirect(Url.Action(registrationResult.ActionName, registrationResult.ControllerName, new { customerData = registrationResult.ResponseData }));
                 }
                 else if(registrationResult.StatusCode == StatusCodesEnum.BadDataProvided && registrationResult.ValidationErrors.Count > 0)
                 {
@@ -58,6 +56,18 @@ namespace DiplomaSolution.Controllers
         }
 
         /// <summary>
+        /// Action to notify customer that he registered and need only to confirm email
+        /// </summary>
+        /// <param name="customerData"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ConfirmationPage(string customerData)
+        {
+            return View("ConfirmationPage", customerData);
+        }
+
+        /// <summary>
         /// Action to confirm partner registration
         /// </summary>
         /// <param name="emailUrlConfirmation"></param>
@@ -65,9 +75,9 @@ namespace DiplomaSolution.Controllers
         [HttpGet]
         [HttpPost]
         [AllowAnonymous]
-        public IActionResult ConfirmPartnerRegister(string emailUrlConfirmation)
+        public IActionResult ConfirmPartnerRegister(string customerData)
         {
-            return View("ConfirmationPage", emailUrlConfirmation);
+            return View("ConfirmationPage", customerData);
         }
 
         /// <summary>

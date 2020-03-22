@@ -126,17 +126,17 @@ namespace DiplomaSolution.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> ExternalLoginCallBack(string returnUrl = null, string remoteError = null)
         {
-            if (remoteError == null) // some kind of model check
+            if (remoteError == null)
             {
                 var loginResponse = await AccountService.ExternalLoginCallBack(returnUrl, remoteError);
 
                 if(loginResponse.StatusCode == StatusCodesEnum.RedirectNeeded && loginResponse.ValidationErrors.Count == 0)
                 {
-                    return Redirect(loginResponse.RedirectUrl);
+                    return Redirect(Url.Action(loginResponse.ActionName, loginResponse.ControllerName, loginResponse.ResponseData));
                 }
                 else if(loginResponse.StatusCode == StatusCodesEnum.Ok && loginResponse.ValidationErrors.Count == 0)
                 {
-                    return Redirect(loginResponse.RedirectUrl);
+                    return Redirect(Url.Action(loginResponse.ActionName, loginResponse.ControllerName, loginResponse.ResponseData));
                 }
                 else if(loginResponse.StatusCode == StatusCodesEnum.BadDataProvided && loginResponse.ValidationErrors.Count > 0)
                 {
@@ -190,7 +190,7 @@ namespace DiplomaSolution.Controllers
 
             if (customer != null)
             {
-                var confirmationEmailResult = await UserManager.ConfirmEmailAsync(customer, token);
+                var confirmationEmailResult = await UserManager.ConfirmEmailAsync(customer, token.Replace(" ", ""));
 
                 if (confirmationEmailResult.Succeeded)
                 {
