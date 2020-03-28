@@ -9,11 +9,6 @@ namespace DiplomaSolution.Models
     /// </summary>
     public class CustomerContext : IdentityDbContext<ServiceUser>
     {
-        /// <summary>
-        /// Todo - for now is not used ( remove )
-        /// </summary>
-        public DbSet<Customer> Customers { get; set; }
-
         public DbSet<FormFile> CustomerFiles { get; set; }
 
         /// <summary>

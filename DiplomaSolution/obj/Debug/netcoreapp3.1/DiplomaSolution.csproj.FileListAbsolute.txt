@@ -89,3 +89,6 @@
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp3.1/DiplomaSolution.dll
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp3.1/DiplomaSolution.pdb
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp3.1/Razor/Views/Train/TrainView.cshtml.g.cs
+/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/Emgu.CV.World.NetStandard.dll
+/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp3.1/DiplomaSolution.csproj.CoreCompileInputs.cache
+/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/Debug/netcoreapp3.1/DiplomaSolution.genruntimeconfig.cache

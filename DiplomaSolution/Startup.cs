@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.EntityFrameworkCore;
@@ -118,15 +117,17 @@ namespace DiplomaSolution
             #endregion
 
             #region Custom servises injection and configuring
+
             services.AddTransient<IFileManagerService, FileManagerService>();
             services.AddTransient<ISendEmailService, SendGridEmailSender>();
             services.AddTransient<IAuthorizationHandler, DefaultHandler>();
             services.AddTransient<IAccountService, AccountService>();
             services.AddTransient<IRegistrationService, RegistrationService>();
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
-            services.AddScoped<IUrlHelper>(x => {
-                var actionContext = x.GetRequiredService<IActionContextAccessor>().ActionContext;
-                var factory = x.GetRequiredService<IUrlHelperFactory>();
+            services.AddHttpContextAccessor();
+            services.AddScoped(urlHelperOptions => {
+                var actionContext = urlHelperOptions.GetRequiredService<IActionContextAccessor>().ActionContext;
+                var factory = urlHelperOptions.GetRequiredService<IUrlHelperFactory>();
                 return factory.GetUrlHelper(actionContext);
             });
 

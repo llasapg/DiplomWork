@@ -4,8 +4,9 @@ using System.Threading.Tasks;
 using DiplomaSolution.Helpers.ErrorResponseMessages;
 using DiplomaSolution.Models;
 using DiplomaSolution.Services.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DiplomaSolution.Services.Classes
 {
@@ -17,26 +18,36 @@ namespace DiplomaSolution.Services.Classes
         /// <summary>
         /// Ctor to get all needed DI services
         /// </summary>
-        /// <param name="logger"></param>
-        /// <param name="userManager"></param>
-        /// <param name="signInManager"></param>
-        /// <param name="roleManager"></param>
-        /// <param name="sendEmailService"></param>
-        public RegistrationService(ILogger<RegistrationService> logger, UserManager<ServiceUser> userManager, SignInManager<ServiceUser> signInManager, RoleManager<IdentityRole> roleManager, ISendEmailService sendEmailService)
+        public RegistrationService(IUrlHelper urlHelper, IHttpContextAccessor httpContextAccessor, UserManager<ServiceUser> userManager, RoleManager<IdentityRole> roleManager, ISendEmailService sendEmailService)
         {
             UserManager = userManager;
-            SignInManager = signInManager;
             RoleManager = roleManager;
-            Logger = logger;
             SendEmailService = sendEmailService;
+            Context = httpContextAccessor;
+            UrlHelper = urlHelper;
         }
 
         #region DI services
-        private ILogger<RegistrationService> Logger { get; set; }
+        /// <summary>
+        /// Identity service with func to create users / update data and other stuff...
+        /// </summary>
         private UserManager<ServiceUser> UserManager { get; set; }
-        private SignInManager<ServiceUser> SignInManager { get; set; }
+        /// <summary>
+        /// Identity service with func to create roles and etc...
+        /// </summary>
         private RoleManager<IdentityRole> RoleManager { get; set; }
+        /// <summary>
+        /// Custom email service to send emails using SendGrid provider
+        /// </summary>
         private ISendEmailService SendEmailService { get; set; }
+        /// <summary>
+        /// Prop to get access to the httpcontext object and configure response
+        /// </summary>
+        private IHttpContextAccessor Context { get; set; }
+        /// <summary>
+        /// Url helper to create dynamic ULRS
+        /// </summary>
+        private IUrlHelper UrlHelper { get; set; }
         #endregion
 
         /// <summary>
@@ -75,9 +86,9 @@ namespace DiplomaSolution.Services.Classes
 
                     var token = await UserManager.GenerateEmailConfirmationTokenAsync(currentUser);
 
-                    var emailUrlConfirmation = $"https://localhost:5001/Account/ConfirmEmail/?UserId={currentUser.Id}&Token={token}";
+                    var emailUrlConfirmation = UrlHelper.Action("ConfirmEmail", "Account", new { Token = token, UserId = currentUser.Id }, Context.HttpContext.Request.Scheme);
 
-                    var response = await SendEmailService.SendEmail(new ServiceEmail
+                    var response = await SendEmailService.SendEmail(new ServiceEmail //todo - add there logging to get the response about loggined customers
                     {
                         FromEmail = "testEmailAddress@gmail.com",
                         FromName = "Yevhen",

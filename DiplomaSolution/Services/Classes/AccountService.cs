@@ -39,14 +39,13 @@ namespace DiplomaSolution.Services.Classes
         /// </summary>
         private IUrlHelper UrlHelper { get; set; }
         /// <summary>
-        /// 
+        /// Prop to get HttpContext object to configure the request and etc...
         /// </summary>
-        private HttpContext Context { get; set; }
-        
+        private IHttpContextAccessor Context { get; set; }
         /// <summary>
         /// Basic construstor to perform DI
         /// </summary>
-        public AccountService(HttpContext context,SignInManager<ServiceUser> signInManager, UserManager<ServiceUser> userManager, ISendEmailService sendEmailService, IDataProtectionProvider dataProtecttionProvider, IUrlHelper urlHelper)
+        public AccountService(IHttpContextAccessor context,SignInManager<ServiceUser> signInManager, UserManager<ServiceUser> userManager, ISendEmailService sendEmailService, IDataProtectionProvider dataProtecttionProvider, IUrlHelper urlHelper)
         {
             SignInManager = signInManager;
             UserManager = userManager;
@@ -171,7 +170,7 @@ namespace DiplomaSolution.Services.Classes
 
                             var token = await UserManager.GenerateEmailConfirmationTokenAsync(serviceUser);
 
-                            var emailUrlConfirmation = UrlHelper.Action("ConfirmEmail", "Account", new { Token = token, UserId = serviceUser.Id }, Context.Request.Scheme);
+                            var emailUrlConfirmation = UrlHelper.Action("ConfirmEmail", "Account", new { Token = token, UserId = serviceUser.Id }, Context.HttpContext.Request.Scheme);
 
                             await SendEmailService.SendEmail(new ServiceEmail
                             {
@@ -223,7 +222,7 @@ namespace DiplomaSolution.Services.Classes
                             }
                             var token = await UserManager.GenerateEmailConfirmationTokenAsync(accountData);
 
-                            var emailUrlConfirmation = UrlHelper.Action("ConfirmEmail", "Account", new { Token = token, UserId = accountData.Id }, Context.Request.Scheme);
+                            var emailUrlConfirmation = UrlHelper.Action("ConfirmEmail", "Account", new { Token = token, UserId = accountData.Id }, Context.HttpContext.Request.Scheme);
 
                             await SendEmailService.SendEmail(new ServiceEmail
                             {

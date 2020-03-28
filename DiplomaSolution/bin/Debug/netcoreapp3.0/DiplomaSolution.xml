@@ -132,7 +132,22 @@
             File manager service ( upload, etc.. )
             </summary>
         </member>
-        <member name="M:DiplomaSolution.Controllers.HomePageController.#ctor(DiplomaSolution.Services.Interfaces.IFileManagerService,Microsoft.Extensions.Logging.ILoggerFactory)">
+        <member name="P:DiplomaSolution.Controllers.HomePageController.ILoggerFactory">
+            <summary>
+            Simple factory to create the logger
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Controllers.HomePageController.Logger">
+            <summary>
+            Logger class to perform logging to the file
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Controllers.HomePageController.UserManager">
+            <summary>
+            Service to perform customer data manipulation
+            </summary>
+        </member>
+        <member name="M:DiplomaSolution.Controllers.HomePageController.#ctor(DiplomaSolution.Services.Interfaces.IFileManagerService,Microsoft.Extensions.Logging.ILoggerFactory,Microsoft.AspNetCore.Identity.UserManager{DiplomaSolution.Models.ServiceUser})">
             <summary>
             Service resolving
             </summary>
@@ -146,7 +161,7 @@
         </member>
         <member name="M:DiplomaSolution.Controllers.HomePageController.Index(DiplomaSolution.Models.IndexViewData)">
             <summary>
-            Action to upload the photo to web-site ( change flow, so photo will be pinned with selected user )
+            Action to upload the photo to web-site
             </summary>
             <param name="data"></param>
             <returns></returns>
@@ -207,19 +222,9 @@
             <param name="value"></param>
             <returns></returns>
         </member>
-        <member name="T:DiplomaSolution.Models.Customer">
-            <summary>
-            //todo - add DataAnnotation to specify the label name using param Display
-            </summary>
-        </member>
         <member name="T:DiplomaSolution.Models.CustomerContext">
             <summary>
             Class to represent DB tables
-            </summary>
-        </member>
-        <member name="P:DiplomaSolution.Models.CustomerContext.Customers">
-            <summary>
-            Todo - for now is not used ( remove )
             </summary>
         </member>
         <member name="M:DiplomaSolution.Models.CustomerContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{DiplomaSolution.Models.CustomerContext})">
@@ -233,6 +238,36 @@
             Method to change data model of different tables
             </summary>
             <param name="modelBuilder"></param>
+        </member>
+        <member name="T:DiplomaSolution.Models.Customer">
+            <summary>
+            //todo - add DataAnnotation to specify the label name using param Display
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Models.Customer.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Models.Customer.EmailAddress">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Models.Customer.Password">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Models.Customer.FirstName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Models.Customer.LastName">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:DiplomaSolution.Models.StatusCodesEnum">
             <summary>
@@ -254,9 +289,29 @@
             Customer provided bad data --> return again view with validation errors
             </summary>
         </member>
-        <member name="T:DiplomaSolution.Models.TrainModels.TrainModel">
+        <member name="T:DiplomaSolution.Models.FormFile">
             <summary>
-            General model to perform all needed validation and other TAG helpers actions
+            todo - add attributes 
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Models.FormFile.Id">
+            <summary>
+            File id
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Models.FormFile.CustomerId">
+            <summary>
+            Customer accountId to map this with the file
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Models.FormFile.FullName">
+            <summary>
+            Custom file name for the data provided by the customer
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Models.FormFile.FileData">
+            <summary>
+            byte representation of the customer files
             </summary>
         </member>
         <member name="T:DiplomaSolution.Models.AccountResponseCheckData">
@@ -287,6 +342,11 @@
         <member name="P:DiplomaSolution.Models.AccountResponseCheckData.ActionName">
             <summary>
             Redirect action name
+            </summary>
+        </member>
+        <member name="T:DiplomaSolution.Models.TrainModels.TrainModel">
+            <summary>
+            General model to perform all needed validation and other TAG helpers actions
             </summary>
         </member>
         <member name="T:DiplomaSolution.Models.IndexViewData">
@@ -364,10 +424,10 @@
         </member>
         <member name="P:DiplomaSolution.Services.Classes.AccountService.Context">
             <summary>
-            
+            Prop to get HttpContext object to configure the request and etc...
             </summary>
         </member>
-        <member name="M:DiplomaSolution.Services.Classes.AccountService.#ctor(Microsoft.AspNetCore.Http.HttpContext,Microsoft.AspNetCore.Identity.SignInManager{DiplomaSolution.Models.ServiceUser},Microsoft.AspNetCore.Identity.UserManager{DiplomaSolution.Models.ServiceUser},DiplomaSolution.Services.Interfaces.ISendEmailService,Microsoft.AspNetCore.DataProtection.IDataProtectionProvider,Microsoft.AspNetCore.Mvc.IUrlHelper)">
+        <member name="M:DiplomaSolution.Services.Classes.AccountService.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor,Microsoft.AspNetCore.Identity.SignInManager{DiplomaSolution.Models.ServiceUser},Microsoft.AspNetCore.Identity.UserManager{DiplomaSolution.Models.ServiceUser},DiplomaSolution.Services.Interfaces.ISendEmailService,Microsoft.AspNetCore.DataProtection.IDataProtectionProvider,Microsoft.AspNetCore.Mvc.IUrlHelper)">
             <summary>
             Basic construstor to perform DI
             </summary>
@@ -387,26 +447,79 @@
             <param name="remoteError"></param>
             <returns></returns>
         </member>
-        <member name="M:DiplomaSolution.Services.Classes.FileManagerService.LoadFileToTheServer(Microsoft.AspNetCore.Http.IFormFile)">
+        <member name="T:DiplomaSolution.Services.Classes.FileManagerService">
             <summary>
-            Loads customer images to DB to deal with them in future
+            Custom service with functional to work with files
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Services.Classes.FileManagerService.DataContext">
+            <summary>
+            DB representation   
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Services.Classes.FileManagerService.Configuration">
+            <summary>
+            Application configuration   
+            </summary>
+        </member>
+        <member name="M:DiplomaSolution.Services.Classes.FileManagerService.#ctor(DiplomaSolution.Models.CustomerContext,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            DI reciving constractor
+            </summary>
+            <param name="customerContext"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:DiplomaSolution.Services.Classes.FileManagerService.LoadFileToTheServer(Microsoft.AspNetCore.Http.IFormFile,System.String)">
+            <summary>
+            Loads customer images to HD to deal with them in future
             </summary>
             <param name="file"></param>
+        </member>
+        <member name="M:DiplomaSolution.Services.Classes.FileManagerService.LoadFileToTheDB(Microsoft.AspNetCore.Http.IFormFile,System.String)">
+            <summary>
+            To store customer files to the DB and map them with other customer data
+            </summary>
+            <param name="file"></param>
+        </member>
+        <member name="F:DiplomaSolution.Services.Classes.FileManagerService.FileSignatures">
+            <summary>
+            Collection with all available file signatures for our web-site ( check if its .jpg or .png ) 
+            </summary>
         </member>
         <member name="T:DiplomaSolution.Services.Classes.RegistrationService">
             <summary>
             Service for completing registering  customers that are registered by our web-site
             </summary>
         </member>
-        <member name="M:DiplomaSolution.Services.Classes.RegistrationService.#ctor(Microsoft.Extensions.Logging.ILogger{DiplomaSolution.Services.Classes.RegistrationService},Microsoft.AspNetCore.Identity.UserManager{DiplomaSolution.Models.ServiceUser},Microsoft.AspNetCore.Identity.SignInManager{DiplomaSolution.Models.ServiceUser},Microsoft.AspNetCore.Identity.RoleManager{Microsoft.AspNetCore.Identity.IdentityRole},DiplomaSolution.Services.Interfaces.ISendEmailService)">
+        <member name="M:DiplomaSolution.Services.Classes.RegistrationService.#ctor(Microsoft.AspNetCore.Mvc.IUrlHelper,Microsoft.AspNetCore.Http.IHttpContextAccessor,Microsoft.AspNetCore.Identity.UserManager{DiplomaSolution.Models.ServiceUser},Microsoft.AspNetCore.Identity.RoleManager{Microsoft.AspNetCore.Identity.IdentityRole},DiplomaSolution.Services.Interfaces.ISendEmailService)">
             <summary>
             Ctor to get all needed DI services
             </summary>
-            <param name="logger"></param>
-            <param name="userManager"></param>
-            <param name="signInManager"></param>
-            <param name="roleManager"></param>
-            <param name="sendEmailService"></param>
+        </member>
+        <member name="P:DiplomaSolution.Services.Classes.RegistrationService.UserManager">
+            <summary>
+            Identity service with func to create users / update data and other stuff...
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Services.Classes.RegistrationService.RoleManager">
+            <summary>
+            Identity service with func to create roles and etc...
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Services.Classes.RegistrationService.SendEmailService">
+            <summary>
+            Custom email service to send emails using SendGrid provider
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Services.Classes.RegistrationService.Context">
+            <summary>
+            Prop to get access to the httpcontext object and configure response
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Services.Classes.RegistrationService.UrlHelper">
+            <summary>
+            Url helper to create dynamic ULRS
+            </summary>
         </member>
         <member name="M:DiplomaSolution.Services.Classes.RegistrationService.CompleteRegistration(DiplomaSolution.Models.Customer)">
             <summary>
@@ -433,6 +546,18 @@
             <param name="returnUrl"></param>
             <param name="remoteError"></param>
             <returns></returns>
+        </member>
+        <member name="M:DiplomaSolution.Services.Interfaces.IFileManagerService.LoadFileToTheServer(Microsoft.AspNetCore.Http.IFormFile,System.String)">
+            <summary>
+            So if we have large file we need to store it on our hardware
+            </summary>
+            <param name="file"></param>
+        </member>
+        <member name="M:DiplomaSolution.Services.Interfaces.IFileManagerService.LoadFileToTheDB(Microsoft.AspNetCore.Http.IFormFile,System.String)">
+            <summary>
+            In case of small file ( user profile image ) we can store it in the DB
+            </summary>
+            <param name="file"></param>
         </member>
         <member name="T:DiplomaSolution.Services.Interfaces.IRegistrationService">
             <summary>

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using DiplomaSolution.Models;
 using DiplomaSolution.Services.Interfaces;
 using SendGrid;
@@ -7,7 +6,7 @@ using SendGrid.Helpers.Mail;
 
 namespace DiplomaSolution.Services.Classes
 {
-    public class SendGridEmailSender : ISendEmailService //todo
+    public class SendGridEmailSender : ISendEmailService
     {
         public async Task<Response> SendEmail(ServiceEmail serviceEmail)
         {
