@@ -9,7 +9,7 @@ namespace DiplomaSolution.Services.Interfaces
         /// <summary>
         /// Main method to perform customer login in our system
         /// </summary>
-        Task<AccountResponseCheckData> LoginCustomer(LoginViewModel customer, string returnUrl = null);
+        Task<DefaultServiceResponse> LoginCustomer(LoginViewModel customer, string returnUrl = null);
 
         /// <summary>
         /// Callback method to login customer in case if he decided to login usin external provider
@@ -17,6 +17,6 @@ namespace DiplomaSolution.Services.Interfaces
         /// <param name="returnUrl"></param>
         /// <param name="remoteError"></param>
         /// <returns></returns>
-        Task<AccountResponseCheckData> ExternalLoginCallBack(string returnUrl = null, string remoteError = null);
+        Task<DefaultServiceResponse> ExternalLoginCallBack(string returnUrl = null, string remoteError = null);
     }
 }

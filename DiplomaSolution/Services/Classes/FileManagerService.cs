@@ -2,11 +2,14 @@
 using DiplomaSolution.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using DiplomaSolution.Models;
-using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DiplomaSolution.Helpers.ErrorResponseMessages;
+using DiplomaSolution.ConfigurationModels;
+using Microsoft.Extensions.Options;
+using DiplomaSolution.Models.FileModels;
 
 namespace DiplomaSolution.Services.Classes
 {
@@ -22,14 +25,14 @@ namespace DiplomaSolution.Services.Classes
         /// <summary>
         /// Application configuration   
         /// </summary>
-        private IConfiguration Configuration { get; set; }
+        private IOptionsSnapshot<FileConfiguration> Configuration { get; set; }
 
         /// <summary>
         /// DI reciving constractor
         /// </summary>
         /// <param name="customerContext"></param>
         /// <param name="configuration"></param>
-        public FileManagerService(CustomerContext customerContext, IConfiguration configuration)
+        public FileManagerService(CustomerContext customerContext, IOptionsSnapshot<FileConfiguration> configuration)
         {
             DataContext = customerContext;
             Configuration = configuration;
@@ -39,27 +42,43 @@ namespace DiplomaSolution.Services.Classes
         /// Loads customer images to HD to deal with them in future
         /// </summary>
         /// <param name="file"></param>
-        public async Task LoadFileToTheServer(IFormFile file, string customerId)
+        public async Task<DefaultServiceResponse> LoadFileToTheServer(IFormFile file, string customerId)
         {
+            var responseModel = new DefaultServiceResponse() { ValidationErrors = new List<string>() };
+
             var fileExtension = Path.GetExtension(file.FileName); // or try to use Name
 
             if (fileExtension != null && (fileExtension == ".jpg" || fileExtension == ".png")) // for now we should work only with this type of files ( can be set-Up in the configuration file )
             {
-                var checkResult = await FileExtensionCheck(file, fileExtension);
+                var randomFileName = Path.GetRandomFileName().Replace(".", ""); // replace all the dots to be able to use this files later in the server
+
+                var pathToFilesFolder = Configuration.Value.CustomerFilesFolder;
+
+                var systemFileName = Path.Combine(pathToFilesFolder, randomFileName) + fileExtension;
+
+                var checkResult = await FileExtensionCheck(file, fileExtension, systemFileName);
 
                 if (checkResult) //file type is save, as file extension ( no viruses )
                 {
-                    var pathToTheFolder = Configuration["CustomerFilesFolder"];
-
-                    var randomFileName = Path.GetRandomFileName().Replace(".", ""); // replace all the dots to be able to use this files later in the server
-
-                    var systemFileName = Path.Combine(pathToTheFolder, randomFileName, fileExtension);
+                    DataContext.CustomerImageFiles.Add(new ImageFileModel {CustomerId = new Guid().ToString(), FullName = systemFileName, Id = new Guid() }); // todo - check file ID!!!! ASAP
 
                     using (var stream = File.Create(systemFileName))
                     {
                         await file.CopyToAsync(stream);
                     }
+
+                    return responseModel;
                 }
+
+                responseModel.ValidationErrors.Add(DefaultResponseMessages.WrongFileFormatProvided);
+
+                return responseModel;
+            }
+            else
+            {
+                responseModel.ValidationErrors.Add(DefaultResponseMessages.WrongFileFormatProvided);
+
+                return responseModel;
             }
         }
 
@@ -67,27 +86,27 @@ namespace DiplomaSolution.Services.Classes
         /// To store customer files to the DB and map them with other customer data
         /// </summary>
         /// <param name="file"></param>
-        public async Task LoadFileToTheDB(IFormFile file, string customerId) // todo - check that we can return error list in some cases
+        public async Task<DefaultServiceResponse> LoadFileToTheDB(IFormFile file, string customerId) // todo - check that we can return error list in some cases
         {
+            var responseModel = new DefaultServiceResponse() { ValidationErrors = new List<string>()};
+
             var fileExtension = Path.GetExtension(file.FileName); // or try to use Name
 
             if (fileExtension != null && (fileExtension == ".jpg" || fileExtension == ".png")) // for now we should work only with this type of files ( can be set-Up in the configuration file )
             {
-                var checkResult = await FileExtensionCheck(file, fileExtension);
+                var randomFileName = Path.GetRandomFileName().Replace(".", ""); // replace all the dots to be able to use this files later in the server
+
+                var systemFileName = Path.Combine(Configuration.Value.CustomerFilesFolder, randomFileName, fileExtension);
+
+                var checkResult = await FileExtensionCheck(file, fileExtension, systemFileName);
 
                 if (checkResult) //file type is save, as file extension ( no viruses )
                 {
-                    var pathToTheFolder = Configuration["CustomerFilesFolder"];
-
-                    var randomFileName = Path.GetRandomFileName().Replace(".", ""); // replace all the dots to be able to use this files later in the server
-
-                    var systemFileName = Path.Combine(pathToTheFolder, randomFileName, fileExtension);
-
                     using (var stream = new MemoryStream())
                     {
                         await file.CopyToAsync(stream);
 
-                        DataContext.CustomerFiles.Add(new Models.FormFile
+                        DataContext.AccountLevelFiles.Add(new Models.AccountLevelFile
                         {
                             Id = new Guid(),
                             CustomerId = customerId,
@@ -97,7 +116,18 @@ namespace DiplomaSolution.Services.Classes
 
                         DataContext.SaveChanges();
                     }
+
+                    return responseModel;
                 }
+                responseModel.ValidationErrors.Add(DefaultResponseMessages.WrongFileFormatProvided);
+
+                return responseModel;
+            }
+            else
+            {
+                responseModel.ValidationErrors.Add(DefaultResponseMessages.WrongFileFormatProvided);
+
+                return responseModel;
             }
         }
 
@@ -129,11 +159,13 @@ namespace DiplomaSolution.Services.Classes
         /// <param name="file"></param>
         /// <param name="fileExtension"></param>
         /// <returns></returns>
-        private async Task<bool> FileExtensionCheck(IFormFile file, string fileExtension)
+        private async Task<bool> FileExtensionCheck(IFormFile file, string fileExtension, string fileName)
         {
             // check that file really have this extensions
 
-            using (var fileData = new MemoryStream())
+            var result = false;
+
+            using (var fileData = File.Create(fileName)) // store file localy before check, and after that delete it
             {
                 await file.CopyToAsync(fileData);
 
@@ -145,10 +177,15 @@ namespace DiplomaSolution.Services.Classes
 
                     var firstBytes = reader.ReadBytes(countOfByteToRead); // find why there is no first bytes
 
-                    var result = signatures.Any(signature => firstBytes.Take(signature.Length).SequenceEqual(signature));
-
-                    return result;
+                    result = signatures.Any(signature => firstBytes.Take(signature.Length).SequenceEqual(signature));
                 }
+
+                if (Configuration.Value.DeleteFilesWithWrongFormat)
+                {
+                    File.Delete(fileName);
+                }
+
+                return result;
             }
         }
     }

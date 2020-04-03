@@ -14,10 +14,10 @@ namespace DiplomaSolution.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.1")
+                .HasAnnotation("ProductVersion", "3.1.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("DiplomaSolution.Models.FormFile", b =>
+            modelBuilder.Entity("DiplomaSolution.Models.AccountLevelFile", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -34,7 +34,24 @@ namespace DiplomaSolution.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CustomerFiles");
+                    b.ToTable("AccountLevelFiles");
+                });
+
+            modelBuilder.Entity("DiplomaSolution.Models.FileModels.ImageFileModel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("CustomerId")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CustomerImageFiles");
                 });
 
             modelBuilder.Entity("DiplomaSolution.Models.ServiceUser", b =>

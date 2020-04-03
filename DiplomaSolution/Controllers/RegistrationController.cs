@@ -33,7 +33,7 @@ namespace DiplomaSolution.Controllers
         /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> ConfirmationPage(Customer customer)
+        public async Task<IActionResult> ConfirmationPage(CustomerViewModel customer)
         {
             if (ModelState.IsValid)
             {

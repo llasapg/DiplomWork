@@ -45,7 +45,7 @@ namespace DiplomaSolution.Services.Classes
         /// <summary>
         /// Basic construstor to perform DI
         /// </summary>
-        public AccountService(IHttpContextAccessor context,SignInManager<ServiceUser> signInManager, UserManager<ServiceUser> userManager, ISendEmailService sendEmailService, IDataProtectionProvider dataProtecttionProvider, IUrlHelper urlHelper)
+        public AccountService(IHttpContextAccessor context, SignInManager<ServiceUser> signInManager, UserManager<ServiceUser> userManager, ISendEmailService sendEmailService, IDataProtectionProvider dataProtecttionProvider, IUrlHelper urlHelper)
         {
             SignInManager = signInManager;
             UserManager = userManager;
@@ -61,10 +61,10 @@ namespace DiplomaSolution.Services.Classes
         /// </summary>
         /// <param name="customer"></param>
         /// <param name="returnUrl"></param>
-        public async Task<AccountResponseCheckData> LoginCustomer(LoginViewModel customer, string returnUrl = null)
+        public async Task<DefaultServiceResponse> LoginCustomer(LoginViewModel customer, string returnUrl = null)
         {
-            var validationResponse = new AccountResponseCheckData { StatusCode = StatusCodesEnum.Ok, ValidationErrors = new List<string>(), ResponseData = null};
- 
+            var validationResponse = new DefaultServiceResponse { StatusCode = StatusCodesEnum.Ok, ValidationErrors = new List<string>(), ResponseData = null };
+
             var userData = await UserManager.FindByEmailAsync(customer.EmailAddress);
 
             if (userData != null)
@@ -130,9 +130,9 @@ namespace DiplomaSolution.Services.Classes
         /// <param name="returnUrl"></param>
         /// <param name="remoteError"></param>
         /// <returns></returns>
-        public async Task<AccountResponseCheckData> ExternalLoginCallBack(string returnUrl = null, string remoteError = null)
+        public async Task<DefaultServiceResponse> ExternalLoginCallBack(string returnUrl = null, string remoteError = null)
         {
-            var loginCallBackResult = new AccountResponseCheckData {  ActionName = "Index", ControllerName = "HomePage", ResponseData = null, StatusCode = StatusCodesEnum.Ok, ValidationErrors = new List<string>() };
+            var loginCallBackResult = new DefaultServiceResponse { ActionName = "Index", ControllerName = "HomePage", ResponseData = null, StatusCode = StatusCodesEnum.Ok, ValidationErrors = new List<string>() };
 
             if (remoteError == null)
             {

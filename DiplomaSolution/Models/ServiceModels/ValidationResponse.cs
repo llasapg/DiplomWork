@@ -5,7 +5,7 @@ namespace DiplomaSolution.Models
     /// <summary>
     /// General response model for services that provide some operations with account
     /// </summary>
-    public class AccountResponseCheckData
+    public class DefaultServiceResponse
     {
         /// <summary>
         /// List with returned validation errors in case of unvalid validation

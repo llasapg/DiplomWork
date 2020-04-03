@@ -54,9 +54,9 @@ namespace DiplomaSolution.Services.Classes
         /// Method to perform customer registration in case, that he provided correct data to us
         /// </summary>
         /// <returns></returns>
-        public async Task<AccountResponseCheckData> CompleteRegistration(Customer customer)
+        public async Task<DefaultServiceResponse> CompleteRegistration(CustomerViewModel customer)
         {
-            var responseCheckData = new AccountResponseCheckData { ActionName = "Index", ControllerName= "HomePage",  ResponseData = null, StatusCode = StatusCodesEnum.BadDataProvided, ValidationErrors = new List<string>() };
+            var responseCheckData = new DefaultServiceResponse { ActionName = "Index", ControllerName = "HomePage", ResponseData = null, StatusCode = StatusCodesEnum.BadDataProvided, ValidationErrors = new List<string>() };
 
             var userSearchResult = await UserManager.FindByEmailAsync(customer.EmailAddress);
 
@@ -107,7 +107,7 @@ namespace DiplomaSolution.Services.Classes
 
                     responseCheckData.StatusCode = StatusCodesEnum.RedirectNeeded;
 
-                    return responseCheckData;                    
+                    return responseCheckData;
                 }
                 else
                 {
@@ -128,7 +128,7 @@ namespace DiplomaSolution.Services.Classes
                 responseCheckData.StatusCode = StatusCodesEnum.BadDataProvided;
 
                 return responseCheckData;
-            }       
+            }
         }
 
         #region Helpers

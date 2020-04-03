@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using DiplomaSolution.Models.FileModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,7 +10,15 @@ namespace DiplomaSolution.Models
     /// </summary>
     public class CustomerContext : IdentityDbContext<ServiceUser>
     {
-        public DbSet<FormFile> CustomerFiles { get; set; }
+        /// <summary>
+        /// Table to store customer profile images and etc ...
+        /// </summary>
+        public DbSet<AccountLevelFile> AccountLevelFiles { get; set; }
+
+        /// <summary>
+        /// Table to store images uploaded by customers
+        /// </summary>
+        public DbSet<ImageFileModel> CustomerImageFiles { get; set; }
 
         /// <summary>
         /// Constractor to set-up DB

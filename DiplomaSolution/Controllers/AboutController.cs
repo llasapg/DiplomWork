@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DiplomaSolution.Filters;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DiplomaSolution.Controllers
 {
@@ -11,6 +12,8 @@ namespace DiplomaSolution.Controllers
         /// Method, that returns basic info pages
         /// </summary>
         /// <returns></returns>
+        [HttpGet]
+        [ActionFilter, ExceptionFilter, ResourseFilter]
         public IActionResult GiveInfo()
         {
             return View();

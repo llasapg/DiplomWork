@@ -47,12 +47,13 @@
         </form> <!-- Send file data to the HomePage controller ( Action - Index ) -->
     </div>
     <div id="ConfigureImageBlock">
-        <dl>
-            <dt><div class="header_item_button"><a asp-controller="Registration" asp-action="RegistrationForm">Transition from negative to positive</a></div></dt>
-            <dt><div class="header_item_button"><a asp-controller="Registration" asp-action="RegistrationForm">Transition from positive to negative</a></div></dt>
-            <dt><div class="header_item_button"><a asp-controller="Registration" asp-action="RegistrationForm">Grayscale processing</a></div></dt>
-            <dt><div class="header_item_button"><a asp-controller="Registration" asp-action="RegistrationForm">Scattering correction processing</a></div></dt>
-        </dl>
+        <form asp-action="ModifyPhoto" asp-controller="HomePage">
+            <label asp-for=@Model.OpetationList></label>
+            <select asp-for="SelectedFileOperation" asp-items=@Model.OpetationList></select>
+            <label asp-for=@Model.FileFormats></label>
+            <select asp-for="SelectedResponseFileFormat" asp-items=@Model.FileFormats></select>
+            <button name="ModifyImage" type="submit">Modify image</button>
+        </form>
     </div>
     <div id="OutPutImageBlock">
         <div class="OutPutImage">

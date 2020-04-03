@@ -12,6 +12,6 @@ namespace DiplomaSolution.Services.Interfaces
         /// Method to perform customer registration in case when he provided to us valid data
         /// </summary>
         /// <returns></returns>
-        Task<AccountResponseCheckData> CompleteRegistration(Customer customer);
+        Task<DefaultServiceResponse> CompleteRegistration(CustomerViewModel customer);
     }
 }

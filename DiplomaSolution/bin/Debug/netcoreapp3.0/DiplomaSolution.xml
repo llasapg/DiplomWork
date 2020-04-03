@@ -4,6 +4,26 @@
         <name>DiplomaSolution</name>
     </assembly>
     <members>
+        <member name="T:DiplomaSolution.ConfigurationModels.FileConfiguration">
+            <summary>
+            Configuration model to represent app.json configurations 
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.ConfigurationModels.FileConfiguration.CustomerFilesFolder">
+            <summary>
+            Path to customer files folder
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.ConfigurationModels.FileConfiguration.AvailableFileFormats">
+            <summary>
+            List of available formats
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.ConfigurationModels.FileConfiguration.DeleteFilesWithWrongFormat">
+            <summary>
+            Flag ot delete customer image in case, when validation is failed
+            </summary>
+        </member>
         <member name="T:DiplomaSolution.Controllers.AboutController">
             <summary>
             Controller to get info about web-site
@@ -166,6 +186,13 @@
             <param name="data"></param>
             <returns></returns>
         </member>
+        <member name="M:DiplomaSolution.Controllers.HomePageController.ModifyPhoto(DiplomaSolution.Models.IndexViewData)">
+            <summary>
+            Action to change the photo
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
         <member name="T:DiplomaSolution.Controllers.RegistrationController">
             <summary>
             This controller is used to create customer and etc stuff...
@@ -176,7 +203,7 @@
             Ctor to get all needed DI services
             </summary>
         </member>
-        <member name="M:DiplomaSolution.Controllers.RegistrationController.ConfirmationPage(DiplomaSolution.Models.Customer)">
+        <member name="M:DiplomaSolution.Controllers.RegistrationController.ConfirmationPage(DiplomaSolution.Models.CustomerViewModel)">
             <summary>
             Add there a return url to proceed with the customers ...
             </summary>
@@ -227,6 +254,16 @@
             Class to represent DB tables
             </summary>
         </member>
+        <member name="P:DiplomaSolution.Models.CustomerContext.AccountLevelFiles">
+            <summary>
+            Table to store customer profile images and etc ...
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Models.CustomerContext.CustomerImageFiles">
+            <summary>
+            Table to store images uploaded by customers
+            </summary>
+        </member>
         <member name="M:DiplomaSolution.Models.CustomerContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{DiplomaSolution.Models.CustomerContext})">
             <summary>
             Constractor to set-up DB
@@ -239,34 +276,24 @@
             </summary>
             <param name="modelBuilder"></param>
         </member>
-        <member name="T:DiplomaSolution.Models.Customer">
+        <member name="P:DiplomaSolution.Models.CustomerViewModel.EmailAddress">
             <summary>
-            //todo - add DataAnnotation to specify the label name using param Display
+            Customer email
             </summary>
         </member>
-        <member name="P:DiplomaSolution.Models.Customer.Id">
+        <member name="P:DiplomaSolution.Models.CustomerViewModel.Password">
             <summary>
-            
+            Customer password
             </summary>
         </member>
-        <member name="P:DiplomaSolution.Models.Customer.EmailAddress">
+        <member name="P:DiplomaSolution.Models.CustomerViewModel.FirstName">
             <summary>
-            
+            Customer firstName
             </summary>
         </member>
-        <member name="P:DiplomaSolution.Models.Customer.Password">
+        <member name="P:DiplomaSolution.Models.CustomerViewModel.LastName">
             <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DiplomaSolution.Models.Customer.FirstName">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DiplomaSolution.Models.Customer.LastName">
-            <summary>
-            
+            Customer lastName
             </summary>
         </member>
         <member name="T:DiplomaSolution.Models.StatusCodesEnum">
@@ -289,79 +316,109 @@
             Customer provided bad data --> return again view with validation errors
             </summary>
         </member>
-        <member name="T:DiplomaSolution.Models.FormFile">
+        <member name="T:DiplomaSolution.Models.AccountLevelFile">
             <summary>
             todo - add attributes 
             </summary>
         </member>
-        <member name="P:DiplomaSolution.Models.FormFile.Id">
+        <member name="P:DiplomaSolution.Models.AccountLevelFile.Id">
             <summary>
             File id
             </summary>
         </member>
-        <member name="P:DiplomaSolution.Models.FormFile.CustomerId">
+        <member name="P:DiplomaSolution.Models.AccountLevelFile.CustomerId">
             <summary>
             Customer accountId to map this with the file
             </summary>
         </member>
-        <member name="P:DiplomaSolution.Models.FormFile.FullName">
+        <member name="P:DiplomaSolution.Models.AccountLevelFile.FullName">
             <summary>
             Custom file name for the data provided by the customer
             </summary>
         </member>
-        <member name="P:DiplomaSolution.Models.FormFile.FileData">
+        <member name="P:DiplomaSolution.Models.AccountLevelFile.FileData">
             <summary>
             byte representation of the customer files
             </summary>
         </member>
-        <member name="T:DiplomaSolution.Models.AccountResponseCheckData">
+        <member name="P:DiplomaSolution.Models.FileModels.ImageFileModel.Id">
+            <summary>
+            File id
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Models.FileModels.ImageFileModel.CustomerId">
+            <summary>
+            Customer accountId to map this with the file
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Models.FileModels.ImageFileModel.FullName">
+            <summary>
+            Custom file name for the data provided by the customer
+            </summary>
+        </member>
+        <member name="T:DiplomaSolution.Models.DefaultServiceResponse">
             <summary>
             General response model for services that provide some operations with account
             </summary>
         </member>
-        <member name="P:DiplomaSolution.Models.AccountResponseCheckData.ValidationErrors">
+        <member name="P:DiplomaSolution.Models.DefaultServiceResponse.ValidationErrors">
             <summary>
             List with returned validation errors in case of unvalid validation
             </summary>
         </member>
-        <member name="P:DiplomaSolution.Models.AccountResponseCheckData.StatusCode">
+        <member name="P:DiplomaSolution.Models.DefaultServiceResponse.StatusCode">
             <summary>
             Returned from the service status code to specify what should be done next
             </summary>
         </member>
-        <member name="P:DiplomaSolution.Models.AccountResponseCheckData.ResponseData">
+        <member name="P:DiplomaSolution.Models.DefaultServiceResponse.ResponseData">
             <summary>
             Response data to next redirect, or to provide viewModel
             </summary>
         </member>
-        <member name="P:DiplomaSolution.Models.AccountResponseCheckData.ControllerName">
+        <member name="P:DiplomaSolution.Models.DefaultServiceResponse.ControllerName">
             <summary>
             Redirect controller name
             </summary>
         </member>
-        <member name="P:DiplomaSolution.Models.AccountResponseCheckData.ActionName">
+        <member name="P:DiplomaSolution.Models.DefaultServiceResponse.ActionName">
             <summary>
             Redirect action name
             </summary>
         </member>
-        <member name="T:DiplomaSolution.Models.TrainModels.TrainModel">
-            <summary>
-            General model to perform all needed validation and other TAG helpers actions
-            </summary>
-        </member>
         <member name="T:DiplomaSolution.Models.IndexViewData">
             <summary>
-            
+            View model for homepage to the file from customer
             </summary>
         </member>
         <member name="P:DiplomaSolution.Models.IndexViewData.FormFileData">
             <summary>
-            
+            File, that user provided
             </summary>
         </member>
-        <member name="P:DiplomaSolution.Models.IndexViewData.Customer">
+        <member name="P:DiplomaSolution.Models.IndexViewData.ValidationResponse">
             <summary>
-            
+            Response from filemanager service in case of wrong data provided
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Models.IndexViewData.SelectedResponseFileFormat">
+            <summary>
+            Stores file format choosed by the customer
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Models.IndexViewData.FileFormats">
+            <summary>
+            List of available file formats
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Models.IndexViewData.SelectedFileOperation">
+            <summary>
+            Selected file operation by the customer
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Models.IndexViewData.OpetationList">
+            <summary>
+            List with file operations
             </summary>
         </member>
         <member name="T:DiplomaSolution.Program">
@@ -462,7 +519,7 @@
             Application configuration   
             </summary>
         </member>
-        <member name="M:DiplomaSolution.Services.Classes.FileManagerService.#ctor(DiplomaSolution.Models.CustomerContext,Microsoft.Extensions.Configuration.IConfiguration)">
+        <member name="M:DiplomaSolution.Services.Classes.FileManagerService.#ctor(DiplomaSolution.Models.CustomerContext,Microsoft.Extensions.Options.IOptionsSnapshot{DiplomaSolution.ConfigurationModels.FileConfiguration})">
             <summary>
             DI reciving constractor
             </summary>
@@ -485,6 +542,14 @@
             <summary>
             Collection with all available file signatures for our web-site ( check if its .jpg or .png ) 
             </summary>
+        </member>
+        <member name="M:DiplomaSolution.Services.Classes.FileManagerService.FileExtensionCheck(Microsoft.AspNetCore.Http.IFormFile,System.String,System.String)">
+            <summary>
+            Method to check, that file extension is same, as customer provided
+            </summary>
+            <param name="file"></param>
+            <param name="fileExtension"></param>
+            <returns></returns>
         </member>
         <member name="T:DiplomaSolution.Services.Classes.RegistrationService">
             <summary>
@@ -521,7 +586,7 @@
             Url helper to create dynamic ULRS
             </summary>
         </member>
-        <member name="M:DiplomaSolution.Services.Classes.RegistrationService.CompleteRegistration(DiplomaSolution.Models.Customer)">
+        <member name="M:DiplomaSolution.Services.Classes.RegistrationService.CompleteRegistration(DiplomaSolution.Models.CustomerViewModel)">
             <summary>
             Method to perform customer registration in case, that he provided correct data to us
             </summary>
@@ -564,7 +629,7 @@
             Service with logic with registration customers
             </summary>
         </member>
-        <member name="M:DiplomaSolution.Services.Interfaces.IRegistrationService.CompleteRegistration(DiplomaSolution.Models.Customer)">
+        <member name="M:DiplomaSolution.Services.Interfaces.IRegistrationService.CompleteRegistration(DiplomaSolution.Models.CustomerViewModel)">
             <summary>
             Method to perform customer registration in case when he provided to us valid data
             </summary>

@@ -36,13 +36,9 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "Emgu.CV": {
+            "Magick.NET-Q16-AnyCPU": {
               "target": "Package",
-              "version": "[4.2.0.3662, )"
-            },
-            "ImageProcessor.Web.Config": {
-              "target": "Package",
-              "version": "[2.6.0, )"
+              "version": "[7.15.5, )"
             },
             "Microsoft.AspNetCore.Authentication.Facebook": {
               "target": "Package",

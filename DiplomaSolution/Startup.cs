@@ -1,4 +1,5 @@
-﻿using DiplomaSolution.Extensions;
+﻿using DiplomaSolution.ConfigurationModels;
+using DiplomaSolution.Extensions;
 using DiplomaSolution.Models;
 using DiplomaSolution.Security;
 using DiplomaSolution.Services.Classes;
@@ -118,6 +119,7 @@ namespace DiplomaSolution
 
             #region Custom servises injection and configuring
 
+            services.Configure<FileConfiguration>(Configuration.GetSection("FileConfigurations"));
             services.AddTransient<IFileManagerService, FileManagerService>();
             services.AddTransient<ISendEmailService, SendGridEmailSender>();
             services.AddTransient<IAuthorizationHandler, DefaultHandler>();

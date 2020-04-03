@@ -52,9 +52,9 @@ namespace DiplomaSolution.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
-            Logger.LogCritical("Index action hitted ( first log) ");
+            var homePageModel = new IndexViewData();
 
-            return View();
+            return View(homePageModel);
         }
 
         /// <summary>
@@ -65,20 +65,34 @@ namespace DiplomaSolution.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(IndexViewData data)
         {
+            var fileUploadResponse = new DefaultServiceResponse();
+
             if (data.FormFileData != null)
             {
                 var customerData = await UserManager.GetUserAsync(User);
-
+                
                 if(customerData != null)
                 {
                     //todo - think about how we can handle errors in case of bad data and etc...
-                    await FileManagerService.LoadFileToTheDB(data.FormFileData, customerData.Id);
+                    fileUploadResponse = await FileManagerService.LoadFileToTheServer(data.FormFileData, customerData.Id);
                 }
             }
 
-            var viewModel = new IndexViewData { FormFileData = data.FormFileData };
+            var viewModel = new IndexViewData { FormFileData = data.FormFileData, ValidationResponse = fileUploadResponse.ValidationErrors };
 
             return View(viewModel);
+        }
+
+        /// <summary>
+        /// Action to change the photo
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> ModifyPhoto(IndexViewData data)
+        {
+            // достать последнее изображение пользователя ( или же сохранить его в модели ) и обработать его
+            return View(data);
         }
     }
 }
