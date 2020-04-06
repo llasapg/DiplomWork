@@ -15,7 +15,7 @@ namespace DiplomaSolution.Controllers
         [HttpGet]
         [ActionFilter, ExceptionFilter, ResourseFilter]
         public IActionResult GiveInfo()
-        {
+        {            
             return View();
         }
     }

@@ -1,45 +1,14 @@
 ﻿@model IndexViewData
-@inject SignInManager<ServiceUser> signInManager
-@inject IAuthorizationService service 
 @{
     ViewData["Title"] = "SmartX.com";
 }
-<div class="header">
-    <div class="header_section">
-        <div class="header_item_logo">
-            <div class="header_item_button">
-                <a asp-controller="HomePage" asp-action="Index">SmartX</a>
-            </div>
-        </div>
-        <div class="header_item_button"><a asp-controller="HomePage" asp-action="Index">Home</a></div>
-        <div class="header_item_button"><a asp-controller="About" asp-action="GiveInfo">About</a></div>
-        <div class="header_item_button"><a asp-controller="InfoPage" asp-action="SupportPage">Contact</a></div>
-    </div> <!-- NavBar menu -->
-    @if (signInManager.IsSignedIn(User) && (await service.AuthorizeAsync(User, "DefaultMainPolicy")).Succeeded)
-    {
-        <div class="header_section">
-                <div class="header_item_button"><a>@User.Identity.Name</a></div>
-                <div class="header_item_button"><a asp-controller="Account" asp-action="Logout">Log-Out</a></div>
-        </div>
-    }
-    else
-    {
-        <div class="header_section">
-            <div class="header_item_button"><a asp-controller="Registration" asp-action="RegistrationForm">Registration</a></div>
-            <div class="header_item_button"><a asp-controller="Account" asp-action="Login">Log-In</a></div>
-        </div>
-    }
-</div>
 <div class="mainContent"> <!-- Upload photo boxes -->
     <div Id="InputImageBlock">
         <div class="OutPutImage">
-            @if (Model != null)
-            {
-                if (Model.FormFileData != null)
-                {
-                    <img id="Img_block" src="CustomersImages/@Model.FormFileData.FileName" asp-append-version="true" />
-                }
-            }
+            @if (!string.IsNullOrEmpty(@Model.PathToTheInputImage))
+             {
+                <img id="Img_block" src="@Model.PathToTheInputImage" asp-append-version="true" />
+             }
         </div>
         <form method="post" asp-controller="HomePage" asp-action="Index" enctype="multipart/form-data">
             <input type="file" asp-for="FormFileData" />
@@ -52,14 +21,19 @@
             <select asp-for="SelectedFileOperation" asp-items=@Model.OpetationList></select>
             <label asp-for=@Model.FileFormats></label>
             <select asp-for="SelectedResponseFileFormat" asp-items=@Model.FileFormats></select>
+            <input type="hidden" asp-for=@Model.PathToTheInputImage />
             <button name="ModifyImage" type="submit">Modify image</button>
         </form>
     </div>
     <div id="OutPutImageBlock">
         <div class="OutPutImage">
+            @if (!string.IsNullOrEmpty(@Model.PathToTheResultImage))
+            {
+                <img id="Img_block" src="@Model.PathToTheResultImage" asp-append-version="true" />
+            }
         </div>
         <form method="post" asp-controller="HomePage" asp-action="Index" enctype="multipart/form-data">
-            <input type="submit" name="Загрузить" />
+            <button name="DownloadImage" type="submit">Download result</button>
         </form>
     </div>
 </div>

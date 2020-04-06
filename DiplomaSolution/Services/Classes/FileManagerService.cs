@@ -58,14 +58,18 @@ namespace DiplomaSolution.Services.Classes
 
                 var checkResult = await FileExtensionCheck(file, fileExtension, systemFileName);
 
-                if (checkResult) //file type is save, as file extension ( no viruses )
+                if (Configuration.Value.SaveFilesWithWrongFormat) //file type is save, as file extension ( no viruses )
                 {
-                    DataContext.CustomerImageFiles.Add(new ImageFileModel {CustomerId = new Guid().ToString(), FullName = systemFileName, Id = new Guid() }); // todo - check file ID!!!! ASAP
+                    DataContext.CustomerImageFiles.Add(new ImageFileModel {CustomerId = customerId, FullName = systemFileName, Id = new Guid(), UploadTime = DateTime.Now }); // todo - check file ID!!!! ASAP
+
+                    await DataContext.SaveChangesAsync();
 
                     using (var stream = File.Create(systemFileName))
                     {
                         await file.CopyToAsync(stream);
                     }
+
+                    responseModel.ResponseData = systemFileName;
 
                     return responseModel;
                 }
@@ -100,13 +104,13 @@ namespace DiplomaSolution.Services.Classes
 
                 var checkResult = await FileExtensionCheck(file, fileExtension, systemFileName);
 
-                if (checkResult) //file type is save, as file extension ( no viruses )
+                if (Configuration.Value.SaveFilesWithWrongFormat) //file type is save, as file extension ( no viruses )
                 {
                     using (var stream = new MemoryStream())
                     {
                         await file.CopyToAsync(stream);
 
-                        DataContext.AccountLevelFiles.Add(new Models.AccountLevelFile
+                        DataContext.AccountLevelFiles.Add(new AccountLevelFile
                         {
                             Id = new Guid(),
                             CustomerId = customerId,
@@ -117,8 +121,11 @@ namespace DiplomaSolution.Services.Classes
                         DataContext.SaveChanges();
                     }
 
+                    responseModel.ResponseData = systemFileName;
+
                     return responseModel;
                 }
+
                 responseModel.ValidationErrors.Add(DefaultResponseMessages.WrongFileFormatProvided);
 
                 return responseModel;
@@ -180,10 +187,7 @@ namespace DiplomaSolution.Services.Classes
                     result = signatures.Any(signature => firstBytes.Take(signature.Length).SequenceEqual(signature));
                 }
 
-                if (Configuration.Value.DeleteFilesWithWrongFormat)
-                {
-                    File.Delete(fileName);
-                }
+                File.Delete(fileName);
 
                 return result;
             }

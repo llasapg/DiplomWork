@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@inject SignInManager<ServiceUser> signInManager
+@inject IAuthorizationService service
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -6,6 +8,32 @@
     <link rel="stylesheet" href="../../css/styles.css" type="text/css">
 </head>
 <body>
+    <div class="header">
+        <div class="header_section">
+            <div class="header_item_logo">
+                <div class="header_item_button">
+                    <a asp-controller="HomePage" asp-action="Index">SmartX</a>
+                </div>
+            </div>
+            <div class="header_item_button"><a asp-controller="HomePage" asp-action="Index">Home</a></div>
+            <div class="header_item_button"><a asp-controller="About" asp-action="GiveInfo">About</a></div>
+            <div class="header_item_button"><a asp-controller="InfoPage" asp-action="SupportPage">Contact</a></div>
+        </div> <!-- NavBar menu -->
+        @if (signInManager.IsSignedIn(User) && (await service.AuthorizeAsync(User, "DefaultMainPolicy")).Succeeded)
+        {
+            <div class="header_section">
+                <div class="header_item_button"><a>@User.Identity.Name</a></div>
+                <div class="header_item_button"><a asp-controller="Account" asp-action="Logout">Log-Out</a></div>
+            </div>
+        }
+        else
+        {
+            <div class="header_section">
+                <div class="header_item_button"><a asp-controller="Registration" asp-action="RegistrationForm">Registration</a></div>
+                <div class="header_item_button"><a asp-controller="Account" asp-action="Login">Log-In</a></div>
+            </div>
+        }
+    </div>
     @RenderBody()
     <footer>
         <div class="footerElement">

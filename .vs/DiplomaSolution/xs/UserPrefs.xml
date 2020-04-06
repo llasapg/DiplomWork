@@ -1,22 +1,11 @@
 ﻿<Properties StartupConfiguration="{EFFD6586-B9FD-4716-A086-1C5E9DE7A3D6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Migrations/20200403192249_Added_Table_to_store_files.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Views/Shared/_Layout.cshtml">
     <Files>
-      <File FileName="DiplomaSolution/Program.cs" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Startup.cs" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Services/Classes/FileManagerService.cs" Line="106" Column="86" />
-      <File FileName="DiplomaSolution/Controllers/HomePageController.cs" Line="92" Column="46" />
-      <File FileName="DiplomaSolution/ConfigurationModels/FileConfiguration.cs" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/appsettings.json" Line="17" Column="4" />
-      <File FileName="DiplomaSolution/Helpers/ErrorResponseMessages/DefaultResponseMessages.cs" Line="2" Column="2" />
-      <File FileName="DiplomaSolution/Controllers/ErrorController.cs" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/ViewModels/IndexViewData.cs" Line="24" Column="59" />
-      <File FileName="DiplomaSolution/Views/HomePage/Index.cshtml" Line="54" Column="96" />
-      <File FileName="DiplomaSolution/wwwroot/css/styles.css" Line="150" Column="18" />
-      <File FileName="DiplomaSolution/Models/Enums/StatusCodesEnum.cs" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Models/CustomerContext.cs" Line="15" Column="23" />
-      <File FileName="DiplomaSolution/Models/FileModels/FormFile.cs" Line="23" Column="45" />
-      <File FileName="DiplomaSolution/Models/FileModels/ImageFileModel.cs" Line="6" Column="32" />
-      <File FileName="DiplomaSolution/Migrations/20200403192249_Added_Table_to_store_files.cs" Line="1" Column="1" />
+      <File FileName="DiplomaSolution/Controllers/HomePageController.cs" Line="140" Column="49" />
+      <File FileName="DiplomaSolution/wwwroot/css/styles.css" Line="2" Column="29" />
+      <File FileName="DiplomaSolution/Services/Classes/FileManagerService.cs" Line="175" Column="55" />
+      <File FileName="DiplomaSolution/Views/HomePage/Index.cshtml" Line="7" Column="1" />
+      <File FileName="DiplomaSolution/Views/Shared/_Layout.cshtml" Line="34" Column="11" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -25,19 +14,29 @@
             <Node name="DiplomaSolution" expanded="True">
               <Node name="ConfigurationModels" expanded="True" />
               <Node name="Controllers" expanded="True" />
+              <Node name="Filters" expanded="True" />
               <Node name="Helpers" expanded="True">
                 <Node name="ErrorResponseMessages" expanded="True" />
               </Node>
-              <Node name="Migrations" expanded="True">
-                <Node name="20200403192249_Added_Table_to_store_files.cs" selected="True" />
-              </Node>
               <Node name="Models" expanded="True">
+                <Node name="CustomerDataModels" expanded="True" />
                 <Node name="Enums" expanded="True" />
                 <Node name="FileModels" expanded="True" />
               </Node>
+              <Node name="Security" expanded="True">
+                <Node name="Policy" expanded="True" />
+              </Node>
+              <Node name="Services" expanded="True">
+                <Node name="Classes" expanded="True" />
+                <Node name="Interfaces" expanded="True" />
+              </Node>
               <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
+                <Node name="Account" expanded="True" />
                 <Node name="HomePage" expanded="True" />
+                <Node name="Shared" expanded="True">
+                  <Node name="_Layout.cshtml" selected="True" />
+                </Node>
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="css" expanded="True" />
@@ -52,9 +51,7 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.DiplomaSolution PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Services/Classes/FileManagerService.cs" relfile="DiplomaSolution/Services/Classes/FileManagerService.cs" line="119" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

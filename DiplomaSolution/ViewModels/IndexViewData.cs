@@ -41,13 +41,22 @@ namespace DiplomaSolution.Models
         [Display(Name = "Select operation")]
         public List<SelectListItem> OpetationList { get; set; } = new List<SelectListItem>
         {
-            new SelectListItem {Value = "OperationOne", Text = "OperationOne" },
-            new SelectListItem {Value = "OperationTwo", Text = "OperationTwo"},
-            new SelectListItem {Value = "OperationTree", Text = "OperationTree" },
-            new SelectListItem {Value = "OperationFour", Text = "OperationFour"},
-            new SelectListItem {Value = "OperationFive", Text = "OperationFive" },
-            new SelectListItem {Value = "OperationSix", Text = "OperationSix"}
+            new SelectListItem {Value = "CycleColorMap", Text = "Cycle color map" },
+            new SelectListItem {Value = "FloodFill", Text = "Flood fill"},
+            new SelectListItem {Value = "Flop", Text = "Flop" },
+            new SelectListItem {Value = "GammaCorrect", Text = "Gamma correct"},
+            new SelectListItem {Value = "GausiianBlur", Text = "Blur" },
+            new SelectListItem {Value = "MedianFilter", Text = "Median filter"},
+            new SelectListItem {Value = "MotionBlur", Text = "Motion blur"},
+            new SelectListItem {Value = "Negate", Text = "Negate"}
         };
-
+        /// <summary>
+        /// From the begining is null, but when we process an image can be fullfiled
+        /// </summary>
+        public string PathToTheResultImage { get; set; }
+        /// <summary>
+        /// To avoid passind all the form image data again decided to save path to the image like this
+        /// </summary>
+        public string PathToTheInputImage { get; set; }
     }
 }

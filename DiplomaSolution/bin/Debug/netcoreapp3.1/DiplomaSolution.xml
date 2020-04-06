@@ -19,7 +19,7 @@
             List of available formats
             </summary>
         </member>
-        <member name="P:DiplomaSolution.ConfigurationModels.FileConfiguration.DeleteFilesWithWrongFormat">
+        <member name="P:DiplomaSolution.ConfigurationModels.FileConfiguration.SaveFilesWithWrongFormat">
             <summary>
             Flag ot delete customer image in case, when validation is failed
             </summary>
@@ -167,7 +167,12 @@
             Service to perform customer data manipulation
             </summary>
         </member>
-        <member name="M:DiplomaSolution.Controllers.HomePageController.#ctor(DiplomaSolution.Services.Interfaces.IFileManagerService,Microsoft.Extensions.Logging.ILoggerFactory,Microsoft.AspNetCore.Identity.UserManager{DiplomaSolution.Models.ServiceUser})">
+        <member name="P:DiplomaSolution.Controllers.HomePageController.CustomerContext">
+            <summary>
+            Prop to work with the DB
+            </summary>
+        </member>
+        <member name="M:DiplomaSolution.Controllers.HomePageController.#ctor(DiplomaSolution.Services.Interfaces.IFileManagerService,Microsoft.Extensions.Logging.ILoggerFactory,Microsoft.AspNetCore.Identity.UserManager{DiplomaSolution.Models.ServiceUser},DiplomaSolution.Models.CustomerContext)">
             <summary>
             Service resolving
             </summary>
@@ -356,6 +361,11 @@
             Custom file name for the data provided by the customer
             </summary>
         </member>
+        <member name="P:DiplomaSolution.Models.FileModels.ImageFileModel.UploadTime">
+            <summary>
+            Prop to get the last added file by the customer
+            </summary>
+        </member>
         <member name="T:DiplomaSolution.Models.DefaultServiceResponse">
             <summary>
             General response model for services that provide some operations with account
@@ -419,6 +429,16 @@
         <member name="P:DiplomaSolution.Models.IndexViewData.OpetationList">
             <summary>
             List with file operations
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Models.IndexViewData.PathToTheResultImage">
+            <summary>
+            From the begining is null, but when we process an image can be fullfiled
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.Models.IndexViewData.PathToTheInputImage">
+            <summary>
+            To avoid passind all the form image data again decided to save path to the image like this
             </summary>
         </member>
         <member name="T:DiplomaSolution.Program">

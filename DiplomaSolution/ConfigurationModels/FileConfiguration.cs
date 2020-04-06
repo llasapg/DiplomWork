@@ -18,6 +18,6 @@ namespace DiplomaSolution.ConfigurationModels
         /// <summary>
         /// Flag ot delete customer image in case, when validation is failed
         /// </summary>
-        public bool DeleteFilesWithWrongFormat { get; set; }
+        public bool SaveFilesWithWrongFormat { get; set; }
     }
 }

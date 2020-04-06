@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace DiplomaSolution.Filters
 {
-    public class ActionFilter : IAsyncActionFilter
+    public class ActionFilter : IAsyncActionFilter // there can be somekind of model check ( this filter runs rigth after mb )
     {
         public ActionFilter()
         {

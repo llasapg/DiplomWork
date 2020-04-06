@@ -18,5 +18,9 @@ namespace DiplomaSolution.Models.FileModels
         /// Custom file name for the data provided by the customer
         /// </summary>
         public string FullName { get; set; }
+        /// <summary>
+        /// Prop to get the last added file by the customer
+        /// </summary>
+        public DateTime UploadTime { get; set; }
     }
 }

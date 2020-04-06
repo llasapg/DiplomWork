@@ -147,13 +147,13 @@ input[type="text"], input[type="password"] {
 }
 
 .OutPutImage {
-    width: 350px;
-    height: 450px;
+    width: 500px;
+    height: 350px;
     border-radius: 5px 5px 5px 5px;
 }
 
 #Img_block {
-    width: 380px;
+    width: 500px;
     height: 350px;
     border-radius: 8px 8px 8px 8px;
 }
