@@ -14,6 +14,7 @@
             <input type="file" asp-for="FormFileData" />
             <button name="UploadPhoto" type="submit">Upload photo</button>
         </form> <!-- Send file data to the HomePage controller ( Action - Index ) -->
+        <div asp-validation-summary="All"></div>
     </div>
     <div id="ConfigureImageBlock">
         <form asp-action="ModifyPhoto" asp-controller="HomePage">
@@ -24,6 +25,10 @@
             <input type="hidden" asp-for=@Model.PathToTheInputImage />
             <button name="ModifyImage" type="submit">Modify image</button>
         </form>
+        @if (!string.IsNullOrEmpty(@Model.PathToTheInputImage))
+        {
+            <a class="header_item_button" asp-controller="HomePage" asp-action="Index">Reset image</a>
+        }
     </div>
     <div id="OutPutImageBlock">
         <div class="OutPutImage">

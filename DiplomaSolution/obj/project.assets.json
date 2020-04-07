@@ -7009,7 +7009,7 @@
       "outputPath": "/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/llasapg/.config/NuGet/NuGet.Config"
+        "/Users/llasapg/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"

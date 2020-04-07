@@ -1,42 +1,39 @@
 ﻿<Properties StartupConfiguration="{EFFD6586-B9FD-4716-A086-1C5E9DE7A3D6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Views/Shared/_Layout.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/ViewModels/IndexViewData.cs">
     <Files>
-      <File FileName="DiplomaSolution/Controllers/HomePageController.cs" Line="140" Column="49" />
-      <File FileName="DiplomaSolution/wwwroot/css/styles.css" Line="2" Column="29" />
-      <File FileName="DiplomaSolution/Services/Classes/FileManagerService.cs" Line="175" Column="55" />
-      <File FileName="DiplomaSolution/Views/HomePage/Index.cshtml" Line="7" Column="1" />
-      <File FileName="DiplomaSolution/Views/Shared/_Layout.cshtml" Line="34" Column="11" />
+      <File FileName="DiplomaSolution/Services/Classes/FileManagerService.cs" Line="209" Column="14" />
+      <File FileName="DiplomaSolution/Controllers/HomePageController.cs" Line="105" Column="17" />
+      <File FileName="DiplomaSolution/Services/Interfaces/IFileManagerService.cs" Line="25" Column="111" />
+      <File FileName="DiplomaSolution/ViewModels/IndexViewData.cs" Line="51" Column="67" />
+      <File FileName="DiplomaSolution/Views/HomePage/Index.cshtml" Line="9" Column="15" />
+      <File FileName="DiplomaSolution/Views/Registration/RegistrationForm.cshtml" Line="1" Column="1" />
+      <File FileName="DiplomaSolution/Filters/ActionFilter.cs" Line="1" Column="1" />
+      <File FileName="DiplomaSolution/Filters/ExceptionFilter.cs" Line="1" Column="1" />
+      <File FileName="DiplomaSolution/Filters/ResourseFilter.cs" Line="1" Column="1" />
+      <File FileName="DiplomaSolution/Views/Shared/_Layout.cshtml" Line="32" Column="47" />
+      <File FileName="DiplomaSolution/wwwroot/css/styles.css" Line="109" Column="27" />
+      <File FileName="DiplomaSolution/ViewModels/LoginViewModel.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="DiplomaSolution" expanded="True">
             <Node name="DiplomaSolution" expanded="True">
-              <Node name="ConfigurationModels" expanded="True" />
               <Node name="Controllers" expanded="True" />
               <Node name="Filters" expanded="True" />
-              <Node name="Helpers" expanded="True">
-                <Node name="ErrorResponseMessages" expanded="True" />
-              </Node>
-              <Node name="Models" expanded="True">
-                <Node name="CustomerDataModels" expanded="True" />
-                <Node name="Enums" expanded="True" />
-                <Node name="FileModels" expanded="True" />
-              </Node>
-              <Node name="Security" expanded="True">
-                <Node name="Policy" expanded="True" />
-              </Node>
+              <Node name="Properties" expanded="True" />
               <Node name="Services" expanded="True">
                 <Node name="Classes" expanded="True" />
                 <Node name="Interfaces" expanded="True" />
               </Node>
-              <Node name="ViewModels" expanded="True" />
+              <Node name="ViewModels" expanded="True">
+                <Node name="IndexViewData.cs" selected="True" />
+              </Node>
               <Node name="Views" expanded="True">
-                <Node name="Account" expanded="True" />
                 <Node name="HomePage" expanded="True" />
-                <Node name="Shared" expanded="True">
-                  <Node name="_Layout.cshtml" selected="True" />
-                </Node>
+                <Node name="InfoPage" expanded="True" />
+                <Node name="Registration" expanded="True" />
+                <Node name="Shared" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="css" expanded="True" />

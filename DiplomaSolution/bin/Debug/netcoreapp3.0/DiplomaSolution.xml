@@ -152,27 +152,12 @@
             File manager service ( upload, etc.. )
             </summary>
         </member>
-        <member name="P:DiplomaSolution.Controllers.HomePageController.ILoggerFactory">
-            <summary>
-            Simple factory to create the logger
-            </summary>
-        </member>
-        <member name="P:DiplomaSolution.Controllers.HomePageController.Logger">
-            <summary>
-            Logger class to perform logging to the file
-            </summary>
-        </member>
         <member name="P:DiplomaSolution.Controllers.HomePageController.UserManager">
             <summary>
             Service to perform customer data manipulation
             </summary>
         </member>
-        <member name="P:DiplomaSolution.Controllers.HomePageController.CustomerContext">
-            <summary>
-            Prop to work with the DB
-            </summary>
-        </member>
-        <member name="M:DiplomaSolution.Controllers.HomePageController.#ctor(DiplomaSolution.Services.Interfaces.IFileManagerService,Microsoft.Extensions.Logging.ILoggerFactory,Microsoft.AspNetCore.Identity.UserManager{DiplomaSolution.Models.ServiceUser},DiplomaSolution.Models.CustomerContext)">
+        <member name="M:DiplomaSolution.Controllers.HomePageController.#ctor(DiplomaSolution.Services.Interfaces.IFileManagerService,Microsoft.AspNetCore.Identity.UserManager{DiplomaSolution.Models.ServiceUser})">
             <summary>
             Service resolving
             </summary>
@@ -571,6 +556,12 @@
             <param name="fileExtension"></param>
             <returns></returns>
         </member>
+        <member name="M:DiplomaSolution.Services.Classes.FileManagerService.ModifyFile(System.String,System.String,System.String)">
+            <summary>
+            Method to perform file modification using Magick.Net
+            </summary>
+            <returns>Path to the new file ( modified )</returns>
+        </member>
         <member name="T:DiplomaSolution.Services.Classes.RegistrationService">
             <summary>
             Service for completing registering  customers that are registered by our web-site
@@ -643,6 +634,12 @@
             In case of small file ( user profile image ) we can store it in the DB
             </summary>
             <param name="file"></param>
+        </member>
+        <member name="M:DiplomaSolution.Services.Interfaces.IFileManagerService.ModifyFile(System.String,System.String,System.String)">
+            <summary>
+            Method to perform file modification using Magick.Net
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:DiplomaSolution.Services.Interfaces.IRegistrationService">
             <summary>

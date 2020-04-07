@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Security.Claims;
 
 namespace DiplomaSolution
 {
@@ -86,7 +87,7 @@ namespace DiplomaSolution
 
                 options.AddPolicy("DefaultMainPolicy", policy =>
                 {
-                    policy.AddRequirements(new DefaultRequirement());
+                    policy.AddRequirements(new DefaultRequirement(18));
                 });
             });
 

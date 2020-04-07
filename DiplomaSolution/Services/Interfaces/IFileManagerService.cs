@@ -17,5 +17,11 @@ namespace DiplomaSolution.Services.Interfaces
         /// </summary>
         /// <param name="file"></param>
         Task<DefaultServiceResponse> LoadFileToTheDB(IFormFile file, string customerId);
+
+        /// <summary>
+        /// Method to perform file modification using Magick.Net
+        /// </summary>
+        /// <returns></returns>
+        Task<DefaultServiceResponse> ModifyFile(string userId, string outputFileType, string selectedOperation);
     }
 }

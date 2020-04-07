@@ -10,6 +10,7 @@ using DiplomaSolution.Helpers.ErrorResponseMessages;
 using DiplomaSolution.ConfigurationModels;
 using Microsoft.Extensions.Options;
 using DiplomaSolution.Models.FileModels;
+using ImageMagick;
 
 namespace DiplomaSolution.Services.Classes
 {
@@ -191,6 +192,60 @@ namespace DiplomaSolution.Services.Classes
 
                 return result;
             }
+        }
+
+        /// <summary>
+        /// Method to perform file modification using Magick.Net
+        /// </summary>
+        /// <returns>Path to the new file ( modified )</returns>
+        public async Task<DefaultServiceResponse> ModifyFile(string userId, string outputFileType, string selectedOperation)
+        {
+            // Get last uploaded photo by the customer
+            var lastUploadedImageName = DataContext.CustomerImageFiles.ToList().Where(imageFile => imageFile.CustomerId == userId).OrderByDescending(orderBy => orderBy.UploadTime).Select(response => response.FullName);
+
+            var editedFileName = "";
+
+            using (var image = new MagickImage(lastUploadedImageName.First()))
+            {
+                switch (selectedOperation) // todo - add logic to have normal filters
+                {
+                    case "CycleColorMap":
+                        image.CycleColormap(10);
+                        break;
+                    case "FloodFill":
+                        image.FloodFill(10, 10, 10);
+                        break;
+                    case "Flop":
+                        image.Flop();
+                        break;
+                    case "GammaCorrect":
+                        image.GammaCorrect(10);
+                        break;
+                    case "GausiianBlur":
+                        image.GaussianBlur(10, 10);
+                        break;
+                    case "MedianFilter":
+                        image.MedianFilter(10);
+                        break;
+                    case "MotionBlur":
+                        image.MotionBlur(10, 10, 10);
+                        break;
+                    case "Negate":
+                        image.Negate();
+                        break;
+
+                    default:
+                        break;
+                }
+                image.Alpha(AlphaOption.Background);
+                image.AutoGamma(Channels.Blue);
+                image.Border(10, 10);
+                editedFileName = lastUploadedImageName.First().Replace(Path.GetFileNameWithoutExtension(lastUploadedImageName.First()), Path.GetFileNameWithoutExtension(lastUploadedImageName.First()) + "_modified").Replace(Path.GetExtension(lastUploadedImageName.First()), "." + outputFileType.ToLower());
+                using (File.Create(editedFileName))
+                    image.Write(editedFileName);
+            }
+
+            return new DefaultServiceResponse { ResponseData = "../" + Path.Combine("CustomersImages", Path.GetFileName(editedFileName)) };
         }
     }
 }
