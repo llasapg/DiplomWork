@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <DockerComposeProjectPath>../docker-compose.dcproj</DockerComposeProjectPath>
+    <UserSecretsId>098cf1b1-ca46-4c1e-a475-d1b2ea062939</UserSecretsId>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -48,6 +50,7 @@
     <Folder Include="Models\ServiceModels\" />
     <Folder Include="Filters\" />
     <Folder Include="ConfigurationModels\" />
+    <Folder Include="ConfigurationModels\Authentication\" />
   </ItemGroup>
 
   <ItemGroup>

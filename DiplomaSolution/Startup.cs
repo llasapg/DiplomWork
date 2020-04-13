@@ -50,7 +50,10 @@ namespace DiplomaSolution
             #region DataBase stuff
 
             var connection = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<CustomerContext>(options => options.UseMySql(connection));
+            services.AddDbContext<CustomerContext>(options => options.UseMySql(connection, builder =>
+            {
+                builder.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
+            }));
 
             #endregion
 
@@ -95,17 +98,19 @@ namespace DiplomaSolution
 
             #region Authentication
 
+            var settings = Configuration.GetSection("Authentication");
+
             // Currently we have this call in AddIdentity method, but we need to specify what provider exactly we want to add
             services.AddAuthentication().AddGoogle(googleOptions =>
             {
-                googleOptions.ClientId = "105610985766-9mues2sn2uess0lcl7n51ns1aulil515.apps.googleusercontent.com";
-                googleOptions.ClientSecret = "ZZUIFTkPVqWLSVY7bXUApt4h";
+                googleOptions.ClientId = settings["GoogleAuthentication:ClientId"];
+                googleOptions.ClientSecret = settings["GoogleAuthentication:ClientSecret"];
                 googleOptions.RemoteAuthenticationTimeout = TimeSpan.FromHours(1);
             })
             .AddFacebook(facebookOpt =>
             {
-                facebookOpt.AppId = "125314042121210";
-                facebookOpt.AppSecret = "160e6d9646ace2f5ab2e979e8a437213";
+                facebookOpt.AppId = settings["FacebookAuthentication:AppId"];
+                facebookOpt.AppSecret = settings["FacebookAuthentication:AppSecret"];
                 facebookOpt.RemoteAuthenticationTimeout = TimeSpan.FromHours(1);
             });
 
@@ -120,6 +125,7 @@ namespace DiplomaSolution
 
             #region Custom servises injection and configuring
 
+            services.Configure<Authentication>(Configuration.GetSection("Authentication"));
             services.Configure<FileConfiguration>(Configuration.GetSection("FileConfigurations"));
             services.AddTransient<IFileManagerService, FileManagerService>();
             services.AddTransient<ISendEmailService, SendGridEmailSender>();

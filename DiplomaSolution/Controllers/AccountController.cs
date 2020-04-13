@@ -38,7 +38,7 @@ namespace DiplomaSolution.Controllers
         private ISendEmailService SendEmailService { get; set; }
         private IDataProtectionProvider DataProtectionProvider { get; set; }
         private IDataProtector Protector { get; set; }
-        private IAccountService AccountService { get; set; }
+        private IAccountService AccountService { get; set; }       
 
         #endregion
 
@@ -132,7 +132,7 @@ namespace DiplomaSolution.Controllers
 
                 if(loginResponse.StatusCode == StatusCodesEnum.RedirectNeeded && loginResponse.ValidationErrors.Count == 0)
                 {
-                    return Redirect(Url.Action(loginResponse.ActionName, loginResponse.ControllerName, loginResponse.ResponseData));
+                    return Redirect(Url.Action(loginResponse.ActionName, loginResponse.ControllerName, new { customerData = loginResponse.ResponseData }));
                 }
                 else if(loginResponse.StatusCode == StatusCodesEnum.Ok && loginResponse.ValidationErrors.Count == 0)
                 {

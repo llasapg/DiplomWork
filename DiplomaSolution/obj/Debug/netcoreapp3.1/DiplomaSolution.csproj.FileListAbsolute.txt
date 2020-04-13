@@ -96,9 +96,3 @@
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/runtimes/osx-x64/native/Magick.Native-Q16-x64.dll.dylib
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/runtimes/win-x64/native/Magick.Native-Q16-x64.dll
 /Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/runtimes/win-x86/native/Magick.Native-Q16-x86.dll
-/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/PublishResult/web.config
-/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/PublishResult/appsettings.json
-/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/PublishResult/DiplomaSolution.deps.json
-/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/PublishResult/DiplomaSolution.runtimeconfig.json
-/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/PublishResult/mono_crash.42f6ec106.0.json
-/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/bin/Debug/netcoreapp3.1/PublishResult/mono_crash.91852a957.0.json

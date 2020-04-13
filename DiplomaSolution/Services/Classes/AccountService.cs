@@ -43,9 +43,13 @@ namespace DiplomaSolution.Services.Classes
         /// </summary>
         private IHttpContextAccessor Context { get; set; }
         /// <summary>
+        /// Manage the roles
+        /// </summary>
+        private RoleManager<IdentityRole> RoleManager { get; set; }
+        /// <summary>
         /// Basic construstor to perform DI
         /// </summary>
-        public AccountService(IHttpContextAccessor context, SignInManager<ServiceUser> signInManager, UserManager<ServiceUser> userManager, ISendEmailService sendEmailService, IDataProtectionProvider dataProtecttionProvider, IUrlHelper urlHelper)
+        public AccountService(IHttpContextAccessor context, SignInManager<ServiceUser> signInManager, UserManager<ServiceUser> userManager, ISendEmailService sendEmailService, IDataProtectionProvider dataProtecttionProvider, IUrlHelper urlHelper, RoleManager<IdentityRole> roleManager)
         {
             SignInManager = signInManager;
             UserManager = userManager;
@@ -54,6 +58,7 @@ namespace DiplomaSolution.Services.Classes
             Protector = DataProtectionProvider.CreateProtector("DataProtection");
             UrlHelper = urlHelper;
             Context = context;
+            RoleManager = roleManager;
         }
 
         /// <summary>
@@ -164,7 +169,13 @@ namespace DiplomaSolution.Services.Classes
                         {
                             await UserManager.AddClaimAsync(serviceUser, new Claim("UploadPhoto", "true"));
 
-                            await UserManager.AddToRoleAsync(serviceUser, "User");
+                            if(CheckIfWeHaveRole("User"))
+                                await UserManager.AddToRoleAsync(serviceUser, "User");
+                            else
+                            {
+                                await RoleManager.CreateAsync(new IdentityRole { Name = "User", NormalizedName = "USER"});
+                                await UserManager.AddToRoleAsync(serviceUser, "User");
+                            }
 
                             await UserManager.AddLoginAsync(serviceUser, accountDetailsFromProvider); // Creates point in AspNetUserLogins
 
@@ -307,7 +318,30 @@ namespace DiplomaSolution.Services.Classes
                 return loginCallBackResult;
             }
 
-            #endregion            
+            #endregion
         }
+
+        #region Helpers
+
+        /// <summary>
+        /// Method to verify, that we have needed role, before appling it to customer
+        /// </summary>
+        /// <param name="roleName"></param>
+        /// <returns></returns>
+        private bool CheckIfWeHaveRole(string roleName)
+        {
+            var defaultUserRole = new IdentityRole { Name = roleName };
+
+            foreach (var role in RoleManager.Roles)
+            {
+                if (role.Name == defaultUserRole.Name) // that means that we have this role in DB
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        #endregion
     }
 }

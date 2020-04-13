@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiplomaSolution", "DiplomaSolution\DiplomaSolution.csproj", "{EFFD6586-B9FD-4716-A086-1C5E9DE7A3D6}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{AF45909E-B008-4BA2-8A83-AD890FAA84C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,5 +15,9 @@ Global
 		{EFFD6586-B9FD-4716-A086-1C5E9DE7A3D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFFD6586-B9FD-4716-A086-1C5E9DE7A3D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFFD6586-B9FD-4716-A086-1C5E9DE7A3D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF45909E-B008-4BA2-8A83-AD890FAA84C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF45909E-B008-4BA2-8A83-AD890FAA84C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF45909E-B008-4BA2-8A83-AD890FAA84C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF45909E-B008-4BA2-8A83-AD890FAA84C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

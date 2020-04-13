@@ -4,6 +4,26 @@
         <name>DiplomaSolution</name>
     </assembly>
     <members>
+        <member name="T:DiplomaSolution.ConfigurationModels.Authentication">
+            <summary>
+            Base model to hold configurations connected to external providers
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.ConfigurationModels.Authentication.FacebookAuthentication">
+            <summary>
+            Ptop to hold Facebook configurations
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.ConfigurationModels.Authentication.GoogleAuthentication">
+            <summary>
+            Prop to hold Google configurations
+            </summary>
+        </member>
+        <member name="P:DiplomaSolution.ConfigurationModels.Authentication.SendGridAuthentication">
+            <summary>
+            Prop to hold SendGrid configurations
+            </summary>
+        </member>
         <member name="T:DiplomaSolution.ConfigurationModels.FileConfiguration">
             <summary>
             Configuration model to represent app.json configurations 
@@ -489,7 +509,12 @@
             Prop to get HttpContext object to configure the request and etc...
             </summary>
         </member>
-        <member name="M:DiplomaSolution.Services.Classes.AccountService.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor,Microsoft.AspNetCore.Identity.SignInManager{DiplomaSolution.Models.ServiceUser},Microsoft.AspNetCore.Identity.UserManager{DiplomaSolution.Models.ServiceUser},DiplomaSolution.Services.Interfaces.ISendEmailService,Microsoft.AspNetCore.DataProtection.IDataProtectionProvider,Microsoft.AspNetCore.Mvc.IUrlHelper)">
+        <member name="P:DiplomaSolution.Services.Classes.AccountService.RoleManager">
+            <summary>
+            Manage the roles
+            </summary>
+        </member>
+        <member name="M:DiplomaSolution.Services.Classes.AccountService.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor,Microsoft.AspNetCore.Identity.SignInManager{DiplomaSolution.Models.ServiceUser},Microsoft.AspNetCore.Identity.UserManager{DiplomaSolution.Models.ServiceUser},DiplomaSolution.Services.Interfaces.ISendEmailService,Microsoft.AspNetCore.DataProtection.IDataProtectionProvider,Microsoft.AspNetCore.Mvc.IUrlHelper,Microsoft.AspNetCore.Identity.RoleManager{Microsoft.AspNetCore.Identity.IdentityRole})">
             <summary>
             Basic construstor to perform DI
             </summary>
@@ -507,6 +532,13 @@
             </summary>
             <param name="returnUrl"></param>
             <param name="remoteError"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DiplomaSolution.Services.Classes.AccountService.CheckIfWeHaveRole(System.String)">
+            <summary>
+            Method to verify, that we have needed role, before appling it to customer
+            </summary>
+            <param name="roleName"></param>
             <returns></returns>
         </member>
         <member name="T:DiplomaSolution.Services.Classes.FileManagerService">
@@ -608,6 +640,18 @@
             Method to verify, that we have needed role, before appling it to customer
             </summary>
             <param name="roleName"></param>
+            <returns></returns>
+        </member>
+        <member name="P:DiplomaSolution.Services.Classes.SendGridEmailSender.Configurartions">
+            <summary>
+            Set of all configurations need to send emails via SendGrid
+            </summary>
+        </member>
+        <member name="M:DiplomaSolution.Services.Classes.SendGridEmailSender.SendEmail(DiplomaSolution.Models.ServiceEmail)">
+            <summary>
+            Method to send email via SendGrid 3-rd party
+            </summary>
+            <param name="serviceEmail"></param>
             <returns></returns>
         </member>
         <member name="M:DiplomaSolution.Services.Interfaces.IAccountService.LoginCustomer(DiplomaSolution.ViewModels.LoginViewModel,System.String)">

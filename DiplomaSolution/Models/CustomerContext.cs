@@ -26,7 +26,7 @@ namespace DiplomaSolution.Models
         /// <param name="options"></param>
         public CustomerContext(DbContextOptions<CustomerContext> options) : base(options)
         {
-            Database.Migrate();
+            Database.EnsureCreated();
         }
 
         /// <summary>
