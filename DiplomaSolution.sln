@@ -1,9 +1,9 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiplomaSolution", "DiplomaSolution\DiplomaSolution.csproj", "{EFFD6586-B9FD-4716-A086-1C5E9DE7A3D6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiplomaSolution", "src/DiplomaSolution/DiplomaSolution.csproj", "{11696BEA-910E-4525-9195-57B956807856}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{AF45909E-B008-4BA2-8A83-AD890FAA84C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiplomaTests", "test/DiplomaTests/DiplomaTests.csproj", "{9188ABB6-3034-47C1-A8C8-B35B688A8F39}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,13 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EFFD6586-B9FD-4716-A086-1C5E9DE7A3D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EFFD6586-B9FD-4716-A086-1C5E9DE7A3D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EFFD6586-B9FD-4716-A086-1C5E9DE7A3D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EFFD6586-B9FD-4716-A086-1C5E9DE7A3D6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AF45909E-B008-4BA2-8A83-AD890FAA84C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AF45909E-B008-4BA2-8A83-AD890FAA84C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AF45909E-B008-4BA2-8A83-AD890FAA84C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AF45909E-B008-4BA2-8A83-AD890FAA84C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11696BEA-910E-4525-9195-57B956807856}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11696BEA-910E-4525-9195-57B956807856}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11696BEA-910E-4525-9195-57B956807856}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11696BEA-910E-4525-9195-57B956807856}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+		$0.VersionControlPolicy = $2
 	EndGlobalSection
 EndGlobal

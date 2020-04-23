@@ -1,0 +1,16 @@
+﻿@model AccountEditedImagesViewModel
+@{
+    foreach (var item in Model.EditedImages)
+    {
+        <div class="OutPutImage">
+             <img id="Img_block" src="@item" asp-append-version="true" />
+        </div>
+    }
+
+    foreach (var item in Model.OriginalImages)
+    {
+        <div class="OutPutImage">
+             <img id="Img_block" src="@item" asp-append-version="true" />
+        </div>
+    }
+}
