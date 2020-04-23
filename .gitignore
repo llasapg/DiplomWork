@@ -1,0 +1,11 @@
+[Dd]ebug/
+[Bb]uild/
+[Oo]bj/
+[Rr]elease/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+msbuild.log
+
