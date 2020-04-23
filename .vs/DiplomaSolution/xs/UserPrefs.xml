@@ -1,41 +1,9 @@
-﻿<Properties StartupConfiguration="{EFFD6586-B9FD-4716-A086-1C5E9DE7A3D6}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="DiplomaSolution/Program.cs">
-    <Files>
-      <File FileName="DiplomaSolution/appsettings.json" Line="4" Column="26" IsPinned="True" />
-      <File FileName="DiplomaSolution/Services/Classes/SendGridEmailSender.cs" Line="28" Column="46" IsPinned="True" />
-      <File FileName="DiplomaSolution/Startup.cs" Line="125" Column="1" IsPinned="True" />
-      <File FileName="DiplomaSolution/ConfigurationModels/Authentication.cs" Line="16" Column="22" />
-      <File FileName="DiplomaSolution/ConfigurationModels/GoogleAuthentication.cs" Line="9" Column="1" />
-      <File FileName="DiplomaSolution/ConfigurationModels/FacebookAuthentication.cs" Line="7" Column="6" />
-      <File FileName="DiplomaSolution/ConfigurationModels/SendGridAuthentication.cs" Line="1" Column="1" />
-      <File FileName="DiplomaSolution/Controllers/AboutController.cs" Line="29" Column="1" />
-      <File FileName="DiplomaSolution/Program.cs" Line="1" Column="1" />
-    </Files>
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="DiplomaSolution" expanded="True">
-            <Node name="DiplomaSolution" expanded="True">
-              <Node name="ConfigurationModels" expanded="True">
-                <Node name="Authentication" expanded="True" />
-              </Node>
-              <Node name="Controllers" expanded="True" />
-              <Node name="Extensions" expanded="True" />
-              <Node name="Helpers" expanded="True">
-                <Node name="Logging" expanded="True" />
-              </Node>
-              <Node name="Services" expanded="True">
-                <Node name="Classes" expanded="True" />
-              </Node>
-              <Node name="Views" expanded="True">
-                <Node name="Registration" expanded="True" />
-              </Node>
-              <Node name="Program.cs" selected="True" />
-            </Node>
-            <Node name="docker-compose" expanded="True">
-              <Node name="docker-compose.yml" expanded="True" />
-            </Node>
-          </Node>
+          <Node name="DiplomaSolution" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
@@ -46,8 +14,8 @@
   <MonoDevelop.Ide.ItemProperties.docker-compose PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Controllers/RegistrationController.cs" relfile="DiplomaSolution/Controllers/RegistrationController.cs" line="66" column="1" />
-      <Breakpoint file="/Users/llasapg/Desktop/DiplomWork/DiplomaSolution/Controllers/RegistrationController.cs" relfile="DiplomaSolution/Controllers/RegistrationController.cs" line="79" column="1" />
+      <Breakpoint file="/Users/llasapg/Desktop/Diplom/DiplomaSolution/Controllers/RegistrationController.cs" relfile="DiplomaSolution/Controllers/RegistrationController.cs" line="66" column="1" />
+      <Breakpoint file="/Users/llasapg/Desktop/Diplom/DiplomaSolution/Controllers/RegistrationController.cs" relfile="DiplomaSolution/Controllers/RegistrationController.cs" line="79" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
