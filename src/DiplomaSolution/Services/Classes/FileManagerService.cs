@@ -61,7 +61,7 @@ namespace DiplomaSolution.Services.Classes
 
                 if (Configuration.Value.SaveFilesWithWrongFormat) //file type is save, as file extension ( no viruses )
                 {
-                    DataContext.CustomerImageFiles.Add(new ImageFileModel {CustomerId = customerId, FullName = systemFileName, Id = new Guid(), UploadTime = DateTime.Now }); // todo - check file ID!!!! ASAP
+                    DataContext.CustomerImageFiles.Add(new ImageFileModel { CustomerId = customerId, FullName = systemFileName, Id = new Guid(), UploadTime = DateTime.Now }); // todo - check file ID!!!! ASAP
 
                     await DataContext.SaveChangesAsync();
 
@@ -93,7 +93,7 @@ namespace DiplomaSolution.Services.Classes
         /// <param name="file"></param>
         public async Task<DefaultServiceResponse> LoadFileToTheDB(IFormFile file, string customerId) // todo - check that we can return error list in some cases
         {
-            var responseModel = new DefaultServiceResponse() { ValidationErrors = new List<string>()};
+            var responseModel = new DefaultServiceResponse() { ValidationErrors = new List<string>() };
 
             var fileExtension = Path.GetExtension(file.FileName); // or try to use Name
 
@@ -113,7 +113,7 @@ namespace DiplomaSolution.Services.Classes
 
                         DataContext.AccountLevelFiles.Add(new AccountLevelFile
                         {
-                            Id = new Guid(),
+                            FileId = new Guid(),
                             CustomerId = customerId,
                             FullName = systemFileName,
                             FileData = stream.ToArray(),

@@ -1,20 +1,22 @@
 ﻿<Properties StartupConfiguration="{11696BEA-910E-4525-9195-57B956807856}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="src/DiplomaSolution/appsettings.json">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src/DiplomaSolution/Migrations/20200423183221_ChangedColumnName.cs">
     <Files>
       <File FileName="src/DiplomaSolution/Migrations/20200404105523_AddedNewRowForTime.cs" Line="6" Column="44" />
-      <File FileName="src/DiplomaSolution/Migrations/20200403192249_Added_Table_to_store_files.cs" Line="1" Column="1" />
-      <File FileName="src/DiplomaSolution/Migrations/20200404105523_AddedNewRowForTime.Designer.cs" Line="9" Column="37" />
-      <File FileName="src/DiplomaSolution/Migrations/20200417192115_addedNewTableEditedPhotos.cs" Line="1" Column="1" />
-      <File FileName="src/DiplomaSolution/Migrations/20200417192115_addedNewTableEditedPhotos.Designer.cs" Line="1" Column="1" />
-      <File FileName="src/DiplomaSolution/appsettings.json" Line="1" Column="1" />
+      <File FileName="src/DiplomaSolution/Migrations/20200403192249_Added_Table_to_store_files.cs" />
+      <File FileName="src/DiplomaSolution/Migrations/20200404105523_AddedNewRowForTime.Designer.cs" />
+      <File FileName="src/DiplomaSolution/Migrations/20200417192115_addedNewTableEditedPhotos.cs" />
+      <File FileName="src/DiplomaSolution/Migrations/20200417192115_addedNewTableEditedPhotos.Designer.cs" />
+      <File FileName="src/DiplomaSolution/appsettings.json" />
+      <File FileName="src/DiplomaSolution/Models/CustomerContext.cs" />
+      <File FileName="src/DiplomaSolution/Models/FileModels/AccountLevelFile.cs" />
+      <File FileName="src/DiplomaSolution/Migrations/20200423183221_ChangedColumnName.cs" Line="1" Column="1" />
+      <File FileName="src/DiplomaSolution/Migrations/CustomerContextModelSnapshot.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="DiplomaSolution" expanded="True">
-            <Node name="DiplomaSolution" expanded="True">
-              <Node name="appsettings.json" selected="True" />
-            </Node>
+            <Node name="DiplomaSolution" expanded="True" />
           </Node>
         </State>
       </Pad>

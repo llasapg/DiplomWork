@@ -12,7 +12,7 @@ namespace DiplomaSolution.Models
         /// File id
         /// </summary>
         [Key]
-        public Guid Id { get; set; }
+        public Guid FileId { get; set; }
         /// <summary>
         /// Customer accountId to map this with the file
         /// </summary>
