@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using DiplomaSolution.Helpers.ErrorResponseMessages;
@@ -9,6 +11,7 @@ using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace DiplomaSolution.Services.Classes
 {
@@ -46,10 +49,11 @@ namespace DiplomaSolution.Services.Classes
         /// Manage the roles
         /// </summary>
         private RoleManager<IdentityRole> RoleManager { get; set; }
+        private CustomerContext CustomerContext { get; set; }
         /// <summary>
         /// Basic construstor to perform DI
         /// </summary>
-        public AccountService(IHttpContextAccessor context, SignInManager<ServiceUser> signInManager, UserManager<ServiceUser> userManager, ISendEmailService sendEmailService, IDataProtectionProvider dataProtecttionProvider, IUrlHelper urlHelper, RoleManager<IdentityRole> roleManager)
+        public AccountService(CustomerContext customerContext, IHttpContextAccessor context, SignInManager<ServiceUser> signInManager, UserManager<ServiceUser> userManager, ISendEmailService sendEmailService, IDataProtectionProvider dataProtecttionProvider, IUrlHelper urlHelper, RoleManager<IdentityRole> roleManager)
         {
             SignInManager = signInManager;
             UserManager = userManager;
@@ -59,6 +63,7 @@ namespace DiplomaSolution.Services.Classes
             UrlHelper = urlHelper;
             Context = context;
             RoleManager = roleManager;
+            CustomerContext = customerContext;
         }
 
         /// <summary>
@@ -167,15 +172,19 @@ namespace DiplomaSolution.Services.Classes
 
                         if (userResponse.Succeeded)
                         {
-                            await UserManager.AddClaimAsync(serviceUser, new Claim("UploadPhoto", "true"));
-
                             if(CheckIfWeHaveRole("User"))
                                 await UserManager.AddToRoleAsync(serviceUser, "User");
                             else
                             {
-                                await RoleManager.CreateAsync(new IdentityRole { Name = "User", NormalizedName = "USER"});
+                                await RoleManager.CreateAsync(new IdentityRole { Id = new Guid().ToString(), Name = "User", NormalizedName = "USER"});
                                 await UserManager.AddToRoleAsync(serviceUser, "User");
                             }
+
+                            //await UserManager.AddClaimAsync(serviceUser, new Claim("first", "second"));
+
+                            CustomerContext.UserClaims.Add(new IdentityUserClaim<string> { Id = 1, ClaimType = "UploadPhoto", ClaimValue = "true", UserId = serviceUser.Id});
+
+                            CustomerContext.SaveChanges();
 
                             await UserManager.AddLoginAsync(serviceUser, accountDetailsFromProvider); // Creates point in AspNetUserLogins
 
@@ -341,7 +350,6 @@ namespace DiplomaSolution.Services.Classes
             }
             return false;
         }
-
         #endregion
     }
 }

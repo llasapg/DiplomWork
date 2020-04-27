@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Routing;
-using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -90,7 +89,7 @@ namespace DiplomaSolution
 
                 options.AddPolicy("DefaultMainPolicy", policy =>
                 {
-                    policy.AddRequirements(new DefaultRequirement(18));
+                    policy.AddRequirements(new DefaultRequirement());
                 });
             });
 
@@ -177,9 +176,9 @@ namespace DiplomaSolution
             }
 
             // Add description 
-            //app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
-            //app.UseRewriter(new RewriteOptions().AddRedirectToHttps(statusCode: 302, sslPort: 5001));
+            // app.UseRewriter(new RewriteOptions().AddRedirectToHttps(statusCode: 302, sslPort: 5001));
 
             app.UseExceptionHandler("/Error/ExceptionHandler");
 

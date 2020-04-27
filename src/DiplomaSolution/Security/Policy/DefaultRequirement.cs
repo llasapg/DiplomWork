@@ -4,11 +4,6 @@ namespace DiplomaSolution.Security
 {
     public class DefaultRequirement : IAuthorizationRequirement
     {
-        public int Age { get; set; }
-
-        public DefaultRequirement(int age)
-        {
-            Age = age;
-        }
+        // can be added constractor to forvard needed values into pocily
     }
 }

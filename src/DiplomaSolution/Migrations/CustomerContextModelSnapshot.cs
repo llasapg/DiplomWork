@@ -19,7 +19,7 @@ namespace DiplomaSolution.Migrations
 
             modelBuilder.Entity("DiplomaSolution.Models.AccountLevelFile", b =>
                 {
-                    b.Property<Guid>("FileId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
@@ -32,7 +32,7 @@ namespace DiplomaSolution.Migrations
                     b.Property<string>("FullName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.HasKey("FileId");
+                    b.HasKey("Id");
 
                     b.ToTable("AccountLevelFiles");
                 });

@@ -10,8 +10,6 @@ namespace DiplomaSolution.Security
     {
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, DefaultRequirement requirement)
         {
-            var values = requirement.Age;
-
             var userClaims = context.User.Claims;
 
             foreach (var item in userClaims)

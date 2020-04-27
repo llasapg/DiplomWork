@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using DiplomaSolution.Helpers.ErrorResponseMessages;
@@ -18,13 +20,14 @@ namespace DiplomaSolution.Services.Classes
         /// <summary>
         /// Ctor to get all needed DI services
         /// </summary>
-        public RegistrationService(IUrlHelper urlHelper, IHttpContextAccessor httpContextAccessor, UserManager<ServiceUser> userManager, RoleManager<IdentityRole> roleManager, ISendEmailService sendEmailService)
+        public RegistrationService(CustomerContext customerContext, IUrlHelper urlHelper, IHttpContextAccessor httpContextAccessor, UserManager<ServiceUser> userManager, RoleManager<IdentityRole> roleManager, ISendEmailService sendEmailService)
         {
             UserManager = userManager;
             RoleManager = roleManager;
             SendEmailService = sendEmailService;
             Context = httpContextAccessor;
             UrlHelper = urlHelper;
+            CustomerContext = customerContext;
         }
 
         #region DI services
@@ -48,6 +51,10 @@ namespace DiplomaSolution.Services.Classes
         /// Url helper to create dynamic ULRS
         /// </summary>
         private IUrlHelper UrlHelper { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        private CustomerContext CustomerContext { get; set; }
         #endregion
 
         /// <summary>
@@ -76,13 +83,15 @@ namespace DiplomaSolution.Services.Classes
                         await UserManager.AddToRoleAsync(user, "User");
                     else
                     {
-                        await RoleManager.CreateAsync(new IdentityRole { Name = "User" });
+                        await RoleManager.CreateAsync(new IdentityRole { Id = new Guid().ToString(), Name = "User" });
                         await UserManager.AddToRoleAsync(user, "User");
                     }
 
                     var currentUser = await UserManager.FindByEmailAsync(user.Email);
 
-                    await UserManager.AddClaimAsync(currentUser, new Claim("UploadPhoto", "true"));
+                    CustomerContext.UserClaims.Add(new IdentityUserClaim<string> { ClaimType = "UploadPhoto", ClaimValue = "true", UserId = currentUser.Id });
+
+                    CustomerContext.SaveChanges();
 
                     var token = await UserManager.GenerateEmailConfirmationTokenAsync(currentUser);
 
