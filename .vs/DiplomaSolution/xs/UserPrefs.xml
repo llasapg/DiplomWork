@@ -1,23 +1,28 @@
 ﻿<Properties StartupConfiguration="{11696BEA-910E-4525-9195-57B956807856}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="src/DiplomaSolution/Startup.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src/DiplomaSolution/Services/Classes/FileManagerService.cs">
     <Files>
       <File FileName="src/DiplomaSolution/Properties/launchSettings.json" Line="25" Column="33" />
       <File FileName="src/DiplomaSolution/Startup.cs" Line="169" Column="39" />
-      <File FileName="src/DiplomaSolution/Program.cs" Line="21" Column="1" />
-      <File FileName="src/DiplomaSolution/Services/Classes/RegistrationService.cs" Line="94" Column="51" />
-      <File FileName="src/DiplomaSolution/Services/Classes/AccountService.cs" Line="189" Column="1" />
-      <File FileName="src/DiplomaSolution/Views/HomePage/Index.cshtml" Line="7" Column="34" />
-      <File FileName="src/DiplomaSolution/Views/Shared/_Layout.cshtml" Line="22" Column="102" />
-      <File FileName="src/DiplomaSolution/Security/Policy/DefaultRequirement.cs" Line="10" Column="1" />
-      <File FileName="src/DiplomaSolution/Security/Policy/DefaultHandler.cs" Line="17" Column="46" />
-      <File FileName="src/DiplomaSolution/Models/CustomerContext.cs" Line="58" Column="114" />
+      <File FileName="src/DiplomaSolution/Program.cs" />
+      <File FileName="src/DiplomaSolution/Services/Classes/RegistrationService.cs" />
+      <File FileName="src/DiplomaSolution/Services/Classes/AccountService.cs" />
+      <File FileName="src/DiplomaSolution/Views/HomePage/Index.cshtml" />
+      <File FileName="src/DiplomaSolution/Views/Shared/_Layout.cshtml" />
+      <File FileName="src/DiplomaSolution/Security/Policy/DefaultRequirement.cs" />
+      <File FileName="src/DiplomaSolution/Security/Policy/DefaultHandler.cs" />
+      <File FileName="src/DiplomaSolution/Models/CustomerContext.cs" />
+      <File FileName="src/DiplomaSolution/Services/Classes/FileManagerService.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="DiplomaSolution" expanded="True">
             <Node name="DiplomaSolution" expanded="True">
-              <Node name="Startup.cs" selected="True" />
+              <Node name="Services" expanded="True">
+                <Node name="Classes" expanded="True">
+                  <Node name="FileManagerService.cs" selected="True" />
+                </Node>
+              </Node>
             </Node>
           </Node>
         </State>
