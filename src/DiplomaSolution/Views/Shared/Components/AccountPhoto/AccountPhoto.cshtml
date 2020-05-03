@@ -1,16 +1,37 @@
 ﻿@model AccountEditedImagesViewModel
-@{
-    foreach (var item in Model.EditedImages)
-    {
-        <div class="OutPutImage">
-             <img id="Img_block" src="@item" asp-append-version="true" />
-        </div>
-    }
+    <div class="slidershow middle">
+        <div class="slides">
+            <!--  Depends on image count -->
+            @{
+                for (int i = 0; i < Model.EditedImages.Count; i++)
+                {
+                    var imageIdValue = $"r{i}";
 
-    foreach (var item in Model.OriginalImages)
-    {
-        <div class="OutPutImage">
-             <img id="Img_block" src="@item" asp-append-version="true" />
+                    if (i == 0)
+                    {
+                        <input type="radio" name="r" id="@imageIdValue" checked>
+                    }
+                    else
+                    {
+                        <input type="radio" name="r" id="@imageIdValue">
+                    }
+                }
+                foreach (var item in Model.EditedImages)
+                {
+                    <div class="slide s1">
+                        <img src="@item" asp-append-version="true" />
+                    </div>
+                }
+            }
         </div>
-    }
-}
+        <div class="navigation">
+            @{
+                for (int i = 0; i < Model.EditedImages.Count; i++)
+                {
+                    var imageIdValue = $"r{i}";
+
+                    <label for="@imageIdValue" class="bar"></label>
+                }
+            }
+        </div>
+    </div>

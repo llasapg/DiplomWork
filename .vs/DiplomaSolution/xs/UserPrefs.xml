@@ -1,34 +1,31 @@
 ﻿<Properties StartupConfiguration="{11696BEA-910E-4525-9195-57B956807856}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="src/DiplomaSolution/ViewModels/IndexViewData.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src/DiplomaSolution/wwwroot/css/styles.css">
     <Files>
-      <File FileName="src/DiplomaSolution/Program.cs" Line="33" Column="69" />
-      <File FileName="src/DiplomaSolution/Services/Classes/RegistrationService.cs" Line="93" Column="59" />
-      <File FileName="src/DiplomaSolution/Services/Classes/AccountService.cs" Line="189" Column="70" />
-      <File FileName="src/DiplomaSolution/Views/HomePage/Index.cshtml" />
-      <File FileName="src/DiplomaSolution/Views/Shared/_Layout.cshtml" />
-      <File FileName="src/DiplomaSolution/Security/Policy/DefaultRequirement.cs" />
-      <File FileName="src/DiplomaSolution/Security/Policy/DefaultHandler.cs" />
-      <File FileName="src/DiplomaSolution/Models/CustomerContext.cs" />
-      <File FileName="src/DiplomaSolution/Services/Classes/FileManagerService.cs" Line="201" Column="61" />
-      <File FileName="src/DiplomaSolution/Controllers/RegistrationController.cs" Line="40" Column="76" />
-      <File FileName="src/DiplomaSolution/Services/Interfaces/IRegistrationService.cs" Line="15" Column="38" />
-      <File FileName="src/DiplomaSolution/appsettings.json" Line="5" Column="20" />
-      <File FileName="src/DiplomaSolution/Startup.cs" Line="41" Column="10" />
-      <File FileName="src/DiplomaSolution/Controllers/HomePageController.cs" Line="95" Column="60" />
-      <File FileName="src/DiplomaSolution/ViewModels/IndexViewData.cs" Line="11" Column="18" />
+      <File FileName="src/DiplomaSolution/Views/Shared/Components/AccountPhoto/AccountPhoto.cshtml" Line="8" Column="2" />
+      <File FileName="src/DiplomaSolution/wwwroot/css/sliders.css" Line="20" Column="2" />
+      <File FileName="src/DiplomaSolution/Views/About/GiveInfo.cshtml" Line="9" Column="27" />
+      <File FileName="src/DiplomaSolution/Views/Shared/_Layout.cshtml" Line="40" Column="34" />
+      <File FileName="src/DiplomaSolution/Views/_ViewImports.cshtml" Line="1" Column="1" />
+      <File FileName="src/DiplomaSolution/Views/_ViewStart.cshtml" Line="1" Column="1" />
+      <File FileName="src/DiplomaSolution/wwwroot/css/styles.css" Line="84" Column="18" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="DiplomaSolution" expanded="True">
             <Node name="DiplomaSolution" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Services" expanded="True">
-                <Node name="Classes" expanded="True" />
-                <Node name="Interfaces" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="About" expanded="True" />
+                <Node name="Shared" expanded="True">
+                  <Node name="Components" expanded="True">
+                    <Node name="AccountPhoto" expanded="True" />
+                  </Node>
+                </Node>
               </Node>
-              <Node name="ViewModels" expanded="True">
-                <Node name="IndexViewData.cs" selected="True" />
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True">
+                  <Node name="styles.css" selected="True" />
+                </Node>
               </Node>
             </Node>
           </Node>
