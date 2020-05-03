@@ -180,11 +180,13 @@ namespace DiplomaSolution.Services.Classes
                                 await UserManager.AddToRoleAsync(serviceUser, "User");
                             }
 
-                            //await UserManager.AddClaimAsync(serviceUser, new Claim("first", "second"));
+                            var claims = CustomerContext.UserClaims.Select(x => x).ToList();
 
-                            CustomerContext.UserClaims.Add(new IdentityUserClaim<string> { Id = 1, ClaimType = "UploadPhoto", ClaimValue = "true", UserId = serviceUser.Id});
+                            var newClaimId = claims.Last().Id + 1;
 
-                            CustomerContext.SaveChanges();
+                            CustomerContext.UserClaims.Add(new IdentityUserClaim<string> { Id = newClaimId, ClaimType = "UploadPhoto", ClaimValue = "true", UserId = serviceUser.Id});
+
+                            await CustomerContext.SaveChangesAsync();
 
                             await UserManager.AddLoginAsync(serviceUser, accountDetailsFromProvider); // Creates point in AspNetUserLogins
 

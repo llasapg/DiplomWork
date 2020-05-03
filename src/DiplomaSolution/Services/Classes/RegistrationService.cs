@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using DiplomaSolution.Helpers.ErrorResponseMessages;
 using DiplomaSolution.Models;
@@ -89,9 +88,13 @@ namespace DiplomaSolution.Services.Classes
 
                     var currentUser = await UserManager.FindByEmailAsync(user.Email);
 
-                    CustomerContext.UserClaims.Add(new IdentityUserClaim<string> { ClaimType = "UploadPhoto", ClaimValue = "true", UserId = currentUser.Id });
+                    var claims = CustomerContext.UserClaims.Select(x => x).ToList();
 
-                    CustomerContext.SaveChanges();
+                    var newClaimId = claims.Last().Id + 1;
+
+                    CustomerContext.UserClaims.Add(new IdentityUserClaim<string> { Id = newClaimId, ClaimType = "UploadPhoto", ClaimValue = "true", UserId = currentUser.Id });
+
+                    await CustomerContext.SaveChangesAsync();
 
                     var token = await UserManager.GenerateEmailConfirmationTokenAsync(currentUser);
 

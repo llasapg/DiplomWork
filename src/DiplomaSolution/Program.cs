@@ -26,6 +26,19 @@ namespace DiplomaSolution
         /// <returns></returns>
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+
+                config.AddJsonFile("/Users/llasapg/Desktop/appconfig.json", optional: true, reloadOnChange: true);
+
+                config.AddEnvironmentVariables();
+
+                if (args != null)
+                {
+                    config.AddCommandLine(args);
+                }
+            })
             .ConfigureLogging((context, logging) =>
             {
                 logging.AddConfiguration(context.Configuration.GetSection("Logging"));
