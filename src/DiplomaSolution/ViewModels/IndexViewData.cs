@@ -8,7 +8,7 @@ namespace DiplomaSolution.Models
     /// <summary>
     /// View model for homepage to the file from customer
     /// </summary>
-    public class IndexViewData
+    public class IndexViewData //todo - add sliders values ( like how much filter to use)
     {
         /// <summary>
         /// File, that user provided

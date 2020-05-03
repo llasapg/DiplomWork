@@ -1,4 +1,5 @@
 ﻿@inject IViewComponentHelper Helper
+@inject SignInManager<ServiceUser> signInManager
 @{
     ViewData["Title"] = "About Page";
 }
@@ -8,6 +9,11 @@
             With the help of our sites you have the opportunity to improve image quality,
             change the color filter and much more, which is not so simple to do under normal conditions.
             It is also possible to download and download ready-made results.
+            Try login to see your image editing results
         </p>
-        @await Helper.InvokeAsync("AccountPhoto");
+         @if(signInManager.IsSignedIn(User))
+            {
+                @await Helper.InvokeAsync("AccountPhoto");
+            }
     </div>
+
