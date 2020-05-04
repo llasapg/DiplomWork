@@ -2,14 +2,17 @@
 @{
     ViewData["Title"] = "Login";
 }
-    <div class="login-view">
+    <div class="container-login">
         <form method="post" asp-controller="Account" asp-action="Login">
+            <img src="../../img/AccountImage.png" asp-append-version="true">
             <div asp-validation-summary="All"></div>
-            <span asp-validation-for="EmailAddress"></span>
-            <input class="dws-input" type="text" asp-for="EmailAddress" placeholder="Input your email" />
-            <span asp-validation-for="Password"></span>
-            <input class="dws-input" type="password" asp-for="Password" placeholder="Input your password" />
-            <input class="dws-submit" type="submit" value="Login!">
+            <div class="dws-input">
+                <span asp-validation-for="EmailAddress"></span>
+                <input asp-for="EmailAddress" placeholder="Введите почтовый адрес" />
+                <span asp-validation-for="Password"></span>
+                <input type="password" asp-for="Password" placeholder="Введите пароль" />
+                <input class="dws-submit" type="submit" value="Login!">
+            </div>
         </form>
         <a asp-controller="Account" asp-action="ResetPasswordWithEmail">Forget Password?</a>
         <form method="post" asp-controller="Account" asp-action="ExternalLogIn">
@@ -20,6 +23,6 @@
                     <input class="dws-submit" type="submit" value=@provider.DisplayName name="provider">
                 }
             }
-        </form>    
+        </form>
     </div>
 

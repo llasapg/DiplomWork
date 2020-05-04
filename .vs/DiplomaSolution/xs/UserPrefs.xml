@@ -1,13 +1,18 @@
 ﻿<Properties StartupConfiguration="{11696BEA-910E-4525-9195-57B956807856}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="src/DiplomaSolution/wwwroot/css/styles.css">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src/DiplomaSolution/Views/Account/ResetPasswordWithEmail.cshtml">
     <Files>
-      <File FileName="src/DiplomaSolution/Views/Shared/Components/AccountPhoto/AccountPhoto.cshtml" Line="8" Column="2" />
-      <File FileName="src/DiplomaSolution/wwwroot/css/sliders.css" Line="20" Column="2" />
-      <File FileName="src/DiplomaSolution/Views/About/GiveInfo.cshtml" Line="9" Column="27" />
+      <File FileName="src/DiplomaSolution/Views/Shared/Components/AccountPhoto/AccountPhoto.cshtml" Line="18" Column="18" />
+      <File FileName="src/DiplomaSolution/wwwroot/css/sliders.css" Line="20" Column="16" />
+      <File FileName="src/DiplomaSolution/Views/About/GiveInfo.cshtml" Line="14" Column="45" />
       <File FileName="src/DiplomaSolution/Views/Shared/_Layout.cshtml" Line="40" Column="34" />
       <File FileName="src/DiplomaSolution/Views/_ViewImports.cshtml" Line="1" Column="1" />
       <File FileName="src/DiplomaSolution/Views/_ViewStart.cshtml" Line="1" Column="1" />
-      <File FileName="src/DiplomaSolution/wwwroot/css/styles.css" Line="84" Column="18" />
+      <File FileName="src/DiplomaSolution/wwwroot/css/styles.css" Line="76" Column="16" />
+      <File FileName="src/DiplomaSolution/Views/Account/Login.cshtml" Line="13" Column="28" />
+      <File FileName="src/DiplomaSolution/Views/Registration/RegistrationForm.cshtml" Line="14" Column="35" />
+      <File FileName="src/DiplomaSolution/Views/Account/ResetPassword.cshtml" Line="16" Column="22" />
+      <File FileName="src/DiplomaSolution/Views/Account/ResetPasswordWithEmail.cshtml" Line="7" Column="35" />
+      <File FileName="src/DiplomaSolution/Views/Account/AccessDenied.cshtml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,6 +21,10 @@
             <Node name="DiplomaSolution" expanded="True">
               <Node name="Views" expanded="True">
                 <Node name="About" expanded="True" />
+                <Node name="Account" expanded="True">
+                  <Node name="ResetPasswordWithEmail.cshtml" selected="True" />
+                </Node>
+                <Node name="Registration" expanded="True" />
                 <Node name="Shared" expanded="True">
                   <Node name="Components" expanded="True">
                     <Node name="AccountPhoto" expanded="True" />
@@ -23,9 +32,7 @@
                 </Node>
               </Node>
               <Node name="wwwroot" expanded="True">
-                <Node name="css" expanded="True">
-                  <Node name="styles.css" selected="True" />
-                </Node>
+                <Node name="css" expanded="True" />
               </Node>
             </Node>
           </Node>
