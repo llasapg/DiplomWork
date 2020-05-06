@@ -11,6 +11,7 @@ using DiplomaSolution.ConfigurationModels;
 using Microsoft.Extensions.Options;
 using DiplomaSolution.Models.FileModels;
 using ImageMagick;
+using DiplomaSolution.Services.Models;
 
 namespace DiplomaSolution.Services.Classes
 {
@@ -198,19 +199,21 @@ namespace DiplomaSolution.Services.Classes
         /// Method to perform file modification using Magick.Net
         /// </summary>
         /// <returns>Path to the new file ( modified )</returns>
-        public async Task<DefaultServiceResponse> ModifyFile(string userId, string outputFileType, string selectedOperation)
+        public async Task<DefaultServiceResponse> ModifyFile(ModifyModel model)
         {
             // Get last uploaded photo by the customer
-            var lastUploadedImageName = DataContext.CustomerImageFiles.ToList().Where(imageFile => imageFile.CustomerId == userId).OrderByDescending(orderBy => orderBy.UploadTime).Select(response => response.FullName);
+            var lastUploadedImageName = DataContext.CustomerImageFiles.ToList().Where(imageFile => imageFile.CustomerId == model.UserId).OrderByDescending(orderBy => orderBy.UploadTime).Select(response => response.FullName);
+
+            var intesivity = model.Intesivity;
 
             var editedFileName = "";
 
             using (var image = new MagickImage(lastUploadedImageName.First()))
             {
-                switch (selectedOperation) // todo - add logic to have normal filters
+                switch (model.SelectedOperation) // todo - add logic to have normal filters
                 {
                     case "CycleColorMap":
-                        image.CycleColormap(10);
+                        image.CycleColormap(intesivity);
                         break;
                     case "FloodFill":
                         image.FloodFill(10, 10, 10);
@@ -219,40 +222,42 @@ namespace DiplomaSolution.Services.Classes
                         image.Flop();
                         break;
                     case "GammaCorrect":
-                        image.GammaCorrect(10);
+                        image.GammaCorrect(intesivity); // gramma
                         break;
                     case "GausiianBlur":
-                        image.GaussianBlur(10, 10);
+                        image.GaussianBlur(intesivity, intesivity); // double radius + double sigma
                         break;
                     case "MedianFilter":
-                        image.MedianFilter(10);
+                        image.MedianFilter(intesivity); // radius
                         break;
                     case "MotionBlur":
                         image.MotionBlur(10, 10, 10);
                         break;
                     case "Negate":
-                        image.Negate();
+                        image.Negate(); // simple negate 
                         break;
 
                     default:
                         break;
                 }
-                image.Alpha(AlphaOption.Background);
-                image.AutoGamma(Channels.Blue);
-                image.Border(10, 10);
-                editedFileName = lastUploadedImageName.First().Replace(Path.GetFileNameWithoutExtension(lastUploadedImageName.First()), Path.GetFileNameWithoutExtension(lastUploadedImageName.First()) + "_modified").Replace(Path.GetExtension(lastUploadedImageName.First()), "." + outputFileType.ToLower());
+                if(model.UseFrame)
+                {
+                    image.Border(7, 7);
+                }
+
+                editedFileName = lastUploadedImageName.First().Replace(Path.GetFileNameWithoutExtension(lastUploadedImageName.First()), Path.GetFileNameWithoutExtension(lastUploadedImageName.First()) + "_modified").Replace(Path.GetExtension(lastUploadedImageName.First()), "." + model.OutputFileType.ToLower());
                 using (File.Create(editedFileName))
                     image.Write(editedFileName);
             }
 
             // Save file to the DB
 
-            var originalImageId = DataContext.CustomerImageFiles.Where(imageData => imageData.CustomerId == userId && imageData.FullName.Contains(Path.GetFileNameWithoutExtension(lastUploadedImageName.First()))).Select(result => result.Id).First();
+            var originalImageId = DataContext.CustomerImageFiles.Where(imageData => imageData.CustomerId == model.UserId && imageData.FullName.Contains(Path.GetFileNameWithoutExtension(lastUploadedImageName.First()))).Select(result => result.Id).First();
 
             await DataContext.CustomerEditedImageFiles.AddAsync(new ResultImageFIleModel
             {
                 Id = new Guid(),
-                CustomerId = userId,
+                CustomerId = model.UserId,
                 FullName = editedFileName,
                 OriginalImageId = originalImageId.ToString(),
                 UploadTime = DateTime.Now

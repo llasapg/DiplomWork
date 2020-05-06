@@ -1,28 +1,36 @@
 ﻿<Properties StartupConfiguration="{11696BEA-910E-4525-9195-57B956807856}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="src/DiplomaSolution/Views/Account/ResetPasswordWithEmail.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src/DiplomaSolution/Views/HomePage/Index.cshtml">
     <Files>
-      <File FileName="src/DiplomaSolution/Views/Shared/Components/AccountPhoto/AccountPhoto.cshtml" Line="18" Column="18" />
-      <File FileName="src/DiplomaSolution/wwwroot/css/sliders.css" Line="20" Column="16" />
-      <File FileName="src/DiplomaSolution/Views/About/GiveInfo.cshtml" Line="14" Column="45" />
-      <File FileName="src/DiplomaSolution/Views/Shared/_Layout.cshtml" Line="40" Column="34" />
-      <File FileName="src/DiplomaSolution/Views/_ViewImports.cshtml" Line="1" Column="1" />
-      <File FileName="src/DiplomaSolution/Views/_ViewStart.cshtml" Line="1" Column="1" />
-      <File FileName="src/DiplomaSolution/wwwroot/css/styles.css" Line="76" Column="16" />
-      <File FileName="src/DiplomaSolution/Views/Account/Login.cshtml" Line="13" Column="28" />
-      <File FileName="src/DiplomaSolution/Views/Registration/RegistrationForm.cshtml" Line="14" Column="35" />
-      <File FileName="src/DiplomaSolution/Views/Account/ResetPassword.cshtml" Line="16" Column="22" />
-      <File FileName="src/DiplomaSolution/Views/Account/ResetPasswordWithEmail.cshtml" Line="7" Column="35" />
-      <File FileName="src/DiplomaSolution/Views/Account/AccessDenied.cshtml" Line="1" Column="1" />
+      <File FileName="src/DiplomaSolution/Views/HomePage/Index.cshtml" Line="8" Column="30" />
+      <File FileName="src/DiplomaSolution/wwwroot/css/styles.css" Line="188" Column="21" />
+      <File FileName="src/DiplomaSolution/ViewModels/IndexViewData.cs" Line="33" Column="11" />
+      <File FileName="src/DiplomaSolution/Controllers/HomePageController.cs" Line="96" Column="63" />
+      <File FileName="src/DiplomaSolution/Services/Interfaces/IFileManagerService.cs" Line="26" Column="72" />
+      <File FileName="src/DiplomaSolution/Services/Models/ModifyModel.cs" Line="12" Column="43" />
+      <File FileName="src/DiplomaSolution/Services/Classes/FileManagerService.cs" Line="252" Column="1" />
+      <File FileName="src/DiplomaSolution/Views/Shared/_Layout.cshtml" Line="7" Column="23" />
+      <File FileName="src/DiplomaSolution/Views/Registration/ConfirmationPage.cshtml" Line="1" Column="1" />
+      <File FileName="src/DiplomaSolution/Views/Registration/RegistrationForm.cshtml" Line="2" Column="1" />
+      <File FileName="src/DiplomaSolution/Views/Account/Login.cshtml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="DiplomaSolution" expanded="True">
             <Node name="DiplomaSolution" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Helpers" expanded="True" />
+              <Node name="Services" expanded="True">
+                <Node name="Classes" expanded="True" />
+                <Node name="Interfaces" expanded="True" />
+                <Node name="Models" expanded="True" />
+              </Node>
+              <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="About" expanded="True" />
-                <Node name="Account" expanded="True">
-                  <Node name="ResetPasswordWithEmail.cshtml" selected="True" />
+                <Node name="Account" expanded="True" />
+                <Node name="HomePage" expanded="True">
+                  <Node name="Index.cshtml" selected="True" />
                 </Node>
                 <Node name="Registration" expanded="True" />
                 <Node name="Shared" expanded="True">
@@ -45,7 +53,9 @@
   <MonoDevelop.Ide.ItemProperties.DiplomaSolution PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.ItemProperties.docker-compose PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/llasapg/Desktop/DiplomaSuper/src/DiplomaSolution/Services/Classes/FileManagerService.cs" relfile="src/DiplomaSolution/Services/Classes/FileManagerService.cs" line="203" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

@@ -58,5 +58,15 @@ namespace DiplomaSolution.Models
         /// To avoid passind all the form image data again decided to save path to the image like this
         /// </summary>
         public string PathToTheInputImage { get; set; }
+        /// <summary>
+        /// To pass to the action intensity of the filter
+        /// </summary>
+        [Display(Name = "Choose filter intensity")]
+        public int Intensity { get; set; }
+        /// <summary>
+        /// Checkbox to identify ( use frame on image result ot not )
+        /// </summary>
+        [Display(Name = "Choose whether to frame around the image")]
+        public bool UseFrame { get; set; }
     }
 }

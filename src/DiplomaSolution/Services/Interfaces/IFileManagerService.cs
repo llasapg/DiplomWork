@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using DiplomaSolution.Models;
+using DiplomaSolution.Services.Models;
 using Microsoft.AspNetCore.Http;
 
 namespace DiplomaSolution.Services.Interfaces
@@ -22,6 +23,6 @@ namespace DiplomaSolution.Services.Interfaces
         /// Method to perform file modification using Magick.Net
         /// </summary>
         /// <returns></returns>
-        Task<DefaultServiceResponse> ModifyFile(string userId, string outputFileType, string selectedOperation);
+        Task<DefaultServiceResponse> ModifyFile(ModifyModel modifyModel);
     }
 }

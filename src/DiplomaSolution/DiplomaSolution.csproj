@@ -58,6 +58,7 @@
     <Folder Include="Helpers\ViewComponents\" />
     <Folder Include="Views\Shared\Components\" />
     <Folder Include="Views\Shared\Components\AccountPhoto\" />
+    <Folder Include="Services\Models\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using System.IO;
+using DiplomaSolution.Services.Models;
 
 namespace DiplomaSolution.Controllers
 {
@@ -98,7 +99,7 @@ namespace DiplomaSolution.Controllers
             {
                 var customerData = await UserManager.GetUserAsync(User);
 
-                var fileResponse = await FileManagerService.ModifyFile(customerData.Id, data.SelectedResponseFileFormat, data.SelectedFileOperation);
+                var fileResponse = await FileManagerService.ModifyFile(new ModifyModel { UserId = customerData.Id, OutputFileType = data.SelectedResponseFileFormat, SelectedOperation = data.SelectedFileOperation, Intesivity = data.Intensity, UseFrame = data.UseFrame }); // todo - add data from slider
 
                 return View("Index", new IndexViewData() { PathToTheInputImage = "../" + data.PathToTheInputImage, PathToTheResultImage = fileResponse.ResponseData.ToString() });
             }
