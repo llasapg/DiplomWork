@@ -8,7 +8,7 @@ WORKDIR /src
 RUN git clone https://github.com/llasapg/DiplomWork.git
 WORKDIR /src/DiplomWork/DiplomaSolution
 RUN dotnet restore "DiplomaSolution.csproj"
-RUN dotnet build "DiplomaSolution.csproj" -c Release -o /app/buildy
+RUN dotnet build "DiplomaSolution.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "DiplomaSolution.csproj" -c Release -o /app/publish
