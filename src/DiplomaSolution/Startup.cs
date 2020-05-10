@@ -175,11 +175,6 @@ namespace DiplomaSolution
                 app.UseDeveloperExceptionPage();
             }
 
-            // Add description 
-            // app.UseHttpsRedirection();
-
-            // app.UseRewriter(new RewriteOptions().AddRedirectToHttps(statusCode: 302, sslPort: 5001));
-
             app.UseExceptionHandler("/Error/ExceptionHandler");
 
             app.UseStatusCodePagesWithReExecute("/Error/{0}");

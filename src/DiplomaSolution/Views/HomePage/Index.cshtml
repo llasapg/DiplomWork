@@ -1,59 +1,12 @@
-﻿@model IndexViewData
-@{
+﻿@{
     ViewData["Title"] = "SmartX.com";
 }
 <div class="pre-content">
         <h1>Revolutionary Photo Editor and Design Maker</h1>
         <h3>Billions of good photos processed | Lie</h3>
-    <div class="image-options">
-        <button class="mainpage-button" type="submit"><a class="main-ref" href="#main">Edit image</a></button>
-        <button class="mainpage-button" type="submit"><a class="main-ref" href="#main">View your edits</a></button>
-        <button class="mainpage-button" type="submit">Download image</button>
-    </div>
-</div>
-<div class="mainContent"> <!-- Upload photo boxes -->
-    <a name="main"></a>
-    <div Id="InputImageBlock">
-        <div class="OutPutImage">
-            @if (!string.IsNullOrEmpty(@Model.PathToTheInputImage))
-             {
-                <img id="Img_block" src="@Model.PathToTheInputImage" asp-append-version="true" />
-             }
+        <div class="image-options">
+            <a class="main-ref" asp-controller="HomePage" asp-action="EditImage">View your edits</a>
+            <a class="main-ref" asp-controller="About" asp-action="GiveInfo">View your edits</a>
+            <a class="main-ref" asp-controller="HomePage" asp-action="EditImage">View your edits</a>
         </div>
-        <form method="post" asp-controller="HomePage" asp-action="Index" enctype="multipart/form-data">
-            <input class="default-button" type="file" asp-for="FormFileData" />
-            <button class="default-button" name="UploadPhoto" type="submit">Upload photo</button>
-        </form> <!-- Send file data to the HomePage controller ( Action - Index ) -->
-        <div asp-validation-summary="All"></div>
-    </div>
-    <div id="ConfigureImageBlock">
-        <form asp-action="ModifyPhoto" asp-controller="HomePage">
-            <!-- input type range -->
-            <label class="default-label" asp-for=@Model.OpetationList></label>
-            <select class="configure-option" asp-for="SelectedFileOperation" asp-items=@Model.OpetationList></select>
-            <label class="default-label" asp-for=@Model.FileFormats></label>
-            <select class="configure-option" asp-for="SelectedResponseFileFormat" asp-items=@Model.FileFormats></select>
-            <input type="hidden" asp-for=@Model.PathToTheInputImage />
-            <label class="default-label" asp-for=@Model.Intensity></label>
-            <input class="configure-option" type="range" asp-for=@Model.Intensity />
-            <label class="default-label" asp-for=@Model.UseFrame></label>
-            <input class="configure-option" type="checkbox" asp-for=@Model.UseFrame />
-            <button class="default-button" name="ModifyImage" type="submit">Modify image</button>
-        </form>
-        @if (!string.IsNullOrEmpty(@Model.PathToTheInputImage))
-        {
-            <button asp-controller="HomePage" asp-action="Index" class="default-button" name="ModifyImage" type="submit">Reset image</button>
-        }
-    </div>
-    <div id="OutPutImageBlock">
-        <div class="OutPutImage">
-            @if (!string.IsNullOrEmpty(@Model.PathToTheResultImage))
-            {
-                <img id="Img_block" src="@Model.PathToTheResultImage" asp-append-version="true" />
-            }
-        </div>
-        <form method="post" asp-controller="HomePage" asp-action="Index" enctype="multipart/form-data">
-            <button class="default-button" name="DownloadImage" type="submit">Download result</button>
-        </form>
-    </div>
 </div>

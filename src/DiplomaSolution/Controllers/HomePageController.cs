@@ -43,9 +43,7 @@ namespace DiplomaSolution.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
-            var homePageModel = new IndexViewData();
-
-            return View(homePageModel);
+            return View();
         }
 
         /// <summary>
@@ -54,7 +52,7 @@ namespace DiplomaSolution.Controllers
         /// <param name="data"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> Index(IndexViewData data)
+        public async Task<IActionResult> EditImage(IndexViewData data)
         {           
             var fileUploadResponse = new DefaultServiceResponse();
 
@@ -77,7 +75,7 @@ namespace DiplomaSolution.Controllers
                     }
                 }
 
-                viewModel.PathToTheInputImage = Path.Combine("CustomersImages", Path.GetFileName(fileUploadResponse.ResponseData.ToString()));
+                viewModel.PathToTheInputImage = Path.Combine("../","CustomersImages", Path.GetFileName(fileUploadResponse.ResponseData.ToString()));
             }
             else
             {
@@ -101,14 +99,26 @@ namespace DiplomaSolution.Controllers
 
                 var fileResponse = await FileManagerService.ModifyFile(new ModifyModel { UserId = customerData.Id, OutputFileType = data.SelectedResponseFileFormat, SelectedOperation = data.SelectedFileOperation, Intesivity = data.Intensity, UseFrame = data.UseFrame }); // todo - add data from slider
 
-                return View("Index", new IndexViewData() { PathToTheInputImage = "../" + data.PathToTheInputImage, PathToTheResultImage = fileResponse.ResponseData.ToString() });
+                return View("EditImage", new IndexViewData() { PathToTheInputImage = "../" + data.PathToTheInputImage, PathToTheResultImage = fileResponse.ResponseData.ToString() });
             }
             else
             {
                 ModelState.AddModelError("", "In order to edit photo, you should first provide it");
 
-                return View("Index", new IndexViewData());
+                return View("EditImage", new IndexViewData());
             }
+        }
+
+        /// <summary>
+        /// Action to return modify image view
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public IActionResult EditImage()
+        {
+            var homePageModel = new IndexViewData();
+
+            return View(homePageModel);
         }
     }
 }

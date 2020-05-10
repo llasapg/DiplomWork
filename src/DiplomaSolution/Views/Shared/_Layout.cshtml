@@ -11,27 +11,23 @@
 <body>
     <div class="header">
         <div class="header_section">
-            <div class="header_item_logo">
-                <div class="header_item_button">
-                    <a asp-controller="HomePage" asp-action="Index">SmartX</a>
-                </div>
-            </div>
-            <div class="header_item_button"><a asp-controller="HomePage" asp-action="Index">Home</a></div>
-            <div class="header_item_button"><a asp-controller="About" asp-action="GiveInfo">About</a></div>
-            <div class="header_item_button"><a asp-controller="InfoPage" asp-action="SupportPage">Contact</a></div>
+           <a class="header_item_button" asp-controller="HomePage" asp-action="Index">SmartX</a>
+           <a class="header_item_button" asp-controller="HomePage" asp-action="Index">Home</a>
+           <a class="header_item_button" asp-controller="About" asp-action="GiveInfo">About</a>
+           <a class="header_item_button" asp-controller="InfoPage" asp-action="SupportPage">Contact</a>
         </div> <!-- NavBar menu -->
         @if (signInManager.IsSignedIn(User) && (await service.AuthorizeAsync(User, "DefaultMainPolicy")).Succeeded)
         {
             <div class="header_section">
-                <div class="header_item_button"><a>@User.Identity.Name</a></div>
-                <div class="header_item_button"><a asp-controller="Account" asp-action="Logout">Log-Out</a></div>
+                <a class="header_item_button"> @User.Identity.Name</a>
+                <a class="header_item_button" asp-controller="Account" asp-action="Logout">Log-Out</a>
             </div>
         }
         else
         {
             <div class="header_section">
-                <div class="header_item_button"><a asp-controller="Registration" asp-action="RegistrationForm">Registration</a></div>
-                <div class="header_item_button"><a asp-controller="Account" asp-action="Login">Log-In</a></div>
+                <a class="header_item_button" asp-controller="Registration" asp-action="RegistrationForm">Registration</a>
+                <a class="header_item_button" asp-controller="Account" asp-action="Login">Log-In</a>
             </div>
         }
     </div>

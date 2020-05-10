@@ -1,0 +1,60 @@
+﻿@model IndexViewData
+@{
+    ViewData["Title"] = "Edit view";
+}
+<div class="mainContent">
+    <!-- Upload photo boxes -->
+    <div Id="InputImageBlock">
+        <div class="OutPutImage">
+            @if (!string.IsNullOrEmpty(@Model.PathToTheInputImage))
+            {
+                <img id="Img_block" src="@Model.PathToTheInputImage" asp-append-version="true" />
+            }
+            else
+            {
+                <img id="Img_block" src="../img/InputBlock.png" asp-append-version="true" />
+            }
+        </div>
+        <div class="file-uploader">
+            <form method="post" asp-controller="HomePage" asp-action="EditImage" enctype="multipart/form-data">
+                <input class="default-button" type="file" asp-for="FormFileData" />
+                <button class="default-button" name="UploadPhoto" type="submit">Upload photo</button>
+            </form> <!-- Send file data to the HomePage controller ( Action - Index ) -->
+            <div asp-validation-summary="All"></div>
+        </div>
+    </div>
+    <div id="ConfigureImageBlock">
+        <form asp-action="ModifyPhoto" asp-controller="HomePage">
+            <!-- input type range ???? -->
+            <label class="default-label" asp-for=@Model.OpetationList></label>
+            <select class="configure-option" asp-for="SelectedFileOperation" asp-items=@Model.OpetationList></select>
+            <label class="default-label" asp-for=@Model.FileFormats></label>
+            <select class="configure-option" asp-for="SelectedResponseFileFormat" asp-items=@Model.FileFormats></select>
+            <input type="hidden" asp-for=@Model.PathToTheInputImage />
+            <label class="default-label" asp-for=@Model.Intensity></label>
+            <input class="configure-option" type="range" asp-for=@Model.Intensity />
+            <label class="default-label" asp-for=@Model.UseFrame></label>
+            <input class="configure-option" type="checkbox" asp-for=@Model.UseFrame />
+            <button class="default-button" name="ModifyImage" type="submit">Modify image</button>
+        </form>
+        @if (!string.IsNullOrEmpty(@Model.PathToTheInputImage))
+        {
+            <button asp-controller="HomePage" asp-action="EditImage" class="default-button" name="ModifyImage" type="submit">Reset image</button>
+        }
+    </div>
+    <div id="OutPutImageBlock">
+        <div class="OutPutImage">
+            @if (string.IsNullOrEmpty(@Model.PathToTheResultImage))
+            {
+                <img id="Img_block" src="../img/OutPut.png" asp-append-version="true" />
+            }
+            else
+            {
+                <img id="Img_block" src="@Model.PathToTheResultImage" asp-append-version="true" />
+            }
+        </div>
+        <form method="post" asp-controller="HomePage" asp-action="EditImage" enctype="multipart/form-data">
+            <button class="default-button" name="DownloadImage" type="submit">Download result</button>
+        </form>
+    </div>
+</div>

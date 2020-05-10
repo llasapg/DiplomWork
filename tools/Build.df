@@ -1,0 +1,8 @@
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
+WORKDIR /src
+RUN git clone https://github.com/llasapg/DiplomWork.git
+WORKDIR /src/DiplomWork/DiplomaSolution
+RUN dotnet restore "DiplomaSolution.csproj"
+RUN dotnet build "DiplomaSolution.csproj" -c Release -o /app/build
+CMD publish -o /app/publish
+ENTRYPOINT ["dotnet"]
