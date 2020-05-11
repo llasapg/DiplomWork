@@ -2,10 +2,10 @@ version: '3.4'
 
 services:
   diplomasolution:
-    image: ${DOCKER_REGISTRY-}diplomasolution
+    image: diplomasolution:latest
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: DiplomaBuild.df
 
   mysql-development:
     image: mysql:8.0.17
@@ -13,4 +13,4 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: MedicalDb
     ports:
-      - "3308:3306"
+      - "3309:3306"

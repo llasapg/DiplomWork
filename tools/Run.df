@@ -1,6 +1,0 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
-WORKDIR /app
-EXPOSE 9999
-EXPOSE 6666
-COPY app/publish .
-ENTRYPOINT ["dotnet", "DiplomaSolution.dll"]

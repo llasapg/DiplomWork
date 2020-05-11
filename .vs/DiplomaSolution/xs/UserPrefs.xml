@@ -2,9 +2,9 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="src/DiplomaSolution/Views/HomePage/EditImage.cshtml">
     <Files>
       <File FileName="src/DiplomaSolution/Views/HomePage/Index.cshtml" Line="13" Column="1" />
-      <File FileName="src/DiplomaSolution/wwwroot/css/styles.css" Line="136" Column="18" />
+      <File FileName="src/DiplomaSolution/wwwroot/css/styles.css" Line="17" Column="24" />
       <File FileName="src/DiplomaSolution/ViewModels/IndexViewData.cs" />
-      <File FileName="src/DiplomaSolution/Controllers/HomePageController.cs" Line="57" Column="26" />
+      <File FileName="src/DiplomaSolution/Controllers/HomePageController.cs" Line="102" Column="1" />
       <File FileName="src/DiplomaSolution/Services/Interfaces/IFileManagerService.cs" />
       <File FileName="src/DiplomaSolution/Services/Classes/FileManagerService.cs" />
       <File FileName="src/DiplomaSolution/Views/Shared/_Layout.cshtml" Line="31" Column="19" />
@@ -14,7 +14,7 @@
       <File FileName="src/DiplomaSolution/Views/_ViewImports.cshtml" />
       <File FileName="src/DiplomaSolution/Startup.cs" Line="196" Column="41" />
       <File FileName="src/DiplomaSolution/Properties/launchSettings.json" Line="8" Column="6" />
-      <File FileName="src/DiplomaSolution/Views/HomePage/EditImage.cshtml" Line="14" Column="36" />
+      <File FileName="src/DiplomaSolution/Views/HomePage/EditImage.cshtml" Line="21" Column="33" />
       <File FileName="src/DiplomaSolution/Controllers/AboutController.cs" Line="18" Column="38" />
     </Files>
     <Pads>

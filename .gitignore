@@ -9,4 +9,5 @@ build/
 bld/
 [Bb]in/
 msbuild.log
+src/diplomasolution/appconfig.json
 
