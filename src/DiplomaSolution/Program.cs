@@ -31,7 +31,7 @@ namespace DiplomaSolution
             {
                 config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 
-                config.AddJsonFile("../../appconfig.json", optional: true, reloadOnChange: true);
+                config.AddJsonFile("appconfig.json", optional: true, reloadOnChange: true);
 
                 config.AddEnvironmentVariables();
 
