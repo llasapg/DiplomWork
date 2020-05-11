@@ -16,5 +16,5 @@ RUN dotnet publish "DiplomaSolution.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-COPY appconfig.json /app/publish
+COPY appconfig.json /app
 ENTRYPOINT ["dotnet", "DiplomaSolution.dll"]
