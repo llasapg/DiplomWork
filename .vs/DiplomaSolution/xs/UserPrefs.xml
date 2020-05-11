@@ -1,21 +1,22 @@
 ﻿<Properties StartupConfiguration="{11696BEA-910E-4525-9195-57B956807856}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="src/DiplomaSolution/Views/HomePage/EditImage.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src/DiplomaSolution/Program.cs">
     <Files>
       <File FileName="src/DiplomaSolution/Views/HomePage/Index.cshtml" Line="13" Column="1" />
-      <File FileName="src/DiplomaSolution/wwwroot/css/styles.css" Line="17" Column="24" />
-      <File FileName="src/DiplomaSolution/ViewModels/IndexViewData.cs" />
-      <File FileName="src/DiplomaSolution/Controllers/HomePageController.cs" Line="102" Column="1" />
+      <File FileName="src/DiplomaSolution/wwwroot/css/styles.css" />
+      <File FileName="src/DiplomaSolution/ViewModels/IndexViewData.cs" Line="1" Column="1" />
+      <File FileName="src/DiplomaSolution/Controllers/HomePageController.cs" />
       <File FileName="src/DiplomaSolution/Services/Interfaces/IFileManagerService.cs" />
       <File FileName="src/DiplomaSolution/Services/Classes/FileManagerService.cs" />
-      <File FileName="src/DiplomaSolution/Views/Shared/_Layout.cshtml" Line="31" Column="19" />
+      <File FileName="src/DiplomaSolution/Views/Shared/_Layout.cshtml" />
       <File FileName="src/DiplomaSolution/Views/Registration/ConfirmationPage.cshtml" />
       <File FileName="src/DiplomaSolution/Views/Registration/RegistrationForm.cshtml" />
       <File FileName="src/DiplomaSolution/Views/Account/Login.cshtml" />
       <File FileName="src/DiplomaSolution/Views/_ViewImports.cshtml" />
-      <File FileName="src/DiplomaSolution/Startup.cs" Line="196" Column="41" />
-      <File FileName="src/DiplomaSolution/Properties/launchSettings.json" Line="8" Column="6" />
-      <File FileName="src/DiplomaSolution/Views/HomePage/EditImage.cshtml" Line="21" Column="33" />
-      <File FileName="src/DiplomaSolution/Controllers/AboutController.cs" Line="18" Column="38" />
+      <File FileName="src/DiplomaSolution/Startup.cs" />
+      <File FileName="src/DiplomaSolution/Properties/launchSettings.json" />
+      <File FileName="src/DiplomaSolution/Views/HomePage/EditImage.cshtml" Line="18" Column="36" />
+      <File FileName="src/DiplomaSolution/Controllers/AboutController.cs" />
+      <File FileName="src/DiplomaSolution/Program.cs" Line="29" Column="39" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -28,15 +29,14 @@
               <Node name="Helpers" expanded="True" />
               <Node name="Properties" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="HomePage" expanded="True">
-                  <Node name="EditImage.cshtml" selected="True" />
-                </Node>
+                <Node name="HomePage" expanded="True" />
                 <Node name="Shared" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="css" expanded="True" />
                 <Node name="img" expanded="True" />
               </Node>
+              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
