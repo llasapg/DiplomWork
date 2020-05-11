@@ -2,15 +2,35 @@ version: '3.4'
 
 services:
   diplomasolution:
-    image: diplomasolution:latest
+    container_name: diplomabe
     build:
       context: .
       dockerfile: DiplomaBuild.df
 
-  mysql-development:
+  diploma-sql:
     image: mysql:8.0.17
+    container_name: diplomasql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: MedicalDb
-    ports:
-      - "3309:3306"
+    volumes:
+      - diplomasqlvolume:/var/lib/mysql
+
+  nginx-proxy:
+      image: jwilder/nginx-proxy
+      container_name: nginx-proxy
+      ports:
+        - "80:80"
+      volumes:
+        - /var/run/docker.sock:/tmp/docker.sock:ro
+
+volumes:
+  diplomasqlvolume:
+
+networks:
+  nginx_demo:
+
+networks:
+  default:
+    external:
+      name: nginx_demo
