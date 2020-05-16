@@ -1,6 +1,6 @@
 {
   "ConnectionStrings": {
-    "DefaultConnection": "server=127.0.0.1;Port=3306;database=MedicalDb;uid=root;pwd=root;"
+    "DefaultConnection": "server=127.0.0.1;Port=3308;database=MedicalDb;uid=root;pwd=root;"
   },
   "FileConfigurations": {
     "CustomerFilesFolder": "wwwroot/CustomersImages",

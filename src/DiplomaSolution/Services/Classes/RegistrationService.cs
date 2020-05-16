@@ -8,6 +8,7 @@ using DiplomaSolution.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace DiplomaSolution.Services.Classes
 {
@@ -19,7 +20,7 @@ namespace DiplomaSolution.Services.Classes
         /// <summary>
         /// Ctor to get all needed DI services
         /// </summary>
-        public RegistrationService(CustomerContext customerContext, IUrlHelper urlHelper, IHttpContextAccessor httpContextAccessor, UserManager<ServiceUser> userManager, RoleManager<IdentityRole> roleManager, ISendEmailService sendEmailService)
+        public RegistrationService(CustomerContext customerContext, IUrlHelper urlHelper, IHttpContextAccessor httpContextAccessor, UserManager<ServiceUser> userManager, RoleManager<IdentityRole> roleManager, ISendEmailService sendEmailService, ILogger<RegistrationService> logger)
         {
             UserManager = userManager;
             RoleManager = roleManager;
@@ -27,6 +28,7 @@ namespace DiplomaSolution.Services.Classes
             Context = httpContextAccessor;
             UrlHelper = urlHelper;
             CustomerContext = customerContext;
+            Logger = logger;
         }
 
         #region DI services
@@ -54,6 +56,10 @@ namespace DiplomaSolution.Services.Classes
         /// 
         /// </summary>
         private CustomerContext CustomerContext { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public ILogger<RegistrationService> Logger { get; set; }
         #endregion
 
         /// <summary>
@@ -78,6 +84,8 @@ namespace DiplomaSolution.Services.Classes
 
                 if (result.Succeeded) // errors will be displayed on validation-summary
                 {
+                    Logger.LogInformation($"Customer created, account data - {user.Email} - email, {user.UserName} - username");
+
                     if (CheckIfWeHaveRole("User"))
                         await UserManager.AddToRoleAsync(user, "User");
                     else
@@ -86,15 +94,19 @@ namespace DiplomaSolution.Services.Classes
                         await UserManager.AddToRoleAsync(user, "User");
                     }
 
+                    Logger.LogInformation($"Roles added for the user - {user.UserName}");
+
                     var currentUser = await UserManager.FindByEmailAsync(user.Email);
 
                     var claims = CustomerContext.UserClaims.Select(x => x).ToList();
 
-                    var newClaimId = claims.Last().Id + 1;
+                    var newClaimId = claims.Count > 0 ? claims.Last().Id + 1 : 1;
 
                     CustomerContext.UserClaims.Add(new IdentityUserClaim<string> { Id = newClaimId, ClaimType = "UploadPhoto", ClaimValue = "true", UserId = currentUser.Id });
 
                     await CustomerContext.SaveChangesAsync();
+
+                    Logger.LogInformation($"Claims added for the user - {user.UserName}");
 
                     var token = await UserManager.GenerateEmailConfirmationTokenAsync(currentUser);
 

@@ -8,6 +8,7 @@ using DiplomaSolution.Services.Interfaces;
 using Microsoft.AspNetCore.DataProtection;
 using DiplomaSolution.Helpers.ErrorResponseMessages;
 using System.Diagnostics;
+using Microsoft.Extensions.Logging;
 
 namespace DiplomaSolution.Controllers
 {
@@ -21,7 +22,7 @@ namespace DiplomaSolution.Controllers
         /// </summary>
         /// <param name="signInManager"></param>
         /// <param name="userManager"></param>
-        public AccountController(SignInManager<ServiceUser> signInManager, UserManager<ServiceUser> userManager, ISendEmailService sendEmailService, IDataProtectionProvider dataProtecttionProvider, IAccountService accountService)
+        public AccountController(SignInManager<ServiceUser> signInManager, UserManager<ServiceUser> userManager, ISendEmailService sendEmailService, IDataProtectionProvider dataProtecttionProvider, IAccountService accountService, ILogger<AccountController> logger)
         {
             SignInManager = signInManager;
             UserManager = userManager;
@@ -29,6 +30,7 @@ namespace DiplomaSolution.Controllers
             DataProtectionProvider = dataProtecttionProvider;
             Protector = DataProtectionProvider.CreateProtector("DataProtection");
             AccountService = accountService;
+            Logger = logger;
         }
 
         #region DI services
@@ -38,7 +40,8 @@ namespace DiplomaSolution.Controllers
         private ISendEmailService SendEmailService { get; set; }
         private IDataProtectionProvider DataProtectionProvider { get; set; }
         private IDataProtector Protector { get; set; }
-        private IAccountService AccountService { get; set; }       
+        private IAccountService AccountService { get; set; }
+        private ILogger<AccountController> Logger { get; set; }
 
         #endregion
 
@@ -60,10 +63,16 @@ namespace DiplomaSolution.Controllers
 
             if (ModelState.IsValid)
             {
+                Logger.LogInformation($"Login started for account - {customer.EmailAddress} - email");
+
                 var loginResponse = await AccountService.LoginCustomer(customer, returnUrl);
+
+                Logger.LogInformation($"Login performed for account - {customer.EmailAddress} - email");
 
                 if (loginResponse.StatusCode == StatusCodesEnum.BadDataProvided)
                 {
+                    Logger.LogInformation($"Bad data provided for login {customer.EmailAddress}");
+
                     foreach (var item in loginResponse.ValidationErrors)
                     {
                         ModelState.AddModelError("", item);
@@ -78,6 +87,8 @@ namespace DiplomaSolution.Controllers
                     return Redirect(Url.Action("Index", "HomePage"));
                 }
             }
+
+            Logger.LogInformation($"Invalid data for - {customer.EmailAddress} - email");
 
             return View(viewModel);
         }
