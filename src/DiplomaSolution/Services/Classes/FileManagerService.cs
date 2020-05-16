@@ -12,6 +12,7 @@ using Microsoft.Extensions.Options;
 using DiplomaSolution.Models.FileModels;
 using ImageMagick;
 using DiplomaSolution.Services.Models;
+using Microsoft.Extensions.Logging;
 
 namespace DiplomaSolution.Services.Classes
 {
@@ -28,16 +29,21 @@ namespace DiplomaSolution.Services.Classes
         /// Application configuration   
         /// </summary>
         private IOptionsSnapshot<FileConfiguration> Configuration { get; set; }
+        /// <summary>
+        /// Logger
+        /// </summary>
+        private ILogger<FileManagerService> Logger { get; set; }
 
         /// <summary>
         /// DI reciving constractor
         /// </summary>
         /// <param name="customerContext"></param>
         /// <param name="configuration"></param>
-        public FileManagerService(CustomerContext customerContext, IOptionsSnapshot<FileConfiguration> configuration)
+        public FileManagerService(CustomerContext customerContext, IOptionsSnapshot<FileConfiguration> configuration, ILogger<FileManagerService> logger)
         {
             DataContext = customerContext;
             Configuration = configuration;
+            Logger = logger;
         }
 
         /// <summary>
@@ -55,6 +61,8 @@ namespace DiplomaSolution.Services.Classes
                 var randomFileName = Path.GetRandomFileName().Replace(".", ""); // replace all the dots to be able to use this files later in the server
 
                 var pathToFilesFolder = Configuration.Value.CustomerFilesFolder;
+
+                Logger.LogInformation($"Path tp folder - {pathToFilesFolder}");
 
                 var systemFileName = Path.Combine(pathToFilesFolder, randomFileName) + fileExtension;
 

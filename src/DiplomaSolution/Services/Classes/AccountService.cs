@@ -7,11 +7,9 @@ using DiplomaSolution.Helpers.ErrorResponseMessages;
 using DiplomaSolution.Models;
 using DiplomaSolution.Services.Interfaces;
 using DiplomaSolution.ViewModels;
-using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace DiplomaSolution.Services.Classes
 {
@@ -30,14 +28,6 @@ namespace DiplomaSolution.Services.Classes
         /// </summary>
         private ISendEmailService SendEmailService { get; set; }
         /// <summary>
-        /// System interface for security purpose
-        /// </summary>
-        private IDataProtectionProvider DataProtectionProvider { get; set; }
-        /// <summary>
-        /// Data protector to hide request data provided in query string
-        /// </summary>
-        private IDataProtector Protector { get; set; }
-        /// <summary>
         /// Url helper to create dynamic ULRS
         /// </summary>
         private IUrlHelper UrlHelper { get; set; }
@@ -53,13 +43,11 @@ namespace DiplomaSolution.Services.Classes
         /// <summary>
         /// Basic construstor to perform DI
         /// </summary>
-        public AccountService(CustomerContext customerContext, IHttpContextAccessor context, SignInManager<ServiceUser> signInManager, UserManager<ServiceUser> userManager, ISendEmailService sendEmailService, IDataProtectionProvider dataProtecttionProvider, IUrlHelper urlHelper, RoleManager<IdentityRole> roleManager)
+        public AccountService(CustomerContext customerContext, IHttpContextAccessor context, SignInManager<ServiceUser> signInManager, UserManager<ServiceUser> userManager, ISendEmailService sendEmailService, IUrlHelper urlHelper, RoleManager<IdentityRole> roleManager)
         {
             SignInManager = signInManager;
             UserManager = userManager;
             SendEmailService = sendEmailService;
-            DataProtectionProvider = dataProtecttionProvider;
-            Protector = DataProtectionProvider.CreateProtector("DataProtection");
             UrlHelper = urlHelper;
             Context = context;
             RoleManager = roleManager;
@@ -182,7 +170,7 @@ namespace DiplomaSolution.Services.Classes
 
                             var claims = CustomerContext.UserClaims.Select(x => x).ToList();
 
-                            var newClaimId = claims.Last().Id + 1;
+                            var newClaimId = claims.Count > 0 ? claims.Last().Id + 1 : 1;
 
                             CustomerContext.UserClaims.Add(new IdentityUserClaim<string> { Id = newClaimId, ClaimType = "UploadPhoto", ClaimValue = "true", UserId = serviceUser.Id});
 
