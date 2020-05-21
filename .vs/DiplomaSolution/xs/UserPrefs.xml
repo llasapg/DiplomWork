@@ -1,42 +1,48 @@
 ﻿<Properties StartupConfiguration="{11696BEA-910E-4525-9195-57B956807856}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="src/DiplomaSolution/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src/DiplomaSolution/Controllers/AccountController.cs">
     <Files>
-      <File FileName="src/DiplomaSolution/Views/HomePage/Index.cshtml" Line="13" Column="1" />
-      <File FileName="src/DiplomaSolution/wwwroot/css/styles.css" />
-      <File FileName="src/DiplomaSolution/ViewModels/IndexViewData.cs" Line="1" Column="1" />
-      <File FileName="src/DiplomaSolution/Controllers/HomePageController.cs" />
-      <File FileName="src/DiplomaSolution/Services/Interfaces/IFileManagerService.cs" />
-      <File FileName="src/DiplomaSolution/Services/Classes/FileManagerService.cs" />
+      <File FileName="src/DiplomaSolution/Services/Classes/AccountService.cs" Line="102" Column="31" />
+      <File FileName="src/DiplomaSolution/Views/HomePage/Index.cshtml" Line="1" Column="1" />
       <File FileName="src/DiplomaSolution/Views/Shared/_Layout.cshtml" />
-      <File FileName="src/DiplomaSolution/Views/Registration/ConfirmationPage.cshtml" />
-      <File FileName="src/DiplomaSolution/Views/Registration/RegistrationForm.cshtml" />
-      <File FileName="src/DiplomaSolution/Views/Account/Login.cshtml" />
-      <File FileName="src/DiplomaSolution/Views/_ViewImports.cshtml" />
-      <File FileName="src/DiplomaSolution/Startup.cs" />
-      <File FileName="src/DiplomaSolution/Properties/launchSettings.json" />
-      <File FileName="src/DiplomaSolution/Views/HomePage/EditImage.cshtml" Line="18" Column="36" />
-      <File FileName="src/DiplomaSolution/Controllers/AboutController.cs" />
-      <File FileName="src/DiplomaSolution/Program.cs" Line="29" Column="39" />
+      <File FileName="src/DiplomaSolution/Startup.cs" Line="137" Column="53" />
+      <File FileName="src/DiplomaSolution/Security/Policy/DefaultRequirement.cs" />
+      <File FileName="src/DiplomaSolution/Security/Policy/DefaultHandler.cs" />
+      <File FileName="src/DiplomaSolution/Services/Classes/FileManagerService.cs" Line="45" Column="26" />
+      <File FileName="src/DiplomaSolution/appsettings.json" />
+      <File FileName="src/DiplomaSolution/Program.cs" Line="46" Column="54" />
+      <File FileName="src/DiplomaSolution/ConfigurationModels/FileConfiguration.cs" Line="8" Column="35" />
+      <File FileName="src/DiplomaSolution/Views/HomePage/EditImage.cshtml" Line="20" Column="45" />
+      <File FileName="src/DiplomaSolution/wwwroot/css/styles.css" Line="146" Column="21" />
+      <File FileName="src/DiplomaSolution/Controllers/AccountController.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="DiplomaSolution" expanded="True">
             <Node name="DiplomaSolution" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Extensions" expanded="True" />
+              <Node name="ConfigurationModels" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="AccountController.cs" selected="True" />
+              </Node>
               <Node name="Filters" expanded="True" />
-              <Node name="Helpers" expanded="True" />
+              <Node name="Middlewares" expanded="True" />
+              <Node name="Migrations" expanded="True" />
               <Node name="Properties" expanded="True" />
+              <Node name="Security" expanded="True">
+                <Node name="Policy" expanded="True" />
+              </Node>
+              <Node name="Services" expanded="True">
+                <Node name="Classes" expanded="True" />
+                <Node name="Interfaces" expanded="True" />
+              </Node>
+              <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="HomePage" expanded="True" />
                 <Node name="Shared" expanded="True" />
               </Node>
               <Node name="wwwroot" expanded="True">
                 <Node name="css" expanded="True" />
-                <Node name="img" expanded="True" />
               </Node>
-              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>

@@ -2,10 +2,16 @@ version: '3.4'
 
 services:
   diplomasolution:
+    restart: always
     container_name: diplomabe
     build:
       context: .
       dockerfile: DiplomaBuild.df
+    environment:
+      VIRTUAL_HOST: blog.DOMAIN.TLD
+      ASPNETCORE_ENVIRONMENT: Production
+    ports:
+      - "51736:80"
 
   diploma-sql:
     image: mysql:8.0.17
@@ -19,6 +25,7 @@ services:
   nginx-proxy:
       image: jwilder/nginx-proxy
       container_name: nginx-proxy
+      restart: always
       ports:
         - "80:80"
       volumes:

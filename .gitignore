@@ -9,5 +9,9 @@ build/
 bld/
 [Bb]in/
 msbuild.log
-src/diplomasolution/appconfig.json
+appconfig.development.json
+appsecrets.json
+localhost.key
+localhost.crt
+localhost.pfx
 

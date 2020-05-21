@@ -13,7 +13,6 @@ namespace DiplomaSolution
         /// <summary>
         /// entery point in the application ( app starts as console app ) --> we have class program and method main
         /// </summary>
-        /// <param name="args"></param>
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
@@ -22,18 +21,20 @@ namespace DiplomaSolution
         /// <summary>
         /// Custom method to return configured web-host ( IWebHost ) instanse
         /// </summary>
-        /// <param name="args"></param>
-        /// <returns></returns>
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-            .UseUrls("http://*:80")
+            .UseUrls("http://*:5000")
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
-                config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
-
-                config.AddJsonFile("appconfig.json", optional: true, reloadOnChange: true);
-
                 config.AddEnvironmentVariables();
+
+                var enviroment = config.Build();
+
+                config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
+                config.AddJsonFile($"appconfig.{enviroment["ASPNETCORE_ENVIRONMENT"]}.json", optional: false, reloadOnChange: true);
+
+                config.AddJsonFile($"appsecrets.json", optional: false, reloadOnChange: true);
 
                 if (args != null)
                 {

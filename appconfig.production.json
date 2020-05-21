@@ -1,0 +1,7 @@
+{
+  "FileConfigurations": {
+    "CustomerFilesFolder": "wwwroot/CustomersImages",
+    "AvailableFileFormats": [ ".jpg", ".png" ],
+    "SaveFilesWithWrongFormat": "true"
+  }
+}

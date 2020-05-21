@@ -37,10 +37,14 @@ namespace DiplomaSolution.Controllers
         {
             if (ModelState.IsValid)
             {
+                Logger.LogInformation($"Registration process for customer - {customer.EmailAddress} - email, {customer.FirstName} - login");
+
                 var registrationResult = await RegistrationService.CompleteRegistration(customer);
 
                 if(registrationResult.StatusCode == StatusCodesEnum.RedirectNeeded && registrationResult.ValidationErrors.Count == 0) // check if we can pass data like this 
                 {
+                    Logger.LogInformation($"Registration completed for account - email is {customer.EmailAddress}");
+
                     return Redirect(Url.Action(registrationResult.ActionName, registrationResult.ControllerName, new { customerData = registrationResult.ResponseData }));
                 }
                 else if(registrationResult.StatusCode == StatusCodesEnum.BadDataProvided && registrationResult.ValidationErrors.Count > 0)
@@ -88,6 +92,8 @@ namespace DiplomaSolution.Controllers
         [AllowAnonymous]
         public IActionResult RegistrationForm()
         {
+            Logger.LogInformation("Register form requested");
+
             return View();
         }
     }

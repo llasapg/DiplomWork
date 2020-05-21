@@ -17,7 +17,8 @@
         </div>
         <div class="file-uploader">
             <form method="post" asp-controller="HomePage" asp-action="EditImage" enctype="multipart/form-data">
-                <input class="default-button" type="file" asp-for="FormFileData" />
+                <label class="default-button" for="upload-photo">Upload photo</label>
+                <input id="upload-photo" type="file" asp-for="FormFileData" />
                 <button class="default-button" name="UploadPhoto" type="submit">Upload photo</button>
             </form> <!-- Send file data to the HomePage controller ( Action - Index ) -->
             <div asp-validation-summary="All"></div>
