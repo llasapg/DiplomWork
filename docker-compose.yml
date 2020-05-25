@@ -10,7 +10,7 @@ secrets:
 
 services:
   diplomasolution:
-    image: diplomasuper_diplomasolution:latest
+    image: llasapg/diplomabe:latest
     restart: always
     container_name: diplomabe
     build:
@@ -53,7 +53,7 @@ services:
       - nginx-proxy
 
   nginx-proxy:
-      image: diplomasuper_nginx-proxy:latest
+      image: llasapg/nginx-proxy:latest
       build:
         context: .
         dockerfile: Nginx.df

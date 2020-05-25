@@ -36,6 +36,18 @@ namespace DiplomaSolution.Controllers
         }
 
         /// <summary>
+        /// Action to return modify image view
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public IActionResult EditImage()
+        {
+            var homePageModel = new IndexViewData();
+
+            return View(homePageModel);
+        }
+
+        /// <summary>
         /// Action to return main page of the application
         /// </summary>
         /// <returns></returns>
@@ -69,13 +81,14 @@ namespace DiplomaSolution.Controllers
 
                 if (fileUploadResponse.ValidationErrors != null)
                 {
-                    foreach (var error in fileUploadResponse.ValidationErrors) // using this stuff we are adding errors to the validation summary element ( todo - add it !!!! ASAP )
+                    foreach (var error in fileUploadResponse.ValidationErrors) 
                     {
                         ModelState.AddModelError("", error);
                     }
                 }
 
-                viewModel.PathToTheInputImage = Path.Combine("../","CustomersImages", Path.GetFileName(fileUploadResponse.ResponseData.ToString()));
+                viewModel.PathToTheInputImage = Path.Combine("../","CustomersImages",
+                    Path.GetFileName(fileUploadResponse.ResponseData.ToString()));
             }
             else
             {
@@ -91,15 +104,21 @@ namespace DiplomaSolution.Controllers
         /// <param name="data"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> ModifyPhoto(IndexViewData data) // todo - add ability to customize the input ( like se
+        public async Task<IActionResult> ModifyPhoto(IndexViewData data)
         {
             if(!string.IsNullOrEmpty(data.PathToTheInputImage))
             {
                 var customerData = await UserManager.GetUserAsync(User);
 
-                var fileResponse = await FileManagerService.ModifyFile(new ModifyModel { UserId = customerData.Id, OutputFileType = data.SelectedResponseFileFormat, SelectedOperation = data.SelectedFileOperation, Intesivity = data.Intensity, UseFrame = data.UseFrame }); // todo - add data from slider
+                var fileResponse = await FileManagerService.ModifyFile(new ModifyModel {
+                    UserId = customerData.Id,
+                    OutputFileType = data.SelectedResponseFileFormat,
+                    SelectedOperation = data.SelectedFileOperation,
+                    Intesivity = data.Intensity,
+                    UseFrame = data.UseFrame });
 
-                return View("EditImage", new IndexViewData() { PathToTheInputImage = "../" + data.PathToTheInputImage, PathToTheResultImage = fileResponse.ResponseData.ToString() });
+                return View("EditImage", new IndexViewData() { PathToTheInputImage = "../" + data.PathToTheInputImage,
+                    PathToTheResultImage = fileResponse.ResponseData.ToString() });
             }
             else
             {
@@ -107,18 +126,6 @@ namespace DiplomaSolution.Controllers
 
                 return View("EditImage", new IndexViewData());
             }
-        }
-
-        /// <summary>
-        /// Action to return modify image view
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public IActionResult EditImage()
-        {
-            var homePageModel = new IndexViewData();
-
-            return View(homePageModel);
         }
     }
 }

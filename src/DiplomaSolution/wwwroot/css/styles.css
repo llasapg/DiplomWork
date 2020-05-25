@@ -4,6 +4,16 @@
     z-index: -1;
 }
 
+#modify-form {
+    display: inline-grid;
+    font-size: 18px;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
 label{
     cursor:pointer;
 }
@@ -145,7 +155,7 @@ input[type="text"], input[type="password"] {
 .default-button {
     margin-top: 6px;
     border-radius: 3px;
-    padding: 5px;
+    padding: 10px;
     font-size: 14px;
     border: 1px solid white;
     background-color: rgb(24, 33, 52, 0.7);
@@ -264,12 +274,11 @@ input[type="text"], input[type="password"] {
 #ConfigureImageBlock {
     margin-top: 50px;
     display: inline-block;
-    width: 250px;
+    width: 400px;
     height: 350px;
     border-radius: 5px 5px 5px 5px;
     background-color: rgb(24, 33, 52, 0.9);
 }
-
 .configure-option{
     margin: 10px;
 }

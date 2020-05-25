@@ -25,7 +25,7 @@ namespace DiplomaSolution.Services.Classes
         /// </summary>
         /// <param name="serviceEmail"></param>
         /// <returns></returns>
-        public async Task<Response> SendEmail(ServiceEmail serviceEmail) //todo - create custom message formatter to make it look better
+        public async Task<Response> SendEmail(ServiceEmail serviceEmail)
         {
             var client = new SendGridClient(Configurartions.Value.SendGridAuthentication.ApiKey);
             var from = new EmailAddress(serviceEmail.FromEmail, serviceEmail.FromName);

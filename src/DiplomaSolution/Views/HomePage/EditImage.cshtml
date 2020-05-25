@@ -25,7 +25,7 @@
         </div>
     </div>
     <div id="ConfigureImageBlock">
-        <form asp-action="ModifyPhoto" asp-controller="HomePage">
+        <form id="modify-form" asp-action="ModifyPhoto" asp-controller="HomePage">
             <!-- input type range ???? -->
             <label class="default-label" asp-for=@Model.OpetationList></label>
             <select class="configure-option" asp-for="SelectedFileOperation" asp-items=@Model.OpetationList></select>

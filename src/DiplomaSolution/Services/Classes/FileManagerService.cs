@@ -100,21 +100,21 @@ namespace DiplomaSolution.Services.Classes
         /// To store customer files to the DB and map them with other customer data
         /// </summary>
         /// <param name="file"></param>
-        public async Task<DefaultServiceResponse> LoadFileToTheDB(IFormFile file, string customerId) // todo - check that we can return error list in some cases
+        public async Task<DefaultServiceResponse> LoadFileToTheDB(IFormFile file, string customerId)
         {
             var responseModel = new DefaultServiceResponse() { ValidationErrors = new List<string>() };
 
-            var fileExtension = Path.GetExtension(file.FileName); // or try to use Name
+            var fileExtension = Path.GetExtension(file.FileName); 
 
-            if (fileExtension != null && (fileExtension == ".jpg" || fileExtension == ".png")) // for now we should work only with this type of files ( can be set-Up in the configuration file )
+            if (fileExtension != null && (fileExtension == ".jpg" || fileExtension == ".png"))
             {
-                var randomFileName = Path.GetRandomFileName().Replace(".", ""); // replace all the dots to be able to use this files later in the server
+                var randomFileName = Path.GetRandomFileName().Replace(".", "");
 
                 var systemFileName = Path.Combine(Configuration.Value.CustomerFilesFolder, randomFileName, fileExtension);
 
                 var checkResult = await FileExtensionCheck(file, fileExtension, systemFileName);
 
-                if (Configuration.Value.SaveFilesWithWrongFormat) //file type is save, as file extension ( no viruses )
+                if (Configuration.Value.SaveFilesWithWrongFormat)
                 {
                     using (var stream = new MemoryStream())
                     {
@@ -218,7 +218,7 @@ namespace DiplomaSolution.Services.Classes
 
             using (var image = new MagickImage(lastUploadedImageName.First()))
             {
-                switch (model.SelectedOperation) // todo - add logic to have normal filters
+                switch (model.SelectedOperation)
                 {
                     case "CycleColorMap":
                         image.CycleColormap(intesivity);

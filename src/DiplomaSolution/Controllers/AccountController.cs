@@ -119,7 +119,9 @@ namespace DiplomaSolution.Controllers
         [AllowAnonymous]
         public IActionResult ExternalLogIn(string provider, string returnUrl = null) 
         {
-            var redirectUrl = Url.Action("ExternalLoginCallBack", "Account", new { ReturnUrl = returnUrl });
+            var redirectUrl = Url.Action("ExternalLoginCallBack", "Account", new { ReturnUrl = returnUrl }, "https", "localhost");
+
+            Logger.LogInformation($"redirect url - {redirectUrl}");
 
             var properties = SignInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl); // Check it
 
@@ -137,11 +139,17 @@ namespace DiplomaSolution.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> ExternalLoginCallBack(string returnUrl = null, string remoteError = null)
         {
+            Logger.LogInformation($"External login response recived");
+
             if (remoteError == null)
             {
+                Logger.LogInformation($"No remote errors for this attempt");
+
                 var loginResponse = await AccountService.ExternalLoginCallBack(returnUrl, remoteError);
 
-                if(loginResponse.StatusCode == StatusCodesEnum.RedirectNeeded && loginResponse.ValidationErrors.Count == 0)
+                Logger.LogInformation($"login response - {loginResponse.ActionName} - action, {loginResponse.ControllerName} - controller, {loginResponse.StatusCode} - status code");
+
+                if (loginResponse.StatusCode == StatusCodesEnum.RedirectNeeded && loginResponse.ValidationErrors.Count == 0)
                 {
                     return Redirect(Url.Action(loginResponse.ActionName, loginResponse.ControllerName, new { customerData = loginResponse.ResponseData }));
                 }
