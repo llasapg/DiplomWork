@@ -6,8 +6,9 @@
       <File FileName="src/DiplomaSolution/Startup.cs" Line="81" Column="23" />
       <File FileName="src/DiplomaSolution/Program.cs" Line="1" Column="1" />
       <File FileName="src/DiplomaSolution/Services/Classes/AccountService.cs" Line="1" Column="1" />
-      <File FileName="src/DiplomaSolution/wwwroot/css/styles.css" Line="7" Column="2" />
-      <File FileName="src/DiplomaSolution/Views/HomePage/EditImage.cshtml" Line="28" Column="16" />
+      <File FileName="src/DiplomaSolution/wwwroot/css/styles.css" Line="17" Column="7" />
+      <File FileName="src/DiplomaSolution/Views/HomePage/EditImage.cshtml" Line="29" Column="43" />
+      <File FileName="src/DiplomaSolution/Views/HomePage/Index.cshtml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

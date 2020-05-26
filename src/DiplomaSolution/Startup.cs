@@ -106,7 +106,6 @@ namespace DiplomaSolution
                 googleOptions.ClientId = settings["GoogleAuthentication:ClientId"];
                 googleOptions.ClientSecret = settings["GoogleAuthentication:ClientSecret"];
                 googleOptions.RemoteAuthenticationTimeout = TimeSpan.FromHours(1);
-                googleOptions.CallbackPath = "/Account/ExternalLoginCallBack";
             })
             .AddFacebook(facebookOpt =>
             {
