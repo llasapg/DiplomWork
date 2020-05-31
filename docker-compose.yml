@@ -33,6 +33,10 @@ services:
       - nginx-proxy
     deploy:
       replicas: 1
+    volumes:
+      - type: volume
+        source: diplomabevolume
+        target: /app/wwwroot/CustomersImages
 
   diploma-sql:
     image: mysql:8.0.17
@@ -67,6 +71,7 @@ services:
 
 volumes:
   diplomasqlvolume:
+  diplomabevolume:
 
 networks:
   nginx_demo:

@@ -33,9 +33,9 @@ namespace DiplomaSolution.Helpers.ViewComponents
         {
             var currentUser = await UserManager.FindByNameAsync(User.Identity.Name);
 
-            var uploadedPhotos = DataContext.CustomerImageFiles.Where(item => item.CustomerId == currentUser.Id).Select(item => item).ToList();
+            var uploadedPhotos = DataContext.CustomerImageFiles.Where(item => item.CustomerId == currentUser.Id).Select(item => item).OrderByDescending(x => x.UploadTime).ToList();
 
-            var editedPhotos = DataContext.CustomerEditedImageFiles.Where(item => item.CustomerId == currentUser.Id).Select(item => item).ToList();
+            var editedPhotos = DataContext.CustomerEditedImageFiles.Where(item => item.CustomerId == currentUser.Id).Select(item => item).OrderByDescending(x => x.UploadTime).ToList();
 
             var viewModel = new AccountEditedImagesViewModel { EditedImages = new List<string>(), OriginalImages = new List<string>() };
 

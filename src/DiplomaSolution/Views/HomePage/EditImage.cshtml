@@ -17,7 +17,7 @@
         </div>
         <div class="file-uploader">
             <form method="post" asp-controller="HomePage" asp-action="EditImage" enctype="multipart/form-data">
-                <label class="default-button" for="upload-photo">Upload photo</label>
+                <label class="default-button" for="upload-photo">Choose photo</label>
                 <input id="upload-photo" type="file" asp-for="FormFileData" />
                 <button class="default-button" name="UploadPhoto" type="submit">Upload photo</button>
             </form> <!-- Send file data to the HomePage controller ( Action - Index ) -->
@@ -54,7 +54,8 @@
                 <img id="Img_block" src="@Model.PathToTheResultImage" asp-append-version="true" />
             }
         </div>
-        <form method="post" asp-controller="HomePage" asp-action="EditImage" enctype="multipart/form-data">
+        <form method="post" asp-controller="HomePage" asp-action="Download" enctype="multipart/form-data">
+            <input type="hidden" asp-for=@Model.PathToTheResultImage />
             <button class="default-button" name="DownloadImage" type="submit">Download result</button>
         </form>
     </div>

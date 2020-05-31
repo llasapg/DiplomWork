@@ -1,46 +1,51 @@
-﻿@model AccountEditedImagesViewModel
-    <div class="slidershow middle">
-        <div class="slides">
-            <!--  Depends on image count -->
-            @{
-                for (int i = 0; i < Model.EditedImages.Count; i++)
-                {
-                    var imageIdValue = $"r{i}";
+﻿@inject ILogger<string> Logger
+@model AccountEditedImagesViewModel
+<div class="slidershow middle">
+    <div class="slides">
+        <!--  Depends on image count -->
+        @{
+            var maxImageCount = Model.EditedImages.Count > 5 ? 5 : Model.EditedImages.Count;
 
-                    if (i == 0)
-                    {
-                        <input type="radio" name="r" id="@imageIdValue" checked>
-                    }
-                    else
-                    {
-                        <input type="radio" name="r" id="@imageIdValue">
-                    }
-                }
-                for (int i = 0; i < Model.EditedImages.Count; i++)
+            Logger.LogInformation($"Total count of customer edited photos - {maxImageCount}");
+
+            for (int i = 0; i < maxImageCount; i++)
+            {
+                var imageIdValue = $"r{i}";
+
+                if (i == 0)
                 {
-                    if (i == 0)
-                    {
-                        <div class="slide s1">
-                            <img src="@Model.EditedImages[i]" asp-append-version="true" />
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="slide">
-                            <img src="@Model.EditedImages[i]" asp-append-version="true" />
-                        </div>
-                    }
+                    <input type="radio" name="r" id="@imageIdValue" checked>
+                }
+                else
+                {
+                    <input type="radio" name="r" id="@imageIdValue">
                 }
             }
-        </div>
-        <div class="navigation">
-            @{
-                for (int i = 0; i < Model.EditedImages.Count; i++)
+            for (int i = 0; i < maxImageCount; i++)
+            {
+                if (i == 0)
                 {
-                    var imageIdValue = $"r{i}";
-
-                    <label for="@imageIdValue" class="bar"></label>
+                    <div class="slide s1">
+                        <img src="@Model.EditedImages[i]" asp-append-version="true" />
+                    </div>
+                }
+                else
+                {
+                    <div class="slide">
+                        <img src="@Model.EditedImages[i]" asp-append-version="true" />
+                    </div>
                 }
             }
-        </div>
+        }
     </div>
+    <div class="navigation">
+        @{
+            for (int i = 0; i < maxImageCount; i++)
+            {
+                var imageIdValue = $"r{i}";
+
+                <label for="@imageIdValue" class="bar"></label>
+            }
+        }
+    </div>
+</div>
