@@ -8,13 +8,13 @@
             <div asp-validation-summary="All"></div>
             <div class="dws-input">
                 <span asp-validation-for="EmailAddress"></span>
-                <input asp-for="EmailAddress" placeholder="Введите почтовый адрес" />
+                <input asp-for="EmailAddress" placeholder="Введіть адресу електронної пошти" />
                 <span asp-validation-for="Password"></span>
-                <input type="password" asp-for="Password" placeholder="Введите пароль" />
-                <input class="dws-submit" type="submit" value="Login!">
+                <input type="password" asp-for="Password" placeholder="Введіть пароль" />
+                <input class="dws-submit" type="submit" value="Логін!">
             </div>
         </form>
-        <a asp-controller="Account" asp-action="ResetPasswordWithEmail">Forget Password?</a>
+        <a asp-controller="Account" asp-action="ResetPasswordWithEmail">Забули пароль?</a>
         <form method="post" asp-controller="Account" asp-action="ExternalLogIn">
             @if (Model.ListOfProviders.ToList().Count > 0)
             {

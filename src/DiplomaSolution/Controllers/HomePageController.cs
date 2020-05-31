@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using System.IO;
 using DiplomaSolution.Services.Models;
+using System.Collections.Generic;
+using Microsoft.Extensions.Logging;
 
 namespace DiplomaSolution.Controllers
 {
@@ -19,20 +21,24 @@ namespace DiplomaSolution.Controllers
         /// File manager service ( upload, etc.. )
         /// </summary>
         private IFileManagerService FileManagerService { get; set; }
-       
         /// <summary>
         /// Service to perform customer data manipulation
         /// </summary>
         private UserManager<ServiceUser> UserManager { get; set; }
+        /// <summary>
+        /// Logger class
+        /// </summary>
+        private ILogger<HomePageController> Logger { get; set; }
 
         /// <summary>
         /// Service resolving
         /// </summary>
         /// <param name="service"></param>
-        public HomePageController(IFileManagerService service, UserManager<ServiceUser> userManager)
+        public HomePageController(IFileManagerService service, UserManager<ServiceUser> userManager, ILogger<HomePageController> logger)
         {
             FileManagerService = service;
             UserManager = userManager;
+            Logger = logger;
         }
 
         /// <summary>
@@ -89,6 +95,8 @@ namespace DiplomaSolution.Controllers
 
                 viewModel.PathToTheInputImage = Path.Combine("../","CustomersImages",
                     Path.GetFileName(fileUploadResponse.ResponseData.ToString()));
+
+                Logger.LogInformation($"Path to the input image, uploaded by the customer - {viewModel.PathToTheInputImage}");
             }
             else
             {
@@ -117,6 +125,8 @@ namespace DiplomaSolution.Controllers
                     Intesivity = data.Intensity,
                     UseFrame = data.UseFrame });
 
+                Logger.LogInformation($"Path to the result image, uploaded by the customer - {fileResponse.ResponseData.ToString()}");
+
                 return View("EditImage", new IndexViewData() { PathToTheInputImage = "../" + data.PathToTheInputImage,
                     PathToTheResultImage = fileResponse.ResponseData.ToString() });
             }
@@ -127,5 +137,39 @@ namespace DiplomaSolution.Controllers
                 return View("EditImage", new IndexViewData());
             }
         }
+
+        /// <summary>
+        /// Method to download files from the server
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [HttpPost]
+        public async Task<IActionResult> Download(IndexViewData data)
+        {
+            var fileName = data.PathToTheResultImage.ToString();
+
+            var filepath = "/app/wwwroot" + Path.GetFullPath(fileName);
+
+            Logger.LogInformation($"Requested file name for the download - {filepath}");
+
+            var memory = new MemoryStream();
+
+            using (var stream = new FileStream(filepath, FileMode.Open))
+            {
+                await stream.CopyToAsync(memory);
+            }
+
+            memory.Position = 0;
+            return File(memory, GetContentType(filepath), Path.GetFileName(filepath));
+        }
+
+        private string GetContentType(string path)
+        {
+            var types = GetMimeTypes();
+            var ext = Path.GetExtension(path).ToLowerInvariant();
+            return types[ext];
+        }
+
+        private Dictionary<string, string> GetMimeTypes() => new Dictionary<string, string>{{".png", "image/png"},{".jpg", "image/jpeg"}};
     }
 }

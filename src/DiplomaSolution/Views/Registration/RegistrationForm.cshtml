@@ -8,16 +8,16 @@
         <div asp-validation-summary="All"></div>
         <div class="dws-input">
             <span asp-validation-for="EmailAddress"></span>
-            <input asp-for="EmailAddress" placeholder="Введите почтовый адрес" />
+            <input asp-for="EmailAddress" placeholder="Введіть адресу електронної пошти" />
             <span asp-validation-for="Password"></span>
-            <input type="password" asp-for="Password" placeholder="Введите пароль" />
+            <input type="password" asp-for="Password" placeholder="Введіть пароль" />
             <span asp-validation-for="FirstName"></span>
-            <input asp-for="FirstName" placeholder="Введите Ваше имя" />
+            <input asp-for="FirstName" placeholder="Введіть ваше ім'я" />
             <span asp-validation-for="LastName"></span>
-            <input asp-for="LastName" placeholder="Введите Вашу фамилию" />
+            <input asp-for="LastName" placeholder="Введіть Ваше прізвище" />
         </div>
-        <input class="dws-submit" type="submit" value="Create new account">
+        <input class="dws-submit" type="submit" value="Створити новий акаунт" />
         <br />
-        <a asp-controller="Account" asp-action="Login">Уже есть аккаут?</a>
+        <a asp-controller="Account" asp-action="Login">Вже є аккаунт??</a>
     </form>
 </div>
