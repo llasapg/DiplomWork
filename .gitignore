@@ -9,9 +9,9 @@ build/
 bld/
 [Bb]in/
 msbuild.log
-appconfig.development.json
-appsecrets.json
-localhost.key
-localhost.crt
-localhost.pfx
+config/appconfig.production.json
+config/appsecrets.json
+config/localhost.key
+config/localhost.crt
+config/localhost.pfx
 
