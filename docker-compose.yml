@@ -43,8 +43,10 @@ services:
     container_name: diplomasql
     environment:
       MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
       MYSQL_DATABASE: MedicalDb
       SERVICE_NAME: sql
+      MYSQL_USER: root
     volumes:
       - type: volume
         source: diplomasqlvolume
