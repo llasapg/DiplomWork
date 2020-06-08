@@ -2,11 +2,11 @@ version: '3.7'
 
 configs:
   environment_configs:
-    file: appconfig.${ASPNETCORE_ENVIRONMENT}.json
+    file: config/appconfig.${ASPNETCORE_ENVIRONMENT}.json
 
 secrets:
   app_secrets:
-    file: appsecrets.json
+    file: config/appsecrets.json
 
 services:
   diplomasolution:
