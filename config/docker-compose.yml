@@ -1,0 +1,78 @@
+version: '3.7'
+
+configs:
+  environment_configs:
+    file: appconfig.${ASPNETCORE_ENVIRONMENT}.json
+
+secrets:
+  app_secrets:
+    file: appsecrets.json
+
+services:
+  diplomasolution:
+    image: llasapg/diplomabe:latest
+    restart: always
+    container_name: diplomabe
+    build:
+      context: .
+      dockerfile: DiplomaBuild.df
+    environment:
+      ASPNETCORE_ENVIRONMENT: production
+      SERVICE_NAME: app
+    configs:
+      - source: environment_configs
+        target: /app/appconfig.${ASPNETCORE_ENVIRONMENT}.json
+    secrets:
+      - source: app_secrets
+        target: /app/appsecrets.json
+    expose:
+      - "5000"
+    networks:
+      - nginx_demo
+    depends_on:
+      - nginx-proxy
+    deploy:
+      replicas: 1
+    volumes:
+      - type: volume
+        source: diplomabevolume
+        target: /app/wwwroot/CustomersImages
+
+  diploma-sql:
+    image: mysql:8.0.17
+    container_name: diplomasql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: MedicalDb
+      SERVICE_NAME: sql
+    volumes:
+      - type: volume
+        source: diplomasqlvolume
+        target: /var/lib/mysql
+    ports:
+        - "3308:3306"
+    networks:
+      - nginx_demo
+    depends_on:
+      - nginx-proxy
+
+  nginx-proxy:
+      image: llasapg/nginx-proxy:latest
+      build:
+        context: .
+        dockerfile: Nginx.df
+      container_name: nginx-proxy
+      restart: always
+      ports:
+        - "80:80"
+        - "443:443"
+      networks:
+        - nginx_demo
+
+volumes:
+  diplomasqlvolume:
+  diplomabevolume:
+
+networks:
+  nginx_demo:
+      driver: overlay
