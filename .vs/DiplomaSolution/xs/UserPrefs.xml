@@ -1,13 +1,17 @@
 ﻿<Properties StartupConfiguration="{11696BEA-910E-4525-9195-57B956807856}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="src/DiplomaSolution/Startup.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src/DiplomaSolution/Views/About/GiveInfo.cshtml">
     <Files>
       <File FileName="src/DiplomaSolution/Views/Shared/Components/AccountPhoto/AccountPhoto.cshtml" Line="51" Column="7" />
-      <File FileName="src/DiplomaSolution/Helpers/ViewComponents/AccountPhotoViewComponent.cs" />
+      <File FileName="src/DiplomaSolution/Helpers/ViewComponents/AccountPhotoViewComponent.cs" Line="40" Column="18" />
       <File FileName="src/DiplomaSolution/Controllers/HomePageController.cs" />
       <File FileName="src/DiplomaSolution/Views/HomePage/EditImage.cshtml" />
       <File FileName="src/DiplomaSolution/Services/Classes/FileManagerService.cs" />
-      <File FileName="src/DiplomaSolution/Program.cs" Line="33" Column="38" />
-      <File FileName="src/DiplomaSolution/Startup.cs" Line="1" Column="1" />
+      <File FileName="src/DiplomaSolution/Program.cs" />
+      <File FileName="src/DiplomaSolution/Startup.cs" Line="18" Column="14" />
+      <File FileName="src/DiplomaSolution/Controllers/AboutController.cs" Line="22" Column="6" />
+      <File FileName="src/DiplomaSolution/Controllers/InfoPageController.cs" Line="16" Column="23" />
+      <File FileName="src/DiplomaSolution/Views/InfoPage/SupportPage.cshtml" Line="1" Column="1" />
+      <File FileName="src/DiplomaSolution/Views/About/GiveInfo.cshtml" Line="18" Column="11" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,9 +21,17 @@
               <Node name="ConfigurationModels" expanded="True" />
               <Node name="Controllers" expanded="True" />
               <Node name="Extensions" expanded="True" />
-              <Node name="Helpers" expanded="True" />
+              <Node name="Helpers" expanded="True">
+                <Node name="ViewComponents" expanded="True" />
+              </Node>
               <Node name="Migrations" expanded="True" />
-              <Node name="Startup.cs" selected="True" />
+              <Node name="Views" expanded="True">
+                <Node name="About" expanded="True">
+                  <Node name="GiveInfo.cshtml" selected="True" />
+                </Node>
+                <Node name="Account" expanded="True" />
+                <Node name="InfoPage" expanded="True" />
+              </Node>
             </Node>
           </Node>
         </State>
